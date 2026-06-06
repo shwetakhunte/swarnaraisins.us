@@ -638,11 +638,16 @@ section.slideshow .swiper-slide {
 }
 
 /* 2. Why We Exist Section card image overrides */
+.type_section_about .item:nth-child(1) .icon-svg,
 #bk_why_1 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/front-view-chicken-burgers-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_6.jpg?v=1740812356&width=568") !important; }
+.type_section_about .item:nth-child(2) .icon-svg,
 #bk_why_2 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/hand-holding-soil-grow-tree-soft-focus_6.jpg?v=1740812356&width=568") !important; }
+.type_section_about .item:nth-child(3) .icon-svg,
 #bk_why_3 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/thoughtful-young-businessman-looking-laptop-workplace_6.jpg?v=1740812356&width=568") !important; }
+.type_section_about .item:nth-child(4) .icon-svg,
 #bk_why_4 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/design-happy-maharishi-valmiki-jayanti-day-celebration_6.jpg?v=1740812356&width=568") !important; }
 
+.type_section_about .item .icon-svg,
 #bk_why_1 .icon-svg,
 #bk_why_2 .icon-svg,
 #bk_why_3 .icon-svg,
@@ -656,6 +661,8 @@ section.slideshow .swiper-slide {
   margin: 0 0 16px 0 !important;
 }
 
+.type_section_about .item .icon-svg svg,
+.type_section_about .item .icon-svg div,
 #bk_why_1 .icon-svg svg,
 #bk_why_2 .icon-svg svg,
 #bk_why_3 .icon-svg svg,
@@ -668,6 +675,7 @@ section.slideshow .swiper-slide {
   opacity: 0 !important;
 }
 
+.type_section_about .item,
 #why_we_exist .item,
 .whyweexist .item {
   padding: 0 !important;
@@ -677,11 +685,13 @@ section.slideshow .swiper-slide {
   box-shadow: 0 4px 15px rgba(0,0,0,0.02) !important;
 }
 
+.type_section_about .content-text,
 #why_we_exist .content-text,
 .whyweexist .content-text {
   padding: 0 0 20px 0 !important;
 }
 
+.type_section_about .about-title,
 #why_we_exist .about-title,
 .whyweexist .about-title {
   padding: 0 16px !important;
@@ -689,6 +699,7 @@ section.slideshow .swiper-slide {
   font-weight: 600 !important;
 }
 
+.type_section_about .alo-icon,
 #why_we_exist .alo-icon,
 .whyweexist .alo-icon {
   margin-bottom: 0 !important;
