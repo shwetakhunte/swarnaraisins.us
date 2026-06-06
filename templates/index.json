@@ -537,12 +537,54 @@
         "mg_mb": ",,40px,",
         "pd_mb": "40px,,40px:"
       }
+    },
+    "all_products_carousel": {
+      "type": "collection-carousel-product",
+      "blocks": {
+        "all_products_block": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "all",
+            "max_count": 8,
+            "show_view_all": false,
+            "use-slider": true,
+            "visible": 4,
+            "widescreen": 4,
+            "desktop": 4,
+            "laptop": 4,
+            "notebook": 3,
+            "tablet": 2,
+            "landscape": 2,
+            "portrait": 2,
+            "mobile": 1,
+            "space-Between": 20
+          }
+        }
+      },
+      "block_order": [
+        "all_products_block"
+      ],
+      "settings": {
+        "title": "Shop Our Collection",
+        "subtitle": "~ Premium Quality Raisins ~",
+        "cl_title": "#014344",
+        "cl_subtitle": "#eb5624",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_mb": "40px,,40px,",
+        "pd_mb": ""
+      }
     }
   },
   "order": [
     "slideshow_VRX4a3",
     "why_we_exist",
     "top_sellers",
+    "all_products_carousel",
     "as_seen_in",
     "quiz_banner",
     "usp_grid",

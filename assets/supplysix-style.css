@@ -951,3 +951,126 @@ section.slideshow .swiper-slide {
   }
 }
 
+/* 6. Carousel Products Add to Cart Custom styling */
+.collection_carousel_product .product-item {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  background: #ffffff !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 12px !important;
+  padding: 15px !important;
+  box-sizing: border-box !important;
+}
+
+.collection_carousel_product .product-collection {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.collection_carousel_product .product-collection__content {
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.collection_carousel_product .product-collection__image {
+  position: relative !important;
+  overflow: visible !important;
+  margin-bottom: 15px !important;
+}
+
+.collection_carousel_product .product-image__overlay-bottom {
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 10px 0 0 0 !important;
+  display: block !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  width: 100% !important;
+  top: auto !important;
+}
+
+.collection_carousel_product .product-item:hover .product-image__overlay-bottom {
+  opacity: 1 !important;
+  bottom: 0 !important;
+  transform: none !important;
+}
+
+.collection_carousel_product .group-button {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.collection_carousel_product .group-button .inner {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 10px !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.collection_carousel_product .button-cart-bottom {
+  flex-grow: 1 !important;
+  width: 100% !important;
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart,
+.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart {
+  width: 100% !important;
+  height: 42px !important;
+  padding: 0 15px !important;
+  border-radius: 30px !important;
+  background-color: #014344 !important;
+  color: #ffffff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart:hover,
+.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart:hover {
+  background-color: #eb5624 !important;
+}
+
+.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart svg,
+.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart svg {
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 6px !important;
+  fill: #ffffff !important;
+}
+
+.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart span.text,
+.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart span.text {
+  visibility: visible !important;
+  display: inline-block !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+}
+
+.collection_carousel_product .product-item .inner .item-btn:not(.add-to-cart) {
+  display: none !important;
+}
+
