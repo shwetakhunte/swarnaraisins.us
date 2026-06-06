@@ -126,7 +126,7 @@
         "position_dots": "center",
         "cl_dots": "#014344",
         "cl_dots_h": "#eb5624",
-        "layout": false,
+        "layout": true,
         "container": 1410,
         "cl_bg": "#ffffff",
         "mg": ",,60px,",
