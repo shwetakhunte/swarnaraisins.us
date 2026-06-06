@@ -6,59 +6,245 @@
         "slide_1": {
           "type": "img",
           "settings": {
+            "image_sl": "shopify://shop_images/banner_2_1_7cfa4465-11e4-4aa8-8ce2-066b352ed5d4.jpg",
             "link_img": "/collections/all",
             "open_link": "_self"
+          }
+        },
+        "slide_1_subhd": {
+          "type": "subhd",
+          "settings": {
+            "title": "PREMIUM RAISINS",
+            "color": "#eb5624",
+            "fs_text": 16,
+            "fw_text": 600,
+            "lh_text": 22,
+            "text_transform": "uppercase",
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600,
+            "mb": 20,
+            "sm_mb": 10
+          }
+        },
+        "slide_1_hd": {
+          "type": "hd",
+          "settings": {
+            "title": "Naturally Sweet.<br>Genuinely Better.",
+            "color": "#014344",
+            "fs_text": 56,
+            "fw_text": 700,
+            "lh_text": 64,
+            "text_transform": "capitalize",
+            "mobile_font_text": 32,
+            "mobile_fw_text": 700,
+            "mobile_lh_text": 38,
+            "mb": 24,
+            "sm_mb": 15
+          }
+        },
+        "slide_1_txt": {
+          "type": "txt",
+          "settings": {
+            "title": "<p>Premium raisins crafted from carefully selected vineyards and made for healthier everyday living.</p>",
+            "color": "#1b1b1b",
+            "fs_text": 16,
+            "fw_text": 400,
+            "lh_text": 24,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 22,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "slide_1_btn": {
+          "type": "btn",
+          "settings": {
+            "title": "Shop Premium Raisins",
+            "btn_link": "/collections/all",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#014344",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 14,
+            "fw_text": 600,
+            "button_transform": "uppercase",
+            "br_button": 4,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 600,
+            "mb": 0,
+            "sm_mb": 0
           }
         },
         "slide_2": {
           "type": "img",
           "settings": {
-            "link_img": "/products/supply6-fibre-orangeburst",
+            "image_sl": "shopify://shop_images/banner_2_2_a1b4283c-89ef-4625-bf43-94c94e0c60cd.jpg",
+            "link_img": "/collections/all",
             "open_link": "_self"
+          }
+        },
+        "slide_2_subhd": {
+          "type": "subhd",
+          "settings": {
+            "title": "SWARNA GOLD",
+            "color": "#eb5624",
+            "fs_text": 16,
+            "fw_text": 600,
+            "lh_text": 22,
+            "text_transform": "uppercase",
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600,
+            "mb": 20,
+            "sm_mb": 10
+          }
+        },
+        "slide_2_hd": {
+          "type": "hd",
+          "settings": {
+            "title": "Sunshine In<br>Every Bite.",
+            "color": "#014344",
+            "fs_text": 56,
+            "fw_text": 700,
+            "lh_text": 64,
+            "text_transform": "capitalize",
+            "mobile_font_text": 32,
+            "mobile_fw_text": 700,
+            "mobile_lh_text": 38,
+            "mb": 24,
+            "sm_mb": 15
+          }
+        },
+        "slide_2_txt": {
+          "type": "txt",
+          "settings": {
+            "title": "<p>Premium Golden Raisins with a naturally sweet flavor, soft texture, and beautiful golden appearance.</p>",
+            "color": "#1b1b1b",
+            "fs_text": 16,
+            "fw_text": 400,
+            "lh_text": 24,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 22,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "slide_2_btn": {
+          "type": "btn",
+          "settings": {
+            "title": "Shop Swarna Gold",
+            "btn_link": "/collections/all",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#014344",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 14,
+            "fw_text": 600,
+            "button_transform": "uppercase",
+            "br_button": 4,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 600,
+            "mb": 0,
+            "sm_mb": 0
           }
         },
         "slide_3": {
           "type": "img",
           "settings": {
-            "link_img": "/products/supply6-360",
+            "image_sl": "shopify://shop_images/banner_2_3_0642020f-f8b9-4e9f-8f18-454e1d4f8ceb.jpg",
+            "link_img": "/collections/all",
             "open_link": "_self"
           }
         },
-        "slide_4": {
-          "type": "img",
+        "slide_3_subhd": {
+          "type": "subhd",
           "settings": {
-            "link_img": "/products/supply6-salts-lime",
-            "open_link": "_self"
+            "title": "SWARNA BLACK",
+            "color": "#eb5624",
+            "fs_text": 16,
+            "fw_text": 600,
+            "lh_text": 22,
+            "text_transform": "uppercase",
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600,
+            "mb": 20,
+            "sm_mb": 10
           }
         },
-        "slide_5": {
-          "type": "img",
+        "slide_3_hd": {
+          "type": "hd",
           "settings": {
-            "link_img": "/products/supply6-360",
-            "open_link": "_self"
+            "title": "Rich Flavor.<br>Timeless Goodness.",
+            "color": "#014344",
+            "fs_text": 56,
+            "fw_text": 700,
+            "lh_text": 64,
+            "text_transform": "capitalize",
+            "mobile_font_text": 32,
+            "mobile_fw_text": 700,
+            "mobile_lh_text": 38,
+            "mb": 24,
+            "sm_mb": 15
           }
         },
-        "slide_6": {
-          "type": "img",
+        "slide_3_txt": {
+          "type": "txt",
           "settings": {
-            "link_img": "/products/supply6-protein-wafer-strawberry",
-            "open_link": "_self"
+            "title": "<p>Premium Black Raisins selected for their deep flavor, natural sweetness, and satisfying texture.</p>",
+            "color": "#1b1b1b",
+            "fs_text": 16,
+            "fw_text": 400,
+            "lh_text": 24,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 22,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "slide_3_btn": {
+          "type": "btn",
+          "settings": {
+            "title": "Explore Swarna Black",
+            "btn_link": "/collections/all",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#014344",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 14,
+            "fw_text": 600,
+            "button_transform": "uppercase",
+            "br_button": 4,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 600,
+            "mb": 0,
+            "sm_mb": 0
           }
         }
       },
       "block_order": [
         "slide_1",
+        "slide_1_subhd",
+        "slide_1_hd",
+        "slide_1_txt",
+        "slide_1_btn",
         "slide_2",
+        "slide_2_subhd",
+        "slide_2_hd",
+        "slide_2_txt",
+        "slide_2_btn",
         "slide_3",
-        "slide_4",
-        "slide_5",
-        "slide_6"
+        "slide_3_subhd",
+        "slide_3_hd",
+        "slide_3_txt",
+        "slide_3_btn"
       ],
       "settings": {
         "full-screen": false,
-        "h_des": 480,
-        "h_tb": 400,
-        "h_mb": 380,
+        "h_des": 520,
+        "h_tb": 450,
+        "h_mb": 400,
         "border": 12,
         "use-slider": true,
         "visible": 1,
@@ -76,7 +262,7 @@
         "speed": "600",
         "autoplay_delay": "5000",
         "navigation": true,
-        "effect": "slide",
+        "effect": "fade",
         "centered-Slides": true,
         "auto-Height": false,
         "pagination": true,
@@ -90,78 +276,6 @@
         "container": 1410,
         "cl_bg": "#ffffff",
         "mg": ",,60px,",
-        "pd": "",
-        "mg_mb": ",,40px,",
-        "pd_mb": ""
-      }
-    },
-    "why_we_exist": {
-      "type": "section-about-us",
-      "blocks": {
-        "why_1": {
-          "type": "text",
-          "settings": {
-            "source": "3",
-            "title": "Processed foods dominate our diets.",
-            "content": "",
-            "bg_color": "#ffffff"
-          }
-        },
-        "why_2": {
-          "type": "text",
-          "settings": {
-            "source": "3",
-            "title": "Soil depletion has reduced the quality of our food.",
-            "content": "",
-            "bg_color": "#ffffff"
-          }
-        },
-        "why_3": {
-          "type": "text",
-          "settings": {
-            "source": "3",
-            "title": "Busy lifestyles leave little time for balance.",
-            "content": "",
-            "bg_color": "#ffffff"
-          }
-        },
-        "why_4": {
-          "type": "text",
-          "settings": {
-            "source": "3",
-            "title": "Cultural habits often restrict key nutrients in your food.",
-            "content": "",
-            "bg_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "why_1",
-        "why_2",
-        "why_3",
-        "why_4"
-      ],
-      "settings": {
-        "title": "Why we exist",
-        "cl_title": "#014344",
-        "text_size": "medium",
-        "subtitle": "Modern life makes it nearly impossible to get all the nutrients your body needs.",
-        "cl_subtitle": "#eb5624",
-        "content_below": "At Supply6, we're here to help. Our mission is to bridge the gap between what your body needs & what your diet provides—without making your life harder. With products that are comprehensive, convenient, and effective, we make better health accessible, one simple step at a time. Because when you feel better, you live better.",
-        "h_position": "center",
-        "txt_align": "center",
-        "columns_desktop": 4,
-        "columns_laptop": 4,
-        "columns_tablet": 2,
-        "columns_landscape": 2,
-        "columns_mobile": "1",
-        "gap": 24,
-        "gap_mobile": 16,
-        "border": 12,
-        "layout": false,
-        "container": 1410,
-        "cl_bg": "#ffffff",
-        "mg": ",,80px,",
         "pd": "",
         "mg_mb": ",,40px,",
         "pd_mb": ""
@@ -181,7 +295,7 @@
         "ts_special": {
           "type": "col",
           "settings": {
-            "title": "Supply6 360",
+            "title": "Swarna Gold",
             "collection": "organix",
             "show_icon": false
           }
@@ -323,9 +437,17 @@
     "quiz_banner": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"take-quiz\"><div class=\"container\"><div class=\"take-quiz_wrap\"><div class=\"take-quiz_img-wrap\"><img src=\"https://supplysix.com/cdn/shop/files/quize_copy_1.png?v=1717491307&width=400\" alt=\"supply6\" class=\"take-quiz_img\"></div><div class=\"take-quiz_content-col\"><div class=\"take-quiz_content-col_wrap\"><h4 class=\"take-quiz_content-title\">Not sure where to start?</h4><div class=\"take-quiz_content-desc\">Take the Quiz to find the right product for you.</div><a href=\"https://www.supplysix.com/tools/perfect-product-finder/find-your-perfect-match#/\" class=\"take-quiz_link\">Take Quiz</a></div></div></div></div></div>",
+        "custom_liquid": "<div class=\"take-quiz\"><div class=\"container\"><div class=\"take-quiz_wrap\"><div class=\"take-quiz_img-wrap\"><img src=\"{{ 'quiz_raisins_banner.png' | asset_url }}\" alt=\"swarnaraisins\" class=\"take-quiz_img\"></div><div class=\"take-quiz_content-col\"><div class=\"take-quiz_content-col_wrap\"><h4 class=\"take-quiz_content-title\">Not sure where to start?</h4><div class=\"take-quiz_content-desc\">Take the Quiz to find the right raisins for you.</div><a href=\"/collections/all\" class=\"take-quiz_link\">Take Quiz</a></div></div></div></div></div>",
         "padding_top": 40,
         "padding_bottom": 40
+      }
+    },
+    "slideshow_button": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"slideshow-shop-all\" style=\"text-align: center; margin: 30px 0;\"><a href=\"/collections/all\" class=\"btn\" style=\"border-radius: 30px !important; padding: 12px 40px !important; font-size: 16px; font-weight: 600; background-color: #014344 !important; color: #ffffff !important;\">Shop All</a></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "usp_grid": {
@@ -334,32 +456,36 @@
         "usp_1": {
           "type": "shipping",
           "settings": {
-            "title": "Tired no matter how much you rest.",
-            "text": "",
+            "title": "Tired no matter how much you rest",
+            "text": "Low energy from processed, sugary snacks that lead to crashes.",
+            "icon_svg": "<div class=\"icon_svg\"></div>",
             "pt": 0
           }
         },
         "usp_2": {
           "type": "shipping",
           "settings": {
-            "title": "More sick days than usual.",
-            "text": "",
+            "title": "Unhealthy cravings & low immunity",
+            "text": "Lacking natural nutrients and antioxidants from whole foods.",
+            "icon_svg": "<div class=\"icon_svg\"></div>",
             "pt": 0
           }
         },
         "usp_3": {
           "type": "shipping",
           "settings": {
-            "title": "Gut issues that won't settle.",
-            "text": "",
+            "title": "Stomach bloating / gut issues",
+            "text": "Poor digestion from highly processed, low-fiber snack alternatives.",
+            "icon_svg": "<div class=\"icon_svg\"></div>",
             "pt": 0
           }
         },
         "usp_4": {
           "type": "shipping",
           "settings": {
-            "title": "Feeling off, but can't explain why.",
-            "text": "",
+            "title": "Feeling off, but can't explain why",
+            "text": "Missing essential daily vitamins, minerals, and clean energy.",
+            "icon_svg": "<div class=\"icon_svg\"></div>",
             "pt": 0
           }
         }
@@ -371,15 +497,15 @@
         "usp_4"
       ],
       "settings": {
-        "title": "Your body is paying the price!",
+        "title": "Your Body Is Paying The Price!",
         "sub_title": "",
         "text_size": "medium",
         "text_transform": "none",
         "source": "3",
         "style": "1",
-        "col_pr": "4",
-        "col_pr_tb": "2",
-        "col_pr_mb": "1",
+        "col_pr": "3",
+        "col_pr_tb": "6",
+        "col_pr_mb": "12",
         "layout": false,
         "container": 1410,
         "cl_bg": "#f6f4f1",
@@ -399,21 +525,21 @@
           "type": "faq",
           "settings": {
             "title": "We give you what’s missing",
-            "text": "<p>The vitamins, minerals, and nutrients your meals don’t provide.</p>"
+            "text": "<p>A healthier snack and a better choice for your family, bringing you the vitamins, minerals, and nutrients your daily meals don't provide.</p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
             "title": "We make it easy",
-            "text": "<p>Supplements designed to fit into your daily routine effortlessly.</p>"
+            "text": "<p>Convenient snack packs designed to make healthy choices simple and fit into your busy daily routine effortlessly.</p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
             "title": "We did our research",
-            "text": "<p>Our supplements are Bio-available & Effective.</p>"
+            "text": "<p>Hygienically sorted and processed to meet export-grade global standards while staying true to our traditional farming roots.</p>"
           }
         }
       },
@@ -423,7 +549,7 @@
         "faq_3"
       ],
       "settings": {
-        "title": "But this ends today",
+        "title": "But This Ends Today",
         "cl_title": "#014344",
         "text_size": "medium",
         "text_transform": "none",
@@ -476,7 +602,7 @@
   },
   "order": [
     "slideshow_VRX4a3",
-    "why_we_exist",
+    "slideshow_button",
     "top_sellers",
     "as_seen_in",
     "quiz_banner",

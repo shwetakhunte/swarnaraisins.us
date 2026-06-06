@@ -70,7 +70,7 @@ a:hover {
 .footer-logo img,
 .header__logo-image--primary,
 .header__logo-image--transparent {
-  content: url("https://supplysix.com/cdn/shop/files/Supply_6_logo_6_2.png?v=1717677528&width=200") !important;
+  /* content: url("https://supplysix.com/cdn/shop/files/Supply_6_logo_6_2.png?v=1717677528&width=200") !important; */
   max-height: 40px !important;
   width: auto !important;
 }
@@ -590,24 +590,18 @@ input[type="submit"]:hover,
   background-repeat: no-repeat !important;
 }
 
-#laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Payday_banner_jpg.webp?v=1780636954&width=1600") !important; }
-#laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Fibre_Web_Banner_Desktop_jpg.webp?v=1780636954&width=1600") !important; }
-#laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/banner_2.jpg-2.webp?v=1780636954&width=1600") !important; }
-#laber_bock_slide_4 .image-slideshow, #laber_bock_slide_4 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Salts_Banner_website__Desktop_jpg.webp?v=1780636954&width=1600") !important; }
-#laber_bock_slide_5 .image-slideshow, #laber_bock_slide_5 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Kriti_360__desktop_jpg.webp?v=1780636953&width=1600") !important; }
-#laber_bock_slide_6 .image-slideshow, #laber_bock_slide_6 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Wafer_Banner_website__Desktop.jpg-2.webp?v=1780636954&width=1600") !important; }
+#laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("raisin_hero_banner.png") !important; }
+#laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("gold_raisins_banner.png") !important; }
+#laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("black_raisins_banner.png") !important; }
 
 @media (max-width: 767px) {
   .swiper-slide .image-slideshow,
   .swiper-slide .image-card__img {
     min-height: 380px !important;
   }
-  #laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Payday_banner_Phone_jpg.webp?v=1780636954&width=600") !important; }
-  #laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Fibre_Web_Banner_Mobile_1_jpg.webp?v=1780636954&width=600") !important; }
-  #laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/ABD_banner_web_jpg.webp?v=1780636954&width=600") !important; }
-  #laber_bock_slide_4 .image-slideshow, #laber_bock_slide_4 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Salts_Banner_website__mobile_jpg.webp?v=1780636954&width=600") !important; }
-  #laber_bock_slide_5 .image-slideshow, #laber_bock_slide_5 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Kriti_360__Mobile_jpg.webp?v=1780636954&width=600") !important; }
-  #laber_bock_slide_6 .image-slideshow, #laber_bock_slide_6 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Wafer_website__mobile.jpg-2.webp?v=1780636954&width=600") !important; }
+  #laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("raisin_hero_banner.png") !important; }
+  #laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("gold_raisins_banner.png") !important; }
+  #laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("black_raisins_banner.png") !important; }
 }
 
 /* 2. Why We Exist Section card image overrides */
