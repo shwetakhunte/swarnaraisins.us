@@ -572,7 +572,34 @@ input[type="submit"]:hover,
    SupplySix Specific Banner, Card, Icon Background Overrides
    ========================================================================== */
 
-/* 1. Slideshow background image overrides */
+/* 1. Slideshow background image overrides & Full-Width Breakout */
+section.slideshow {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  padding: 0 !important;
+}
+
+section.slideshow [data-wrapper-slidershow] {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+section.slideshow .wrapper-slidershow,
+section.slideshow grid-slider,
+section.slideshow .swiper,
+section.slideshow .swiper-wrapper,
+section.slideshow .swiper-slide {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .swiper-slide .image-slideshow img,
 .swiper-slide .image-card__img svg {
   display: none !important;
@@ -584,7 +611,7 @@ input[type="submit"]:hover,
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  min-height: 480px !important;
+  min-height: 620px !important; /* Increased desktop height to prevent cropping of the square image banners */
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -600,7 +627,7 @@ input[type="submit"]:hover,
 @media (max-width: 767px) {
   .swiper-slide .image-slideshow,
   .swiper-slide .image-card__img {
-    min-height: 380px !important;
+    min-height: 420px !important; /* Taller height on mobile for perfect fit of overlay text & content */
   }
   #laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("raisin_hero_banner.png") !important; }
   #laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("gold_raisins_banner.png") !important; }

@@ -476,9 +476,9 @@
       ],
       "settings": {
         "full-screen": false,
-        "h_des": 520,
-        "h_tb": 450,
-        "h_mb": 400,
+        "h_des": 620,
+        "h_tb": 540,
+        "h_mb": 420,
         "border": 12,
         "use-slider": true,
         "visible": 1,
