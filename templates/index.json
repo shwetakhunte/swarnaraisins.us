@@ -245,80 +245,11 @@
       }
     },
     "top_sellers": {
-      "type": "tab-product",
-      "blocks": {
-        "ts_all": {
-          "type": "col",
-          "settings": {
-            "title": "All Products",
-            "collection": "all",
-            "show_icon": false,
-            "code_svg": ""
-          }
-        },
-        "ts_special": {
-          "type": "col",
-          "settings": {
-            "title": "Supply6 360",
-            "collection": "organix",
-            "show_icon": false,
-            "code_svg": ""
-          }
-        }
-      },
-      "block_order": [
-        "ts_all",
-        "ts_special"
-      ],
+      "type": "custom-liquid",
       "settings": {
-        "title": "Meet our Top Sellers",
-        "bg_header": "rgba(0,0,0,0)",
-        "cl_title": "#014344",
-        "text_size": "medium",
-        "subtitle": "~ Our Products ~",
-        "cl_subtitle": "#eb5624",
-        "col": "100%",
-        "f-size": 16,
-        "f-weight": 600,
-        "text_transform": "capitalize",
-        "text_align": "center",
-        "style_tab": "1",
-        "cl_text": "#014344",
-        "cl_text_h": "#eb5624",
-        "mb-tab": 40,
-        "max_count": 8,
-        "show_view_all": true,
-        "use-slider": true,
-        "visible": 4,
-        "widescreen": 4,
-        "desktop": 4,
-        "laptop": 4,
-        "notebook": 3,
-        "tablet": 2,
-        "landscape": 2,
-        "portrait": 2,
-        "mobile": 2,
-        "slides-Per-Group": 1,
-        "rows": 1,
-        "autoplay": false,
-        "speed": "300",
-        "autoplay_delay": "3000",
-        "navigation": true,
-        "effect": "slide",
-        "centered-Slides": false,
-        "auto-Height": false,
-        "pagination": false,
-        "loop": false,
-        "space-Between": 20,
-        "direction": "horizontal",
-        "layout": false,
-        "container": 1410,
-        "cl_bg": "#ffffff",
-        "cl_bg_content": "rgba(0,0,0,0)",
-        "mg": ",,80px,",
-        "pd": "",
-        "mg_mb": ",,40px,",
-        "pd_mb": ""
+        "custom_liquid": "<div class=\"top-sellers-section\"><div class=\"container\"><h2 class=\"top-sellers-title\">Meet our Top Sellers</h2><div class=\"top-sellers-grid\"><div class=\"top-seller-card\"><div class=\"card-header\"><h3 class=\"product-tag-title\">Swarna Gold</h3><div class=\"ribbon-banner teal-ribbon\">Clinically Tested</div></div><div class=\"product-image-wrap\"><img src=\"{{ 'golden_raisins_product.png' | asset_url }}\" alt=\"Swarna Gold\" class=\"product-image\"></div><div class=\"card-footer\"><div class=\"reviews-wrap\"><span class=\"stars\">★★★★★</span><span class=\"reviews-count\">262 reviews</span></div><p class=\"product-desc\">One serving to strengthen the foundation of your daily health</p><a href=\"/products/swarna-gold\" class=\"add-to-cart-btn\">Add to Cart</a></div></div><div class=\"top-seller-card\"><div class=\"card-header\"><h3 class=\"product-tag-title\">Swarna Black</h3><div class=\"ribbon-banner pink-ribbon\">Pink Tiger Verified</div></div><div class=\"product-image-wrap\"><img src=\"{{ 'black_raisins_product.png' | asset_url }}\" alt=\"Swarna Black\" class=\"product-image\"></div><div class=\"card-footer\"><div class=\"reviews-wrap\"><span class=\"stars\">★★★★★</span><span class=\"reviews-count\">141 reviews</span></div><p class=\"product-desc\">Provides you with natural daily energy with an ideal mix of antioxidants</p><a href=\"/products/swarna-black\" class=\"add-to-cart-btn\">Add to Cart</a></div></div></div><div class=\"shop-all-wrap\"><a href=\"/collections/all\" class=\"shop-all-link\">Shop All</a></div></div></div>",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "as_seen_in": {
