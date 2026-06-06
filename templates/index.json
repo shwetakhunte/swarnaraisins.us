@@ -95,7 +95,7 @@
       ],
       "settings": {
         "full-screen": true,
-        "h_des": 480,
+        "h_des": 900,
         "h_tb": 400,
         "h_mb": 380,
         "border": 12,
@@ -118,7 +118,7 @@
         "effect": "slide",
         "fade_zoom": false,
         "centered-Slides": true,
-        "auto-Height": false,
+        "auto-Height": true,
         "pagination": true,
         "loop": true,
         "space-Between": 0,
