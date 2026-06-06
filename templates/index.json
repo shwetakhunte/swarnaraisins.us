@@ -221,6 +221,225 @@
             "mb": 0,
             "sm_mb": 0
           }
+        },
+        "slide_4": {
+          "type": "img",
+          "settings": {
+            "image_sl": "shopify://shop_images/vineyard_heritage_banner.png",
+            "link_img": "/pages/about-us",
+            "open_link": "_self"
+          }
+        },
+        "slide_4_subhd": {
+          "type": "subhd",
+          "settings": {
+            "title": "HERITAGE & TRUST",
+            "color": "#eb5624",
+            "fs_text": 16,
+            "fw_text": 600,
+            "lh_text": 22,
+            "text_transform": "uppercase",
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600,
+            "mb": 20,
+            "sm_mb": 10
+          }
+        },
+        "slide_4_hd": {
+          "type": "hd",
+          "settings": {
+            "title": "From Our Vineyards<br>To Your Family.",
+            "color": "#014344",
+            "fs_text": 56,
+            "fw_text": 700,
+            "lh_text": 64,
+            "text_transform": "capitalize",
+            "mobile_font_text": 32,
+            "mobile_fw_text": 700,
+            "mobile_lh_text": 38,
+            "mb": 24,
+            "sm_mb": 15
+          }
+        },
+        "slide_4_txt": {
+          "type": "txt",
+          "settings": {
+            "title": "<p>For decades, our families have cultivated grapes, understood the land, and perfected the journey from vineyard to raisin.</p>",
+            "color": "#1b1b1b",
+            "fs_text": 16,
+            "fw_text": 400,
+            "lh_text": 24,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 22,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "slide_4_btn": {
+          "type": "btn",
+          "settings": {
+            "title": "Our Story",
+            "btn_link": "/pages/about-us",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#014344",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 14,
+            "fw_text": 600,
+            "button_transform": "uppercase",
+            "br_button": 4,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 600,
+            "mb": 0,
+            "sm_mb": 0
+          }
+        },
+        "slide_5": {
+          "type": "img",
+          "settings": {
+            "image_sl": "shopify://shop_images/family_raisins_banner.png",
+            "link_img": "/collections/all",
+            "open_link": "_self"
+          }
+        },
+        "slide_5_subhd": {
+          "type": "subhd",
+          "settings": {
+            "title": "FAMILY FAVORITE",
+            "color": "#eb5624",
+            "fs_text": 16,
+            "fw_text": 600,
+            "lh_text": 22,
+            "text_transform": "uppercase",
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600,
+            "mb": 20,
+            "sm_mb": 10
+          }
+        },
+        "slide_5_hd": {
+          "type": "hd",
+          "settings": {
+            "title": "Loved By Kids.<br>Trusted By Parents.",
+            "color": "#014344",
+            "fs_text": 56,
+            "fw_text": 700,
+            "lh_text": 64,
+            "text_transform": "capitalize",
+            "mobile_font_text": 32,
+            "mobile_fw_text": 700,
+            "mobile_lh_text": 38,
+            "mb": 24,
+            "sm_mb": 15
+          }
+        },
+        "slide_5_txt": {
+          "type": "txt",
+          "settings": {
+            "title": "<p>Our snack packs are designed to make healthier choices simple. Perfect for school lunches, road trips, and busy weekdays.</p>",
+            "color": "#1b1b1b",
+            "fs_text": 16,
+            "fw_text": 400,
+            "lh_text": 24,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 22,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "slide_5_btn": {
+          "type": "btn",
+          "settings": {
+            "title": "Shop Snack Packs",
+            "btn_link": "/collections/all",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#014344",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 14,
+            "fw_text": 600,
+            "button_transform": "uppercase",
+            "br_button": 4,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 600,
+            "mb": 0,
+            "sm_mb": 0
+          }
+        },
+        "slide_6": {
+          "type": "img",
+          "settings": {
+            "image_sl": "shopify://shop_images/commercial_raisins_banner.png",
+            "link_img": "/pages/contact-us",
+            "open_link": "_self"
+          }
+        },
+        "slide_6_subhd": {
+          "type": "subhd",
+          "settings": {
+            "title": "B2B & WHOLESALE",
+            "color": "#eb5624",
+            "fs_text": 16,
+            "fw_text": 600,
+            "lh_text": 22,
+            "text_transform": "uppercase",
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600,
+            "mb": 20,
+            "sm_mb": 10
+          }
+        },
+        "slide_6_hd": {
+          "type": "hd",
+          "settings": {
+            "title": "Premium Raisin<br>Supply Partner.",
+            "color": "#014344",
+            "fs_text": 56,
+            "fw_text": 700,
+            "lh_text": 64,
+            "text_transform": "capitalize",
+            "mobile_font_text": 32,
+            "mobile_fw_text": 700,
+            "mobile_lh_text": 38,
+            "mb": 24,
+            "sm_mb": 15
+          }
+        },
+        "slide_6_txt": {
+          "type": "txt",
+          "settings": {
+            "title": "<p>Supporting retailers, distributors, and food-service operators looking for dependable premium raisin supply.</p>",
+            "color": "#1b1b1b",
+            "fs_text": 16,
+            "fw_text": 400,
+            "lh_text": 24,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 22,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "slide_6_btn": {
+          "type": "btn",
+          "settings": {
+            "title": "Contact Us",
+            "btn_link": "/pages/contact-us",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#014344",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 14,
+            "fw_text": 600,
+            "button_transform": "uppercase",
+            "br_button": 4,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 600,
+            "mb": 0,
+            "sm_mb": 0
+          }
         }
       },
       "block_order": [
@@ -238,7 +457,22 @@
         "slide_3_subhd",
         "slide_3_hd",
         "slide_3_txt",
-        "slide_3_btn"
+        "slide_3_btn",
+        "slide_4",
+        "slide_4_subhd",
+        "slide_4_hd",
+        "slide_4_txt",
+        "slide_4_btn",
+        "slide_5",
+        "slide_5_subhd",
+        "slide_5_hd",
+        "slide_5_txt",
+        "slide_5_btn",
+        "slide_6",
+        "slide_6_subhd",
+        "slide_6_hd",
+        "slide_6_txt",
+        "slide_6_btn"
       ],
       "settings": {
         "full-screen": false,
@@ -272,7 +506,7 @@
         "position_dots": "center",
         "cl_dots": "#014344",
         "cl_dots_h": "#eb5624",
-        "layout": false,
+        "layout": true,
         "container": 1410,
         "cl_bg": "#ffffff",
         "mg": ",,60px,",
