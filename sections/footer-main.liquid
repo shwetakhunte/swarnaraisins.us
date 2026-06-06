@@ -1,0 +1,276 @@
+{%  assign sid = section.id  %}
+{%- assign layout = section.settings.full_width -%}
+
+<section id="laber_{{sid}}" class="wow animate--slide-in" style="
+    --cl-border:{{ section.settings.cl_line }};
+    --cl-text:{{ section.settings.cl_text }};
+    --cl-text-h:{{ section.settings.cl_text_h }};
+    ">
+    <div class="main-footer">
+        <div class="{% if layout %}full-width{% else %}container{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+        	<div class="row">
+                {% render 'footer-main' %}
+            </div>
+        </div>
+      </div>
+</section>
+{% style %}
+  footer {
+    --bg-color:{{section.settings.cl_bg}};
+  }
+{% endstyle %}
+{%- render 'section_style' -%} 
+{%- schema -%}
+  {
+    "name": "Footer main",
+    "class": "footer-main",
+    "settings": [ 
+      
+      {
+        "type": "header",
+        "content": "== Footer"
+      },
+      {
+        "type": "header",
+        "content": "Logo Footer"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_logo_footer",
+        "label": "Use logo footer",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_footer",
+        "label": "Logo image at other footer"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "label":"Custom logo width",
+        "min": 50,
+        "max": 250,
+        "step": 5,
+        "unit": "px",
+        "default": 115
+      },
+      {
+        "type": "header",
+        "content": "Contact information"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_contact_information",
+        "label": "Use Contact information",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Contact information",
+        "default": "<p>Calista Wise 7292 Dictum Av.</p> <p>Antonio, Italy.</p><p><a href=\"tel:(492) 709-6392\" title=\"tel:(492) 709-6392\">(492) 709-6392</a></p><p><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">Aloshopify@alothemes.com</a></p>"
+      },
+      {
+        "type": "header",
+        "content": "Menu footer 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_menu_footer_1",
+        "label": "Use Menu Footer  1",
+        "default": false
+      },
+      {
+        "type": "link_list",
+        "id": "menu_footer_1",
+        "label": "Add menu footer 1"
+      },
+      {
+        "type": "header",
+        "content": "Social"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_social",
+        "label": "Display social",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "f_social",
+        "default": "2",
+        "options": [
+          {
+            "value": "1",
+            "label": "Social sharing"
+         },
+         {
+            "value": "2",
+            "label": "Social Link"
+         }
+        ],
+        "label": "Social network"
+      },
+      {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+      },
+      {
+      "type": "checkbox",
+        "id": "newsletter_enable",
+        "default": true,
+        "label": "t:sections.footer.settings.newsletter_enable.label"
+      },
+      {
+      "type": "inline_richtext",
+        "id": "newsletter_heading",
+        "default": "t:sections.footer.settings.newsletter_heading.default",
+        "label": "t:sections.footer.settings.newsletter_heading.label"
+      },
+      {
+        "type": "color",
+        "id": "cl_btn_n",
+        "label": "Color Button",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "cl_btn_n_h",
+        "label": "Color Button (Hover)",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "bg_btn_n",
+        "label": "Color Button",
+        "default": "#6aad0e"
+      },
+      {
+        "type": "color",
+        "id": "bg_btn_n_h",
+        "label": "Background Button (Hover)",
+        "default": "#333333"
+      },
+      {
+        "type": "header",
+        "content": "Menu Footer 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_menu_footer_2",
+        "label": "Use Menu Footer 2",
+        "default": false
+      },
+      {
+        "type": "link_list",
+        "id": "menu_footer_2",
+        "label": "Add menu footer 2"
+      },
+      {
+        "type": "header",
+        "content": "Menu Footer 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_menu_footer_3",
+        "label": "Use Menu Footer 3",
+        "default": false
+      },
+      {
+        "type": "link_list",
+        "id": "menu_footer_3",
+        "label": "Add menu footer 3"
+      },
+      {
+        "type": "header",
+        "content": "Opening time and payment"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_opening_time",
+        "label": "Use Opening time",
+        "default": false
+      },
+      {
+        "type": "html",
+        "id": "opening_time",
+        "label": "Opening time",
+        "default": "<ul class=\"opening-time\"><li><span class=\"day-open\">Monday - Friday</span><span class=\"time-open\">08:00 - 20:00</span></li><li><span class=\"day-open\">Saturday</span><span class=\"time-open\">09:00 - 21:00</span></li><li><span class=\"day-open\">Sunday</span><span class=\"time-open\">13:00 - 22:00</span></li></ul>"
+      },
+      {
+        "type": "checkbox",
+        "id": "payment_enable",
+        "default": true,
+        "label": "t:sections.footer.settings.payment_enable.label"
+      },
+      
+      {
+        "type": "header",
+        "content": "Advanced settings"
+      },
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": false
+        },
+      {
+            "type": "range",  
+            "id": "container",  
+            "label": "Container width",
+            "min": 1170,
+            "max": 1900,
+            "step": 10,
+            "unit": "px",
+            "default": 1410 
+        },
+      {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "cl_line",
+        "label": "Color Border",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "cl_text",
+        "label": "Color text",
+        "default": "#707070"
+      },
+      {
+        "type": "color",
+        "id": "cl_text_h",
+        "label": "Color text (Hover)",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Footer main",
+        "category": "Footer"
+      }
+    ]	
+  }
+{% endschema %}

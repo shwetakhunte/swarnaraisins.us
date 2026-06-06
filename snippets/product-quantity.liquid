@@ -1,0 +1,41 @@
+{% comment %}
+  Quantity input
+
+  Accepts:
+  - variant: {Object} Variant object
+  - variant_id: {String} Variant ID (optional)
+  - min: {Number} Min (optional)
+
+  Usage:
+  {% render 'product-quantity' product: product %}
+{% endcomment %}
+<quantity-input
+  class="quantity"
+  data-url="{{ product.url }}"
+>
+  <button class="quantity__button" name="minus" type="button">
+    <span class="visually-hidden">
+      {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+    </span>
+    {% render 'icon-minus' %}
+  </button>
+  <input
+    class="quantity__input"
+    type="number"
+    name="quantity"
+    data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+    min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+    {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+      data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+      max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+    {% endif %}
+    step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+    value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+  >
+  <button class="quantity__button" name="plus" type="button">
+    <span class="visually-hidden">
+      {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+    </span>
+    {% render 'icon-plus' %}
+  </button>
+</quantity-input>

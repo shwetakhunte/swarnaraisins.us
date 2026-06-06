@@ -1,0 +1,646 @@
+{{ 'images-and-text.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign sid = section.id 
+  assign se_blocks = section.blocks
+  assign layout = section.settings.layout
+
+
+  
+%}
+<section id="laber_{{sid}}" {% if section.settings.hide_mobile %}class="hide-mobile"{% endif %}>
+  <div class="container {% if layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;" >   
+    {% if section.settings.title != blank %}
+      <div class="wrap_title {{ section.settings.text_size }}">
+        <div class="h3 section-title alo-text-transform" style="--alo-text-transform:{{ section.settings.text_transform }}">{{section.settings.title}}</div>  
+      </div>
+    {% endif %}
+    <images-and-text class="images-and-text row" style="--alo-gap:{{ section.settings.gap }}px;--alo-row:-{{ section.settings.gap }}px;">
+      {%- for block in se_blocks -%}
+            {% liquid
+                assign sett_equal = block.settings.use_eq_height
+                assign image_ratio = block.settings.image_ratio
+                if sett_equal
+                  case image_ratio
+                    when 'ratio2_1'
+                      assign aspect_ratio = 2.0
+                    when 'ratio3_2'
+                      assign aspect_ratio = 1.5
+                    when 'ratio4_3'
+                      assign aspect_ratio = 1.333
+                    when 'ratio1_1'
+                      assign aspect_ratio = 1.0
+                    when 'ratio3_4'
+                      assign aspect_ratio = 0.75
+                    when 'ratio2_3'
+                      assign aspect_ratio = 0.66667
+                    when 'ratio1_2'
+                      assign aspect_ratio = 0.5
+                    when 'custom'
+                      assign custom_ratio = block.settings.custom_ratio | split: '/'
+                      assign width = custom_ratio[0]
+                      assign height = custom_ratio[1] | times: 1.0
+                      assign aspect_ratio = width | divided_by: height
+                  endcase
+                endif
+            %}
+              {% case block.settings.col %}
+                  {% when '16%' %}
+                      {%- assign block_width = 'col-lg-2 col-md-2 col-12' -%}
+                  {% when '25%' %}
+                      {%- assign block_width = 'col-lg-3 col-md-3 col-12' -%}
+                  {% when '33%' %}
+                      {%- assign block_width = 'col-lg-4 col-md-4 col-12' -%}
+                  {% when '42%' %}
+                      {%- assign block_width = 'col-lg-5 col-md-5 col-12' -%}
+                  {% when '50%' %}
+                      {%- assign block_width = 'col-lg-6 col-md-6 col-12' -%}
+                  {% when '58%' %}
+                      {%- assign block_width = 'col-lg-7 col-md-7 col-12' -%}
+                  {% when '66%' %}
+                      {%- assign block_width = 'col-lg-8 col-md-8 col-12' -%}
+                  {% when '75%' %}
+                      {%- assign block_width = 'col-lg-9 col-md-9 col-12' -%}
+                  {% when '100%' %}
+                      {%- assign block_width = 'col-12' -%}
+              {% endcase %}
+              <article id="images-and-text-{{ block.id }}" class="{{ block_width }}"> 
+                {%- render 'images-and-text', block:block, aspect_ratio:aspect_ratio -%}
+              </article>
+      {% endfor %}
+    </images-and-text>
+  </div>
+</section>
+{%- render 'section_style' -%}
+{%- schema -%}
+  {
+    "name": "Images and text",
+    "class": "cms_section type_images_and_text",
+    "settings": [
+      {
+          "type": "checkbox",
+          "id": "hide_mobile",
+          "label": "Hide (mobile)",
+          "default": false
+        },
+      {
+        "type": "header",
+        "content": "== Title Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "default": "medium",
+        "options": [
+          {
+            "value": "small",
+            "label": "small"
+         },
+         {
+            "value": "medium",
+            "label": "Medium"
+         },
+         {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "label": "Text size"
+      },
+      {
+              "type": "select",
+              "id": "text_transform",
+              "default": "none",
+              "options": [
+               {
+                  "value": "none",
+                  "label": "None"
+               },
+               {
+                  "value": "capitalize",
+                  "label": "Capitalize"
+               },
+               {
+                  "value": "lowercase",
+                  "label": "Lowercase"
+               },
+               {
+                  "value": "uppercase",
+                  "label": "Uppercase"
+                }
+              ],
+              "label": "Text transform:"
+            },
+        {
+          "type": "range",
+          "id": "border",
+          "label": "Border",
+          "default": 0,
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px"
+          },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      }, 
+      {
+    "type": "checkbox",
+    "id": "layout",
+    "label": "Full width",
+    "default": false
+    },
+    {
+        "type": "range",  
+        "id": "container",  
+        "label": "Container width",
+        "min": 1170,
+        "max": 1920,
+        "step": 10,
+        "unit": "px",
+        "default": 1410 
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 0,
+      "max": 30,
+      "step": 10,
+      "unit": "px",
+      "default": 10
+    },
+      
+      {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },
+	  {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+      {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding"
+      }
+	
+    ],
+    "blocks": [
+	{
+    "type": "image",
+    "name": "Image",
+    "limit": 1,  
+    "settings": [
+      {
+        "type": "select",
+        "id": "col",
+        "default": "50%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        },
+          {
+        "type": "checkbox",
+        "id": "use_eq_height",
+        "label": "Use equal height images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio3_2",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          },
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio3_4",
+            "label": "3:4"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          },
+          {
+            "group": "Custom",
+            "value": "custom",
+            "label": "Custom ratio"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_ratio",
+        "label": "Custom ratio",
+        "default": "3/4",
+        "info": "you can set the image ratio you want to use for example 3/4"
+      },
+      {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image 1"
+       },
+      {	
+        "type": "range",
+        "id": "w_image_1",
+        "label": "Width Image 1",
+        "min": 300,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "default": 400
+        },
+      {
+      "type": "checkbox",
+      "id": "show_img_2",
+      "label": "Show image 2",
+      "default": true
+      },
+      {
+         "type": "image_picker",
+         "id": "image_2",
+         "label": "Image 2"
+       },
+      {	
+        "type": "range",
+        "id": "w_image_2",
+        "label": "Width Image 2",
+        "min": 300,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "default": 360
+        }
+      ]
+    },
+      {
+    "type": "text",
+    "name": "Text",
+    "limit": 1,
+    "settings": [
+        {
+        "type": "select",
+        "id": "col",
+        "default": "50%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        },
+      {
+          "type": "header",
+          "content": "Content",
+          "info": "content on the image."
+        },
+      {
+          "type": "color",
+          "id": "bg_content",
+          "label": "Color (Background)",
+          "default": "#fff"
+        },
+      {
+          "type": "range",
+          "id": "border_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+      {
+          "type": "color",
+          "id": "cl_border",
+          "label": "Color (Border)",
+          "default": "#fff"
+        },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub Title",
+        "info": "Note: If you do not want to display it you can leave it blank",
+        "default": "New Skincare"
+      },
+      {
+          "type": "color",
+          "id": "cl_sub_title",
+          "label": "color Sub Text",
+          "default": "#555"
+        },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "Note: If you do not want to display it you can leave it blank",
+        "default": "Fresh Up Your Skin"
+      },
+      {
+          "type": "color",
+          "id": "cl_title",
+          "label": "Color Text",
+          "default": "#222"
+        },
+      {
+        "type": "textarea",
+        "id": "content",
+        "label": "Content",
+        "default": "From skincare products to vitamin C serums, be sure to stock up on your <br> favorites now before they return to their original price. Here, shop the 25 best<br> skincare deals happening right now on Cody. ",
+        "info":"Insert <br> to line break"
+  
+      },
+      {
+          "type": "color",
+          "id": "cl_content",
+          "label": "Content color",
+          "default": "#555"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link Name",
+          "default": "Shop now",
+          "info": "Note: If you do not want to display it you can leave it blank"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Link"
+        }, 
+       {
+          "type": "select",
+          "id": "open_link",
+          "options": [
+            {
+              "value": "_self",
+              "label": "Current window (_self)"
+            },
+           {
+              "value": "_blank",
+              "label": "New window (_blank)"
+            }
+          ],
+          "label": "Open link in",
+          "default": "_blank"
+        },
+        {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+            {
+                "value": "alo_btn-primary",
+                "label": "Primary button"
+            },
+            {
+                "value": "alo_btn-secondary",
+                "label": "Secondary button"
+            },
+            {
+                "value": "alo_btn-white",
+                "label": "White button"
+            },
+            {
+                "value": "alo_btn-link",
+                "label": "Underline button"
+            }
+            ],
+            "default": "alo_btn-link"
+        },
+        {
+          "type": "select",
+          "id": "ct_color",
+          "label": "Text color",
+          "info" :"Use for 'Underline button and Secondary button'",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "text-white",
+              "label": "Light"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "options": [
+            {
+                "value": "alo_btn-small",
+                "label": "Button small"
+            },
+            {
+                "value": "",
+                "label": "Button medium"
+            },
+            {
+                "value": "alo_btn-large",
+                "label": "Button large"
+            }
+            ],
+            "default": ""
+        },
+      {
+        "type": "select",
+        "id": "h_position",
+        "label": "Horizontal Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+        {
+        "type": "select",
+        "id": "v_position",
+        "label": "Vertical Position",
+        "default": "top",
+        "options": [
+            {
+            "value": "top",
+            "label": "Top"
+            },
+            {
+            "value": "middle",
+            "label": "Middle"
+            },
+            {
+            "value": "bottom",
+            "label": "Bottom"
+            }
+          ]
+        },
+		{
+            "type": "select",
+            "id": "txt_align",
+            "label": "Text Align",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          }
+      ]
+    }
+],
+    "presets": [
+      {
+        "name": "Images and text",
+        "category": "Images",
+        "blocks": [
+          { 
+            "type": "image"
+          },
+          { 
+            "type": "text"
+          }
+          
+        ]
+      }
+    ]
+  }
+{% endschema %}

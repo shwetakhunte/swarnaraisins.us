@@ -1,0 +1,2291 @@
+{% # theme-check-disable %}
+{% include 'product-res-variables' %}
+{% # theme-check-enable %}
+{% assign sid = section.id %}
+
+{%- assign product_page_design = section.settings.product_page_design -%}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign price = current_variant.price %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign price = current_variant.price %}
+{% assign media_dawn = false %}
+<section style="--alo-gap:{{ settings.product_page_gap }}px;--alo-row:-{{ settings.product_page_gap }}px;">
+  <div itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="name" content="{{ product.title }}">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="image" content="{{ product.featured_image.src | image_url: width: 600 }}">
+    <div class="main-content shop-page main-content-detail">
+      <div id="laber_{{sid}}" class="alo-border-radius">
+        <div class="content-offset {{ product_page_design }}">
+          <product-single class="js_product_single" id="product-single" data-js-product>
+            <script class="data-json-product" type="application/json">
+              {% render 'product-get-attributes', product:product, build_variant: 'json' %}
+            </script>
+            {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+            {%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+            {%- if first_3d_model -%}
+              {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+              <link
+                id="ModelViewerStyle"
+                rel="stylesheet"
+                href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+                media="print"
+                onload="this.media='all'"
+              >
+              <link
+                id="ModelViewerOverride"
+                rel="stylesheet"
+                href="{{ 'component-model-viewer-ui.css' | asset_url }}"
+                media="print"
+                onload="this.media='all'"
+              >
+            {%- endif -%}
+            <div class="row">
+              {%- if media_dawn -%}
+                {% render 'product-media-modal', variant_images: variant_images %}
+              {%- else -%}
+                {% # theme-check-disable %}{% include 'product-media-gallery' %}{% # theme-check-enable %}
+                
+              {%- endif -%}
+              <div class="details-info col-xs-12 col-sm-12 {% if product_page_design =='grid_2_column' %} col-md-5 col-lg-5{% else %} col-md-6 col-lg-6{% endif %}">
+                <div class="sticky-sidebar">
+                  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <meta itemprop="url" content="{{ product.url }}">
+                    <meta itemprop="sku" content="{{ current_variant.sku }}">
+                    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}" >
+                    {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+                    {%- form 'product',
+                      product,
+                      id: product_form_id,
+                      class: 'form',
+                      novalidate: 'novalidate',
+                      data-type: 'add-to-cart-form'
+                    -%}
+                      <input type="hidden" name="id" value="{{ current_variant.id }}" data-js-product-variant-input>
+                      {{ form | payment_terms }}
+                      {%- for block in section.blocks -%}
+                        {% assign mb = block.settings.mb | plus : 0 %}
+                        {% assign mb_mobile = block.settings.mb_mobile | plus : 0 %}
+                        {%- case block.type -%}
+                          {%- when '@app' -%}
+                            {% render block %}
+                          {%- when 'name_product' -%}
+                            <h1 class="product-name mb-{{ mb}} sm:mb-{{ mb_mobile}}" style="
+                              --text-transform:{{block.settings.np_text_transform}};
+                              --font-size: {{block.settings.np_size}}px;
+                              --font-size-m: {{block.settings.np_size_mobile}}px;
+                              --font-weight:{{block.settings.np_weight}};
+                              ">
+                              {{ product.title }}
+                            </h1>
+                            {% render 'products-before-after' %}
+                          {%- when 'show_reviews' -%}
+                            {% capture same_day_sales_html %}           
+                              <div class="alo_sold-product">
+                                <div class="alo_flash-sold">
+                                  {% assign min = block.settings.min_sold %}
+                                  {% assign max = block.settings.max_sold %}
+                                  {% assign diff = max | minus: min %}
+                                  {% assign random_number = "now" | date: "%N" | modulo: diff | plus: min %}
+                                  {% capture product_sold_html %}
+                                  	<span class="product-sold">{{ random_number }}</span>
+                                  {% endcapture %}
+                                  {% capture product_hour_html %}
+                                  	<span class="product-hour">{{ block.settings.time }}</span>
+                                  {% endcapture %}
+                                  {%- render 'icon-torch-2' -%}
+                                {{ 'products.product.same_day_sales_html' | t: counter: product_sold_html, time: product_hour_html }}
+                                </div>
+                              </div>                
+                              {% endcapture %}
+                            {% if block.settings['use-reviews'] or block.settings['use-sold-product'] %}
+                              <div class="star-rating mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                                <!-- Start of Judge.me code -->
+                                {% # theme-check-disable %}
+                                <div
+                                  style="{{ jm_style }}"
+                                  class="jdgm-widget jdgm-preview-badge"
+                                  data-id="{{ product.id }}"
+                                >
+                                  {{- product.metafields.judgeme.badge -}}
+                                </div>
+                                {% # theme-check-enable %}
+                                <!-- End of Judge.me code -->
+
+                                {% if block.settings['use-sold-product'] %}
+                                  {{ same_day_sales_html }}
+                                {% endif %}
+                              </div>
+                            {% endif %}
+                          {%- when 'name_category' -%}
+                          {%- when 'show_price' -%}
+                            <div class="product-price mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {%- if current_variant.compare_at_price > price -%}
+                                <span class="price price--sale" data-js-product-price>
+                                  <span id="js-product-price" class="current">{{ price | money }}</span>
+                                  <span class="compare">{{ current_variant.compare_at_price | money }}</span>
+                                </span>
+                              {%- else -%}
+                                <span id="js-product-price" class="price" data-js-product-price>
+                                  {{- price | money -}}
+                                </span>
+                              {%- endif -%}
+                              <p class="price-sale-details" data-js-product-price-sale-details>
+                                {%- if current_variant.compare_at_price > price -%}
+                                  {%- assign save_money = current_variant.compare_at_price | minus: price | money -%}
+                                  {%- assign savings_percent = current_variant.compare_at_price
+                                    | minus: current_variant.price
+                                    | times: 100.0
+                                    | divided_by: current_variant.compare_at_price
+                                    | round
+                                  -%}
+                                  {{
+                                    'products.product.price_sale_details_html'
+                                    | t: price: save_money, procent: savings_percent
+                                  }}
+                                {%- endif -%}
+                              </p>
+                              {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                                <div class="product__tax caption rte">
+                                  {%- if cart.duties_included and cart.taxes_included -%}
+                                    {{ 'products.product.duties_and_taxes_included' | t }}
+                                  {%- elsif cart.taxes_included -%}
+                                    {{ 'products.product.taxes_included' | t }}
+                                  {%- elsif cart.duties_included -%}
+                                    {{ 'products.product.duties_included' | t }}
+                                  {%- endif -%}
+                                  {%- if shop.shipping_policy.body != blank -%}
+                                    {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                                  {%- endif -%}
+                                </div>
+                              {%- endif -%}
+                            </div>
+
+                          {%- when 'show_description' -%}
+                            <div class="product_description clearfix mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {{ block.settings.custom_liquid }}
+                            </div>
+                          {%- when 'text_countdown_html' -%}
+                            <div class="text_countdown_html mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {% capture text_countdown_html %}   
+                              {% assign minutes = block.settings.minutes %} 
+                              {% render 'text-countdown', minutes: minutes %}            
+                              {% endcapture %}
+                              {% capture visitors_html %}               
+                              <div class="product-page-info__visitors clearfix">
+                                {% render 'customer-visitors', settings: block.settings %}  
+                              </div>                
+                              {% endcapture %}
+                              {% assign show_text_countdown = block.settings.show_text_countdown %}
+                              {% assign show_visitors_html = block.settings.show_visitors_html %}
+                              {% if show_text_countdown %}{{ text_countdown_html }}{% endif %}
+                              {% if show_visitors_html %}{{ visitors_html }}{% endif %}
+                            </div>
+                          {%- when 'product_infor' -%}
+                            <div class="product_infor mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {%- if block.settings.show_availability -%}
+                                <div class="pr-availability clearfix">
+                                  <p>
+                                    <label class="label">{{ 'products.product.availability' | t }}:</label>
+                                    <span
+                                      style="color:{{block.settings.color_in_stock}}"
+                                      class="available {% if product.available %}  {% else %} d-none {% endif %}"
+                                      id="js-pr-available"
+                                    >
+                                      {{- 'products.product.available' | t -}}
+                                    </span>
+                                    <span
+                                      style="color:{{block.settings.color_out_stock}}"
+                                      class="unavailable {% if product.available %}d-none{% endif %}"
+                                      id="js-pr-unavailable"
+                                    >
+                                      {{ 'products.product.unavailable' | t -}}
+                                    </span>
+                                  </p>
+                                </div>
+                              {% endif %}
+
+                              {%- if block.settings.show_sku -%}
+                                {% if current_variant.sku != blank %}
+                                  <div class="product-collection__sku">
+                                    <p data-js-product-sku>
+                                      <label class="label">{{ 'products.product.sku' | t }}:</label>
+                                      <span>{{ current_variant.sku }}</span>
+                                    </p>
+                                  </div>
+                                {% endif %}
+                              {% endif %}
+
+                              {%- if block.settings.show_barcode -%}
+                                <div class="product-collection__barcode{% if current_variant.barcode == blank %} d-none{% endif %}">
+                                  <p data-js-product-barcode>
+                                    <label class="label">{{ 'products.product.barcode' | t }}:</label>
+                                    <span>{{ current_variant.barcode }}</span>
+                                  </p>
+                                </div>
+                              {% endif %}
+                              {%- if block.settings.show_type -%}
+                                <div class="product-collection__type{% if product.type == blank %} d-none{% endif %}">
+                                  <p data-js-product-type>
+                                    <label class="label">{{ 'products.product.type' | t }}:</label>
+                                    <span>{{ product.type | link_to_type }}</span>
+                                  </p>
+                                </div>
+                              {% endif %}
+                              {%- if block.settings.show_vendor -%}
+                                <div class="product-collection__vendor{% if product.vendor == blank %} d-none{% endif %}">
+                                  <p data-js-product-vendor>
+                                    <label class="label">{{ 'products.product.vendor' | t }}:</label>
+                                    <span>{{ product.vendor | link_to_vendor }}</span>
+                                  </p>
+                                </div>
+                              {% endif %}
+                              {%- if block.settings.show_category -%}
+                                <div class="name_category">
+                                  <div class="name_collection" data-js-product-collection>
+                                    <label class="label">{{ 'products.product.Categories' | t }}:</label>
+                                    <p>
+                                      {%- if product.collections.size > 0 -%}
+                                        {%- for collection in product.collections limit: block.settings.limit_cate -%}
+                                          <a
+                                            title="{{ collection.title -}}"
+                                            class="collection_item"
+                                            href="{{ collection.url }}"
+                                          >
+                                            {{- collection.title -}}
+                                            {%- if forloop.last != true %},{% endif -%}
+                                          </a>
+                                        {%- endfor -%}
+                                      {%- endif -%}
+                                    </p>
+                                  </div>
+                                </div>
+                              {% endif %}
+
+                              {%- if block.settings.show_tags -%}
+                                {% if product.tags %}
+                                  {%- assign tag_cat_url = collection.url | default: product.collections.first.url -%}
+                                <div class="tags_product clearfix">
+                                  <div class="tags" data-js-product-tags>
+                                    <label class="label">{{ 'products.product.tags' | t }}:</label>
+                                    <p >
+                                      {%- for tags in product.tags limit: block.settings.limit_tags -%}
+                                        <a
+                                          href="{{ tag_cat_url }}/{{ tags | replace: " ", "-" | handle }}"
+                                          title="{{ tags}}"
+                                        >
+                                            {{ tags | remove: 'type ' | remove: 'Type ' }}
+                                        </a>
+                                      {%- endfor -%}
+                                    </p>
+                                  </div>
+                                </div>
+                                {% endif %}
+                              {% endif %}
+                            </div>
+                          {%- when 'message' -%}
+                            {% render 'product-properties-message', section: section, block: block %}
+                          {%- when 'file' -%}
+                            {% render 'product-properties-file', section: section, block: block %}
+                          {%- when 'product_variants' -%}
+                            {% assign show_title_variant = block.settings.show_title %}
+                            {% assign variant_count = product.variants | size %}
+                            {% if variant_count > 1 %}
+                              <div class="product-collection__options mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                                {% # theme-check-disable %}
+                                {% include 'product-get-options', show_title_variant: show_title_variant %}
+                                {% # theme-check-enable %}
+                              </div>
+                            {% endif %}
+                          {%- when 'quantity_button' -%}
+                            {%- assign qt_show_wishlist = block.settings.qt_show_wishlist -%}
+                            {%- assign qt_show_compare = block.settings.qt_show_compare -%}
+                            {%- assign qt_show_cart = block.settings.qt_show_cart -%}
+                            {%- assign show_popup = settings.show_terms_conditions -%}
+                            {%- assign product_terms_conditions_page_content = settings.url_page_terms_conditions | default: '#' -%}
+                            {%- assign qt_buy_it_now = block.settings.qt_buy_it_now -%}
+                            {%- assign qt_show_quantity = block.settings.qt_show_quantity -%}
+                            {%- assign icon_button_cart = block.settings.icon_button_cart -%}
+                            {%- assign show_custom_color_btn = block.settings.show_custom_color_btn -%}
+                            {% if product.metafields.custom.external_affiliate_product != null %}
+                            <div class="product-affiliate mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              <a
+                                href="{{ block.settings.btn_link }}"
+                                rel="nofollow"
+                                target="_blank"
+                                class="btn  relative  w-full "
+                              >
+                                {{- block.settings.btn_name }}
+                              </a>
+                            </div>
+                            {% else %}
+                              <div data-product-meta class="cms-product-meta clearfix mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                                {% if qt_show_quantity %}
+                                  <quantity-input
+                                    class="quantity"
+                                    data-url="{{ product.url }}"
+                                    data-section="{{ section.id }}"
+                                  >
+                                    <button class="quantity__button" name="minus" type="button">
+                                      <span class="visually-hidden">
+                                        {{-
+                                          'products.product.quantity.decrease'
+                                          | t: product: product.title
+                                          | escape
+                                        -}}
+                                      </span>
+                                      {% render 'icon-minus' %}
+                                    </button>
+                                    <input
+                                      class="quantity__input"
+                                      type="number"
+                                      name="quantity"
+                                      id="Quantity-{{ section.id }}"
+                                      data-cart-quantity="{{ cart_qty }}"
+                                      data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                                      min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                                      {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                                        data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                                        max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                                      {% endif %}
+                                      step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                                      value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                                      form="{{ product_form_id }}"
+                                    >
+                                    <button class="quantity__button" name="plus" type="button">
+                                      <span class="visually-hidden">
+                                        {{-
+                                          'products.product.quantity.increase'
+                                          | t: product: product.title
+                                          | escape
+                                        -}}
+                                      </span>
+                                      {% render 'icon-plus' %}
+                                    </button>
+                                  </quantity-input>
+                                {% endif %}
+                                <div class="group-button">
+                                  <div class="inner">
+                                    {% if qt_show_cart %}
+                                      <button
+                                        type="submit"
+                                        class="add-to-cart {% if product.selected_or_first_available_variant.available == false %}d-none-important{% endif %}"
+                                        data-pid="{{ product.variants.first.id }}"
+                                        {% if product.selected_or_first_available_variant.available == false %}
+                                          disabled
+                                        {% endif %}
+                                      >
+                                        <span class="text">
+                                          {% if product.selected_or_first_available_variant.inventory_policy
+                                              == 'continue'
+                                          %}
+                                            {{ 'products.product.pre_order' | t }}
+                                          {% else %}
+                                            {{ 'products.product.add_to_cart' | t }}
+                                          {% endif %}
+                                        </span>
+                                        {%- if icon_button_cart != '' -%}
+                                          <span class="icon"
+                                            ><i class="{{ icon_button_cart }}" aria-hidden="true"></i
+                                          ></span>
+                                        {%- endif %}
+                                      </button>
+                                      <a
+                                        class="add-to-cart js-btn-sold-out  {% if product.selected_or_first_available_variant.available %} d-none-important{% endif %}"
+                                        data-js-product-button-sold-out
+                                        href="{{ product.url | within: collection }}"
+                                        ><span class="text">{{ 'products.product.sold_out' | t }}</span>
+                                        {% if icon_button_cart != '' -%}
+                                          <span class="icon"
+                                            ><i class="{{ icon_button_cart }}" aria-hidden="true"></i
+                                          ></span>
+                                        {%- endif -%}
+                                      </a>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                                <div class="compare-wishlist">
+                                  {% if qt_show_wishlist %}
+                                    {% render 'product-get-button-wishlist' ,class:"item-btn top" %}
+                                  {% endif %}
+                                  {% if qt_show_compare %}
+                                    {% render 'product-get-button-compare' ,class:"item-btn top" %}
+                                  {% endif %}
+                                </div>
+                              </div>
+                              {% if qt_buy_it_now and product.available %}
+                                <action-condition>
+                                  {% assign variant_count = product.variants | size %}
+                                  <div
+                                    data-buyitnow-button
+                                    class="group-button-buyitnow {% if show_popup %}disabled{% endif %} mb-{{ mb}} sm:mb-{{ mb_mobile}}"
+                                  >
+                                    {% if show_popup %}
+                                      <div class="condition checkbox-group prpage-term-conditions-checkbox term-conditions-checkbox-js mb-10">
+                                        <input type="checkbox" id="prpage-cart-term-conditions-checkbox" value="1">
+                                        <span class="checkmark"></span>
+                                        <label for="prpage-cart-term-conditions-checkbox">
+                                          {{ 'products.product.checkbox_buyitnow' | t }}
+                                          <a target="_blank" href="{{ product_terms_conditions_page_content }}">
+                                            {{- 'products.product.terms_conditions' | t -}}
+                                          </a>
+                                        </label>
+                                      </div>
+                                    {% endif %}
+                                    <div class="action {% if show_popup %}disabled{% endif %}">
+                                      {{ form | payment_button }}
+                                    </div>
+                                  </div>
+                                </action-condition>
+                                {% if show_custom_color_btn %}
+                                  {%- assign color_text_cart = block.settings.color_text_cart -%}
+                                  {%- assign bg_add_to_cart = block.settings.bg_add_to_cart -%}
+                                  {%- assign color_text_buy_now = block.settings.color_text_buy_now -%}
+                                  {%- assign bg_buy_it_now = block.settings.bg_buy_it_now -%}
+                                  {%- assign bg_add_to_cart_hv = block.settings.bg_add_to_cart_hv -%}
+                                  {%- assign color_text_cart_hover = block.settings.color_text_cart_hover -%}
+                                  {%- assign bg_buy_it_now_hv = block.settings.bg_buy_it_now_hv -%}
+                                  {%- assign color_text_buy_now_hover = block.settings.color_text_buy_now_hover -%}
+                                  {% style %}
+                                    .compare-wishlist,
+                                    .details-info .group-button .add-to-cart{
+                                        --bg-btn: {{bg_add_to_cart}};
+                                        --cl-b-btn: {{bg_add_to_cart}};
+                                        --cl-btn-text:{{color_text_cart}};
+                                        --bg-btn-h: {{bg_add_to_cart_hv}};
+                                        --cl-b-btn-h: {{bg_add_to_cart_hv}};
+                                        --cl-btn-text-h:{{color_text_cart_hover}}
+                                    }
+              
+                                    .group-button-buyitnow .shopify-payment-button button{
+                                        --bg-btn: {{bg_buy_it_now}};
+                                        --cl-btn-text:{{color_text_buy_now}};
+                                        --bg-btn-h: {{bg_buy_it_now_hv}};
+                                        --cl-btn-text-h:{{color_text_buy_now_hover}}
+                                    }
+                                
+                                  {% endstyle %}
+                                {% endif %}
+                              {% endif %}
+                            {% endif %}
+                          {%- when 'custom_html' -%}
+                            <div class="product_custom_html mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              <fieldset>
+                              <legend class="html_title" align="center">{{ block.settings.html_title }}</legend>
+                              <div class="content">
+                                {% if block.settings.html_custom != blank %}
+                                  <div class="content-text clearfix">
+                                    {{ block.settings.html_custom }}
+                                  </div>
+                                {% endif %}
+                                {%- assign image = block.settings.image -%}
+                                {% if image != blank %}
+                                  <div class="custom_image">
+                                    {{ image | image_url: width: 330 | image_tag: width: 330 }}
+                                  </div>
+                                {% endif %}
+
+                                {% if block.settings.svg_custom and block.settings.show_svg_custom %}
+                                  <div class="payment_type_img">
+                                    {%- assign svg_custom = block.settings.svg_custom | remove: ' ' | split: ',' -%}
+                                    {%- for img in svg_custom -%}
+                                      {% # theme-check-disable %}
+                                      <img
+                                        class="lazyload img_tr_svg"
+                                        src="{{ img | payment_type_img_url }}"
+                                        data-src="{{ img | payment_type_img_url }}"
+                                        alt="{{img | replace:'_',' '}}"
+                                        width="45px"
+                                        height="30px;"
+                                      >{% # theme-check-enable %}
+                                    {%- endfor -%}
+                                  </div>
+                                {%- endif -%}
+                              </div>
+                              </fieldset>
+                            </div>
+                          {%- when 'free_shipping' -%}
+                            <div class="mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                            {% render 'free-shipping' %}
+                            </div>
+                          {%- when 'inventory_qty' -%}
+                            {%- assign total_items = block.settings.total_items -%}
+                            {%- assign bg_1 = block.settings.bg_1 -%}
+                            {%- assign bg_2 = block.settings.bg_2 -%}
+                            {%- assign h_stock = block.settings.h_stock -%}
+                            {%- assign quantity = product.variants.first.inventory_quantity -%}
+                            <div class="inventory_qty mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              <div class="product_page_info_stock">
+                                <div
+                                  class="stock-countdown {% unless quantity > 0 and quantity <= total_items %} d-none-important{% endunless %}"
+                                  data-js-product-info-stock
+                                  data-min="{{total_items}}"
+                                >
+                                  {% capture quantity_html %}<span class="qty" style="--cl-text:{{ block.settings.cl_qty }}">{{ quantity }}</span>{% endcapture %}
+                                  <p class="laber_title mb-10" data-js-product-info-stock-title>
+                                    {{ 'products.product.stock_countdown_html' | t: quantity: quantity_html }}
+                                  </p>
+
+                                  <div
+                                    class="laber_total_items"
+                                    style="background-color:{{bg_2}};height:{{h_stock}}px;"
+                                  >
+                                    {%- assign countdown_range_quotient = total_items | times: 1.0 | divided_by: 100 -%}
+                                    {%- assign countdown_range_procent = quantity
+                                      | divided_by: countdown_range_quotient
+                                    -%}
+
+                                    <div
+                                      style="background-color:{{bg_1}};width: {{ countdown_range_procent }}%;"
+                                      class="laber_progress"
+                                      data-js-product-info-stock-progress
+                                    ></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          {%- when 'text' -%}
+                            <div class="product__text mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {{- block.settings.text -}}
+                              {% if block.settings.show_color -%}
+                                <span class="product__color" style="background-color:{{block.settings.color}};">
+                                  {{- block.settings['color-'] -}}
+                                </span>
+                              {%- endif %}
+                            </div>
+                          {%- when 'custom_liquid' -%}
+                          <div class="mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                            {{ block.settings.custom_liquid }}
+                          </div>
+                          {%- when 'countdown' -%}
+                            {%- assign alo_timer = block.settings.custom_liquid -%}
+                            {%- assign alo_title = block.settings.text -%}
+                            <div class="page_product_countdown mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {% render 'countdown', timer: alo_timer, title_cd: alo_title %}
+                            </div>
+                            {% style %}
+                              :root {
+                              --bg-countdown:{{block.settings.bg}};
+                              --cl-bd-countdown:{{block.settings.bd}};
+                              --cl-cl-title:{{block.settings.cl_title}};
+                              --cl-cms-countdown:{{block.settings.bg_countdown}};
+                              --cl-text-countdown:{{block.settings.cl_text}};
+                              }
+                            {% endstyle %}
+                          {%- when 'shipping' -%}
+                            <div class="product-iteam box-prod mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {% if block.settings.show_delivery_times %}
+                                <div class="prod_delivery-times">
+                                  <span class="block__icon">
+                                    <svg
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path d="M17.0178 10.3086C17.7428 10.6002 18.1928 11.4586 18.0261 12.2169L17.6844 13.7669C17.0928 16.4336 15.0011 18.3336 11.9844 18.3336H8.01775C5.00108 18.3336 2.90942 16.4336 2.31775 13.7669L1.97608 12.2169C1.80942 11.4586 2.25941 10.6002 2.98441 10.3086L4.16776 9.83355L8.75943 7.99189C9.55943 7.67523 10.4427 7.67523 11.2427 7.99189L15.8344 9.83355L17.0178 10.3086Z" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M10 18.3335V8.3335" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M15.8346 6.6665V9.83316L11.243 7.9915C10.443 7.67483 9.55964 7.67483 8.75964 7.9915L4.16797 9.83316V6.6665C4.16797 5.2915 5.29297 4.1665 6.66797 4.1665H13.3346C14.7096 4.1665 15.8346 5.2915 15.8346 6.6665Z" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M12.0846 4.1665H7.91797V2.49984C7.91797 2.0415 8.29297 1.6665 8.7513 1.6665H11.2513C11.7096 1.6665 12.0846 2.0415 12.0846 2.49984V4.1665Z" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  </span>
+                                  {% assign range = 2 | times: 24 | times: 60 | times: 60 %}
+                                  {% assign deliver_in = block.settings.deliver_days
+                                    | times: 24
+                                    | times: 60
+                                    | times: 60
+                                  %}
+                                  {% assign now = 'now' | date: '%s' %}
+                                  {% assign date_format = block.settings.date_format | default: '%b %d' %}
+
+                                  {% assign from = now | plus: deliver_in | minus: range | date: date_format %}
+                                  {% assign to = now | plus: deliver_in | plus: range | date: date_format %}
+
+                                  <div class="content">
+                                    <p>
+                                      <label>{{ block.settings.deliver_text | strip_html }}</label>
+                                      <span>{{ from }} - {{ to }}</span>
+                                    </p>
+                                  </div>
+                                </div>
+                              {% endif %}
+                              {% if block.settings.show_shipping_text and block.settings.shipping_text != blank %}
+                                <div class="prod_shipping-text">
+                                  <span class="block__icon">
+                                    <svg
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path d="M14.1328 5.1416C15.7995 6.29993 16.9495 8.1416 17.1828 10.2666" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M2.91016 10.3081C3.12682 8.19144 4.26016 6.34977 5.91016 5.18311" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M6.82422 17.4502C7.79089 17.9419 8.89089 18.2169 10.0492 18.2169C11.1659 18.2169 12.2159 17.9669 13.1576 17.5085" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M10.051 6.41654C11.3305 6.41654 12.3677 5.37933 12.3677 4.09987C12.3677 2.82041 11.3305 1.7832 10.051 1.7832C8.77158 1.7832 7.73438 2.82041 7.73438 4.09987C7.73438 5.37933 8.77158 6.41654 10.051 6.41654Z" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M4.0237 16.6001C5.30316 16.6001 6.34036 15.5629 6.34036 14.2835C6.34036 13.004 5.30316 11.9668 4.0237 11.9668C2.74424 11.9668 1.70703 13.004 1.70703 14.2835C1.70703 15.5629 2.74424 16.6001 4.0237 16.6001Z" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M15.9768 16.6001C17.2563 16.6001 18.2935 15.5629 18.2935 14.2835C18.2935 13.004 17.2563 11.9668 15.9768 11.9668C14.6974 11.9668 13.6602 13.004 13.6602 14.2835C13.6602 15.5629 14.6974 16.6001 15.9768 16.6001Z" stroke="#515D66" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  </span>
+                                  <div class="content">
+                                    {{ block.settings.shipping_text }}
+                                  </div>
+                                </div>
+                              {% endif %}
+                            </div>
+                          {%- when 'popup' -%}
+                            <div class="popup-product flex flex-wrap mb-{{ mb}} sm:mb-{{ mb_mobile}}">
+                              {%- assign show_size_chart = block.settings.show_size_chart -%}
+                              {%- assign text_size_chart = block.settings.text_size_chart -%}
+                              {%- assign size_guide_page = block.settings.size_guide_page -%}
+                              {% if show_size_chart %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if option.name contains 'Size' %}
+                                    <dialog-modal class="product-size-chart">
+                                      <button
+                                        dialog-trigger
+                                        class="size-chart"
+                                      >
+                                        <svg
+                                          class="w-[24px] h-[24px]"
+                                          fill="currentColor"
+                                          stroke="currentColor"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 0 640 512"
+                                        >
+                                          <path d="M608 128H32c-17.67 0-32 14.33-32 32v192c0 17.67 14.33 32 32 32h576c17.67 0 32-14.33 32-32V160c0-17.67-14.33-32-32-32zm0 224H32V160h80v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h80v192z"></path>
+                                        </svg>
+                                        <span>{{ text_size_chart }}</span>
+                                      </button>
+                                      <template id="size-chart">
+                                        <dialog class="size-chart-popup">
+                                          <dialog-content> 
+                                          {% assign image = block.settings.image_size %}
+                                          {% if image != blank %}
+                                            {% render 'image', image: image, width: 500, class: 'w-full h-full' %}
+                                          {% else %}
+                                            {{ pages[size_guide_page].content }}
+                                          {% endif %}
+                                          </dialog-content>  
+                                        </dialog>
+                                      </template>
+                                    </dialog-modal>
+                                  {% endif %}
+                                {%- endfor -%}
+                              {% endif %}
+
+                              {%- assign show_shipping_returns = block.settings.show_shipping_returns -%}
+                              {%- assign text_shipping_returns = block.settings.text_shipping_returns -%}
+                              {%- assign shipping_returns_page = block.settings.shipping_returns_page -%}
+                              {% if show_shipping_returns %}
+                                <dialog-modal class="product-shipping-returns">
+                                  <button
+                                    dialog-trigger
+                                    class="shipping-returns-page"
+                                  >
+                                    <i class="icon-shield"></i>
+                                    <span>{{ text_shipping_returns }}</span>
+                                  </button>
+
+                                  <template id="shipping-returns-page">
+                                    <dialog class="shipping-returns">
+                                      <dialog-content>  
+                                        {{ pages[shipping_returns_page].content }}
+                                      </dialog-content>  
+                                    </dialog>
+                                  </template>
+                                </dialog-modal>
+                              {% endif %}
+
+                              {%- assign show_compare_color = block.settings.show_compare_color -%}
+                              {%- assign text_compare_color = block.settings.text_compare_color -%}
+                              {% if show_compare_color %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if option.name contains 'Color' %}
+                                    {%- render 'compare-color-popup', text_compare_color: text_compare_color -%}
+                                  {% endif %}
+                                {%- endfor -%}
+                              {% endif %}
+
+                              {%- assign show_contact_us = block.settings.show_contact_us -%}
+                              {%- assign text_contact_us = block.settings.text_contact_us -%}
+                              {% if show_contact_us %}
+                                <dialog-modal class="product-contact-us">
+                                  <button
+                                    dialog-trigger
+                                    class="contact-us"
+                                  >
+                                    <i class="icon-mail"></i>
+                                    <span class="text">{{ text_contact_us }}</span>
+                                  </button>
+                                  <template>
+                                    <dialog class="dialog-contact-us contact-us-open-popup">
+                                      <dialog-content>  
+                                        {%- render 'form-contact' -%}
+                                      </dialog-content>  
+                                    </dialog>
+                                  </template>
+                                </dialog-modal>
+                              {% endif %}
+                              {%- assign show_social_sharing = block.settings.show_social_sharing -%}
+                              {% if show_social_sharing %}
+                                {% render 'social-sharing-popup', product: product %}
+                              {% endif %}
+                            </div>
+                        {%- endcase -%}
+                      {%- endfor -%}
+                    {% endform %}
+                  </div>
+                </div>
+              </div>
+
+              {%- if first_3d_model -%}
+                <script type="application/json" id="ProductJSON-{{ product.id }}">
+                  {{ product.media | where: 'media_type', 'model' | json }}
+                </script>
+                <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+              {%- endif -%}
+              {%- liquid
+                if product.selected_or_first_available_variant.featured_media
+                  assign seo_media = product.selected_or_first_available_variant.featured_media
+                else
+                  assign seo_media = product.featured_media
+                endif
+              -%}
+              <script type="application/ld+json">
+                {{ product | structured_data }}
+              </script>
+            </div>
+          </product-single>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- render 'section_style' -%}
+</section>
+{% schema %}
+ {
+   "name": "Main Product",
+"class":"laber-product-information",
+    "settings": [
+         {
+           "type": "header",
+           "content": "== Setting"
+           },
+           {
+           "type": "color",
+           "id": "cl_bg",
+           "label": "Background color",
+           "default": "#fff"
+           },
+           {
+            "type": "select",
+            "id": "product_page_design",
+            "default": "default",
+            "options": [
+
+              {
+                "value": "default",
+                "label": "Default"
+              },
+              {
+                "value": "grid_1_column",
+                "label": "Grid 1 column"
+              },
+              {
+                "value": "grid_2_column",
+                "label": "Grid 2 column"
+              }
+            ],
+            "label": "Product page design"
+          },
+           {
+           "type": "header",
+           "content": "== Setting PC",
+           "info":"Margin"
+           },
+           {
+           "type": "text",
+           "id": "mg",
+           "label": "Margin",
+           "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+           },
+           {
+           "type": "text",
+           "id": "pd",
+           "label": "Padding",
+           "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+           },
+           {
+           "type": "header",
+           "content": "== Design Mobile Options"
+           },
+           {
+           "type": "text",
+           "id": "mg_mb",
+           "label": "Margin"
+           },
+           {
+           "type": "text",
+           "id": "pd_mb",
+           "label": "Padding"
+           },
+      {
+          "type": "header",
+          "content": "---- Product zooom ----",
+          "info": "Config type zoom for product image"
+      },
+
+    {
+      "type": "checkbox",
+      "id": "zoomEnabled",
+      "label": "Enable zoom",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "zoomType",
+      "label": "Zoom type ( Desktop )",
+      "info": "Choose one zoom type you lik",
+      "options": [
+        {
+          "value": "window",
+          "label": "Window"
+        },
+        {
+          "value": "inner",
+          "label": "Inner"
+        },
+        {
+          "value": "lens",
+          "label": "Lens"
+        }
+      ],
+      "default": "window"
+    },
+    {
+      "type": "select",
+      "id": "zoomTouch",
+      "label": "Zoom ( Mobile )",
+      "info": "Zoom for Mobile, Ipad (Touch devices)",
+      "options": [
+        {
+          "value": "",
+          "label": "Auto"
+        },
+        {
+          "value": "inner",
+          "label": "Inner"
+        },
+        {
+          "value": "lens",
+          "label": "Lens"
+        },
+        {
+        "value": "off",
+        "label": "Disable"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "zoomEffect",
+      "label": "Zoom Effect",
+      "info": "Zoom Effect for zoom Window or Inner",
+      "options": [
+        {
+        "value": "",
+        "label": "Default"
+        },
+        {
+        "value": "flyOutWindow",
+        "label": "Fly Out Window"
+        },
+        {
+        "value": "flySpinningWindow",
+        "label": "Fly Spinning Window"
+        },
+        {
+        "value": "flyOutImageToWindow",
+        "label": "Fly Out Image To Window"
+        },
+        {
+        "value": "flySpinningImageToWindow",
+        "label": "Fly Spinning Image To Window"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "effectDuration",
+      "label": "Effect Duration",
+      "info": "Animation Duration ( milliseconds )",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "touchDelay",
+      "label": "Time touch to active Zoom in mobile (milliseconds)",
+      "info": "Scroll-gestures events on touch-enabled devices with the image as a starting point",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "zoomFactor",
+      "label": "Level magnify",
+      "info": "Magnification level (Value 1 is Auto)",
+      "min": 1,
+      "max": 9,
+      "step": 0.5,
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "zIndex",
+      "label": "CSS z-index Property",
+      "info": "[CSS z-index Property](https://www.w3schools.com/cssref/pr_pos_z-index.php)",
+      "default": 999
+    },
+    {
+      "type": "range",
+      "id": "zoomWidth",
+      "label": "Width Window (px)",
+      "info": "Width ( Value 0 is auto Width )",
+      "min": 0,
+      "max": 900,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "zoomHeight",
+      "label": "Height Window (px)",
+      "info": "Height ( Value 0 is auto Height )",
+      "min": 0,
+      "max": 900,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "marginWindow",
+      "label": "Margin Window (px)",
+      "info": "Margin between Image and Window Zoom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10
+    },
+    {
+        "type": "header",
+        "content": "---- Thumbnail Slider ----",
+        "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+    },
+    {
+         "type": "select",
+         "id": "pos_thumb",
+         "label": "Display position",
+         "options": [
+          {
+             "value": "left",
+             "label": "Left"
+           },
+          {
+             "value": "right",
+             "label": "Right"
+           },
+          {
+             "value": "bottom",
+             "label": "Bottom"
+           },
+          {
+             "value": "no-thumb",
+             "label": "Hide Thumbnail"
+           }
+         ],
+         "default": "bottom"
+     },
+    {
+        "type": "checkbox",
+        "id": "use-slider",
+        "label": "Use slider?",
+        "default": true
+    },
+    {
+         "type": "range",
+         "id": "visible",
+         "label": "Columns in Visible",
+         "info": "Item(s) in screen ( Size >= 1920 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 8
+     },
+     {
+         "type": "range",
+         "id": "widescreen",
+         "label": "Columns in Widescreen",
+         "info": "Item(s) in screen ( 1481 <= Size < 1920 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 8
+     },
+     {
+         "type": "range",
+         "id": "desktop",
+         "label": "Columns in Desktop",
+         "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 8
+     },
+     {
+         "type": "range",
+         "id": "laptop",
+         "label": "Columns in Laptop",
+         "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+         "min": 1,
+         "max": 7,
+         "step": 1,
+         "default": 7
+     },
+     {
+         "type": "range",
+         "id": "notebook",
+         "label": "Columns in Notebook",
+         "info": "Item(s) in screen ( 768 <= Size < 992 )",
+         "min": 1,
+         "max": 6,
+         "step": 1,
+         "default": 6
+     },
+     {
+         "type": "range",
+         "id": "tablet",
+         "label": "Columns in Tablet",
+         "info": "Item(s) in screen ( 576 <= Size < 768 )",
+         "min": 1,
+         "max": 5,
+         "step": 1,
+         "unit": "pds",
+         "default": 5
+     },
+      {
+       "type": "range",
+       "id": "rows",
+       "label": "Rows Slider",
+       "min": 1,
+       "max": 5,
+       "step": 1,
+       "default": 1
+    },
+     {
+         "type": "checkbox",
+         "id": "navigation",
+         "label": "Navigation",
+         "info": "Arrows next,prev",
+         "default": true
+     },
+     {
+         "type": "select",
+         "id": "effect",
+         "label": "effect",
+         "options": [
+          {
+             "value": "coverflow",
+             "label": "Coverflow"
+           },
+          {
+             "value": "creative",
+             "label": "Creative"
+           },
+          {
+             "value": "cube",
+             "label": "Cube"
+           },
+          {
+             "value": "fade",
+             "label": "Fade"
+           },
+          {
+             "value": "flip",
+             "label": "Flip"
+           },
+          {
+             "value": "slide",
+             "label": "Slide"
+          }
+         ],
+         "default": "slide"
+     },
+     {
+         "type": "checkbox",
+         "id": "centered-Slides",
+         "label": "centered Slides",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "auto-Height",
+         "label": "Auto Height",
+         "default": false
+     },
+     {
+         "type": "range",
+         "id": "space-Between",
+         "label": "Space Between",
+         "info": "Distance between slides in px.",
+         "min": 0,
+         "max": 30,
+         "step": 1,
+         "unit": "px",
+         "default": 10
+     },
+     {
+         "type": "select",
+         "id": "direction",
+         "label": "Direction",
+         "info": "Use 'Vertical' option for thumbnail position in left or right column",
+         "options": [
+          {
+             "value": "horizontal",
+             "label": "Horizontal"
+           },
+          {
+             "value": "vertical",
+             "label": "Vertical"
+           }
+         ],
+         "default": "horizontal"
+     }
+
+
+    ],
+     "blocks": [
+       {
+         "type": "@app"
+       },
+        {
+         "type": "name_product",
+         "name": "Product name",
+         "limit": 1,
+         "settings": [
+        {
+             "type": "select",
+             "id": "np_text_transform",
+             "default": "none",
+             "options": [
+              {
+                 "value": "none",
+                 "label": "None"
+              },
+              {
+                 "value": "capitalize",
+                 "label": "Capitalize"
+              },
+              {
+                 "value": "lowercase",
+                 "label": "Lowercase"
+              },
+              {
+                 "value": "uppercase",
+                 "label": "Uppercase"
+               }
+             ],
+             "label": "Text transform:"
+           },
+             {
+               "type": "range",
+               "id": "np_size",
+               "min": 14,
+               "max": 60,
+               "step": 1,
+               "label": "Font size",
+               "unit": "px",
+               "default": 24
+             },
+         {
+             "type": "range",
+             "id": "np_weight",
+             "min": 400,
+             "max": 900,
+             "step": 100,
+             "label": "Font weight",
+             "default": 600
+             },
+            {
+               "type": "range",
+               "id": "np_size_mobile",
+               "min": 14,
+               "max": 60,
+               "step": 1,
+               "label": "Font size (mobile)",
+               "unit": "px",
+               "default": 24
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+            
+
+         ]
+       },
+    {
+         "type": "show_reviews",
+         "name": "Reviewst",
+         "limit": 1,
+         "settings": [
+             {
+              "type": "checkbox",
+              "id": "use-reviewst",
+              "label": "Use Reviewst",
+              "info": "You have to install Judge.me Product Reviews app. At our demo, we use a free [Product Reviews](https:\\/\\/apps.shopify.com\/judgeme) app",
+              "default": true
+            },
+            {
+                "type": "header",
+                "content": "Sold product"
+            },
+           {
+              "type": "checkbox",
+              "id": "use-sold-product",
+              "label": "Use Sold product",
+              "default": true
+          },
+           {
+              "type": "range",
+              "id": "min_sold",
+              "label": "Min sold",
+              "min": 1,
+              "max": 10,
+              "step": 1,
+              "default": 5
+          },
+           {
+              "type": "range",
+              "id": "max_sold",
+              "label": "Max sold",
+              "min": 10,
+              "max": 50,
+              "step": 1,
+              "default": 25
+          },
+          {
+            "type": "text",
+            "id": "time",
+            "label": "Sales time",
+            "default": "24 hours"
+          },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+         ]
+       },
+    {
+         "type": "show_price",
+         "name": "Price",
+         "limit": 1,
+        "settings": [
+          {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+        ]
+       },
+    {
+         "type": "show_description",
+         "name": "Product Description",
+         "limit": 1,
+         "settings": [
+          {
+            "type": "liquid",
+            "id": "custom_liquid",
+            "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+            "info": "t:sections.custom-liquid.settings.custom_liquid.info",
+            "default": "{{product.metafields.custom.short_description}}"
+          },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+      ]
+       },
+    {
+         "type": "text_countdown_html",
+         "name": "Text Countdown Html",
+         "limit": 1,
+      "settings": [
+           {
+           "type": "checkbox",
+           "id": "show_text_countdown",
+           "label": "Show Text Countdown",
+           "default": true
+           },
+            {
+             "type": "range",
+             "id": "minutes",
+             "min": 1,
+             "max": 60,
+             "step": 1,
+             "label": "minutes ",
+             "default": 10
+           },
+           {
+             "type": "header",
+             "content": "Visitors"
+           },
+           {
+             "type": "paragraph",
+             "content": "Configure options for 'Real time XX visitor right now'"
+           },
+           {
+           "type": "checkbox",
+           "id": "show_visitors_html",
+           "label": "Show visitors html",
+           "default": true
+           },
+           {
+             "type": "range",
+             "id": "product_visitors_min",
+             "min": 1,
+             "max": 50,
+             "step": 1,
+             "label": "Visitors min value",
+             "default": 10
+           },
+           {
+             "type": "range",
+             "id": "product_visitors_max",
+             "min": 1,
+             "max": 50,
+             "step": 1,
+             "label": "Visitors max value",
+             "default": 25
+           },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+         ]
+       },
+
+    {
+         "type": "product_infor",
+         "name": "Product Infor",
+         "limit": 1,
+      "settings": [
+             {
+             "type": "checkbox",
+             "id": "show_sku",
+             "label": "Show SKU",
+             "default": true
+             },
+          {
+             "type": "checkbox",
+             "id": "show_barcode",
+             "label": "Show Barcode",
+             "default": true
+             },
+          {
+             "type": "checkbox",
+             "id": "show_vendor",
+             "label": "Show Vendor",
+             "default": true
+             },
+          {
+             "type": "checkbox",
+             "id": "show_type",
+             "label": "Show Type",
+             "default": true
+             },
+          {
+             "type": "checkbox",
+             "id": "show_availability",
+             "label": "Show Availability",
+             "default": true
+             },
+          {
+             "type": "color",
+             "id": "color_in_stock",
+             "label": "Color in stock",
+             "default": "#042cd6"
+             },
+             {
+             "type": "color",
+             "id": "color_out_stock",
+             "label": "Color out stock",
+             "default": "#c6452c"
+             },
+             {
+             "type": "checkbox",
+             "id": "show_category",
+             "label": "Show category",
+             "default": true
+             },
+             {
+                 "type": "range",
+                 "id": "limit_cate",
+                 "label": "Limit",
+              "info": "Category number limit",
+                 "min": 1,
+                 "max": 10,
+                 "step": 1,
+                 "default": 1
+             },
+             {
+             "type": "checkbox",
+             "id": "show_tags",
+             "label": "Show Tags",
+             "default": true
+             },
+             {
+               "type": "range",
+               "id": "limit_tags",
+               "label": "Limit",
+               "info": "Tags number limit",
+               "min": 1,
+               "max": 10,
+               "step": 1,
+               "default": 1
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+      ]
+       },
+    {
+         "type": "product_variants",
+         "name": "Product Variants",
+         "limit": 1,
+      "settings": [
+         {
+            "type": "paragraph",
+            "content":"Show pictures instead of colors."
+         },
+             {
+             "type": "checkbox",
+             "id": "show_title",
+             "label": "Show title",
+             "default": true
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+      ]
+       },
+    {
+         "type": "quantity_button",
+         "name": "Quantity and Button",
+         "limit": 1,
+      "settings": [
+         {
+             "type": "text",
+             "id": "icon_button_cart",
+             "default": "lnr lnr-arrow-right",
+             "label": "Icon Buttom cart",
+          "info": "You can use font awesome and font Linearicons"
+             },
+          {
+               "type": "checkbox",
+               "id": "qt_show_quantity",
+               "label": "Show quantity",
+               "default": true
+             },
+          {
+               "type": "checkbox",
+               "id": "qt_show_cart",
+               "label": "Show Add to cart",
+               "default": true
+             },
+          {
+               "type": "checkbox",
+               "id": "qt_buy_it_now",
+               "label": "Show Buy it now",
+               "default": true,
+            "info":"Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+             },
+
+             {
+               "type": "checkbox",
+               "id": "qt_show_compare",
+               "label": "Show compare",
+               "default": true
+             },
+          {
+               "type": "checkbox",
+               "id": "qt_show_wishlist",
+               "label": "Show wishlist",
+               "default": true
+             },
+
+             {
+             "type": "header",
+             "content": "== Custom color"
+             },
+          {
+               "type": "checkbox",
+               "id": "show_custom_color_btn",
+               "label": "Show Custom color",
+               "default": false
+             },
+          {
+               "type": "color",
+               "id": "color_text_cart",
+               "label": "Color text cart",
+               "default": "#fff"
+             },
+             {
+               "type": "color",
+               "id": "bg_add_to_cart",
+               "label": "background Add To Cart",
+               "default": "#1a73e8"
+             },
+          {
+               "type": "color",
+               "id": "color_text_cart_hover",
+               "label": "Color text cart (hover)",
+               "default": "#fff"
+             },
+          {
+               "type": "color",
+               "id": "bg_add_to_cart_hv",
+               "label": "background Add To Cart (Hover)",
+               "default": "#343e45"
+             },
+          {
+             "type": "header",
+             "content": "== == == == == == "
+             },
+          {
+               "type": "color",
+               "id": "color_text_buy_now",
+               "label": "Color text Buy it now",
+               "default": "#fff"
+             },
+             {
+             "type": "color",
+             "id": "bg_buy_it_now",
+             "label": "background Buy it now",
+             "default": "#4ad295"
+             },
+          {
+               "type": "color",
+               "id": "color_text_buy_now_hover",
+               "label": "Color text Buy it now (hover)",
+               "default": "#fff"
+             },
+             {
+             "type": "color",
+             "id": "bg_buy_it_now_hv",
+             "label": "background Buy it now (Hover)",
+             "default": "#1a73e8"
+             },
+            {
+             "type": "header",
+             "content": "External/Affiliate"
+             },
+          {
+              "type": "text",
+              "id": "btn_name",
+              "label": "Button name (External/Affiliate)",
+           },
+           {
+              "type": "url",
+              "id": "btn_link",
+              "label": "link (External/Affiliate)"
+           },
+          {
+             "type": "header",
+             "content": "== == == == == == "
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+        ]
+       },
+       
+    {
+         "type": "inventory_qty",
+         "name": "Inventory Quantity",
+         "limit": 1,
+      "settings": [
+             {
+               "type": "range",
+               "id": "total_items",
+               "min": 1,
+               "max": 100,
+               "step": 1,
+               "label": "Total items",
+               "unit": "Qty",
+               "default": 50
+             },
+            {
+               "type": "color",
+               "id": "cl_qty",
+               "label": "Color Qty",
+               "default": "#fed700"
+             },
+             {
+               "type": "color",
+               "id": "bg_1",
+               "label": "Background 1",
+               "default": "#fed700"
+             },
+          {
+               "type": "color",
+               "id": "bg_2",
+               "label": "Background 2",
+               "default": "#efefef"
+             },
+          {
+               "type": "range",
+               "id": "h_stock",
+               "min": 1,
+               "max": 20,
+               "step": 1,
+               "label": "Height stock",
+               "unit": "px",
+               "default": 15
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+     ]
+       },
+       {
+         "type": "message",
+         "name": "Message",
+         "limit": 1,
+         "settings":[
+           {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Your message"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content",
+            "default": "Add your name, note to personalise your item. "
+          },
+           {
+              "type": "text",
+              "id": "message",
+              "label": "Message",
+              "default": "message"
+            },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+         ]
+       },
+       {
+         "type": "file",
+         "name": "Add File",
+         "limit": 1,
+         "settings":[
+           {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Upload image:"
+          },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+         ]
+       },
+    {
+         "type": "free_shipping",
+         "name": "Countdown Free shipping",
+         "limit": 1,
+          "settings":[
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+         ]
+          
+       },
+       {
+           "type": "shipping",
+           "name": "Shipping information",
+           "limit": 1,
+           "settings": [
+               {
+                   "type": "checkbox",
+                   "id": "show_delivery_times",
+                   "label": "Show delivery estimation",
+                   "info": "How delivery times are generated?",
+                   "default": true
+               },
+               {
+                   "type": "text",
+                   "id": "deliver_text",
+                   "label": "Delivery text",
+                   "default": "Estimated Delivery:"
+               },
+               {
+                   "type": "text",
+                   "id": "deliver_days",
+                   "label": "Deliver in:",
+                   "info": "days (+/- 2 days)",
+                   "default": "7"
+               },
+               {
+                 "type": "text",
+                 "id": "date_format",
+                 "label": "Date format",
+                 "default": "%b %d",
+                 "info": "Example: %m/%d [Learn more about date format here.](http://strftime.net/)"
+               },
+               {
+                   "type": "checkbox",
+                   "id": "show_shipping_text",
+                   "label": "Show Shipping text",
+                   "default": true
+               },
+               {
+                   "type": "richtext",
+                   "id": "shipping_text",
+                   "label": "Shipping text",
+                   "default": "<p><strong>Free Shipping & Returns: </strong>On all orders over $75</p>"
+               },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+           ]
+       },
+    {
+         "type": "custom_html",
+         "name": "Custom html and image",
+      "settings": [
+          {
+              "type": "text",
+              "id": "html_title",
+              "label": "Title",
+              "default": "Guaranteed Safe Checkout"
+           },
+          {
+                "type": "html",
+                "id": "html_custom",
+                "label": "Custom HTML",
+                "default": "<p>Some HTML content</p>"
+             },
+             {
+               "type": "image_picker",
+               "id": "image",
+               "label": "image"
+             },
+             {
+             "type": "checkbox",
+             "id": "show_svg_custom",
+             "label": "Show SVG custom",
+             "default": false
+             },
+         {
+                "type": "html",
+                "id": "svg_custom",
+                "label": "Payment type (SVG)",
+                "default":"amazon_payments,american_express,apple_pay,bitcoin,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,google_pay,jcb,klarna,klarna-pay-later,litecoin,maestro,master,paypal,shopify_pay,sofort,visa",
+             "info": "amazon_payments,american_express,apple_pay,bitcoin,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,google_pay,jcb,klarna,klarna-pay-later,litecoin,maestro,master,paypal,shopify_pay,sofort,visa"
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+     ]
+       },
+       {
+       "type": "text",
+       "name": "Text - metafiled",
+       "settings": [
+         {
+         "type": "text",
+         "id": "text",
+         "default": "Text block",
+         "label": "Text"
+         },
+         {
+         "type": "checkbox",
+         "id": "show_color",
+         "label": "Show color",
+         "default": false
+         },
+         {
+         "type": "color",
+         "id": "color",
+         "label": "Color",
+         "default": "#fff"
+         },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+    ]
+       },
+       {
+          "type": "custom_liquid",
+          "name": "t:sections.custom-liquid.name",
+          "settings": [
+            {
+              "type": "liquid",
+              "id": "custom_liquid",
+              "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+              "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+            },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+          ]
+        },
+       {
+         "type": "countdown",
+         "name": "Time Countdown product",
+         "limit": 1,
+         "settings": [
+           {
+           "type": "text",
+           "id": "text",
+           "default": "Hurry up! Sale ends in:",
+           "label": "Title"
+           },
+           {
+             "type": "liquid",
+             "id": "custom_liquid",
+             "label": "t:sections.main-product.blocks.custom_liquid.settings.custom_liquid.label",
+             "info": "t:sections.main-product.blocks.custom_liquid.settings.custom_liquid.info",
+             "default":"{{product.metafields.custom.countdown_timer}}"
+           },
+           {
+             "type": "header",
+             "content": "-----------------"
+             },
+           {
+               "type": "color",
+               "id": "bg",
+               "label": "Background",
+               "default": "#fdefee"
+             },
+
+           {
+               "type": "color",
+               "id": "bd",
+               "label": "border color",
+               "default": "#f8cccc"
+             },
+             {
+               "type": "color",
+               "id": "cl_title",
+               "label": "Color Title",
+               "default": "#fff"
+             },
+             {
+               "type": "color",
+               "id": "bg_countdown",
+               "label": "Background Countdown",
+               "default": "#DD3327"
+             },
+             {
+               "type": "color",
+               "id": "cl_text",
+               "label": "Color text Countdown",
+               "default": "#fff"
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+         ]
+       },
+       {
+         "type": "popup",
+         "name": "Popup",
+         "limit": 1,
+         "settings": [
+           {
+           "type": "header",
+           "content": "Size Chart"
+           },
+           {
+           "type": "checkbox",
+           "id": "show_size_chart",
+           "label": "Show Size Chart",
+           "default": false
+           },
+           {
+           "type": "text",
+           "id": "text_size_chart",
+           "default": "Size chart",
+           "label": "Title"
+           },
+           {
+           "type": "page",
+           "id": "size_guide_page",
+           "label": "Content for 'Size guide'",
+           "info": "Default page: 'Include Popup Size Guide'"
+           },
+           {
+           "type": "image_picker",
+           "id": "image_size",
+           "label": "Image",
+           "info": "Use images instead of articles"
+           },
+           {
+           "type": "header",
+           "content": "Shipping and Returns"
+           },
+           {
+           "type": "checkbox",
+           "id": "show_shipping_returns",
+           "label": "Show Shipping and Returns",
+           "default": false
+           },
+
+           {
+           "type": "text",
+           "id": "text_shipping_returns",
+           "default": "Shipping and Returns",
+           "label": "Title"
+           },
+           {
+           "type": "page",
+           "id": "shipping_returns_page",
+           "label": "Content for 'Shipping And Returns'",
+           "info": "Default page: 'Include Popup Shipping And Returns'"
+           },
+           {
+           "type": "header",
+           "content": "Compare Color"
+           },
+           {
+           "type": "checkbox",
+           "id": "show_compare_color",
+           "label": "Show Compare Color",
+           "default": false
+           },
+           {
+           "type": "text",
+           "id": "text_compare_color",
+           "default": "Compare Color",
+           "label": "Title"
+           },
+           {
+           "type": "header",
+           "content": "Contact us"
+           },
+           {
+           "type": "checkbox",
+           "id": "show_contact_us",
+           "label": "Show Contact us",
+           "default": false
+           },
+           {
+           "type": "text",
+           "id": "text_contact_us",
+           "default": "Contact us",
+           "label": "Title"
+           },
+           {
+           "type": "header",
+           "content": "Social sharing"
+           },
+           {
+               "type": "checkbox",
+               "id": "show_social_sharing",
+               "label": "Show social sharing",
+               "default": true
+             },
+           {
+            "type": "range",
+            "id": "mb",
+            "label": "Margin bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "mb_mobile",
+            "label": "Margin bottom (mobile)",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 15
+          }
+
+         ]
+       }
+     ]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

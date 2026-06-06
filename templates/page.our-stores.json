@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 0,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-our-stores",
+      "blocks": {
+        "text_block_TX7fw9": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/VC-Jan-SMARTDOCK-1024x640.png",
+            "title": "South Fulon",
+            "text": "<p>268 St, South New York/NY 98944, United States<br/>+222-1800-2628<br/><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p><p>Mon - Friday: 9:00am - 6:00pm<br/>Saturday - Sunday: 10:00am - 5:00pm</p>",
+            "button_label": "Look up the map",
+            "btn_link": "#",
+            "open_link": "_blank",
+            "button_style": "alo_btn-primary",
+            "button_size": ""
+          }
+        },
+        "text_block_rftfhK": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/VC_Group_Lifestyle_1-1024x640.png",
+            "title": "Place Ste-Foy",
+            "text": "<p>268 St, South New York/NY 98944, United States<br/>+222-1800-2628<br/><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p><p>Mon - Friday: 9:00am - 6:00pm<br/>Saturday - Sunday: 10:00am - 5:00pm</p>",
+            "button_label": "Look up the map",
+            "btn_link": "#",
+            "open_link": "_blank",
+            "button_style": "alo_btn-primary",
+            "button_size": ""
+          }
+        },
+        "text_block_MK4WNq": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/image-8.png",
+            "title": "Martin Place",
+            "text": "<p>268 St, South New York/NY 98944, United States<br/>+222-1800-2628<br/><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p><p>Mon - Friday: 9:00am - 6:00pm<br/>Saturday - Sunday: 10:00am - 5:00pm</p>",
+            "button_label": "Look up the map",
+            "btn_link": "#",
+            "open_link": "_blank",
+            "button_style": "alo_btn-primary",
+            "button_size": ""
+          }
+        },
+        "text_block_KhcYGh": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/tech-acc-blog-4.jpg",
+            "title": "Martin Place",
+            "text": "<p>268 St, South New York/NY 98944, United States<br/>+222-1800-2628<br/><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p><p>Mon - Friday: 9:00am - 6:00pm<br/>Saturday - Sunday: 10:00am - 5:00pm</p>",
+            "button_label": "Look up the map",
+            "btn_link": "#",
+            "open_link": "_blank",
+            "button_style": "alo_btn-primary",
+            "button_size": ""
+          }
+        },
+        "text_block_UTCBnk": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/tech-acc-blog-2.jpg",
+            "title": "Southland Park",
+            "text": "<p>268 St, South New York/NY 98944, United States<br/>+222-1800-2628<br/><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p><p>Mon - Friday: 9:00am - 6:00pm<br/>Saturday - Sunday: 10:00am - 5:00pm</p>",
+            "button_label": "Look up the map",
+            "btn_link": "#",
+            "open_link": "_blank",
+            "button_style": "alo_btn-primary",
+            "button_size": ""
+          }
+        },
+        "text_block_Ydn7zx": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/tech-acc-blog-5.jpg",
+            "title": "Port Melbourne",
+            "text": "<p>268 St, South New York/NY 98944, United States<br/>+222-1800-2628<br/><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p><p>Mon - Friday: 9:00am - 6:00pm<br/>Saturday - Sunday: 10:00am - 5:00pm</p>",
+            "button_label": "Look up the map",
+            "btn_link": "#",
+            "open_link": "_blank",
+            "button_style": "alo_btn-primary",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_TX7fw9",
+        "text_block_rftfhK",
+        "text_block_MK4WNq",
+        "text_block_KhcYGh",
+        "text_block_UTCBnk",
+        "text_block_Ydn7zx"
+      ],
+      "settings": {
+        "column": "3",
+        "border": 0,
+        "use_eq_height": true,
+        "image_ratio": "ratio3_2",
+        "custom_ratio": "3/4",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": "",
+        "pd": "30px,,30px,",
+        "mg_mb": "",
+        "pd_mb": "30px,,30px,"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

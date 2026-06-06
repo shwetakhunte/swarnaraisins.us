@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 30,
+        "mobile_bg": "#ffffff",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-brand",
+      "settings": {
+        "show_page": false,
+        "alphabet": "a, b, c, d, e, f, g, h ,i ,k , l, m, n, o, p, q, r, s, t, u, v, w, x, y, z",
+        "cl_bg": "#ffffff",
+        "pd_c": "",
+        "mg": "",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

@@ -1,0 +1,119 @@
+{% liquid
+  assign sid = section.id 
+  assign layout = section.settings.layout
+%}  
+<section id="laber_{{sid}}"> 
+<div class="{% if layout %}full-width{% else %}container{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+    <!-- Map Element -->
+      {% if section.settings.use_contact_map %}
+        <div class="map flex">              
+          {{ section.settings.map_iframe }}              
+        </div>
+      {% endif %}
+    <!-- End Map Element -->  
+  </div>
+</section>
+{%- render 'section_style' -%}
+{% schema %}
+  {
+    "name": "Google Map",
+    "class":"cms_google_map map-google",
+    "settings": [
+        {
+          "type": "paragraph",
+          "content": "------- Map -------"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_contact_map",
+          "label": "Show Google Map",
+		  "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "map_iframe",
+          "label": "Link Googlemap",
+          "default": "<iframe width=\"2000\" height=\"400\" style=\"border:0\" src=\"https:\/\/www.google.com\/maps\/embed\/v1\/search?q=1200+Beverly+Street,+Mountain+View,+CA,+United+States&key=AIzaSyCeVrTUW_JTL2UKUT0-85wiwusOJZ48yMM\" allowfullscreen=\"\"><\/iframe>",
+          "info": "* Edit width = 960px ; height = 890px"
+        },
+        {
+          "type": "paragraph",
+          "content": "* GUIDE TO EMBED GOOGLE MAP. Step 1: go to this link https:\/\/developers.google.com\/maps\/documentation\/embed\/start . Step 2: fill your address, press Enter and make following their instruction. Step 3: copy iframe code to above text area."
+        },
+        {
+        "type": "header",
+        "content": "== setting content"
+      },
+           {
+      "type": "checkbox",
+      "id": "layout",
+      "label": "Full width",
+      "default": false
+      },
+      {
+          "type": "range",  
+          "id": "container",  
+          "label": "Container width",
+          "min": 1170,
+          "max": 1920,
+          "step": 10,
+          "unit": "px",
+          "default": 1170 
+      },
+      {
+      "type": "color",
+      "id": "cl_bg",
+      "label": "Background color",
+      "default": "#fff"
+      },
+	  {
+        "type": "header",
+        "content": "== setting content"
+      },
+	  {
+        "type": "header",
+        "content": "== Setting PC",
+		"info":"Margin"
+      },	
+      {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding"
+      }
+
+	],
+    "presets": [
+      {
+        "name": "Google map",
+        "category": "google"
+      }
+    ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

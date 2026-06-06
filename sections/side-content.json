@@ -1,0 +1,1214 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.content",
+  "name": "Home page content",
+  "sections": {
+    "slideshow_YxFbQw": {
+      "type": "slideshow",
+      "blocks": {
+        "img_tjxWRD": {
+          "type": "img",
+          "settings": {
+            "image_sl": "shopify://shop_images/banner_19_1.png",
+            "link_img": "",
+            "open_link": "_blank",
+            "class_animate": "fadeinleft",
+            "cusotm-width": 85,
+            "h_position": "center",
+            "v_position": "middle",
+            "txt_align": "left"
+          }
+        },
+        "subhd_dGFC9c": {
+          "type": "subhd",
+          "settings": {
+            "title": "Featured Product",
+            "text_line": "none",
+            "color": "#555555",
+            "linear_gradient": "",
+            "fs_text": 18,
+            "fw_text": 400,
+            "lh_text": 20,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "hide": false,
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mobile_font_text": 16,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 20,
+            "mb": 15,
+            "sm_mb": 10
+          }
+        },
+        "hd_R8mNgK": {
+          "type": "hd",
+          "settings": {
+            "title": "Moto phone<br>\nNew Trending Design",
+            "color": "#111111",
+            "linear_gradient": "",
+            "fs_text": 33,
+            "fw_text": 500,
+            "lh_text": 35,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mobile_font_text": 25,
+            "mobile_fw_text": 500,
+            "mobile_lh_text": 30,
+            "mb": 15,
+            "sm_mb": 10
+          }
+        },
+        "subhd_qPjkyn": {
+          "type": "subhd",
+          "settings": {
+            "title": "Only $199.00",
+            "text_line": "none",
+            "color": "#0066CC",
+            "linear_gradient": "",
+            "fs_text": 25,
+            "fw_text": 500,
+            "lh_text": 25,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "hide": false,
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mobile_font_text": 12,
+            "mobile_fw_text": 500,
+            "mobile_lh_text": 0,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "btn_FkMENT": {
+          "type": "btn",
+          "settings": {
+            "title": "Get it Now",
+            "btn_link": "#",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#296dc1",
+            "cl_bg_hover": "#2664b2",
+            "fs_text": 16,
+            "fw_text": 500,
+            "ls_text": 0,
+            "button_transform": "none",
+            "br_button": 4,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 500,
+            "mb": 0,
+            "sm_mb": 0
+          }
+        },
+        "img_RFyELK": {
+          "type": "img",
+          "settings": {
+            "image_sl": "shopify://shop_images/banner_19_2.png",
+            "link_img": "",
+            "open_link": "_blank",
+            "class_animate": "fadeinright",
+            "cusotm-width": 85,
+            "h_position": "center",
+            "v_position": "middle",
+            "txt_align": "left"
+          }
+        },
+        "subhd_BLfM8h": {
+          "type": "subhd",
+          "settings": {
+            "title": "Best Selling",
+            "text_line": "none",
+            "color": "#555555",
+            "linear_gradient": "",
+            "fs_text": 18,
+            "fw_text": 400,
+            "lh_text": 20,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "hide": false,
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mobile_font_text": 16,
+            "mobile_fw_text": 400,
+            "mobile_lh_text": 20,
+            "mb": 15,
+            "sm_mb": 10
+          }
+        },
+        "hd_DeDiPi": {
+          "type": "hd",
+          "settings": {
+            "title": "New Arrivals<br>\nBest Perfomance",
+            "color": "#111111",
+            "linear_gradient": "",
+            "fs_text": 33,
+            "fw_text": 500,
+            "lh_text": 35,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mobile_font_text": 25,
+            "mobile_fw_text": 500,
+            "mobile_lh_text": 30,
+            "mb": 15,
+            "sm_mb": 10
+          }
+        },
+        "subhd_i7ptqV": {
+          "type": "subhd",
+          "settings": {
+            "title": "Only $199.00",
+            "text_line": "none",
+            "color": "#0066CC",
+            "linear_gradient": "",
+            "fs_text": 25,
+            "fw_text": 500,
+            "lh_text": 25,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "hide": false,
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mobile_font_text": 12,
+            "mobile_fw_text": 500,
+            "mobile_lh_text": 0,
+            "mb": 30,
+            "sm_mb": 15
+          }
+        },
+        "btn_P4aAd9": {
+          "type": "btn",
+          "settings": {
+            "title": "Get it Now",
+            "btn_link": "#",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#296dc1",
+            "cl_bg_hover": "#2664b2",
+            "fs_text": 16,
+            "fw_text": 500,
+            "ls_text": 0,
+            "button_transform": "none",
+            "br_button": 4,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 500,
+            "mb": 0,
+            "sm_mb": 0
+          }
+        }
+      },
+      "block_order": [
+        "img_tjxWRD",
+        "subhd_dGFC9c",
+        "hd_R8mNgK",
+        "subhd_qPjkyn",
+        "btn_FkMENT",
+        "img_RFyELK",
+        "subhd_BLfM8h",
+        "hd_DeDiPi",
+        "subhd_i7ptqV",
+        "btn_P4aAd9"
+      ],
+      "settings": {
+        "full-screen": false,
+        "h_des": 400,
+        "h_tb": 320,
+        "h_mb": 400,
+        "border": 0,
+        "use-slider": true,
+        "visible": 1,
+        "widescreen": 1,
+        "desktop": 1,
+        "laptop": 1,
+        "notebook": 1,
+        "tablet": 1,
+        "landscape": 1,
+        "portrait": 1,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": true,
+        "speed": "600",
+        "autoplay_delay": "6000",
+        "navigation": true,
+        "effect": "slide",
+        "fade_zoom": false,
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 0,
+        "direction": "horizontal",
+        "position_dots": "left",
+        "cl_dots": "#f5f5f5",
+        "cl_dots_h": "#296dc1",
+        "layout": true,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": "",
+        "pd": "20px,,20px,",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    },
+    "image_cards_eXm3YG": {
+      "type": "Image-cards",
+      "blocks": {
+        "banner_img_nyAief": {
+          "type": "banner_img",
+          "settings": {
+            "hide_image": false,
+            "image_sl": "shopify://shop_images/img_19_1.png",
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 1,
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "w_content": 100,
+            "pd_content": 5,
+            "s_border": false,
+            "cl_border": "#ffffff",
+            "h_position": "left",
+            "v_position": "middle",
+            "txt_align": "left"
+          }
+        },
+        "hd_XBUiGb": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "NEW 360 VR",
+            "color": "#333333",
+            "fw_text": 500,
+            "fs_text": 15,
+            "lh_text": 15,
+            "ls_text": "0",
+            "text_transform": "uppercase",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 500,
+            "mark_fs_text": 15,
+            "mg_bottom": 15,
+            "mobile_font_text": 14,
+            "mobile_mg_bottom": 10
+          }
+        },
+        "subhd_kexmJA": {
+          "type": "subhd",
+          "settings": {
+            "hide": false,
+            "title": "30% off this week",
+            "color": "#888888",
+            "fw_text": 400,
+            "fs_text": 14,
+            "lh_text": 23,
+            "ls_text": "0",
+            "text_transform": "uppercase",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 500,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        },
+        "banner_img_UxKapt": {
+          "type": "banner_img",
+          "settings": {
+            "hide_image": false,
+            "image_sl": "shopify://shop_images/img_19_2.png",
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 1,
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "w_content": 100,
+            "pd_content": 5,
+            "s_border": false,
+            "cl_border": "#ffffff",
+            "h_position": "left",
+            "v_position": "middle",
+            "txt_align": "left"
+          }
+        },
+        "hd_MznQyF": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "MOTO-Z",
+            "color": "#333333",
+            "fw_text": 500,
+            "fs_text": 15,
+            "lh_text": 15,
+            "ls_text": "0",
+            "text_transform": "uppercase",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 500,
+            "mark_fs_text": 15,
+            "mg_bottom": 15,
+            "mobile_font_text": 14,
+            "mobile_mg_bottom": 10
+          }
+        },
+        "subhd_mJ87Eh": {
+          "type": "subhd",
+          "settings": {
+            "hide": false,
+            "title": "Sale off 25%",
+            "color": "#888888",
+            "fw_text": 400,
+            "fs_text": 14,
+            "lh_text": 23,
+            "ls_text": "0",
+            "text_transform": "uppercase",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 500,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        },
+        "banner_img_eqbXHQ": {
+          "type": "banner_img",
+          "settings": {
+            "hide_image": false,
+            "image_sl": "shopify://shop_images/img_19_3.png",
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 1,
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "w_content": 100,
+            "pd_content": 5,
+            "s_border": false,
+            "cl_border": "#ffffff",
+            "h_position": "left",
+            "v_position": "middle",
+            "txt_align": "left"
+          }
+        },
+        "hd_3AzQNx": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "NEW PHONE",
+            "color": "#333333",
+            "fw_text": 500,
+            "fs_text": 15,
+            "lh_text": 15,
+            "ls_text": "0",
+            "text_transform": "uppercase",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 500,
+            "mark_fs_text": 15,
+            "mg_bottom": 15,
+            "mobile_font_text": 14,
+            "mobile_mg_bottom": 10
+          }
+        },
+        "subhd_H4df6n": {
+          "type": "subhd",
+          "settings": {
+            "hide": false,
+            "title": "Exclusie offer",
+            "color": "#888888",
+            "fw_text": 400,
+            "fs_text": 14,
+            "lh_text": 23,
+            "ls_text": "0",
+            "text_transform": "uppercase",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 500,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "banner_img_nyAief",
+        "hd_XBUiGb",
+        "subhd_kexmJA",
+        "banner_img_UxKapt",
+        "hd_MznQyF",
+        "subhd_mJ87Eh",
+        "banner_img_eqbXHQ",
+        "hd_3AzQNx",
+        "subhd_H4df6n"
+      ],
+      "settings": {
+        "desktop_row_height": 150,
+        "tablet_row_height": 150,
+        "mobile_row_height": 150,
+        "column": 6,
+        "gap": 20,
+        "border": 4,
+        "layout": true,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "tab_product_HGrQz4": {
+      "type": "tab-product",
+      "blocks": {
+        "col_MCURb7": {
+          "type": "col",
+          "settings": {
+            "title": "New Arrival",
+            "collection": "all-accessories",
+            "show_icon": false,
+            "code_svg": ""
+          }
+        },
+        "col_7gLCbr": {
+          "type": "col",
+          "settings": {
+            "title": "Featured",
+            "collection": "cameras-photography",
+            "show_icon": false,
+            "code_svg": ""
+          }
+        },
+        "col_K8VrAq": {
+          "type": "col",
+          "settings": {
+            "title": "On Sale",
+            "collection": "power-cables",
+            "show_icon": false,
+            "code_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "col_MCURb7",
+        "col_7gLCbr",
+        "col_K8VrAq"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "What we offer",
+        "bg_header": "rgba(0,0,0,0)",
+        "cl_title": "#333333",
+        "text_size": "medium",
+        "subtitle": "",
+        "cl_subtitle": "#333333",
+        "col": "100%",
+        "f-size": 16,
+        "f-weight": 500,
+        "text_transform": "capitalize",
+        "text_align": "right",
+        "style_tab": "1",
+        "cl_text": "#cbcbcb",
+        "cl_text_h": "#000000",
+        "max_count": 15,
+        "use-slider": true,
+        "visible": 5,
+        "widescreen": 5,
+        "desktop": 5,
+        "laptop": 4,
+        "notebook": 4,
+        "tablet": 3,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 3,
+        "autoplay": true,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 20,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "cl_bg_content": "rgba(0,0,0,0)",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "image_cards_T3DiD9": {
+      "type": "Image-cards",
+      "blocks": {
+        "banner_img_RzeBcV": {
+          "type": "banner_img",
+          "settings": {
+            "hide_image": false,
+            "image_sl": "shopify://shop_images/img_17_4.png",
+            "media-grid-column-span": 6,
+            "media-grid-row-span": 1,
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "w_content": 50,
+            "pd_content": 5,
+            "s_border": false,
+            "cl_border": "#ffffff",
+            "h_position": "left",
+            "v_position": "middle",
+            "txt_align": "center"
+          }
+        },
+        "subhd_B6xRCx": {
+          "type": "subhd",
+          "settings": {
+            "hide": false,
+            "title": "Just Only $120",
+            "color": "#333333",
+            "fw_text": 400,
+            "fs_text": 17,
+            "lh_text": 27,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "first_mark": false,
+            "last_mark": true,
+            "custom_mark": "",
+            "color_mark": "#0063d1",
+            "mark_fw_text": 500,
+            "mark_fs_text": 17,
+            "mg_bottom": 10,
+            "mobile_font_text": 14,
+            "mobile_mg_bottom": 5
+          }
+        },
+        "hd_dLqKnU": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "Sony Playstation VR Headset",
+            "color": "#333333",
+            "fw_text": 500,
+            "fs_text": 22,
+            "lh_text": 22,
+            "ls_text": "0",
+            "text_transform": "none",
+            "first_mark": false,
+            "last_mark": true,
+            "custom_mark": "3",
+            "color_mark": "",
+            "mark_fw_text": 400,
+            "mark_fs_text": 22,
+            "mg_bottom": 10,
+            "mobile_font_text": 18,
+            "mobile_mg_bottom": 5
+          }
+        },
+        "btn_ETQzEy": {
+          "type": "btn",
+          "settings": {
+            "button_label": "Shop Now",
+            "f-size": 14,
+            "text_transform": "none",
+            "ls_text": "0",
+            "button_style": "alo_btn-primary",
+            "cl_txt": "#ffffff",
+            "cl_txt_h": "#ffffff",
+            "cl_bg": "#0063d1",
+            "cl_bg_h": "#333333",
+            "button_size": "",
+            "border": 4,
+            "mg_bottom": 0,
+            "mobile_mg_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "banner_img_RzeBcV",
+        "subhd_B6xRCx",
+        "hd_dLqKnU",
+        "btn_ETQzEy"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_row_height": 185,
+        "tablet_row_height": 150,
+        "mobile_row_height": 150,
+        "column": 6,
+        "gap": 5,
+        "border": 5,
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "featured_blog_c7xjQX": {
+      "type": "featured_blog",
+      "disabled": true,
+      "settings": {
+        "title": "Latest news",
+        "cl_title": "#333333",
+        "content": "<p><em>The freshest and most exciting news</em></p>",
+        "text_size": "medium",
+        "text_transform": "none",
+        "h_position": "left",
+        "txt_align": "left",
+        "all_blogs": false,
+        "blog": "accessories",
+        "border": 0,
+        "show-cate-blog": false,
+        "show-name-blog": true,
+        "show-date": true,
+        "show-author": true,
+        "show-comments": false,
+        "show-description": false,
+        "show-read_more": false,
+        "use_eq_height": false,
+        "image_ratio": "ratio3_2",
+        "use-slider": true,
+        "visible": 3,
+        "widescreen": 3,
+        "desktop": 3,
+        "laptop": 3,
+        "notebook": 2,
+        "tablet": 2,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 20,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "cl_bg_content": "rgba(0,0,0,0)",
+        "mg": ",,100px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "collection_carousel_product_HtnGxi": {
+      "type": "collection-carousel-product",
+      "blocks": {
+        "product_list_UP8J3d": {
+          "type": "product_list",
+          "settings": {
+            "title": "Best Selling",
+            "cl_title": "#333333",
+            "bg_header": "rgba(0,0,0,0)",
+            "text_size": "small",
+            "text_transform": "none",
+            "col": "100%",
+            "s_product": "vertical",
+            "product_list": [
+              "fujifilm-instax-mini-7s-white",
+              "gear-360",
+              "fujifilm-instax-hello-kitty-instant-film",
+              "55_-class-ku6500-curved-4k-uhd-tv",
+              "55_-class-mu7500-curved-4k-uhd-tv",
+              "55_-class-q8c-curved-qled-4k-tv",
+              "samsung-electronics-1080p-240hz-3d-led-tv"
+            ],
+            "max_count": 24,
+            "btn_text": "View All Products",
+            "btn_url": "",
+            "use-slider": true,
+            "visible": 4,
+            "widescreen": 4,
+            "desktop": 4,
+            "laptop": 4,
+            "notebook": 3,
+            "tablet": 2,
+            "landscape": 2,
+            "portrait": 2,
+            "mobile": 1,
+            "slides-Per-Group": 1,
+            "rows": 1,
+            "autoplay": false,
+            "speed": "300",
+            "autoplay_delay": "3000",
+            "navigation": true,
+            "effect": "slide",
+            "centered-Slides": false,
+            "auto-Height": false,
+            "pagination": false,
+            "loop": false,
+            "space-Between": 10,
+            "direction": "horizontal",
+            "mb": 0,
+            "mb-mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "product_list_UP8J3d"
+      ],
+      "settings": {
+        "title": "",
+        "text_size": "medium",
+        "text_transform": "none",
+        "full_banner": "default",
+        "layout": true,
+        "container": 1580,
+        "cl_bg": "#ffffff",
+        "cl_bg_content": "rgba(0,0,0,0)",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "image_cards_WU9DdQ": {
+      "type": "Image-cards",
+      "blocks": {
+        "banner_img_8jAT9m": {
+          "type": "banner_img",
+          "settings": {
+            "hide_image": false,
+            "image_sl": "shopify://shop_images/img_19_4.png",
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 1,
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "w_content": 50,
+            "pd_content": 4,
+            "s_border": false,
+            "cl_border": "#ffffff",
+            "h_position": "left",
+            "v_position": "middle",
+            "txt_align": "left"
+          }
+        },
+        "hd_8PV4Bj": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "Video Meeting",
+            "color": "#333333",
+            "fw_text": 400,
+            "fs_text": 32,
+            "lh_text": 37,
+            "ls_text": "0",
+            "text_transform": "none",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 400,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        },
+        "hd_pGLDTV": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "Meetup Conferencecam",
+            "color": "#111111",
+            "fw_text": 400,
+            "fs_text": 21,
+            "lh_text": 21,
+            "ls_text": "0",
+            "text_transform": "none",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 600,
+            "mark_fs_text": 15,
+            "mg_bottom": 10,
+            "mobile_font_text": 18,
+            "mobile_mg_bottom": 5
+          }
+        },
+        "subhd_TP7dyy": {
+          "type": "subhd",
+          "settings": {
+            "hide": false,
+            "title": "Only $199.00",
+            "color": "#296dc1",
+            "fw_text": 500,
+            "fs_text": 21,
+            "lh_text": 21,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 600,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "banner_img_8jAT9m",
+        "hd_8PV4Bj",
+        "hd_pGLDTV",
+        "subhd_TP7dyy"
+      ],
+      "settings": {
+        "desktop_row_height": 160,
+        "tablet_row_height": 160,
+        "mobile_row_height": 150,
+        "column": 2,
+        "gap": 5,
+        "border": 4,
+        "layout": true,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "collection_carousel_product_V76KQQ": {
+      "type": "collection-carousel-product",
+      "blocks": {
+        "product_list_NWDzQG": {
+          "type": "product_list",
+          "settings": {
+            "title": "Best Selling",
+            "cl_title": "#333333",
+            "bg_header": "rgba(0,0,0,0)",
+            "text_size": "small",
+            "text_transform": "none",
+            "col": "100%",
+            "s_product": "vertical",
+            "product_list": [
+              "belkin-fitness-armband",
+              "iphone-xs-max-leather-folio",
+              "iphone-xs-max-silicone-case",
+              "logi-base-charging-stand-with-smart-connector",
+              "logitech-slim-combo-with-detachable",
+              "macro-14x-macro-21x-essential-lenses",
+              "magic-keyboard-us-english",
+              "magic-mouse-2",
+              "lightning-dock"
+            ],
+            "max_count": 24,
+            "btn_text": "View All Products",
+            "btn_url": "",
+            "use-slider": true,
+            "visible": 4,
+            "widescreen": 4,
+            "desktop": 4,
+            "laptop": 4,
+            "notebook": 3,
+            "tablet": 2,
+            "landscape": 2,
+            "portrait": 2,
+            "mobile": 1,
+            "slides-Per-Group": 1,
+            "rows": 1,
+            "autoplay": false,
+            "speed": "300",
+            "autoplay_delay": "3000",
+            "navigation": true,
+            "effect": "slide",
+            "centered-Slides": false,
+            "auto-Height": false,
+            "pagination": false,
+            "loop": false,
+            "space-Between": 10,
+            "direction": "horizontal",
+            "mb": 0,
+            "mb-mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "product_list_NWDzQG"
+      ],
+      "settings": {
+        "title": "",
+        "text_size": "medium",
+        "text_transform": "none",
+        "full_banner": "default",
+        "layout": true,
+        "container": 1580,
+        "cl_bg": "#ffffff",
+        "cl_bg_content": "rgba(0,0,0,0)",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "image_cards_hQaPDM": {
+      "type": "Image-cards",
+      "blocks": {
+        "banner_img_RNeWmf": {
+          "type": "banner_img",
+          "settings": {
+            "hide_image": false,
+            "image_sl": "shopify://shop_images/img_19_5.png",
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 1,
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "w_content": 50,
+            "pd_content": 4,
+            "s_border": false,
+            "cl_border": "#ffffff",
+            "h_position": "right",
+            "v_position": "middle",
+            "txt_align": "center"
+          }
+        },
+        "hd_m9YbHJ": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "BIG SALE",
+            "color": "#296dc1",
+            "fw_text": 400,
+            "fs_text": 32,
+            "lh_text": 37,
+            "ls_text": "0",
+            "text_transform": "none",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 400,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        },
+        "hd_WaALaV": {
+          "type": "hd",
+          "settings": {
+            "hide": false,
+            "title": "For all Virtual Reality Glasses",
+            "color": "#111111",
+            "fw_text": 400,
+            "fs_text": 21,
+            "lh_text": 21,
+            "ls_text": "0",
+            "text_transform": "none",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 600,
+            "mark_fs_text": 15,
+            "mg_bottom": 10,
+            "mobile_font_text": 18,
+            "mobile_mg_bottom": 5
+          }
+        },
+        "subhd_RgMBJp": {
+          "type": "subhd",
+          "disabled": true,
+          "settings": {
+            "hide": false,
+            "title": "Only $199.00",
+            "color": "#296dc1",
+            "fw_text": 500,
+            "fs_text": 21,
+            "lh_text": 21,
+            "ls_text": "0",
+            "text_transform": "capitalize",
+            "first_mark": false,
+            "last_mark": false,
+            "custom_mark": "",
+            "color_mark": "",
+            "mark_fw_text": 600,
+            "mark_fs_text": 15,
+            "mg_bottom": 0,
+            "mobile_font_text": 12,
+            "mobile_mg_bottom": 0
+          }
+        },
+        "txt_jAxXVy": {
+          "type": "txt",
+          "settings": {
+            "title": "Saving 30% Off on all online store items",
+            "color": "#333333",
+            "fw_text": 400,
+            "fs_text": 15,
+            "lh_text": 23,
+            "text_transform": "none",
+            "ls_text": "0",
+            "mg_bottom": 0,
+            "hide": false,
+            "mobile_font_text": 14,
+            "mobile_mg_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "banner_img_RNeWmf",
+        "hd_m9YbHJ",
+        "hd_WaALaV",
+        "subhd_RgMBJp",
+        "txt_jAxXVy"
+      ],
+      "settings": {
+        "desktop_row_height": 160,
+        "tablet_row_height": 160,
+        "mobile_row_height": 150,
+        "column": 2,
+        "gap": 5,
+        "border": 4,
+        "layout": true,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "collection_carousel_product_QjAqAB": {
+      "type": "collection-carousel-product",
+      "blocks": {
+        "product_list_DKFAPe": {
+          "type": "product_list",
+          "settings": {
+            "title": "Best Selling",
+            "cl_title": "#333333",
+            "bg_header": "rgba(0,0,0,0)",
+            "text_size": "small",
+            "text_transform": "none",
+            "col": "100%",
+            "s_product": "vertical",
+            "product_list": [
+              "apple-watch-series-2",
+              "apple-watch-4",
+              "lg-electronics-lgw270",
+              "samsung-gear-s2",
+              "samsung-gear-s3"
+            ],
+            "max_count": 24,
+            "btn_text": "View All Products",
+            "btn_url": "",
+            "use-slider": true,
+            "visible": 4,
+            "widescreen": 4,
+            "desktop": 4,
+            "laptop": 4,
+            "notebook": 3,
+            "tablet": 2,
+            "landscape": 2,
+            "portrait": 2,
+            "mobile": 1,
+            "slides-Per-Group": 1,
+            "rows": 1,
+            "autoplay": false,
+            "speed": "300",
+            "autoplay_delay": "3000",
+            "navigation": true,
+            "effect": "slide",
+            "centered-Slides": false,
+            "auto-Height": false,
+            "pagination": false,
+            "loop": false,
+            "space-Between": 10,
+            "direction": "horizontal",
+            "mb": 0,
+            "mb-mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "product_list_DKFAPe"
+      ],
+      "settings": {
+        "title": "",
+        "text_size": "medium",
+        "text_transform": "none",
+        "full_banner": "default",
+        "layout": true,
+        "container": 1580,
+        "cl_bg": "#ffffff",
+        "cl_bg_content": "rgba(0,0,0,0)",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "slideshow_YxFbQw",
+    "image_cards_eXm3YG",
+    "tab_product_HGrQz4",
+    "image_cards_T3DiD9",
+    "featured_blog_c7xjQX",
+    "collection_carousel_product_HtnGxi",
+    "image_cards_WU9DdQ",
+    "collection_carousel_product_V76KQQ",
+    "image_cards_hQaPDM",
+    "collection_carousel_product_QjAqAB"
+  ]
+}

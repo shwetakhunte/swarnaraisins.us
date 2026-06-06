@@ -1,0 +1,20 @@
+<div class="menu_footer sm:mb-15">
+{%- if menu != blank -%}
+  <ul class="menu">
+    {%- for link in linklists[menu].links -%}
+     <li class="menu-item{% if link.active %}active{% endif %}">
+       <a href="{{ link.url }}">
+         {{ link.title | split: '[' | first }}
+       </a>
+      </li>
+     {%- endfor -%}
+  </ul>
+  {%- else -%}
+  <ul class="menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Gift Cards</a></li>
+      <li><a href="#">Order Status</a></li>
+      <li><a href="#">Free Shipping</a></li>
+  </ul>
+  {%- endif -%}
+</div>

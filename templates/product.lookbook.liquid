@@ -1,0 +1,113 @@
+{% # theme-check-disable %}{% include 'product-res-variables' %}{% # theme-check-enable %}
+{%- liquid
+  layout none
+  assign sett_equal = false
+-%}
+{%- assign show_price = settings.product_collection_show_price -%}
+{%- assign show_availability = settings.product_collection_show_label_in_stock -%}
+{%- assign show_reviews = settings.product_collection_show_reviews -%}
+{% assign show_secondary_image = settings.product_collection_show_secondary_image %}
+{%- liquid
+  assign sett_equal = settings.use_eq_height_product
+  assign image_ratio = settings.image_ratio_product
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio5_6'
+        assign aspect_ratio = 0.8333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio6_5'
+        assign aspect_ratio = 1.2
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+-%}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default:product.featured_media.aspect_ratio %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+
+<div class="pin__popup pa">
+  <product-item class="product-item ">
+    <div class="product-collection alo-border-radius" style="--alo-border-radius:5px;" data-js-product>
+      <script class="data-json-product" type="application/json">
+        {% render 'product-get-attributes', product:product, build_variant: 'json' %}
+      </script>
+      <div class="product-image product-collection__image">
+        <div class="card__media">
+          <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
+            <a
+              href="{{ product.url | within: collection }}"
+              class="d-block image_product cursor-default {% if product.featured_media %} ratio{% endif %}"
+              style="{{ style }}"
+              data-js-product-image
+            >
+              {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-collection__content">
+        <div class="product-collection__title">
+          <h2>
+            <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+          </h2>
+        </div>
+        {%- if show_reviews -%}
+          <!-- Start of Judge.me code -->
+          {% # theme-check-disable %}
+          <div style="{{ jm_style }}" class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+            {{- product.metafields.judgeme.badge -}}
+          </div>
+          {% # theme-check-enable %}
+          <!-- End of Judge.me code -->
+        {%- endif -%}
+        <div class="frm-price-color">
+          {%- if show_price -%}
+            <div class="product-collection__price ">
+              {%- if product.price_varies -%}
+                <span class="price"
+                  ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
+                >
+              {%- else -%}
+                {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+        {%- if show_availability -%}
+          <div class="product-collection__availability">
+            <p
+              class="{% if product.selected_or_first_available_variant.available %}in_stock{% else %}out_stock{% endif %} {% if product.selected_or_first_available_variant.quantity < 10 %}small-quantity{% endif %} "
+              data-js-product-availability
+            >
+              {% if product.selected_or_first_available_variant.available %}
+                <i class="icon-check"></i>
+                {{ 'products.product.availability_value_in_stock' | t }}
+              {% else %}
+                <i class="icon-check"></i>{{ 'products.product.availability_value_out_stock' | t }}
+              {% endif %}
+            </p>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </product-item>
+</div>

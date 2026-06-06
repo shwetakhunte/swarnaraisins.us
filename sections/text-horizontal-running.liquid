@@ -1,0 +1,156 @@
+{% liquid
+  assign sid = section.id
+  assign layout = section.settings.layout
+%}
+<section id="laber_{{sid}}">
+  <div class="container {% if layout %}full-width{% endif %}">
+  <campaign-bar
+    style="--alo-container-width:{{ section.settings.container }}px;"
+  >
+    <div class="text-horizontal-running {{ section.settings.slider_direction }}">
+      {%- if section.blocks.size > 0 -%}
+        <div class="wrap-text" style="--cl-text:{{ section.settings.cl_text }};--alo-healing-speed:{{ section.settings.healing_speed }}s;">
+          {%- for block in section.blocks -%}
+              {% if block.settings.text != blank -%}
+                <div class="flex">{{ block.settings.text }}</div>
+              {%- endif %}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </campaign-bar>
+  </div>
+</section>
+{%- render 'section_style' -%}
+
+{%- schema -%}
+ {
+   "name": "Text horizontal running",
+   "class": "laber_section  type_text_horizontal_running",
+"max_blocks": 30,
+   "settings": [
+     {
+       "type": "header",
+       "content": "== Design Options"
+     },
+     {
+       "type": "select",
+       "id": "slider_direction",
+       "label": "Slider Direction",
+       "default": "slide-left",
+       "options": [
+         {
+           "value": "slide-left",
+           "label": "Left"
+         },
+         {
+           "value": "slide-right",
+           "label": "Right"
+         }
+       ]
+     },
+     {
+       "type": "range",
+       "id": "healing_speed",
+       "label": "Healing speed",
+       "min": 10,
+       "max": 30,
+       "step": 1,
+       "unit": "s",
+       "default": 10
+     },
+         {
+   "type": "checkbox",
+   "id": "layout",
+   "label": "Full width",
+   "default": false
+   },
+   {
+       "type": "range",
+       "id": "container",
+       "label": "Container width",
+       "min": 1170,
+       "max": 1920,
+       "step": 10,
+       "unit": "px",
+       "default": 1410
+   },
+     {
+       "type": "color",
+       "id": "cl_bg",
+       "label": "Background color",
+       "default": "#263c97"
+     },
+     {
+       "type": "color",
+       "id": "cl_text",
+       "label": "Color text",
+       "default": "#fff"
+     },
+  {
+       "type": "header",
+       "content": "== Margin",
+	"info":"Margin top, margin bottom. If you not use to blank"
+     },
+     {
+       "type": "text",
+       "id": "mg",
+       "label": "Margin",
+       "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+     },
+     {
+       "type": "text",
+       "id": "pd",
+       "label": "Padding",
+       "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+     },
+    {
+       "type": "header",
+       "content": "== Design Mobile Options"
+     },
+     {
+       "type": "text",
+       "id": "mg_mb",
+       "label": "Margin"
+     },
+     {
+       "type": "text",
+       "id": "pd_mb",
+       "label": "Padding"
+     }
+   ],
+"blocks": [
+   {
+   "type": "text",
+   "name": "Text",
+   "settings": [
+       {
+         "type": "richtext",
+         "id": "text",
+         "label": "Text",
+         "default": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+       }
+     ]
+   }],
+   "presets": [
+     {
+       "name": "Text horizontal running",
+       "category": "Text",
+	"blocks": [
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" },
+         { "type": "text" }
+       ]
+     }
+   ]
+ }
+{%- endschema -%}

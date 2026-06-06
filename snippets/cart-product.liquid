@@ -1,0 +1,54 @@
+
+  <div class="button-cart-bottom">
+    {% if external_affiliate_product %}
+      <a
+        href="{{ external_affiliate_product.external_link }}"
+        rel="nofollow"
+        target="_blank"
+        class="product-affiliate relative add-to-cart item-btn"
+      >
+        {% render 'icon-cart' %}
+        <span class="text">
+          {{ external_affiliate_product.button_name }}
+        </span>
+      </a>
+    {% else %}
+      {% if variants_size == 1 %}
+        <div class="flex alo-gap" style="--alo-gap:5px;">
+          {% if product.available %}
+            {% if show_quantity_box %}
+              {% render 'product-quantity', product: product %}
+            {% endif %}
+            <button
+              type="submit"
+              class="add-to-cart item-btn {%if settings.disable_ajax_cart %}page_{{settings.custom_page_cart}}{%endif%} "
+              data-pid="{{ product.variants.first.id }}"
+            >
+              {% render 'icon-cart' %}
+              <span class="text">
+                {% if product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+                  {{ 'products.product.pre_order' | t }}
+                {% else %}
+                  {{ 'products.product.add_to_cart' | t }}
+                {% endif %}
+              </span>
+            </button>
+          {% else %}
+            <a class="add-to-cart item-btn js-btn-sold-out" href="{{ product.url | within: collection }}">
+              {% render 'icon-cart' %}
+              <span class="text">{{ 'products.product.sold_out' | t }}</span></a
+            >
+          {% endif %}
+        </div>
+      {% else %}
+        <a
+          href="{{ url }}"
+          data-pid="{{ current_variant_id }}"
+          class="js_select_options item-btn select_options "
+        >
+          {% render 'icon-cart' %}
+          <span class="text">{{ 'products.grid_items.select_options' | t }}</span>
+        </a>
+      {% endif %}
+    {% endif %}
+  </div>

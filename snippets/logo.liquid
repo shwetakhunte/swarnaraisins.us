@@ -1,0 +1,44 @@
+{% if template contains 'index' %}
+    {% assign logo = settings.logo %}
+    {%- assign logo_alt = logo.alt | default: shop.name | escape -%}
+    {% if logo != blank %}
+    <a href="{{ routes.root_url }}" class="site-header__logo-image" aria-label="{{logo_alt }}">
+      {%- assign logo_height = settings.logo_max_width | divided_by: settings.logo.aspect_ratio -%}
+      {% capture sizes %}(max-width: {{ settings.logo_max_width | times: 2 }}px) 50vw, {{ settings.logo_max_width }}px{% endcapture %}
+      {% capture widths %}{{ settings.logo_max_width }}, {{ settings.logo_max_width | times: 1.5 | round }}, {{ settings.logo_max_width | times: 2 }}{% endcapture %}
+      {{ logo | image_url: width: 600 | image_tag:
+        class: 'header__heading-logo motion-reduce',
+        widths: widths,
+        height: logo_height,
+        width: settings.logo_max_width,
+        alt: logo_alt,
+        sizes: sizes,
+        preload: true
+      }}
+      </a>
+    {% else %}
+    <a class="site-title" href="{{ routes.root_url }}" itemprop="url"><span class="logo-default">{{ settings.logo_text  }}</span></a>
+    {% endif %}
+  {%else%}
+  {% assign logo_page = settings.logo_page | default: settings.logo %}
+  {%- assign logo_alt = logo_page.alt | default: shop.name | escape -%}
+  {% if logo_page != blank %}
+  <a href="{{ routes.root_url }}" class="site-header__logo-image" aria-label="{{ logo_alt }}">
+      {%- assign logo_height = settings.logo_max_width | divided_by: logo_page.aspect_ratio -%}
+      {% capture sizes %}(max-width: {{ settings.logo_max_width | times: 2 }}px) 50vw, {{ settings.logo_max_width }}px{% endcapture %}
+      {% capture widths %}{{ settings.logo_max_width }}, {{ settings.logo_max_width | times: 1.5 | round }}, {{ settings.logo_max_width | times: 2 }}{% endcapture %}
+      {{ logo_page | image_url: width: 600 | image_tag:
+        class: 'header__heading-logo motion-reduce',
+        widths: widths,
+        height: logo_height,
+        width: settings.logo_max_width,
+        alt: logo_alt,
+        sizes: sizes,
+        preload: true
+      }}
+  </a>
+  {% else %}
+  <a class="site-title" href="{{ routes.root_url }}" itemprop="url"><span class="logo-default">{{ settings.logo_text  }}</span></a>
+  {% endif %}
+
+  {%endif%}

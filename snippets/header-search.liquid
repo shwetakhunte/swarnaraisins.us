@@ -1,0 +1,89 @@
+{% comment %}
+  Renders a header search modal. Should be used with 'header.liquid'
+
+  Accepts:
+  - input_id: {String} Id for the search input element (required)
+
+  Usage:
+  {% render 'header-search', input_id: 'My-Id'%}
+{% endcomment %}
+
+<details-modal class="header__search">
+  <div
+    class="search-modal modal__content gradient"
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ 'general.search.search' | t }}"
+    style="
+      --bg-search:{{ settings.cl_bg_search }};
+      --cl-b-search:{{ settings.cl_bd_search }};
+      --cl-btn-search:{{ settings.cl_btn_search }};
+      --cl-btn-search-h:{{ settings.cl_btn_search_hover }};
+      --rounded-btn:{{ settings.b-raidus-search }}px;
+    "
+  >
+    <div class="modal-overlay"></div>
+    <div
+      class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
+      tabindex="-1"
+    >
+      {%- if settings.predictive_search_enabled -%}
+        <predictive-search class="search-modal__form" data-loading-text="{{ 'general.search.loading' | t }}">
+      {%- else -%}
+        <search-form class="search-modal__form">
+      {%- endif -%}
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+        <div class="field">
+          <input
+            class="search__input field__input"
+            id="{{ input_id }}"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.search' | t }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <input type="hidden" name="type" value="product">
+          <input type="hidden" name="options[unavailable_products]" value="last">
+          <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+          <input type="hidden" name="options[prefix]" value="last">
+          <button
+            type="reset"
+            class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+            aria-label="{{ 'general.search.reset' | t }}"
+          >
+            {%- render 'icon-close' -%}
+          </button>
+          <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            {{ 'general.search.title' | t }}
+            {% render 'icon-search' %}
+          </button>
+        </div>
+
+        {%- if settings.predictive_search_enabled -%}
+          <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+            {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+            {%- render 'search-suggestions', class: 'search-suggestions' -%}
+          </div>
+          <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        {%- endif -%}
+      </form>
+      {%- if settings.predictive_search_enabled -%}
+        </predictive-search>
+      {%- else -%}
+        </search-form>
+      {%- endif -%}
+    </div>
+  </div>
+</details-modal>

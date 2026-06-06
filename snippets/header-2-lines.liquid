@@ -1,0 +1,134 @@
+{% assign style_search = settings.style_search | plus: 0 %}
+<div class="header-main-wrap">
+  <div class="header-top">
+    <div
+      class="container {% if section.settings.layout %}full-width{% endif %}"
+      style="--alo-container-width:{{ section.settings.container }}px;"
+    >
+      <div class="header-inner grid v_middle{% if style_search == 2 %} have-search{% endif %}">
+        <div class="header-nav-mobile">
+          <div class="js-mobile-menu menu-bar mobile-navigation">
+            <span class="icon">
+              {% render 'icon-menu-mobile' %}
+            </span>
+          </div>
+          
+          <div class="header_search">
+              <trigger-click class="header-icon" data-target="dialog-modal .header-search">
+                <span class="icon">
+                {% render 'icon-search' %}
+                </span>
+                {% if settings.show_text_header_right %}
+                  <span class="b">{{ 'general.search.title' | t }}</span>
+                {% endif %}  
+              </trigger-click>
+          </div>
+        </div>
+        {% if settings.header_design == 'logo-center_2l' %}
+          <div class="header-left hide-mobile"> 
+          {% render 'social_link' class:'top' %}  
+          </div>
+        {% endif %}
+        <div class="header-logo">
+          {%- render 'logo' -%}
+        </div>
+
+        {% if style_search != 1 and settings.header_design == 'logo-left_2l' %}
+          <div class="search-bar hide-mobile {%if settings.use_vertical_menu and settings.vertical_menu_position == '2' %}have-menu{% endif %}">
+            {% if settings.use_vertical_menu and settings.vertical_menu_position == '2' %}
+              <div class="menu-left vertical_menu ">
+                <div
+                  class="title_vertical_menu click flex"
+                  style="--alo-background-color:{{ settings.cl_bg_menu }};--alo-color:{{ settings.cl_h_vertical }};"
+                >
+                  <span class="icon-left">
+                    <svg fill="none" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
+                      <g fill="rgb(0,0,0)"><path d="m20 7h-16c-.6 0-1-.4-1-1s.4-1 1-1h16c.6 0 1 .4 1 1s-.4 1-1 1z"/><path d="m14 13h-10c-.6 0-1-.4-1-1s.4-1 1-1h10c.6 0 1 .4 1 1s-.4 1-1 1z"/><path d="m18 19h-14c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z"/></g>
+                    </svg>
+                  </span>
+                  <span class="title">{{ settings.title_vertical }}</span>
+                </div>
+                {%- render 'list-vertical-menu' -%}
+              </div>
+            {%- endif -%}
+            {%- render 'header-search' -%}
+          </div>
+        {% endif %}
+
+        <div class="header-right ">
+          <ul class="header-control">
+            {% if settings.header_use_search_home %}
+              {% if style_search == 1 or settings.header_design == 'logo-center_2l' %}
+                <li class="header_search hide-mobile">
+                  <trigger-click class="header-icon" data-target="dialog-modal .header-search">
+                    <span class="icon">
+                    {% render 'icon-search' %}
+                    </span>
+                    {% if settings.show_text_header_right %}
+                      <span class="b">{{ 'general.search.title' | t }}</span>
+                    {% endif %}  
+                  </trigger-click>
+                </li>
+              {% endif %}
+            {% endif %}
+            {% if settings.header_use_account %}
+              {% render 'signin-header' %}
+            {% else %}
+              {% render 'signin-header', class:'sm:d-block d-none' %}
+            {% endif %}
+            {% if settings.header_use_cart_home %}
+              {% render 'minicart-header' %}
+            {% endif %}
+            {% if settings.header_use_compare_home %}
+              <li class="hide-mobile">
+                {% render 'mini-compare' %}
+              </li>
+            {% endif %}
+            {% if settings.header_use_wishlist_home %}
+              <li class="hide-mobile">
+                {% render 'mini-wishlist' %}
+              </li>
+            {% endif %}
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navigationMenu hide-mobile" style="--alo-background-color:{{ section.settings.cl_bg_menu }}">
+    <div
+      class="container {% if section.settings.layout %}full-width{% endif %}"
+      style="--alo-container-width:{{ section.settings.container }}px;"
+    >
+      <div class="row">
+        {% if settings.use_vertical_menu %}
+          {% if settings.vertical_menu_position == '1' or settings.vertical_menu_position == '3' or settings.vertical_menu_position == '5' %}
+            <div class="menu-left vertical_menu ">
+              <div
+                class="title_vertical_menu {% if settings.vertical_menu_position == '3' or settings.vertical_menu_position == '5' %}back-to-top {% endif %} {% if settings.vertical_menu_position == '1' or request.page_type !='index'%}click{% endif %} flex">
+                <span class="icon-left">
+                  <svg fill="none" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="rgb(0,0,0)"><path d="m20 7h-16c-.6 0-1-.4-1-1s.4-1 1-1h16c.6 0 1 .4 1 1s-.4 1-1 1z"/><path d="m14 13h-10c-.6 0-1-.4-1-1s.4-1 1-1h10c.6 0 1 .4 1 1s-.4 1-1 1z"/><path d="m18 19h-14c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z"/></g>
+                  </svg>
+                </span>
+                <span class="title">{{ settings.title_vertical }}</span>
+              </div>
+              {% if settings.vertical_menu_position == '1' or settings.vertical_menu_position != '5' or request.page_type != 'index' %}
+                {%- render 'list-vertical-menu' -%}
+              {% endif %}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+        <div class="ps-static col"
+          style="
+          --font-size:{{ section.settings.f-size }}px;
+          --font-weight:{{ section.settings.f-weight }};
+          --text-transform:{{ section.settings.text_transform }};
+          "
+          >
+          {%- render 'menu', se_blocks: se_blocks, tp_blocks: tp_blocks -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

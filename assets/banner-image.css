@@ -1,0 +1,69 @@
+banner-image.pos-right {
+  order: 1;
+}
+banner-image .block-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+banner-image .block-banner .image_static {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+banner-image content-image {
+  padding:40px;
+}
+banner-image content-image .content-wrap  {
+  margin-bottom: 25px;
+}
+banner-image content-image.text_left .wrap_title {
+  align-items: flex-start;
+}
+banner-image content-image.text_center .wrap_title {
+  align-items: center;
+}
+banner-image content-image.text_right .wrap_title {
+  align-items: flex-end;
+}
+banner-image ul.menu {
+
+}
+banner-image ul.menu li {
+
+}
+banner-image ul.menu li a {
+  display: flex;
+  align-items: center;
+  line-height: 30px;
+  font-size: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .alo-banner-full-left>.row {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+  .alo-banner-full-left banner-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding-left: 0;
+  }
+  .alo-banner-full-right banner-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  banner-image content-image {
+    padding:20px;
+  }
+
+}

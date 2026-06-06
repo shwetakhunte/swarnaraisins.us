@@ -1,0 +1,657 @@
+{% liquid
+  assign sid = section.id
+  assign border = section.settings.border
+  assign space_between = section.settings.space-Between
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+  assign layout =section.settings.layout 
+  if section.settings['use-slider']
+    assign use_slider = true
+  else
+    assign use_slider = false
+  endif
+
+  assign sett_equal = section.settings.use_eq_height
+  assign image_ratio = section.settings.image_ratio
+  if sett_equal 
+     case image_ratio   
+        when 'ratio2_1'
+            assign aspect_ratio = 2.0
+        when 'ratio3_2'
+            assign aspect_ratio = 1.5
+        when 'ratio4_3'
+            assign aspect_ratio = 1.333
+        when 'ratio1_1'
+            assign aspect_ratio = 1.0
+        when 'ratio3_4'
+            assign aspect_ratio = 0.75
+        when 'ratio2_3'
+            assign aspect_ratio = 0.66667
+        when 'ratio1_2'
+            assign aspect_ratio = 0.5
+     endcase 
+  endif
+%}
+{{ 'brand-list.css' | asset_url | stylesheet_tag }}
+  <section id="laber_{{sid}}" class="wow animate--slide-in">
+    <div class="container {% if layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+      <div class="{% if section.settings.cl_bg_content != 'rgba(0,0,0,0)' %}alo-background-color alo-border-radius pd-30 py-30 sm:pd-10 sm:py-10 {% endif %}" style="{% if section.settings.cl_bg_content != 'rgba(0,0,0,0)' %}--bg-color:{{ section.settings.cl_bg_content  }}; {% endif %}">
+      {% if section.settings.title != blank %}
+        <div class="wrap_title w_{{ section.settings.h_position }} text_{{section.settings.txt_align}} {{ section.settings.text_size }} mb-30 sm:mb-20" style="--alo-bg-title:{{ section.settings.bg_title2 |default:"#fdf4ed" }};">
+          {% if section.settings.sub_title != blank %}
+            <div class="section-subtitle"
+              style="
+                  --cl-text:{{ section.settings.cl_title_sub |default:"#888" }};
+            "
+              >{{ section.settings.sub_title }}</div>
+          {% endif %}  
+          <div
+              class="h3 section-title alo-text-transform"
+                style="
+                  --cl-text:{{ section.settings.cl_title |default:"#333333" }};
+                  --alo-text-transform:{{ section.settings.text_transform }}
+                "
+            >
+            {{ section.settings.title }}
+          </div>
+          {% if section.settings.content != blank %}
+            <div class="content">{{ section.settings.content }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+        {% # theme-check-disable %}
+
+          {% include 'grid-slider', settings:section.settings %} 
+          <grid-slider class="grid-slider show-tooltip blog-slider {%if sett_equal%}{{image_ratio}} {%endif%}" {{gridSlider}} >
+            <div class="swiper iSwiper"
+            {%- render 'skeleton', settings: section.settings -%}
+            style="--perload-gap: {{ space_between}}px"
+            >
+              <div class="swiper-wrapper {% if use_slider == false %}flex-wrap{% endif %}">
+              {%- if section.blocks.size > 0 -%}
+                {%- for block in section.blocks -%}
+                  {%- assign image = block.settings.image -%}
+                  {%- assign url = block.settings.url | default:"#" -%}
+                  <div class="swiper-slide">
+                    <div class="brand_list" style="--rounded:{{ border }}px;">
+                    {%- if image != blank -%}
+                        {% render 'responsive-image', image: image, url:url, aspect_ratio:aspect_ratio, image_class: 'w-full h-full' %}
+                    {% else %}
+                      {% if aspect_ratio != blank %}
+                         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                      {% else %}
+                          {%- assign ratio = 100 -%}
+                      {% endif %}
+                      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                      </div>
+                    {%- endif -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              {% else %}
+                {%- for i in (1..6) -%}
+                  <div class="swiper-slide">
+                    <div class="brand_list">
+                    {% if aspect_ratio != blank %}
+                         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                      {% else %}
+                          {%- assign ratio = 100 -%}
+                      {% endif %}
+                      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+                        {% if use_slider == true %}
+            {% if navigation %}
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            {% endif %}
+            {% if pagination %}
+              <div class="swiper-pagination"></div>
+            {% endif %}
+          {% endif %}
+            </div>
+            </grid-slider>
+        {% # theme-check-enable %}
+      </div>
+    </div>
+  </section>
+  {%- render 'section_style' -%}
+
+
+{%- schema -%}
+ {
+   "name": "Brand list",
+   "class": "laber_section brand_list type_brand_list type_carousel zoom_img",
+"max_blocks": 30,
+   "settings": [
+     {
+      "type": "header",
+      "content": "== Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Choose Product By Brands"
+    },
+     {
+      "type": "inline_richtext",
+      "id": "sub_title",
+      "label": "Sub Heading"
+    },
+     {
+       "type": "color",
+       "id": "cl_title",
+       "label": "Color title",
+       "default": "#333"
+       },
+     {
+       "type": "color",
+       "id": "cl_title_sub",
+       "label": "Color title (Sub)",
+       "default": "#888"
+       },
+    {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+    {
+            "type": "select",
+            "id": "text_transform",
+            "default": "none",
+            "options": [
+             {
+                "value": "none",
+                "label": "None"
+             },
+             {
+                "value": "capitalize",
+                "label": "Capitalize"
+             },
+             {
+                "value": "lowercase",
+                "label": "Lowercase"
+             },
+             {
+                "value": "uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "label": "Text transform:"
+          },
+     {
+        "type": "select",
+        "id": "h_position",
+        "label": "Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "txt_align",
+            "label": "Text Align",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+  {
+      
+       "type": "header",
+       "content": "== Design Options"
+     },
+    {  
+        "type": "range",  
+        "id": "border",  
+        "label": "Border",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 3 
+    },
+     {
+        "type": "checkbox",
+        "id": "use_eq_height",
+        "label": "Use equal height images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio3_2",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          }, 
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio3_4",
+            "label": "3:4"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+     {
+        "type": "header",
+        "content": "---- Brand Slider ----",
+        "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+    },  
+    {
+        "type": "checkbox",
+        "id": "use-slider",
+        "label": "Use slider?",
+        "default": true
+    },
+    {
+       "type": "range",
+       "id": "visible",
+       "label": "Columns in Visible",
+    "info": "Item(s) in screen ( Size >= 1920 )",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 5
+    },
+    {
+       "type": "range",
+       "id": "widescreen",
+       "label": "Columns in Widescreen",
+    "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 4
+    },
+    {
+       "type": "range",
+       "id": "desktop",
+       "label": "Columns in Desktop",
+    "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 4
+    },
+    {
+       "type": "range",
+       "id": "laptop",
+       "label": "Columns in Laptop",
+    "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 4
+    },
+    {
+       "type": "range",
+       "id": "notebook",
+       "label": "Columns in Notebook",
+    "info": "Item(s) in screen ( 768 <= Size < 992 )",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 3
+    },
+    {
+       "type": "range",
+       "id": "tablet",
+       "label": "Columns in Tablet",
+    "info": "Item(s) in screen ( 576 <= Size < 768 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "unit": "pds",
+       "default": 3
+    },
+    {
+       "type": "range",
+       "id": "landscape",
+       "label": "Columns in Landscape",
+    "info": "Item(s) in screen ( 480 <= Size < 576 )",
+       "min": 1,
+       "max": 6,
+       "step": 1,
+       "default": 2
+    },
+    {
+       "type": "range",
+       "id": "portrait",
+       "label": "Columns in Portrait",
+    "info": "Item(s) in screen ( 360 < Size < 480 )",
+       "min": 1,
+       "max": 6,
+       "step": 1,
+       "default": 2
+    },
+    {
+       "type": "range",
+       "id": "mobile",
+       "label": "Columns in Mobile",
+    "info": "Item(s) in screen ( Size < = 360 )",
+       "min": 1,
+       "max": 4,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "slides-Per-Group",
+       "label": "Slide Per Group",
+       "info": "The number of items slide to scroll",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "rows",
+       "label": "Rows Slider",
+       "min": 1,
+       "max": 3,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "checkbox",
+       "id": "autoplay",
+       "label": "Autoplay",
+       "default": true
+    },
+    {
+       "type": "text",
+       "id": "speed",
+       "label": "Speed",
+       "default": "300",
+       "info": "Duration of transition between slides (in ms)"
+    },
+    {
+       "type": "text",
+       "id": "autoplay_delay",
+       "label": "Auto Play delay",
+       "default": "3000",
+       "info": "Delay between transitions (in ms)"
+    },
+    {
+       "type": "checkbox",
+       "id": "navigation",
+       "label": "Navigation",
+       "info": "Arrows next,prev",
+       "default": true
+    },
+    {
+       "type": "select",
+       "id": "effect",
+       "label": "effect",
+       "options": [
+        {
+           "value": "coverflow",
+           "label": "Coverflow"
+         },
+        {
+           "value": "creative",
+           "label": "Creative"
+         },
+        {
+           "value": "cube",
+           "label": "Cube"
+         },
+        {
+           "value": "fade",
+           "label": "Fade"
+         },
+        {
+           "value": "flip",
+           "label": "Flip"
+         },
+        {
+           "value": "slide",
+           "label": "Slide"
+        }
+       ],
+       "default": "slide"
+    },
+    {
+       "type": "checkbox",
+       "id": "centered-Slides",
+       "label": "centered Slides",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "auto-Height",
+       "label": "Auto Height",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "pagination",
+       "label": "Pagination",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "loop",
+       "label": "Loop",
+       "default": false
+    },
+    {
+       "type": "range",
+       "id": "space-Between",
+       "label": "Space Between",
+       "info": "Distance between slides in px.",
+       "min": 0,
+       "max": 30,
+       "step": 0.5,
+       "unit": "px",
+       "default": 10
+    },
+    {
+       "type": "select",
+       "id": "direction",
+       "label": "Direction",
+       "options": [
+        {
+           "value": "horizontal",
+           "label": "Horizontal"
+         },
+        {
+           "value": "vertical",
+           "label": "Vertical"
+         }
+       ],
+       "default": "horizontal"
+    },
+
+     {
+       "type": "header",
+       "content": "== Design Options"
+     },
+      {
+        "type": "checkbox",
+        "id": "layout",
+        "label": "Full width",
+        "default": false
+        },
+        {
+            "type": "range",  
+            "id": "container",  
+            "label": "Container width",
+            "min": 1200,
+            "max": 1900,
+            "step": 10,
+            "unit": "px",
+            "default": 1410 
+        },
+
+     {
+       "type": "color",
+       "id": "cl_bg",
+       "label": "Background color",
+       "default": "#fff"
+     },
+     {
+        "type": "color",
+        "id": "cl_bg_content",
+       "default":"rgba(0,0,0,0)",
+        "label": "Background color (content)",
+        "info": "If not used you can leave blank"
+      },  
+  {
+       "type": "header",
+       "content": "== Margin",
+	"info":"Margin top, margin bottom. If you not use to blank"
+     },
+  	        {
+       "type": "text",
+       "id": "mg",
+       "label": "Margin",
+       "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+     },
+     {
+       "type": "text",
+       "id": "pd",
+       "label": "Padding",
+       "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+     },
+    {
+       "type": "header",
+       "content": "== Design Mobile Options"
+     },
+     {
+       "type": "text",
+       "id": "mg_mb",
+       "label": "Margin"
+     },
+     {
+       "type": "text",
+       "id": "pd_mb",
+       "label": "Padding"
+     }
+   ],
+"blocks": [{
+   "type": "brand",
+   "name": "Brand",
+   "settings": [
+     {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+	 "info": "Dimension: 1170 x 70 px"
+      },
+      {
+       "label": "Link to (Optional)",
+       "id": "url",
+       "type": "url"
+     },
+     {
+       "type": "select",
+       "id": "open_link",
+       "options": [
+         {
+           "value": "_self",
+           "label": "Current window (_self)"
+         },
+        {
+           "value": "_blank",
+           "label": "New window (_blank)"
+         }
+       ],
+       "label": "Open link in",
+       "default": "_blank"
+     }
+     ]
+   }],
+   "presets": [
+     {
+       "name": "Brand list",
+       "category": "Images",
+	"blocks": [
+         { "type": "brand" },
+         { "type": "brand" },
+         { "type": "brand" },
+         { "type": "brand" },
+         { "type": "brand" },
+         { "type": "brand" }
+       ]
+     }
+   ]
+ }
+{%- endschema -%}

@@ -1,0 +1,448 @@
+{{ 'list-collections.css' | asset_url | stylesheet_tag }}
+{%- liquid
+ assign sid = section.id 
+  assign layout = section.settings.layout
+  assign sett_equal = section.settings.use_eq_height
+  assign image_ratio = section.settings.image_ratio
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio5_6'
+        assign aspect_ratio = 0.8333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio6_5'
+        assign aspect_ratio = 1.2
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = section.settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+-%}
+<section id="laber_{{sid}}">
+<div class="main-content shop-page main-list-collections list-collections-template">
+      <div class="container container_cat {% if layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+        <div class="row">
+        {%- if section.settings.display_type == 'all' -%}
+          {%- case section.settings.sort -%}
+            {%- when 'products_high' or 'products_low' -%}
+              {%- assign collections = collections | sort: 'all_products_count' -%}
+            {%- when 'date' or 'date_reversed' -%}
+              {%- assign collections = collections | sort: 'published_at' -%}
+          {%- endcase -%}
+          {%- if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed' -%}
+            {%- assign collections = collections | reverse -%}
+          {%- endif -%}
+          <div class="content_section col">
+            {% paginate collections by section.settings.pagination_limit %}
+            <div class=" flex flex-wrap alo-gap content-grid collection-grid" 
+                style="
+                  --col-desktop:{{ section.settings.columns_desktop }};
+                  --col-laptop:{{ section.settings.columns_laptop }};
+                  --col-tablet:{{ section.settings.columns_tablet }};
+                  --col-landscape:{{ section.settings.columns_landscape }};
+                  --col-mobile:{{ section.settings.columns_mobile }};
+                  --alo-gap-m:{{section.settings.gap_mobile}}px;
+                  --alo-gap:{{ section.settings.gap }}px;
+                "
+              > 
+            {%- for collection in collections -%}
+            	{% assign image = collection.image |default:collection.products[0].featured_image -%}
+                {% assign url =  collection.url | default:'/admin/collections'  %}
+            	<div class="item__content collection-item">
+                <div class="cat_grid_item__content overflow-hidden alo-border-radius">
+                  <div class="cat_grid_item__img">
+                    {%- if image != blank -%}
+                      {% render 'responsive-image', image: image, url:url, aspect_ratio:aspect_ratio, image_class: 'w-full h-full' %}
+                    {%- else -%}
+                    	{% if aspect_ratio != blank %}
+                             {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                          {% else %}
+                              {%- assign ratio = 100 -%}
+                          {% endif %}
+                          <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                          </div>
+                    {%- endif -%}
+                  </div>
+                  <div class="cat_grid_item__wrapper">
+                    <div class="cat_grid_item__title">
+                      <a href="{{ collection.url | default:'/admin/collections' }}" class="{{ collection.title }}">
+                      {{ collection.title }}
+                      </a>
+                    </div>
+                    {% if collection != blank %}
+                    <div class="cat_grid_item__count ">{{collection.all_products_count}} {% if collection.all_products_count > 1 %} {{'homepage.section.items' | t}} {% else %}{{'homepage.section.item' | t}} {% endif %}</div>
+                    {% endif %}
+                  </div>
+                </div>
+            	</div>
+                {%- endfor -%}
+            </div>
+           {%- if paginate.pages > 1 -%}
+                  {% render 'pagination', paginate: paginate, anchor: '' %}
+             {%- endif -%}
+           {% endpaginate %}
+		   </div>
+        {%- elsif section.blocks.size > 0 -%}
+            <div class="content_section ">
+              <div class=" flex flex-wrap alo-gap content-grid collection-grid" 
+                style="
+                  --col-desktop:{{ section.settings.columns_desktop }};
+                  --col-laptop:{{ section.settings.columns_laptop }};
+                  --col-tablet:{{ section.settings.columns_tablet }};
+                  --col-landscape:{{ section.settings.columns_landscape }};
+                  --col-mobile:{{ section.settings.columns_mobile }};
+                  --alo-gap-m:{{section.settings.gap_mobile}}px;
+                  --alo-gap:{{ section.settings.gap }}px;
+                "
+              > 
+             {%- for block in section.blocks -%}
+               {%- liquid
+                assign collection = collections[block.settings.collection]
+                assign image = block.settings.image | default:collection.image |default:collection.products[0].featured_image
+                assign home_t = 'homepage.onboarding.collection_title' | t 
+                assign url =  collection.url | default:'/admin/collections'
+              -%}
+              
+              <div id="bk_{{block.id}}" class="cat_grid_item cat_space_item collection-item" {{ block.shopify_attributes }}>
+                <div class="cat_grid_item__content overflow-hidden alo-border-radius">
+                  <div class="cat_grid_item__img">
+                    {%- if image != blank -%}
+                      {% render 'responsive-image', image: image, url:url, aspect_ratio:aspect_ratio, image_class: 'w-full h-full' %}	
+                    {%- else -%}
+                      {% if aspect_ratio != blank %}
+                           {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                        {% else %}
+                            {%- assign ratio = 100 -%}
+                        {% endif %}
+                        <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+                          {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                        </div>
+                    {%- endif -%}
+                  </div>
+                  <div class="cat_grid_item__wrapper">
+                    <div class="cat_grid_item__title">
+                      <a href="{{ collection.url | default:'/admin/collections' }}" class="{{ block.settings.title | default:collection.title | default:home_t }}">
+                        {{ block.settings.title | default:collection.title | default:home_t }}
+                      </a>
+                    </div>
+                    {% if collection != blank %}
+                      <div class="cat_grid_item__count ">{{collection.all_products_count}} {% if collection.all_products_count > 1 %} {{'homepage.section.items' | t}} {% else %}{{'homepage.section.item' | t}} {% endif %}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+             {%- endfor -%}
+          </div>
+      </div>    
+        {%- endif -%}
+      </div>
+      </div>
+  </div>
+</section>
+{%- render 'section_style' -%}
+{%- schema -%}
+{
+  "name": "Collections list page",
+  "settings": [
+      {
+        "type": "header",
+        "content": "== General Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "layout",
+        "label": "Full width",
+        "default": false
+        },
+        {
+            "type": "range",  
+            "id": "container",  
+            "label": "Container width",
+            "min": 1170,
+            "max": 1920,
+            "step": 10,
+            "unit": "px",
+            "default": 1410 
+        },
+      {
+        "type": "range",
+        "id": "pagination_limit",
+        "min": 1,
+        "max": 48,
+        "step": 1,
+        "unit": "pds",
+        "label": "Max number collections",
+        "info": "The number of collections I have on a page only applies when 'All' is selected",
+        "default": 16
+      },
+      {
+        "type": "paragraph",
+        "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections."
+      },
+      {
+        "type": "radio",
+        "id": "display_type",
+        "label": "Select collections to show",
+        "default": "all",
+        "options": [
+          {
+            "value": "all",
+            "label": "All"
+          },
+          {
+            "value": "selected",
+            "label": "Selected"
+          }
+      	]
+      },
+      {
+        "type": "select",
+        "id": "sort",
+        "label": "Sort collections by:",
+        "info": "Sorting only applies when 'All' is selected",
+        "default": "alphabetical",
+		"options": [
+            {
+            "value": "products_high",
+            "label": "Product count, high to low"
+            },
+            {
+            "value": "products_low",
+            "label": "Product count, low to high"
+            },
+            {
+            "value": "alphabetical",
+            "label": "Alphabetically, A-Z"
+            },
+            {
+            "value": "alphabetical_reversed",
+            "label": "Alphabetically, Z-A"
+            },
+            {
+            "value": "date",
+            "label": "Date, old to new"
+            },
+            {
+            "value": "date_reversed",
+            "label": "Date, new to old"
+            }
+		]
+      },
+	  {
+        "type": "checkbox",
+        "id": "use_eq_height",
+        "label": "Use equal height images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio3_2",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          },
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio3_4",
+            "label": "3:4"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          },
+          {
+            "group": "Custom",
+            "value": "custom",
+            "label": "Custom ratio"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_ratio",
+        "label": "Custom ratio",
+        "default": "3/4",
+        "info": "you can set the image ratio you want to use for example 3/4"
+      },
+      {
+      "type": "color",
+      "id": "cl_bg",
+      "label": "Background color",
+      "default": "#fff"
+      },	
+          {
+        "type": "header",
+        "content": "---- Grid Show Collection ----"
+    },    
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "info": "Item(s) in screen ( Size >= 1200 )",
+      "label": "t:sections.main-search.settings.columns_desktop.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_laptop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "info": "Item(s) in screen ( 992 <= Size < 1199 )",
+      "label": "Number of columns on laptop"
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "info": "Item(s) in screen ( 768 <= Size < 991 )",
+      "label": "Number of columns on tablet"
+    },
+    {
+      "type": "range",
+      "id": "columns_landscape",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "info": "Item(s) in screen ( 480 <= Size < 767 )",
+      "label": "Number of columns on landscape"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-search.settings.columns_mobile.label",
+      "info": "Item(s) in screen ( Size < = 480 )",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-search.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-search.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 30,
+      "unit": "Px",
+      "label": "Gap"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "Px",
+      "default": 10,
+      "label": "Gap mobile"
+    },
+	  {
+        "type": "header",
+        "content": "== Margin",
+		"info":"Margin top, margin bottom. If you not use to blank"
+      },  
+	  	        {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding"
+      }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+      ]
+    }
+  ]
+}
+{% endschema %}

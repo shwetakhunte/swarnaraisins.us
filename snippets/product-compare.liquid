@@ -1,0 +1,120 @@
+{% # theme-check-disable %}{% include 'product-res-variables' %}{% # theme-check-enable %}
+{%- assign image_border_product = settings.image_border_product -%}
+{%- assign show_title =  settings.product_collection_show_title -%}
+{%- assign show_price =  settings.product_collection_show_price -%}
+{%- assign show_button_add_to_cart = settings.product_collection_show_button_add_to_cart -%}
+{%- assign show_button_remove = true -%}
+{% assign show_secondary_image = settings.product_collection_show_secondary_image %}
+{%- assign variants_size = product.variants | size -%}
+{%- liquid
+  assign sett_equal = settings.use_eq_height_product
+  assign image_ratio = settings.image_ratio_product
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+    endcase
+  endif
+-%}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default:product.featured_media.aspect_ratio %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+<div
+  class="product-compare"
+  data-js-product
+  data-handle="{{ product.handle }}"
+  data-variant-id="{{ current_variant_id }}"
+>
+  {%- if show_button_remove -%}
+    {% render 'product-get-button-compare', product: product, class:'right' %}
+  {%- endif -%}
+  <div
+    class="product-compare__image w-full h-full alo-border-radius"
+    style="--alo-border-radius:{{ image_border_product }}px;"
+  >
+    <div class="card__media">
+      <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
+        <a
+          href="{{ product.url | within: collection }}"
+          class="d-block image_product cursor-default {% if product.featured_media %} ratio{% endif %}"
+          style="{{ style }}"
+          data-js-product-image
+        >
+          {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="product-compare__content">
+    {%- if show_title -%}
+      <div class="product-compare__title">
+        <h2>
+          <a href="{{ url }}">{{ title }}</a>
+        </h2>
+      </div>
+    {%- endif -%}
+    {%- if show_price -%}
+      <div class="product-compare__price">
+        {% render 'product-get-price' with price: price compare_at_price: compare_at_price %}
+      </div>
+    {%- endif -%}
+    {% form 'product', product, id: null, class: 'frm_product', data-js-product-form: '' %}
+      {%- if show_button_add_to_cart -%}
+        <div class="product-compare__variants d-none">
+          {% render 'product-get-variants' with product: product current_variant: current_variant show_options: show_options show_custom_options: show_custom_options %}
+        </div>
+      {%- endif -%}
+      {% if show_button_add_to_cart %}
+        <div class="button-cart-bottom">
+          {% if variants_size == 1 %}
+            <div class="flex alo-gap" style="--alo-gap:5px;">
+              {% if product.available %}
+                {% if show_quantity_box %}
+                  {% render 'product-quantity', product: product %}
+                {% endif %}
+                <button
+                  type="submit"
+                  class="add-to-cart {%if settings.disable_ajax_cart %}page_{{settings.custom_page_cart}}{%endif%} alo-border-radius"
+                  style="--alo-border-radius:5px;"
+                  data-pid="{{ product.variants.first.id }}"
+                >
+                  <span class="text">{{ 'products.product.add_to_cart' | t }}</span>
+                </button>
+              {% else %}
+                <a
+                  class="add-to-cart js-btn-sold-out alo-border-radius"
+                  style="--alo-border-radius:5px;"
+                  onclick="location.href='{{ product.url | within: collection }}'"
+                >
+                  <span class="text">{{ 'products.product.sold_out' | t }}</span></a
+                >
+              {% endif %}
+            </div>
+          {% else %}
+            <a
+              href="{{ url }}"
+              data-pid="{{ current_variant_id }}"
+              class="js_select_options select_options alo-border-radius"
+              style="--alo-border-radius:5px;"
+            >
+              <span class="text">{{ 'products.grid_items.select_options' | t }}</span>
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endform %}
+  </div>
+</div>

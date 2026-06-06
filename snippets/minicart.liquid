@@ -1,0 +1,189 @@
+{% if cart.item_count > 0 and settings.recommendations_enabled %}
+  {{ 'ajax-recommendations.css' | asset_url | stylesheet_tag }}
+  {% assign max_count = settings.recommendations_max_count | plus: 0 %}
+  <ajax-recommendations
+    {% if settings.recommendations_hidden_mobile %}
+      data-match-media="(min-width: 921px)"
+    {% endif %}
+    data-url="{{ routes.product_recommendations_url }}?limit={{ max_count }}"
+    data-section-id="ajax-recommendations"
+    data-product-id="{{ cart.items.first.product_id }}"
+    style="--alo-border-radius:{{ settings.image_border_product}}px;"
+  ></ajax-recommendations>
+{% endif %}
+<div class="wrap-mini-cart">
+  <div class="mini_cart_header">
+    <div class="title">
+      {{ 'cart.general.shopping_cart' | t -}}
+      <span class="cart-count">{{ cart.item_count }}</span>
+    </div>
+    <script id="json-data-cart" type="application/json">
+      {{ cart | json }}
+    </script>
+    <span class="close_popup_ajax close-x"><i class="icon-x"></i></span>
+  </div>
+  {% if cart.item_count > 0 %}
+    <div class="box-cart">
+      <div class="cart-free-shipping mb-20">{% render 'free-shipping' %}</div>
+      <div class="js-cart-inner">
+        {% comment %}<h5 class="title">{{ 'cart.general.you_have' | t }} <span class="count-item">{{ cart.item_count }}</span> {{ 'cart.general.your_cart' | t }}</h5>{% endcomment %}
+        <ul class="list-item">
+          {% for item in cart.items %}
+            <li class="product-item" data-product-id="{{ item.id }}">
+              <a href="{{ item.product.url }}" class="thumb">
+                {% render 'image',image:item, width:120, class:'lazyload', alt:item.product.title %}
+              </a>
+              <div class="info">
+                <a href="{{ item.product.url }}" class="product-name">{{ item.product.title }}</a>
+                {%- if item.product.has_only_default_variant == false
+                  or item.properties.size != 0
+                  or item.selling_plan_allocation != null
+                -%}
+                  <dl>
+                    {%- if item.product.has_only_default_variant == false -%}
+                      {%- for option in item.options_with_values -%}
+                        <div class="product-option">
+                          <dt>{{ option.name }}:</dt>
+                          <dd>{{ option.value }}</dd>
+                        </div>
+                      {%- endfor -%}
+                    {%- endif -%}
+
+                    {%- for property in item.properties -%}
+                      {%- assign property_first_char = property.first | slice: 0 -%}
+                      {%- if property.last != blank and property_first_char != '_' -%}
+                        <div class="product-option">
+                          <dt>{{ property.first }}:</dt>
+                          <dd>
+                            {%- if property.last contains '/uploads/' -%}
+                              <a href="{{ property.last }}" class="link" target="_blank">
+                                {% render 'icon-image' %}
+                                <span class="img">
+                                  {% # theme-check-disable %}
+                                  <img
+                                    src="{{ property.last }}"
+                                    alt=""
+                                    class="uploads_image"
+                                    width="100"
+                                    height="100"
+                                    loading="lazy"
+                                  >{% # theme-check-enable %}
+                                </span>
+                              </a>
+                            {%- else -%}
+                              {{ property.last }}
+                            {%- endif -%}
+                          </dd>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </dl>
+
+                  {%- if item.selling_plan_allocation.selling_plan.name != null -%}
+                    <div class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</div>
+                  {%- endif -%}
+                {%- endif -%}
+                <div class="product-item-qty">
+                  <div class="number price">
+                    <span class="qty">{{ item.quantity }}x</span>
+                    <span>{{ item.price | money }}</span>
+                    {%- if item.product.has_only_default_variant == false -%}
+                      <a class="edit-cart" href="{{ item.url }}">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.7356 2.10012L2.94644 7.16928C2.76561 7.36178 2.59061 7.74095 2.55561 8.00345L2.33977 9.89345C2.26394 10.5759 2.75394 11.0426 3.43061 10.9259L5.30894 10.6051C5.57144 10.5584 5.93894 10.3659 6.11977 10.1676L10.9089 5.09845C11.7373 4.22345 12.1106 3.22595 10.8214 2.00678C9.5381 0.799283 8.56394 1.22512 7.7356 2.10012Z" stroke="#8D979E" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M6.93555 2.94571C7.18638 4.55571 8.49305 5.78654 10.1147 5.94988" stroke="#8D979E" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M1.75 12.8333H12.25" stroke="#8D979E" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </a>
+                    {%- endif -%}
+                  </div>
+                  <div class="quantity-item" data-title="{{'cart.label.quantity'|t}}">
+                    <div class="quantity-cart">
+                      {% render 'quantity-input', variant: item %}
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="js-remove-item remove"
+                  href="/cart/change?line={{ forloop.index }}&quantity=0"
+                  data-line="{{ forloop.index }}"
+                  data-id="{{ item.id }}"
+                  rel="{{ item.id }}"
+                  title="Remove this item"
+                >
+                  <i class="icon-trash-2"></i>
+                </a>
+              </div>
+            </li>
+          {% endfor %}
+          <minicart-recommendations
+            data-match-media="(max-width: 920px)"
+            data-url="{{ routes.product_recommendations_url }}?limit={{ max_count }}"
+            data-product-id="{{ cart.items.first.product_id }}"
+            style="--alo-border-radius:{{ settings.image_border_product}}px;"
+          ></minicart-recommendations>
+        </ul>
+      </div>
+      <div class="box-bottom-btn">
+        {% render 'minicart-addons', cart: cart, class:"top" %}
+        <action-condition class="cms-bottom-group">
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <div class="info-checkout info-discount">
+              <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <li
+                    class="discounts__discount discounts__discount--position"
+                    data-discount="{{ discount.total_allocated_amount }}"
+                  >
+                    {%- render 'icon-discount' -%}
+                    {{ discount.title }}
+                    (-{{ discount.total_allocated_amount | money }})
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          <div class="subtotal mb-20">
+            <span class="text">{{ 'cart.label.total' | t }}</span>
+            <span class="js-total-price">{{ cart.total_price | money }}</span>
+          </div>
+          {% if settings.show_terms_conditions %}
+            {%- assign url_page = settings.url_page_terms_conditions | default: '#' -%}
+            <div class="condition alo__terms-conditions mb-10">
+              <div class="checkbox-group relative">
+                <input
+                  class="input conditions_form_cart"
+                  type="checkbox"
+                  name="conditions"
+                  id="conditions_form_cart"
+                >
+                <span class="checkmark"></span>
+              </div>
+              <label class="label form-label" for="conditions_form_cart">
+                <p>{{ 'cart.general.text_checkmark_html' | t: url_page: url_page }}</p>
+              </label>
+            </div>
+          {% endif %}
+          <div class="action cms-group-button">
+            <a class="cms-btn-cart btn mb-10" href="{{ routes.cart_url }}">{{ 'cart.general.view' | t }}</a>
+            <a
+              role="button"
+              class="cms-btn cms-btn-check btn"
+              href="{{routes.cart_url | replace_last : "cart", "checkout"}}"
+            >
+              {{- 'cart.general.checkout' | t -}}
+            </a>
+          </div>
+        </action-condition>
+      </div>
+    </div>
+  {% else %}
+    <div class="js-cart-inner cart-empty">
+      <div class="icon-cart-empty">
+        {%- render 'icon-cart-empty' -%}
+      </div>
+      <p>{{ 'cart.general.empty' | t }}</p>
+      <a href="{{ routes.root_url }}collections/all">{{ 'cart.general.return_to_shop' | t }}</a>
+    </div>
+  {% endif %}
+</div>

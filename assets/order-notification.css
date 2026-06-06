@@ -1,0 +1,126 @@
+/* cross-sell-popup */
+
+.popup_slpr_wrap {
+  max-width: 420px;
+  position: fixed;
+  top: auto;
+  background-color: #fff;
+  transition: all 0.25s ease;
+  left: 30px;
+  bottom: 30px;
+  width: 100%;
+  z-index: 350;
+  box-shadow: 0px 0px 30px rgba(72, 123, 183, 0.15);
+  border-radius: var(--rounded);
+}
+.popup_slpr_thumb {
+  padding: 10px;
+}
+.popup_slpr_thumb a {
+  display: block;
+  position: relative;
+  line-height: 1;
+}
+.popup_slpr_thumb img {
+  max-width: 80px;
+  height: auto;
+  vertical-align: middle;
+  border: 1px solid var(--cl-border);
+  border-radius: var(--rounded);
+}
+.popup_slpr_info {
+  display: flex;
+  padding: 15px 15px 15px 0;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.slpr_has_btns .popup_slpr_info {
+  align-items: center;
+  display: grid;
+}
+.pp_slpr_title {
+  color: var(--cl-name-product);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 0;
+  display: block;
+}
+.pp_slpr_ago {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.pp_slpr_verify {
+  color: var(--cl-link-h);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.pp_slpr_ago i {
+  color: var(--cl-link-h);
+  font-size: 16px;
+}
+
+.popup_slpr_wrap.des_2 {
+  border-radius: 90px;
+  overflow: hidden;
+}
+.popup_slpr_wrap.des_2 .popup_slpr_thumb {
+  padding: 0;
+}
+.popup_slpr_wrap.des_2 .popup_slpr_info {
+  padding: 10px 0 10px 10px;
+}
+.popup_slpr_wrap.des_2 .popup_slpr_thumb > a {
+  border-radius: 50%;
+}
+.popup_slpr_wrap.des_2 a.pa {
+  top: 50%;
+  margin-top: -25px;
+}
+.popup_slpr_wrap.des_2 a.pp_slpr_qv {
+  bottom: auto;
+  margin-top: 0;
+}
+.popup_slpr_wrap.des_2 .pp_slpr_close {
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+@media (max-width: 767px) {
+  .popup_slpr_wrap {
+    left: 3px;
+    display: none;
+  }
+}
+@media (max-width: 375px) {
+  .popup_slpr_info {
+    max-width: 210px;
+  }
+}
+@media (max-width: 370px) {
+  .popup_slpr_wrap {
+    left: 0;
+    max-width: 320px;
+  }
+  .popup_slpr_info {
+    max-width: 230px;
+  }
+}
+@media (min-width: 1025px) {
+  .des_header_7 .popup_slpr_wrap {
+    left: auto;
+    right: 125px;
+  }
+}
+.sales_animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}

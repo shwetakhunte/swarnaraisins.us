@@ -1,0 +1,13 @@
+.customers-review .cms_content {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+.customers-review .name_time {
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .customers-review .cms_content {
+    font-size: 18px;
+  }
+}

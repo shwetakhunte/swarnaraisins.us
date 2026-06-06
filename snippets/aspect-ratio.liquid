@@ -1,0 +1,31 @@
+{% liquid 
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+%}
+{% # theme-check-disable %}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default:product.featured_media.aspect_ratio %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+{% # theme-check-enable %}

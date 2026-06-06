@@ -1,0 +1,1157 @@
+{{ 'product_sidebar.css' | asset_url | stylesheet_tag }} 
+{% liquid
+	assign sid = section.id
+    assign blocks = section.blocks
+%}
+<section id="laber_{{sid}}" class="product-sidebar">     
+{%- if blocks.size > 0 -%}
+  {%- for block in blocks -%}
+{% liquid
+    assign sett_equal = block.settings.use_eq_height
+    assign image_ratio = block.settings.image_ratio
+    if sett_equal 
+    case image_ratio
+      when 'ratio2_1'
+          assign aspect_ratio = 2.0
+      when 'ratio3_2'
+          assign aspect_ratio = 1.5
+      when 'ratio4_3'
+          assign aspect_ratio = 1.333
+      when 'ratio1_1'
+          assign aspect_ratio = 1.0
+      when 'ratio3_4'
+          assign aspect_ratio = 0.75
+      when 'ratio2_3'
+          assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+          assign aspect_ratio = 0.5
+    endcase 
+    endif
+  %}
+  {%- case block.type -%}
+  {% when 'menu' %}
+  <div class="menu_categories mb-{{ block.settings.mb }} sm:mb-{{ block.settings.mb_mobile }}" style="--font-size:{{ block.settings.font-size }}px;--font-weight:{{ block.settings.font-weight }};">
+    {% if block.settings.title_categories != blank %}
+      <h3 class="b-title mb-10 sm:mb-10">
+        {{ block.settings.title_categories }}
+      </h3>
+    {% endif %}
+    {% if block.settings.menu %}
+      {% render 'magic-accordion', menu: block.settings.menu, use_thumb: block.settings.use_thumb %}
+    {% endif %}
+  </div>  
+  {%- when 'benefit' -%}
+    <div class="laber_benefit mb-{{ block.settings.mb }} sm:mb-{{ block.settings.mb_mobile }}" style="--cl-icon:{{ block.settings.cl_icon }};--cl-text:{{ block.settings.cl_heading }};--cl-content:{{ block.settings.cl_text }};">
+      {% if block.settings.show_benefit_1 %}
+      <div class="item-benefit">
+        {%- if block.settings.source == '1' -%}
+          <div class="icon">
+            <i class="{{block.settings.icon}}"></i>
+          </div>
+        {%- elsif block.settings.source == '2' -%}
+        <div class=" icon img">
+          {% assign image = block.settings.icon_img %}
+          {% if image != blank %} 
+              {% render 'responsive-image', image: image, image_class: 'w-full h-full' %}
+            {% else %}
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            {% endif %}
+        </div>
+        {%- else -%}
+        <div class="icon svg">
+          {{block.settings.code_svg_1}}
+        </div>
+        {%- endif -%}
+        <div class="content">
+          <p class="title">{{block.settings.title}}</p>
+          <div class="c_benefit">{{block.settings.c_benefit}}</div>
+        </div>
+      </div>
+      {%endif%}
+      
+      
+      {% if block.settings.show_benefit_2 %}
+      <div class="item-benefit">
+        {%- if block.settings.source == '1' -%}
+        <div class="icon">
+          <i class="{{block.settings.icon2}}"></i>
+        </div>
+        {%- elsif block.settings.source == '2' -%}
+        <div class=" icon img">
+         {% assign image = block.settings.icon_img2 %}
+          {% if image != blank %} 
+              {% render 'responsive-image', image: image, image_class: 'w-full h-full' %}
+            {% else %}
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            {% endif %}
+        </div>
+        {%- else -%}
+        <div class="icon svg">
+          {{block.settings.code_svg_2}}
+        </div>
+        {%- endif -%}
+        <div class="content">
+          <p class="title">{{block.settings.title2}}</p>
+          <div class="c_benefit">{{block.settings.c_benefit2}}</div>
+        </div>
+      </div>
+      {%endif%}
+      
+      
+      {% if block.settings.show_benefit_3 %}
+      <div class="item-benefit">
+        {%- if block.settings.source == '1' -%}
+        <div class="icon">
+          <i class="{{block.settings.icon3}}"></i>
+        </div>
+        {%- elsif block.settings.source == '2' -%}
+        <div class=" icon img">
+          {% assign image = block.settings.icon_img3 %}
+          {% if image != blank %} 
+              {% render 'responsive-image', image: image, image_class: 'w-full h-full' %}
+            {% else %}
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            {% endif %}
+        </div>
+        {%- else -%}
+        <div class="icon svg">
+          {{block.settings.code_svg_3}}
+        </div>
+        {%- endif -%}
+        <div class="content">
+          <p class="title">{{block.settings.title3}}</p>
+          <div class="c_benefit">{{block.settings.c_benefit3}}</div>
+        </div>
+      </div>
+      {%endif%}
+
+      {% if block.settings.show_benefit_4 %}
+      <div class="item-benefit">
+        {%- if block.settings.source == '1' -%}
+        <div class="icon">
+          <i class="{{block.settings.icon4}}"></i>
+        </div>
+        {%- elsif block.settings.source == '2' -%}
+        <div class=" icon img">
+          {% assign image = block.settings.icon_img4 %}
+          {% if image != blank %} 
+              {% render 'responsive-image', image: image, image_class: 'w-full h-full' %}
+            {% else %}
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            {% endif %}
+        </div>
+        {%- else -%}
+        <div class="icon svg">
+          {{block.settings.code_svg_4}}
+        </div>
+        {%- endif -%}
+        <div class="content">
+          <p class="title">{{block.settings.title4}}</p>
+          <div class="c_benefit">{{block.settings.c_benefit4}}</div>
+        </div>
+      </div>
+      {%endif%}
+    </div>
+    {%- when 'promobox' -%}
+    
+    <div class="laber_promobox mb-{{ block.settings.mb }} sm:mb-{{ block.settings.mb_mobile }}">
+      <div class="promobox">
+        {% assign image = block.settings.image_promobox %}
+        {% assign url = block.settings.url %}
+        {% assign border = block.settings.border %}
+        {% if image != blank %}
+            {% render 'responsive-image',
+              image: image,
+              border: border,
+              aspect_ratio:aspect_ratio,
+              url: url,
+              image_class: 'w-full h-full'
+            %}
+          {% else %}
+            {% if aspect_ratio != blank %}
+               {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+            {% else %}
+                {%- assign ratio = 100 -%}
+            {% endif %}
+            <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+              {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            </div>
+          {% endif %}
+        {% if block.settings.title != blank %}
+        <div class="promobox-content">
+          <div class="title">{{block.settings.title}}</div>
+          <div class="h3 sub_title">{{block.settings.sub_title}}</div>
+          <div class="content">{{block.settings.content}}</div>
+        </div>
+        {%endif%}
+      </div>
+    </div>
+    {%- when 'product_slider' -%} 
+           {%- assign products = block.settings.product_list -%}   
+            {%-assign limit = block.settings.max_count-%}   
+            {%-assign space_between = block.settings.space-Between-%}   
+            {%-assign navigation = block.settings.navigation-%}   
+            {%-assign pagination = block.settings.pagination-%}   
+            {%-assign use_slider = block.settings.use-slider   -%}          
+            <div id="bl_{{block.id}}" class="alo-product-slider mb-{{ block.settings.mb }} sm:mb-{{ block.settings.mb_mobile }}" style="--font-size:{{ block.settings.font-size }}px;--font-weight:{{ block.settings.font-weight }};">
+              {% if block.settings.title != blank %}
+                <h3 class="b-title mb-20 sm:mb-20">{{ block.settings.title }}</h3>
+              {% endif %}
+              <div class="products-slider">
+                  {% # theme-check-disable %}
+                  {% include 'grid-slider', settings: block.settings %}
+                  <grid-slider class="grid-slider" {{ gridSlider }}>
+                    <div
+                      class="swiper iSwiper"
+                      {%- render 'skeleton', settings: block.settings -%}
+                      style="--perload-gap: {{ space_between}}px"
+                    >
+                      <div class="swiper-wrapper {% if use_slider == false %}flex-wrap{% endif %}">
+                        {% if products != blank %}
+                          {%- for product in products limit: limit -%}
+                            {% if block.settings.s_product == 'vertical' %}
+                            <div
+                                class="swiper-slide lazyload scroll-trigger"
+                                style="--animation-order:{{ index }};"
+                                data-include="/products/{{product.handle}}/?view=pr_lazy_load"
+                              >{% include 'product_style' %} </div>
+                              {% else %}
+                                <div class="swiper-slide">
+                                  {% include 'product-column' %} 
+                                </div>
+                              {% endif %}
+                          {%- endfor -%}
+                        {% else %}
+              
+                          {%- for i in (1..limit) -%}
+                            {% if block.settings.s_product == 'vertical' %}
+                            <div class="swiper-slide pr_grid_item">
+                              {% render 'product_demo' %}
+                            </div>
+                              {% else %}
+                                 <div class="pr_grid_item swiper-slide">
+                                  {% render 'product_demo_column' %} 
+                                </div>
+                              {% endif %}
+                          {%- endfor -%}
+                        {% endif %}
+                      </div>
+                      {% if use_slider == true %}
+                        {% if navigation %}
+                          <div class="swiper-button">
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                          </div>
+                        {% endif %}
+                        {% if pagination %}
+                          <div class="swiper-pagination"></div>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  </grid-slider>
+                {% # theme-check-enable %}
+              </div>
+            </div>          	
+        {%- when 'products' -%}
+			<div id="bl_{{block.id}}" class="laber-product mb-{{ block.settings.mb }} sm:mb-{{ block.settings.mb_mobile }}" style="--font-size:{{ block.settings.font-size }}px;--font-weight:{{ block.settings.font-weight }};">
+              {%if block.settings.title != blank%}	
+              	<div class="title mb-10 sm:mb-10" >
+                  <span>{{block.settings.title}}</span>
+                </div>
+              {%endif%}
+              <div class="products-column" style="--perload-gap:20px;">
+                <div class="list-product">
+                   {%- assign products = block.settings.product_list -%} 
+                  {%- for product in products -%}
+                    {% # theme-check-disable %}
+                      {% include 'product-column', product: product %}
+                    {% # theme-check-enable %}
+                  {%- endfor -%}  
+                </div>
+              </div>
+  			</div>
+  			{%style%}
+  				
+                  #bl_{{block.id}}{
+                      {%if block.settings.pd != blank%}padding:{{block.settings.pd}};{%endif%}
+  				      {%if block.settings.cl_bg != blank%}background-color: {{block.settings.cl_bg}};{%endif%}
+                  }
+  				
+  			{%endstyle%}
+  
+  {%- endcase -%}
+  {%- endfor -%}
+{%- endif -%} 
+</section>
+{%- render 'section_style' -%}
+{% schema %}
+  {
+    "name": "Product Sidebar",
+	"class":"laber-product-sidebar laberProducts-column sticky-sidebar",
+		"settings": [
+			 {
+            "type": "header",
+            "content": "== Setting"
+            },
+            {
+            "type": "color",
+            "id": "cl_bg",
+            "label": "Background color",
+            "default": "#fff"
+            },
+
+            {
+            "type": "header",
+            "content": "== Setting PC",
+            "info":"Margin"
+            },	
+            {
+            "type": "text",
+            "id": "mg",
+            "label": "Margin",
+            "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+            },
+            {
+            "type": "text",
+            "id": "pd",
+            "label": "Padding",
+            "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+            },
+            {
+            "type": "text",
+            "id": "bd",
+            "label": "Border",
+            "info":"border top  border right border bottom  border left. If you not use to blank"
+            },
+            {
+            "type": "header",
+            "content": "== Design Mobile Options"
+            },
+            {
+            "type": "text",
+            "id": "mg_mb",
+            "label": "Margin"
+            },
+            {
+            "type": "text",
+            "id": "pd_mb",
+            "label": "Padding"
+            }
+		],
+      "blocks": [
+        {
+       "type": "menu",
+       "name": "Menu",
+       "settings": [
+         {
+           "type": "text",
+           "id": "title_categories",
+           "label": "Title",
+           "default": "Product Categories"
+         },
+         {
+             "type": "range",
+             "id": "font-size",
+             "label": "Font size (title)",
+             "min": 20,
+             "max": 60,
+             "step": 5,
+             "default": 25
+           },
+         {
+             "type": "range",
+             "id": "font-weight",
+             "label": "Font weight (title)",
+             "min": 400,
+             "max": 900,
+             "step": 100,
+             "default": 500
+           },
+         {
+           "type": "link_list",
+           "id": "menu",
+           "label": "Add menu"
+         },
+         {
+           "type": "checkbox",
+           "id": "use_thumb",
+           "label": "Use Thumbnail",
+           "default": true
+           },
+           {
+             "type": "range",
+             "id": "mb",
+             "label": "Margin bottom",
+             "min": 0,
+             "max": 100,
+             "step": 5,
+             "default": 30
+           },
+         {
+               "type": "range",
+               "id": "mb_mobile",
+               "label": "Margin bottom (mobile)",
+               "min": 0,
+               "max": 100,
+               "step": 5,
+               "default": 15
+             }
+       ]
+     },
+		{
+          "type": "benefit",
+          "name": "Benefit",
+		  "settings": [
+			{
+            "type": "header",
+            "content": "== General Settings"
+            },
+            {
+            "type": "select",
+            "id": "source",
+            "label": "Show icon",
+            "default": "2",
+            "options": [
+            {
+            "value": "1",
+            "label": "icon font"
+            },
+            {
+            "value": "2",
+            "label": "icon image"
+            },
+            {
+            "value": "3",
+            "label": "icon SVG"
+            }
+            ]
+            },
+            {
+              "type": "paragraph",
+              "content": "[Get icons fontawesome](https://fontawesome.com/v4/cheatsheet/)"
+            },
+            {
+              "type": "color",
+              "id": "cl_icon",
+              "label": "Color icon font",
+              "default": "#fff"
+            },
+            {
+              "type": "color",
+              "id": "cl_heading",
+              "label": "Color Heading",
+              "default": "#fff"
+            },
+            {
+              "type": "color",
+              "id": "cl_text",
+              "label": "Color Text",
+              "default": "#fff"
+            },
+            {
+            "type": "header",
+            "content": "== Benefit 1"
+            },
+			{
+            "type": "checkbox",
+            "id": "show_benefit_1",
+            "label": "Show Benefit 1",
+            "default": true
+            },
+            {
+            "type": "text",
+            "id": "icon",
+            "label": "Icons name",
+            "default": "fa fa-truck"
+            },
+            {
+            "type": "image_picker",
+            "id": "icon_img",
+            "label": "icon image",
+            "info" : "Dimension: 24x24"
+            },
+            {
+            "type": "html",
+            "id": "code_svg_1",
+            "label": "Code svg"
+            },
+            {
+            "type": "header",
+            "content": "== Text Options"
+            },
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title"
+            },
+            {
+            "type": "textarea",
+            "id": "c_benefit",
+            "label": "Content"
+            },	
+			{
+            "type": "header",
+            "content": "== Benefit 2"
+            },
+			{
+            "type": "checkbox",
+            "id": "show_benefit_2",
+            "label": "Show Benefit 2",
+            "default": true
+            },
+            {
+            "type": "text",
+            "id": "icon2",
+            "label": "Icons name",
+            "default": "fa fa-truck"
+            },
+            {
+            "type": "image_picker",
+            "id": "icon_img2",
+            "label": "icon image",
+            "info" : "Dimension: 24x24"
+            },
+            {
+            "type": "html",
+            "id": "code_svg_2",
+            "label": "Code svg"
+            },
+            {
+            "type": "header",
+            "content": "== Text Options"
+            },
+            {
+            "type": "text",
+            "id": "title2",
+            "label": "Heading",
+            "default": "Add a title"
+            },
+            {
+            "type": "textarea",
+            "id": "c_benefit2",
+            "label": "Content"
+            },
+			{
+            "type": "header",
+            "content": "== Benefit 3"
+            },
+			{
+            "type": "checkbox",
+            "id": "show_benefit_3",
+            "label": "Show Benefit 3",
+            "default": true
+            },
+            {
+            "type": "text",
+            "id": "icon3",
+            "label": "Icons name",
+            "default": "fa fa-truck"
+            },
+            {
+            "type": "image_picker",
+            "id": "icon_img3",
+            "label": "icon image",
+            "info" : "Dimension: 24x24"
+            },
+            {
+            "type": "html",
+            "id": "code_svg_3",
+            "label": "Code svg"
+            },
+            {
+            "type": "header",
+            "content": "== Text Options"
+            },
+            {
+            "type": "text",
+            "id": "title3",
+            "label": "Heading",
+            "default": "Add a title"
+            },
+            {
+            "type": "textarea",
+            "id": "c_benefit3",
+            "label": "Content"
+            },
+            {
+            "type": "header",
+            "content": "== Benefit 4"
+            },
+			{
+            "type": "checkbox",
+            "id": "show_benefit_4",
+            "label": "Show Benefit 4",
+            "default": true
+            },
+            {
+            "type": "text",
+            "id": "icon4",
+            "label": "Icons name",
+            "default": "fa fa-truck"
+            },
+            {
+            "type": "image_picker",
+            "id": "icon_img4",
+            "label": "icon image",
+            "info" : "Dimension: 24x24"
+            },
+            {
+            "type": "html",
+            "id": "code_svg_4",
+            "label": "Code svg"
+            },
+            {
+            "type": "header",
+            "content": "== Text Options"
+            },
+            {
+            "type": "text",
+            "id": "title4",
+            "label": "Heading",
+            "default": "Add a title"
+            },
+            {
+            "type": "textarea",
+            "id": "c_benefit4",
+            "label": "Content"
+            },
+           {
+             "type": "range",
+             "id": "mb",
+             "label": "Margin bottom",
+             "min": 0,
+             "max": 100,
+             "step": 5,
+             "default": 30
+           },
+         {
+               "type": "range",
+               "id": "mb_mobile",
+               "label": "Margin bottom (mobile)",
+               "min": 0,
+               "max": 100,
+               "step": 5,
+               "default": 15
+             }
+            
+		 ]
+        },
+          {
+          "type": "promobox",
+          "name": "Promo box (Banner)",
+          "settings": [
+              {
+              "type": "header",
+              "content": "Section settings"
+              },
+              {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Hot deals"
+              },  
+              {
+              "type": "text",
+              "id": "sub_title",
+              "label": "Sub Title",
+              "default": "Nuts & dried <br>weekend Promo"
+              },              
+              {
+                "type": "textarea",
+                "id": "content",
+                "label": "Content",
+                "default": "Everything You Need"
+              },	
+              {
+              "type": "header",
+              "content": "Content"
+              },
+              {
+              "type": "url",
+              "id": "url",
+              "label": "URL for banner"
+              },
+              {
+              "type": "header",
+              "content": "Image"
+              },
+              {
+              "type": "image_picker",
+              "id": "image_promobox",
+              "label": "Image",
+              "info": "Recommended size 325x325 pixels"
+              },
+            {
+        "type": "checkbox",
+        "id": "use_eq_height",
+        "label": "Use equal height images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio3_2",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          }, 
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio3_4",
+            "label": "3:4"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+            {
+          "type": "range",
+          "id": "border",
+          "label": "Border radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 10
+      },
+           {
+             "type": "range",
+             "id": "mb",
+             "label": "Margin bottom",
+             "min": 0,
+             "max": 100,
+             "step": 5,
+             "default": 30
+           },
+         {
+               "type": "range",
+               "id": "mb_mobile",
+               "label": "Margin bottom (mobile)",
+               "min": 0,
+               "max": 100,
+               "step": 5,
+               "default": 15
+             }
+            ]
+          },
+        {
+       "type": "product_slider",
+       "name": "Product slider",
+       "settings": [
+         {
+         "type": "header",
+         "content": "Select product"
+         },
+          {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+         "default": "Featured product"
+         },
+         {
+             "type": "range",
+             "id": "font-size",
+             "label": "Font size (title)",
+             "min": 20,
+             "max": 60,
+             "step": 5,
+             "default": 25
+           },
+         {
+               "type": "range",
+               "id": "font-weight",
+               "label": "Font weight (title)",
+               "min": 400,
+               "max": 900,
+               "step": 100,
+               "default": 500
+             },
+         {
+           "type": "product_list",
+           "id": "product_list",
+           "label": "Products"
+         },
+         {
+            "type": "range",
+            "id": "max_count",
+            "min": 4,
+            "max": 24,
+            "step": 1,
+            "unit": "pds",
+            "label": "Max product",
+            "default": 8
+          },
+         {
+            "type": "select",
+            "id": "s_product",
+            "default": "vertical",
+            "options": [
+            {
+            "value": "vertical",
+            "label": "Vertical"
+            },  
+            {
+            "value": "horizontal",
+            "label": "Horizontal"
+            }
+            ],
+            "label": "Style product:"
+          },
+         {
+        "type": "header",
+        "content": "---- Collection Product Slider ----",
+        "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+    },
+    {
+        "type": "checkbox",
+        "id": "use-slider",
+        "label": "Use slider?",
+        "default": true
+    },
+    {
+       "type": "range",
+       "id": "visible",
+       "label": "Columns in Visible",
+    "info": "Item(s) in screen ( Size >= 1920 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "widescreen",
+       "label": "Columns in Widescreen",
+    "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "desktop",
+       "label": "Columns in Desktop",
+    "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "laptop",
+       "label": "Columns in Laptop",
+    "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "notebook",
+       "label": "Columns in Notebook",
+    "info": "Item(s) in screen ( 768 <= Size < 992 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "tablet",
+       "label": "Columns in Tablet",
+    "info": "Item(s) in screen ( 576 <= Size < 768 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "unit": "pds",
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "landscape",
+       "label": "Columns in Landscape",
+    "info": "Item(s) in screen ( 480 <= Size < 576 )",
+       "min": 1,
+       "max": 6,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "portrait",
+       "label": "Columns in Portrait",
+    "info": "Item(s) in screen ( 360 < Size < 480 )",
+       "min": 1,
+       "max": 6,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "mobile",
+       "label": "Columns in Mobile",
+    "info": "Item(s) in screen ( Size < = 360 )",
+       "min": 1,
+       "max": 4,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "slides-Per-Group",
+       "label": "Slide Per Group",
+       "info": "The number of items slide to scroll",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "rows",
+       "label": "Rows Slider",
+       "min": 1,
+       "max": 5,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "checkbox",
+       "id": "autoplay",
+       "label": "Autoplay",
+       "default": true
+    },
+    {
+       "type": "text",
+       "id": "speed",
+       "label": "Speed",
+       "default": "300",
+       "info": "Duration of transition between slides (in ms)"
+    },
+    {
+       "type": "text",
+       "id": "autoplay_delay",
+       "label": "Auto Play delay",
+       "default": "3000",
+       "info": "Delay between transitions (in ms)"
+    },
+    {
+       "type": "checkbox",
+       "id": "navigation",
+       "label": "Navigation",
+       "info": "Arrows next,prev",
+       "default": true
+    },
+    {
+       "type": "select",
+       "id": "effect",
+       "label": "effect",
+       "options": [
+        {
+           "value": "coverflow",
+           "label": "Coverflow"
+         },
+        {
+           "value": "creative",
+           "label": "Creative"
+         },
+        {
+           "value": "cube",
+           "label": "Cube"
+         },
+        {
+           "value": "fade",
+           "label": "Fade"
+         },
+        {
+           "value": "flip",
+           "label": "Flip"
+         },
+        {
+           "value": "slide",
+           "label": "Slide"
+        }
+       ],
+       "default": "slide"
+    },
+    {
+       "type": "checkbox",
+       "id": "centered-Slides",
+       "label": "centered Slides",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "auto-Height",
+       "label": "Auto Height",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "pagination",
+       "label": "Pagination",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "loop",
+       "label": "Loop",
+       "default": false
+    },
+    {
+       "type": "range",
+       "id": "space-Between",
+       "label": "Space Between",
+       "info": "Distance between slides in px.",
+       "min": 0,
+       "max": 30,
+       "step": 0.5,
+       "unit": "px",
+       "default": 10
+    },
+    {
+       "type": "select",
+       "id": "direction",
+       "label": "Direction",
+       "options": [
+        {
+           "value": "horizontal",
+           "label": "Horizontal"
+         },
+        {
+           "value": "vertical",
+           "label": "Vertical"
+         }
+       ],
+       "default": "horizontal"
+    },
+         {
+           "type": "range",
+           "id": "mb",
+           "label": "Margin bottom",
+           "min": 0,
+           "max": 100,
+           "step": 5,
+           "default": 30
+         },
+             {
+               "type": "range",
+               "id": "mb_mobile",
+               "label": "Margin bottom (mobile)",
+               "min": 0,
+               "max": 100,
+               "step": 5,
+               "default": 15
+             }
+       ]
+     },
+		{
+            "type": "products",
+            "name": "Products",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Section settings"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Recent Products"
+                },
+              {
+             "type": "range",
+             "id": "font-size",
+             "label": "Font size (title)",
+             "min": 20,
+             "max": 60,
+             "step": 5,
+             "default": 25
+           },
+         {
+             "type": "range",
+             "id": "font-weight",
+             "label": "Font weight (title)",
+             "min": 400,
+             "max": 900,
+             "step": 100,
+             "default": 500
+           },
+                {
+                  "type": "product_list",
+                  "id": "product_list",
+                  "label": "Products",
+                  "limit": 4
+                },
+           {
+             "type": "range",
+             "id": "mb",
+             "label": "Margin bottom",
+             "min": 0,
+             "max": 100,
+             "step": 5,
+             "default": 30
+           },
+         {
+               "type": "range",
+               "id": "mb_mobile",
+               "label": "Margin bottom (mobile)",
+               "min": 0,
+               "max": 100,
+               "step": 5,
+               "default": 15
+             }
+            ]
+        }
+        
+      ],
+      "default": {
+        "blocks": [
+			{ "type": "benefit" }
+        ]
+      }
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

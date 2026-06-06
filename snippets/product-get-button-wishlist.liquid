@@ -1,0 +1,10 @@
+<shop-wishlist
+  class="{{ class }} alo_tooltip wishlist-button btn--status"
+  data-handle="{{product.handle}}"
+  aria-label="link"
+>
+  {% render 'icon-wishlist', class:'add' %}
+  {% render 'icon-wishlist-add', class:'delete' %}
+  <span class="text alo_tooltip-content">{{ 'products.product.add_to_widhlist.title' | t }}</span>
+  <span class="added alo_tooltip-content" data-button-content="delete">{{ 'products.product.add_to_widhlist.added' | t }}</span>
+</shop-wishlist>

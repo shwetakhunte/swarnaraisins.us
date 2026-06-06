@@ -1,0 +1,91 @@
+<div class="col-lg-6 col-md-6 col-12">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-12 {% if  section.settings.use_contact_information == false %}flex v_middle{% endif %}">
+        {% if section.settings.use_logo_footer %}
+          <div class="logo-footer {% if  section.settings.use_contact_information %}mb-30{% endif %} sm:mb-15">
+            {% assign logo_footer = section.settings.logo_footer | default: settings.logo %}
+            {% if logo_footer != blank %}
+              {%- assign logo_alt = logo_footer.alt | default: shop.name | escape -%}
+              <a href="{{ routes.root_url }}" class="site-footer__logo-image" aria-label="{{ logo_alt | default: shop.name }}">
+                {%- assign logo_height = section.settings.logo_max_width | divided_by: logo_footer.aspect_ratio -%}
+                {% capture sizes %}(max-width: {{ section.settings.logo_max_width | times: 2 }}px) 50vw, {{ section.settings.logo_max_width }}px{% endcapture %}
+                {% capture widths %}{{ section.settings.logo_max_width }}, {{ section.settings.logo_max_width | times: 1.5 | round }}, {{ section.settings.logo_max_width | times: 2 }}{% endcapture %}
+                {{ logo_footer | image_url: width: 600 | image_tag:
+                  class: 'footer__heading-logo',
+                  widths: widths,
+                  height: logo_height,
+                  width: section.settings.logo_max_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
+                
+              </a>
+              {% else %}
+                <a class="site-title" href="{{ routes.root_url }}" itemprop="url"><span class="logo-default">{{ settings.logo_text  }}</span>
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+        {%- if section.settings.use_contact_information and section.settings.content -%}
+          <div class="contact-information sm:mb-15">{{section.settings.content}}</div>
+        {%endif%} 
+    </div>
+    
+    <div class="col-lg-6 col-md-6 col-12">
+      {%if section.settings.use_social%}
+        <div class="social-footer mb-30 sm:mb-15">
+          {%if section.settings.f_social == "2"%}
+            {% render 'social_link' class:'top' %}
+          {% else %}
+             {% render 'social-sharing' class:'top' %} 
+          {% endif %}
+        </div>
+      {% endif %}
+      {%if section.settings.use_menu_footer_1%}
+      {% render 'menu-footer', menu:section.settings.menu_footer_1  %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-md-6 col-12">
+    <div class="row">
+      {%- if section.settings.newsletter_enable -%}
+      <div class="col-12 mb-30 sm:mb-15">
+        {% render 'newsletter-footer'  %}    
+      </div>
+        {%- endif -%}
+      {%if section.settings.use_menu_footer_2%}
+      <div class="{% if section.settings.use_opening_time %}col-lg-5{% else %}col-lg-6{% endif %} col-md-6 col-12">
+        {% render 'menu-footer', menu:section.settings.menu_footer_2  %}
+      </div>
+      {%- endif -%}  
+      {%if section.settings.use_menu_footer_3%}
+      <div class="{% if section.settings.use_opening_time %}col-lg-5{% else %}col-lg-6{% endif %} col-md-6 col-12">
+        {% render 'menu-footer', menu:section.settings.menu_footer_3  %}
+      </div>
+      {%- endif -%}  
+      {%- if section.settings.payment_enable or section.settings.use_opening_time -%}
+      <div class="col-lg-7 col-md-6 col-12">
+        <div class="footer__column footer__column--info">
+          {% if section.settings.use_opening_time and section.settings.opening_time != blank %}
+            <div class="wrap-opening_time mb-15 sm:mb-15">
+              {{ section.settings.opening_time }} 
+            </div>
+          {% endif %}
+        {%- if section.settings.payment_enable -%}
+          <div class="footer__payment">
+            <ul class="list list-payment h_right flex" role="list" style="gap: 2px;">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment__item">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+      </div>
+      {%- endif -%}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{%- if card_product.featured_media == blank %}{% break %}{% endif -%}
+{%- capture img_html -%}
+{{
+  card_product.featured_media
+  | image_url: width: settings.image_width_product
+  | image_tag:
+    loading: 'lazy',
+    widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400',
+    class: 'lazyload motion-reduce default_media'
+}}
+{%- endcapture -%}
+{%- if card_product.media[1] != null and card_product.media[1].media_type == 'image' and show_secondary_image -%}
+  {%- capture img_html_ii -%}
+{{
+  card_product.media[1]
+  | image_url: width: settings.image_width_product
+  | image_tag:
+    loading: 'lazy',
+    widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400',
+    class: 'lazyload motion-reduce default_media'
+}}
+{%- endcapture -%}
+{%- endif -%}
+{{ img_html | replace: 'src="', 'decoding="async" data-src="' | replace: 'srcset="', 'data-srcset="' }}
+{{ img_html_ii | replace: 'src="', 'decoding="async" data-src="' | replace: 'srcset="', 'data-srcset="' }}

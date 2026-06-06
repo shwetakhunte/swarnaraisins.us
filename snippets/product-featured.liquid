@@ -1,0 +1,130 @@
+{% # theme-check-disable %}{% include 'product-res-variables' %}{% # theme-check-enable %}
+{% assign show_secondary_image = settings.product_collection_show_secondary_image %}
+{%- assign image_border_product = settings.image_border_product -%}
+{%- assign text_transform = settings.product_text_transform_title -%}
+<div class="col-lg-6 col-md-6 col-12">
+  <div class="product-image">
+    <div class="card__media alo-border-radius" style="--alo-border-radius:{{ image_border_product }}px;">
+      <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
+        {% if product %}
+          <a
+            href="{{ product.url | within: collection }}"
+            class="d-block image_product cursor-default {% if product.featured_media %} ratio{% endif %}"
+            style="{{ style }}"
+            data-js-product-image
+          >
+            {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+          </a>
+        {% else %}
+          <a class="db" href="{{ routes.root_url }}admin/products" aria-label="Product Image">
+            <div class="image-card__img overflow-hidden ratio" style=" {{ style }}">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            </div>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-md-6 col-12">
+  <div class="product_info">
+    {%- if product.collections.size > 0 -%}
+      <div class="product-collection mb-5">
+        {% render 'product-get-collections' with product: product %}
+      </div>
+    {%- endif -%}
+    <div class="product-collection__title mb-10">
+      <h2>
+        <a href="{{ product.url }}" class="alo-text-transform" style="--alo-text-transform:{{ text_transform }}">
+          {{- product.title -}}
+        </a>
+      </h2>
+    </div>
+    <!-- Start of Judge.me code -->
+    {% # theme-check-disable %}
+    <div style="{{ jm_style }}" class="jdgm-widget jdgm-preview-badge mb-20" data-id="{{ product.id }}">
+      {{- product.metafields.judgeme.badge -}}
+    </div>
+    {% # theme-check-enable %}
+    <!-- End of Judge.me code -->
+
+    <div class="product-collection__price mb-30">
+      {%- if product.price_varies -%}
+        <span class="price"
+          ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
+        >
+      {%- else -%}
+        {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+      {%- endif -%}
+    </div>
+
+    <div class="product-collection__options mb-30">
+      {% # theme-check-disable %}
+      {% include 'product-get-options' %}
+      {% # theme-check-enable %}
+    </div>
+
+    <div class="button-cart-bottom mb-20">
+      {% if external_affiliate_product %}
+        <a
+          href="{{ external_affiliate_product.external_link }}"
+          rel="nofollow"
+          target="_blank"
+          class="btn product-affiliate relative add-to-cart"
+        >
+          {{ external_affiliate_product.button_name }}
+        </a>
+      {% else %}
+        {% if product.available %}
+          {% render 'product-quantity', product: product %}
+          <button
+            type="submit"
+            class="add-to-cart {%if settings.disable_ajax_cart %}page_{{settings.custom_page_cart}}{%endif%} alo-border-radius"
+            style="--alo-border-radius:40px;"
+            data-pid="{{ product.variants.first.id }}"
+          >
+            <span class="text">
+              {% if product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+                {{ 'products.product.pre_order' | t }}
+              {% else %}
+                {{ 'products.product.add_to_cart' | t }}
+              {% endif %}
+            </span>
+          </button>
+        {% else %}
+          <a
+            class="add-to-cart js-btn-sold-out alo-border-radius"
+            style="--alo-border-radius:40px;"
+            onclick="location.href='{{ product.url | within: collection }}'"
+          >
+            <span class="text">{{ 'products.product.sold_out' | t }}</span></a
+          >
+        {% endif %}
+      {% endif %}
+    </div>
+    <action-condition>
+      <div
+        data-buyitnow-button
+        class="group-button-buyitnow {% if section.settings.show_terms_conditions %}disabled{% endif %}"
+      >
+        {% if section.settings.show_terms_conditions %}
+          <div class="condition checkbox-group prpage-term-conditions-checkbox term-conditions-checkbox-js">
+            <input type="checkbox" id="prpage-cart-term-conditions-checkbox" value="1">
+            <label for="prpage-cart-term-conditions-checkbox">
+              <span class="check"></span>
+              <span class="box"></span>
+              {{ 'products.product.checkbox_buyitnow' | t }}
+              <a target="_blank" href="{{ section.settings.product_terms_conditions_page_content | default:"#" }}">
+                {{- 'products.product.terms_conditions' | t -}}
+              </a>
+            </label>
+          </div>
+        {% endif %}
+        <div class="action">
+          {{ form | payment_button }}
+        </div>
+      </div>
+    </action-condition>
+  </div>
+</div>

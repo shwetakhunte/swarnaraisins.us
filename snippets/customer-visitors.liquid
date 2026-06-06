@@ -1,0 +1,21 @@
+<customer-visitors
+  class="visitors js-visitors"
+  data-min="10"
+  data-max="25"
+  data-interval-min="2"
+  data-interval-max="6"
+  data-stroke="4"
+>
+  {%- assign visitors_random_diff = settings.product_visitors_max | minus: settings.product_visitors_min -%}
+
+  {%- assign visitors_random = 'now'
+    | date: '%N'
+    | modulo: visitors_random_diff
+    | plus: settings.product_visitors_min
+  -%}
+
+  {% capture visitors_counter_html %}
+                                    <span class="visitors__counter d-inline-block px-8" data-js-counter>{{ visitors_random }}</span>
+                                  {% endcapture %}
+  <i class="icon-eye"></i> {{ 'products.product.visitors_html' | t: counter: visitors_counter_html }}
+</customer-visitors>

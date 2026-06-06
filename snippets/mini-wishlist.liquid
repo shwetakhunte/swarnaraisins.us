@@ -1,0 +1,16 @@
+<mini-wishlist class="wishlist-icon laber-wishlist">
+  <a
+    href="{{ routes.root_url }}pages/wishlist"
+    class="header-icon"
+    title="{{'general.wishlist.title' | t}}"
+    aria-label="link"
+  >
+    <span class="icon">
+      {% render "icon-wishlist" %}
+      <span class="header__counter count">0</span>
+    </span>
+    {% if settings.show_text_header_right %}
+      <span class="b">{{ 'general.wishlist.title' | t }}</span>
+    {% endif %}  
+  </a>
+</mini-wishlist>

@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 30,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 15
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "blocks": {
+        "e17f4f3e-627e-4cca-9f27-c9b29bf35bca": {
+          "type": "collection",
+          "settings": {
+            "collection": "bags-for-men"
+          }
+        },
+        "ed0dab0d-765c-4c18-85fe-12d385e297c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "bags-for-women"
+          }
+        },
+        "fef32501-3514-4efb-b3c4-8cae7d0d192d": {
+          "type": "collection",
+          "settings": {
+            "collection": "hat-for-men"
+          }
+        },
+        "e35fe0aa-640c-426c-8cd8-7ad5cec60820": {
+          "type": "collection",
+          "settings": {
+            "collection": "hat-for-women"
+          }
+        },
+        "3c0c7ba6-d7f1-4ae6-9d8e-d009eb8bd509": {
+          "type": "collection",
+          "settings": {
+            "collection": "men-clothing"
+          }
+        },
+        "917067d8-e6b5-414d-815a-7b8d6c57f53c": {
+          "type": "collection",
+          "settings": {
+            "collection": "shoes-for-men"
+          }
+        },
+        "4e6270a2-b22e-493c-8310-9c317898a33d": {
+          "type": "collection",
+          "settings": {
+            "collection": "shoes-for-women"
+          }
+        },
+        "18cb8370-51c0-4302-8ea0-cd552536dc90": {
+          "type": "collection",
+          "settings": {
+            "collection": "women-clothing"
+          }
+        },
+        "0ea78a7d-5ff3-43f5-8dc4-1fe18e88c0bc": {
+          "type": "collection",
+          "settings": {
+            "collection": "handbags"
+          }
+        },
+        "bc330fdd-0bd5-4422-b2f4-b672dbbea2a4": {
+          "type": "collection",
+          "settings": {
+            "collection": "clothings"
+          }
+        },
+        "32ef9563-679c-4231-b791-662478c01729": {
+          "type": "collection",
+          "settings": {
+            "collection": "nightwear"
+          }
+        },
+        "e580add1-bcde-47d1-8ba4-897ce807fdfb": {
+          "type": "collection",
+          "settings": {
+            "collection": "watches"
+          }
+        },
+        "66aed635-233d-4279-8f1e-9491833a599e": {
+          "type": "collection",
+          "settings": {
+            "collection": "lingeries"
+          }
+        },
+        "baae7b44-93c0-4bc2-8e92-f0b260258fc0": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories"
+          }
+        }
+      },
+      "block_order": [
+        "e17f4f3e-627e-4cca-9f27-c9b29bf35bca",
+        "ed0dab0d-765c-4c18-85fe-12d385e297c1",
+        "fef32501-3514-4efb-b3c4-8cae7d0d192d",
+        "e35fe0aa-640c-426c-8cd8-7ad5cec60820",
+        "3c0c7ba6-d7f1-4ae6-9d8e-d009eb8bd509",
+        "917067d8-e6b5-414d-815a-7b8d6c57f53c",
+        "4e6270a2-b22e-493c-8310-9c317898a33d",
+        "18cb8370-51c0-4302-8ea0-cd552536dc90",
+        "0ea78a7d-5ff3-43f5-8dc4-1fe18e88c0bc",
+        "bc330fdd-0bd5-4422-b2f4-b672dbbea2a4",
+        "32ef9563-679c-4231-b791-662478c01729",
+        "e580add1-bcde-47d1-8ba4-897ce807fdfb",
+        "66aed635-233d-4279-8f1e-9491833a599e",
+        "baae7b44-93c0-4bc2-8e92-f0b260258fc0"
+      ],
+      "settings": {
+        "layout": false,
+        "container": 1410,
+        "pagination_limit": 20,
+        "display_type": "all",
+        "sort": "alphabetical",
+        "use_eq_height": true,
+        "image_ratio": "custom",
+        "custom_ratio": "5/6",
+        "cl_bg": "rgba(0,0,0,0)",
+        "columns_desktop": 5,
+        "columns_laptop": 4,
+        "columns_tablet": 3,
+        "columns_landscape": 3,
+        "columns_mobile": "2",
+        "gap": 20,
+        "gap_mobile": 10,
+        "mg": "0,0,60px,0",
+        "pd": "",
+        "mg_mb": "0,0,40px,0",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

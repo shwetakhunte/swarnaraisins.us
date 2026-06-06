@@ -1,0 +1,72 @@
+.page-brands {}
+.search-brand {
+  margin: 0 auto 60px;
+  max-width: 500px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-top: 30px; 
+}
+.search-brand .title {
+  font-size: 18px;
+    color: var(--cl-main);
+}
+.search-brand input {
+  height: 40px;
+  flex: 1;
+  width: 100%;
+}
+.brands-list-code {
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  border-bottom: 1px solid var(--cl-border);
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+.brands-list-code li {}
+
+.brands-list-code li a {
+  display: flex;
+  border: 1px solid var(--cl-border);
+  width: 45px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.brands-list-code li.all-brands a {
+  min-width: 110px;
+  padding: 0 10px;
+  font-weight: 600;
+}
+.page-brands .main-page-title {text-transform: capitalize;}
+
+.page-brands .brands-group {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--cl-border);
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+.page-brands .brands-group .brands-group-title {
+  font-size: 40px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0 30px;
+}
+.page-brands .brands-group .brands-group-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+.page-brands .brands-group .brands-group-list .brand a {}

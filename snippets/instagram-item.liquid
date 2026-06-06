@@ -1,0 +1,15 @@
+{%- assign image = block.settings.image %}
+{% assign url = block.settings.url |default:"#" -%}
+<div id="pin_{{block.id}}" class="pin__wr_js item_ins iteam_{{for_i}} {{ccol}}" style="margin-bottom:{{ block.settings.mg_bottom }}px;" {{ block.shopify_attributes }}>
+
+  <div class="wrap_ins_img">
+  {%- if url != blank -%}
+  <a data-no-instant rel="nofollow"  href="{{url}}" target="{{open_link}}">
+  {%- endif -%}  
+    {% render 'image',image:image, width:1920, class:'lazyload', alt:'instagram' %}
+   {%- if url != blank -%} 
+    <i class=" icon-instagram"></i>
+  </a>    
+  {%- endif -%}
+	</div>
+</div>

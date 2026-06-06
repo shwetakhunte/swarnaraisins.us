@@ -1,0 +1,104 @@
+{%- assign design_product = settings.design_product -%}
+{%- assign image_border_product = settings.image_border_product -%}
+{%- assign show_reviews = settings.product_collection_show_reviews -%}
+{%- liquid
+  assign sett_equal = sett_equal_product | default: settings.use_eq_height_product
+  assign image_ratio = image_ratio_product | default: settings.image_ratio_product
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio5_6'
+        assign aspect_ratio = 0.8333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio6_5'
+        assign aspect_ratio = 1.2
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = custom_ratio_product | default: settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+-%}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default: 1 %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+<product-item class="product-item laber-product-item-{{design_product}} w-full h-full">
+  <div class="product-collection w-full h-full ">
+    <div class="frm_product_collection">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-12">
+      <div class="product-collection__image">
+        <div class="product-inner">
+          <div class="product-image">
+            <a class="db" href="{{ routes.root_url }}admin/products" aria-label="Product Image">
+              <div
+                class="image-card__img overflow-hidden alo-border-radius ratio"
+                style="--rounded:{{ image_border_product }}px; {{ style }}"
+              >
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-12">
+      <div class="product-collection__content ">
+        <div class="product-collection__title">
+          <h2>
+            <a class="cd" href="{{ routes.root_url }}admin/products"> {{ 'homepage.onboarding.product_title' | t }}</a>
+          </h2>
+        </div>
+        {%- if show_reviews -%}
+          <!-- Start of Judge.me code -->
+          <div
+            style="display: block;"
+            class="jdgm-widget jdgm-preview-badge"
+            data-id="8874726785320"
+            bis_skin_checked="1"
+          >
+            <div
+              style="display:none"
+              class="jdgm-prev-badge"
+              data-average-rating="0.00"
+              data-number-of-reviews="0"
+              data-number-of-questions="0"
+              bis_skin_checked="1"
+            >
+              <span class="jdgm-prev-badge__stars" data-score="0.00" tabindex="0" aria-label="0.00 stars" role="button">
+                <span class="jdgm-star jdgm--off"></span><span class="jdgm-star jdgm--off"></span
+                ><span class="jdgm-star jdgm--off"></span><span class="jdgm-star jdgm--off"></span
+                ><span class="jdgm-star jdgm--off"></span>
+              </span>
+            </div>
+          </div>
+          <!-- End of Judge.me code -->
+        {%- endif -%}
+        <div class="frm-price-color">
+          <div class="product-collection__price ">
+            <span class="price price--sale" data-js-product-price="">
+              <span class="current">$56.00</span> <span class="compare">$19.00 </span>
+            </span>
+          </div>
+        </div>
+      </div>  
+      </div>  
+      </div>
+    </div>
+  </div>
+</product-item>

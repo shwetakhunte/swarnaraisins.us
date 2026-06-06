@@ -1,0 +1,694 @@
+{%- liquid
+  assign sid = section.id
+  assign section_blocks = section.blocks
+  assign arr_img = section_blocks | where: 'type', 'img'
+  assign layout_des = section.settings.layout_des
+  assign border = section.settings.border
+  assign sett_equal = section.settings.use_eq_height
+  assign image_ratio = section.settings.image_ratio
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+    endcase
+  endif
+-%}
+{{ 'media-grid.css' | asset_url | stylesheet_tag }}
+<section id="laber_{{sid}}" class="wow animate--slide-in">
+  <div class="{%if layout_des%}full-width{% else %}container{%endif%}" style="--alo-container-width:{{ section.settings.container }}px;">
+      {% if section.settings.title != blank %}
+          <div class="wrap_title w_{{ section.settings.h_position }} {{ section.settings.text_size }} mb-30 sm:mb-20">
+          <div
+             class="h3 section-title text-transform {% if section.settings.cl_underline != 'rgba(0,0,0,0)' %}title-hr{% endif %}"
+                style="
+                  --cl-text:{{ section.settings.cl_title |default:"#333333" }};
+                  --text-transform:{{ section.settings.text_transform }};
+                --cl-underline:{{ section.settings.cl_underline }};
+                "
+            >
+              <span>{{ section.settings.title }}</span>
+            </div>
+            {% if section.settings.content %}
+              <div class="content">{{ section.settings.content }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <media-grid class="media-grid" style="--media-grid-column:{{ section.settings.column }};--alo-gap:{{ section.settings.gap }}px;">
+          {%- if arr_img.size > 0 -%}
+            {% assign offset = 0 -%}
+            {%- for bl in arr_img -%}
+              {% assign offset = offset | plus: 1 %}
+              {% assign image = bl.settings.image -%}
+              <article id="media-grid-{{ bl.id }}" class="media-item w-full h-full" style="--media-grid-column-span: {{ bl.settings.media-grid-column-span }}; --media-grid-row-span: {{ bl.settings.media-grid-row-span }};"> 
+              <lookbook-pin class="w-full h-full" {{ bl.shopify_attributes }} style="--rounded:{{ border }}px;">
+                <div class="pin__maker pr w-full h-full">
+                  <div class="lookbock-image w-full h-full">
+                    {% if image != blank %}
+                      {% render 'responsive-image',
+                        image: image,
+                        aspect_ratio: aspect_ratio,
+                        image_class: 'w-full h-full'
+                      %}
+                    {% else %}
+                      {% if aspect_ratio != blank %}
+                        {%- assign ratio = 1 | divided_by: aspect_ratio | times: 100 -%}
+                      {% else %}
+                        {%- assign ratio = 100 -%}
+                      {% endif %}
+                      <div
+                        class="image-card__img overflow-hidden alo-border-radius ratio"
+                        style="--ratio-percent: {{ ratio }}%;"
+                      >
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                      </div>
+                    {% endif %}
+
+                    {%- if section_blocks.size > 0 -%}
+                      {%- for block in section_blocks offset: offset -%}
+                        {%- if block.type == 'img' %}{% break %}{% endif -%}
+                        {% assign offset = offset | plus: 1 -%}
+                        {%- if block.type == 'pr' -%}
+                          {%- if block.settings.product == blank %}{% continue %}{% endif -%}
+                          <div
+                            {{ block.shopify_attributes }}
+                            class="pin__type pin__type_{{block.id}}  pin__type_pr pin__size--{{block.settings.pos_size}} pin_ic_{{block.settings.type}}"
+                            style="--cl-text:{{ block.settings.cl_text }};--cl-border:{{ block.settings.cl_border }};"
+                          >
+                            <span class="zoompin"></span>
+                          
+                              <span class="pin_tt pin_tt_js dn db_mb">
+                                {%- if block.settings.type != '2' -%}<i class="icon-plus"></i>{%- else -%}<span class="truncate">{{ block.settings.shorttxt }}</span>{%- endif -%}
+                              </span>
+                              <span
+                                data-opennt="#pin_mfp_{{block.id}}"
+                                data-ani="none"
+                                data-class="mfp__pin"
+                                class="pin_tt mfp_js dn_md"
+                                >{%- if block.settings.type != '2' -%}<i class="icon-plus"></i>{%- else -%}<span class="truncate">{{ block.settings.shorttxt }}</span>{%- endif -%}
+                              </span>
+                           
+                            <div id="pin_mfp_{{block.id}}">
+                              {% # theme-check-disable %}
+                              <div class="pin_lazy_js pin__popup--{{block.settings.pos_pin}} pin__popup--{{block.settings.effect}} lazyload" data-include="/products/{{block.settings.product}}/?view=lookbook"></div>
+                              {% # theme-check-enable %}
+                            </div>
+                          </div>
+                        {%- elsif block.type == 'txt' -%}
+                          <div
+                            {{ block.shopify_attributes }}
+                            data-i="{{bl.id}}"
+                            id="pin_{{block.id}}"
+                            class="pin__type pin__type_{{block.id}}   pin__type_txt pin__size--{{block.settings.pos_size}}"
+                            style="--cl-text:{{ block.settings.cl_text }};--cl-border:{{ block.settings.cl_border }};"
+                          >
+                            <span class="zoompin"></span>
+                    
+                              <span class="pin_tt pin_tt_js dn db_mb">
+                                {%- if block.settings.type != '2' -%}<i class="icon-plus"></i>{%- else -%}<span class="truncate">{{ block.settings.shorttxt }}</span>{%- endif -%}
+                              </span>
+                               <span
+                                data-opennt="#pin_mfp_{{block.id}}"
+                                data-ani="none"
+                                data-class="mfp__pin"
+                                class="pin_tt mfp_js dn_md"
+                                >{%- if block.settings.type != '2' -%}<i class="icon-plus"></i>{%- else -%}<span class="truncate">{{ block.settings.shorttxt }}</span>{%- endif -%}</span>
+                           
+                            <div id="pin_mfp_{{block.id}}">
+                              <div class="pin__popup pin__popup--{{block.settings.pos_pin}} pin__popup--{{block.settings.effect}} ">
+                                <div class="popup__title">{{ block.settings.heading }}</div>
+                                <div class="popup__content">{{ block.settings.text }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        {%- else -%}
+                          <div
+                            {{ block.shopify_attributes }}
+                            data-i="{{bl.id}}"
+                            id="pin_{{block.id}}"
+                            class="pin__type pin__type_{{block.id}}  pin__type_url pin__size--{{block.settings.pos_size}}"
+                            style="--cl-text:{{ block.settings.cl_text }};--cl-border:{{ block.settings.cl_border }};"
+                          >
+                            <span class="zoompin"></span>
+
+                              <a
+                                href="{{block.settings.url}}"
+                                target="{{block.settings.open_link}}"
+                                class="pin_tt cw"
+                                >{%- if block.settings.type != '2' -%}<i class="icon-plus"></i>{%- else -%}<span class="truncate">{{ block.settings.shorttxt }}</span>{%- endif -%}</a>
+
+                          </div>
+                        {%- endif -%}
+
+                        {%- style -%}
+                          .pin__type_{{block.id}} {transform: translate(-{{block.settings.pos_l}}%, -{{block.settings.pos_t}}%);top:{{block.settings.pos_t}}%;left:{{block.settings.pos_l}}%}.pin__type_{{block.id}} .pin_tt{background-color: {{block.settings.bg_cl}}}.pin__type_{{block.id}} .zoompin{background-color: {{block.settings.bg_cl_br}};opacity:{{block.settings.bg_cl_br_opacity}};}
+                        {%- endstyle -%}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </lookbook-pin>
+              </article>
+            {%- endfor -%}
+          {%- endif -%}
+        </media-grid >
+  </div>
+</section>
+<style>
+    #laber_{{ sid}} {
+    --media-grid-row-height: {{ section.settings.mobile_row_height }}px;
+    }
+    @media screen and (min-width: 1200px) {
+      #laber_{{ sid }} {
+        --media-grid-row-height: {{ section.settings.desktop_row_height }}px;
+      }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+      #laber_{{ sid }} {
+        --media-grid-row-height: {{ section.settings.tablet_row_height }}px;
+      }
+    }
+</style>
+{{ 'lookbook.css' | asset_url | stylesheet_tag }}
+{%- render 'section_style' -%}
+{%- schema -%}
+{
+  "name": "Lookbook grid",
+  "class": "laber_section type_lookbook_grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "== Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+     {
+     "type": "color",
+     "id": "cl_title",
+     "label": "Color title",
+     "default": "#fff"
+     },
+     {
+      "type": "color",
+      "id": "cl_underline",
+      "label": "Color underline",
+      "default": "#c60f14",
+      "info":"If you do not want to use it, you can leave it blank."
+    },  
+    {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+    {
+            "type": "select",
+            "id": "text_transform",
+            "default": "none",
+            "options": [
+             {
+                "value": "none",
+                "label": "None"
+             },
+             {
+                "value": "capitalize",
+                "label": "Capitalize"
+             },
+             {
+                "value": "lowercase",
+                "label": "Lowercase"
+             },
+             {
+                "value": "uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "label": "Text transform:"
+          },
+            {
+        "type": "select",
+        "id": "h_position",
+        "label": "Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+  {
+      "type": "header",
+      "content": "Row height",
+      "info": "Define the height of a single row, from which the grid is dynamically created."
+    },
+    {
+      "type": "range",
+      "id": "desktop_row_height",
+      "label": "Desktop row height",
+      "min": 150,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "default": 290
+    },
+    {
+      "type": "range",
+      "id": "tablet_row_height",
+      "label": "Tablet row height",
+      "min": 150,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "default": 290
+    },  
+    {
+      "type": "range",
+      "id": "mobile_row_height",
+      "label": "Mobile row height",
+      "min": 120,
+      "max": 400,
+      "step": 5,
+      "unit": "px",
+      "default": 150
+    },
+      {
+        "type": "header",
+        "content": "== Setting"
+      },
+      {	
+        "type": "range",
+        "id": "column",
+        "label": "Column",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "unit": "col",
+        "default": 4
+        },
+      {	
+        "type": "range",
+        "id": "gap",
+        "label": "Gap",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 5
+        },
+      {	
+        "type": "range",
+        "id": "border",
+        "label": "Border radius",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 5
+        },
+    {
+    "type": "checkbox",
+    "id": "layout_des",
+    "label": "Full Width",
+    "default": false
+    },
+    {
+        "type": "range",
+        "id": "container",
+        "label": "Container width",
+        "min": 1170,
+        "max": 1920,
+        "step": 10,
+        "unit": "px",
+        "default": 1410
+    },
+    {
+      "type": "color","id": "cl_bg","label": "Background color","default": "#fff"
+    },
+    
+    {
+      "type": "checkbox",
+      "id": "use_eq_height",
+      "label": "Use equal height images?",
+      "default": false
+    },
+    
+    {
+      "type": "text",
+      "id": "mg",
+      "label": "Margin",
+      "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+      "default": "50px,,50px,",
+      "placeholder": "50px,,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd",
+      "label": "Padding",
+      "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+      "placeholder": "30px,,30px,"
+    },
+   {
+      "type": "header",
+      "content": "== Design Mobile Options"
+    },
+    {
+      "type": "text",
+      "id": "mg_mb",
+      "label": "Margin",
+      "placeholder": "30px,,30px,"
+    },
+    {
+      "type": "text",
+      "id": "pd_mb",
+      "label": "Padding",
+      "placeholder": "30px,,30px,"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "img",
+      "name": "== Image Parent",
+      "settings": [
+        {
+            "type": "image_picker","id": "image","label": "Choose image"
+        },
+        {
+          "type": "header",
+          "content": "Desktop",
+          "info": "When using a 1x1 tile, we recommend not using text on top of media."
+        },
+        {
+          "type": "range",
+          "id": "media-grid-column-span",
+          "label": "Column",
+          "min": 1,
+          "max": 6,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "media-grid-row-span",
+          "label": "Row",
+          "min": 1,
+          "max": 3,
+          "default": 2
+        }
+      ]
+    },
+    {
+      "type": "pr",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "header","content": "== Pin Settings"
+        },
+        {
+          "type":"range","id":"pos_t","min":0,"max":100,"step":1,"unit":"%","label":"Position Top","default":50
+        },
+        {
+          "type":"range","id":"pos_l","min":0,"max":100,"step":1,"unit":"%","label":"Position Left","default":50
+        },
+        {
+           "type": "select","id": "type","label": "Title type",
+           "options": [
+              { "value": "1", "label": "Short icon"},
+              { "value": "2", "label": "Short Text"}
+           ]
+        },
+       {
+        "type":"text","id":"shorttxt","label":"Short Text","default":"$59"
+        },
+        {
+         "type": "select","id": "pos_pin","label": "Position pin wrapper","default": "top",
+         "options": [
+            { "value": "top", "label": "Top"},
+            { "value": "bottom", "label": "Bottom"},
+            { "value": "left", "label": "Left"},
+            { "value": "right", "label": "Right"}
+         ]
+        },
+        {
+         "type": "select","id": "pos_size","label": "Position pin size","default": "medium",
+         "options": [
+            { "value": "small", "label": "Small"},
+            { "value": "medium", "label": "Medium"},
+            { "value": "exmedium", "label": "Extra Medium"},
+            { "value": "large", "label": "Large"}
+         ]
+        },
+        {
+         "type": "select","id": "effect","label": "Open pin effect","default": "fade",
+         "options": [
+            { "value": "fade", "label": "Fade"},
+            { "value": "zoom", "label": "Zoom"},
+            { "value": "sup", "label": "Sup"},
+            { "value": "sdown", "label": "Sdown"},
+            { "value": "sleft", "label": "Sleft"},
+            { "value": "sright", "label": "Sright"},
+            { "value": "rotate", "label": "Rotate"}
+         ]
+        },
+       
+        {
+         "type": "color","id": "bg_cl_br","label": "Background color 1","default": "#c6452c"
+        },
+  {
+          "type": "range","id": "bg_cl_br_opacity","label": "Opacity ","default": 0.1,"min": 0,"max": 1,"step": 0.1
+        },
+         {
+         "type": "color","id": "cl_text","label": "Color text","default": "#fff"
+        },
+        {
+         "type": "color","id": "bg_cl","label": "Background color","default": "#65affa"
+        },
+        {
+         "type": "color","id": "cl_border","label": "Border color","default": "#6ca5d2"
+        },
+        {
+          "type": "header","content": "== Product Settings"
+        },
+        {
+           "type": "product","id": "product","label": "Choose product"
+        }
+      ]
+    },
+    {
+      "type": "txt",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "header","content": "== Pin Settings"
+        },
+        {
+          "type":"range","id":"pos_t","min":0,"max":100,"step":1,"unit":"%","label":"Position Top","default":50
+        },
+        {
+          "type":"range","id":"pos_l","min":0,"max":100,"step":1,"unit":"%","label":"Position Left","default":50
+        },
+        {
+           "type": "select","id": "type","label": "Title type",
+           "options": [
+              { "value": "1", "label": "Short icon"},
+              { "value": "2", "label": "Short Text"}
+           ]
+        },
+       {
+        "type":"text","id":"shorttxt","label":"Short Text","default":"$59"
+        },
+        {
+         "type": "select","id": "pos_pin","label": "Position pin wrapper","default": "top",
+         "options": [
+            { "value": "top", "label": "Top"},
+            { "value": "bottom", "label": "Bottom"},
+            { "value": "left", "label": "Left"},
+            { "value": "right", "label": "Right"}
+         ]
+        },
+        {
+         "type": "select","id": "pos_size","label": "Position pin size","default": "medium",
+         "options": [
+            { "value": "small", "label": "Small"},
+            { "value": "medium", "label": "Medium"},
+            { "value": "exmedium", "label": "Extra Medium"},
+            { "value": "large", "label": "Large"}
+         ]
+        },
+        {
+         "type": "select","id": "effect","label": "Open pin effect","default": "fade",
+         "options": [
+            { "value": "fade", "label": "Fade"},
+            { "value": "zoom", "label": "Zoom"},
+            { "value": "sup", "label": "Sup"},
+            { "value": "sdown", "label": "Sdown"},
+            { "value": "sleft", "label": "Sleft"},
+            { "value": "sright", "label": "Sright"},
+            { "value": "rotate", "label": "Rotate"}
+         ]
+        },
+        
+        {
+         "type": "color","id": "bg_cl_br","label": "Background color 1","default": "#c6452c"
+        },
+  {
+          "type": "range","id": "bg_cl_br_opacity","label": "Opacity ","default": 0.1,"min": 0,"max": 1,"step": 0.1
+        },
+        {
+         "type": "color","id": "cl_text","label": "Color text","default": "#fff"
+        },
+        {
+         "type": "color","id": "bg_cl","label": "Background color","default": "#65affa"
+        },
+        {
+         "type": "color","id": "cl_border","label": "Border color","default": "#6ca5d2"
+        },
+        {
+          "type": "header","content": "== Content Settings"
+        },
+       {
+        "type":"text","id":"heading","label":"Heading","default":"01 - Water Resistance"
+        },
+       {
+        "type":"richtext","id":"text","label":"Content","default":"<p>With groundbreaking water resistant capabilities, The Mission has the highest waterproof rating of any smartwatch on the market.</p>"
+        }
+       ]
+    },
+    {
+      "type": "url",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "header","content": "== Pin Settings"
+        },
+        {
+          "type":"range","id":"pos_t","min":0,"max":100,"step":1,"unit":"%","label":"Position Top","default":50
+        },
+        {
+          "type":"range","id":"pos_l","min":0,"max":100,"step":1,"unit":"%","label":"Position Left","default":50
+        },
+        {
+           "type": "select","id": "type","label": "Title type",
+           "options": [
+              { "value": "1", "label": "Short icon"},
+              { "value": "2", "label": "Short Text"}
+           ]
+        },
+       {
+        "type":"text","id":"shorttxt","label":"Short Text","default":"$59"
+        },
+        {
+         "type": "select","id": "pos_pin","label": "Position pin wrapper","default": "top",
+         "options": [
+            { "value": "top", "label": "Top"},
+            { "value": "bottom", "label": "Bottom"},
+            { "value": "left", "label": "Left"},
+            { "value": "right", "label": "Right"}
+         ]
+        },
+        {
+         "type": "select","id": "pos_size","label": "Position pin size","default": "medium",
+         "options": [
+            { "value": "small", "label": "Small"},
+            { "value": "medium", "label": "Medium"},
+            { "value": "exmedium", "label": "Extra Medium"},
+            { "value": "large", "label": "Large"}
+         ]
+        },
+        {
+         "type": "select","id": "effect","label": "Open pin effect","default": "fade",
+         "options": [
+            { "value": "fade", "label": "Fade"},
+            { "value": "zoom", "label": "Zoom"},
+            { "value": "sup", "label": "Sup"},
+            { "value": "sdown", "label": "Sdown"},
+            { "value": "sleft", "label": "Sleft"},
+            { "value": "sright", "label": "Sright"},
+            { "value": "rotate", "label": "Rotate"}
+         ]
+        },
+        {
+         "type": "color","id": "bg_cl_br","label": "Background color 1","default": "#c6452c"
+        },
+  {
+          "type": "range","id": "bg_cl_br_opacity","label": "Opacity ","default": 0.1,"min": 0,"max": 1,"step": 0.1
+        },
+        {
+         "type": "color","id": "cl_text","label": "Color text","default": "#fff"
+        },
+        {
+         "type": "color","id": "bg_cl","label": "Background color","default": "#65affa"
+        },
+        {
+         "type": "color","id": "cl_border","label": "Border color","default": "#6ca5d2"
+        },
+        {
+          "type": "header","content": "== Link Settings"
+        },
+       {
+        "type":"url","id":"url","label":"Link"
+        },
+        {
+          "type": "select",
+          "id": "open_link",
+          "options": [
+            {
+              "value": "_self",
+              "label": "Current window (_self)"
+            },
+           {
+              "value": "_blank",
+              "label": "New window (_blank)"
+            }
+          ],
+          "label": "Open link in",
+          "default": "_blank"
+        }
+       ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook grid",
+      "category": "Lookbook"
+    }
+  ]
+}
+{%- endschema -%}

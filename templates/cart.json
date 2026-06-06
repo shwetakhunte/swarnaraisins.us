@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f5f5f5",
+        "cl_title": "#000000",
+        "cl_breadcrum": "#000000",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 30,
+        "mobile_bg": "#f5f5f5",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 10
+      }
+    },
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "show_text_countdown": true,
+        "minutes": 10,
+        "show_order_note": true,
+        "show_coupon": true,
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,,",
+        "pd": ",0,80px,0",
+        "mg_mb": ",,,",
+        "pd_mb": "15px,0,40px,0"
+      }
+    },
+    "cart-recommendations": {
+      "type": "cart-recommendations",
+      "settings": {
+        "title": "You may like",
+        "cl_title": "#333333",
+        "text_size": "small",
+        "text_transform": "none",
+        "max_count": 10,
+        "use-slider": true,
+        "visible": 4,
+        "widescreen": 4,
+        "desktop": 6,
+        "laptop": 4,
+        "notebook": 4,
+        "tablet": 4,
+        "landscape": 3,
+        "portrait": 2,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 15,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "show_border": false,
+        "cl_line": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "cart-recommendations"
+  ]
+}

@@ -1,0 +1,33 @@
+{%- liquid
+  assign collection = collections[block.settings.collection]
+  assign image = block.settings.image | default:collection.image |default:collection.products[0].featured_image
+  assign url =  collection.url | default:'/admin/collections' 
+-%}
+  <div id="bk_{{block.id}}" class="collection-content relative h-full" {{ block.shopify_attributes }} >
+    <div class="collection-image h-full">
+        {%- if image != blank -%}
+          {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio, url:url, border:border, image_class: 'w-full h-full' %}
+        {%- else -%}
+          {% if aspect_ratio != blank %}
+               {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+            {% else %}
+                {%- assign ratio = 100 -%}
+            {% endif %}
+            <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%; --alo-border-radius:{{ border }}px;">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+              {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            </div>
+        {%- endif -%}
+    </div>
+        {% if block.settings.title != blank %}
+          <div class="collection-name" >
+            <a href="{{ url }}" title="{{ block.settings.title | default:collection.title }}" aria-label="link">
+                {{ block.settings.title | default:collection.title }} <i class="icon-arrow-right"></i>
+            </a>
+          </div>
+        {%endif%}
+  </div>
+
+
+
+

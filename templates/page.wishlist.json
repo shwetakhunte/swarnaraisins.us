@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 0,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-wishlist",
+      "settings": {
+        "title": "Your favourite product",
+        "cl_title": "#333333",
+        "text_size": "medium",
+        "text_transform": "capitalize",
+        "use-slider": false,
+        "visible": 6,
+        "widescreen": 6,
+        "desktop": 6,
+        "laptop": 6,
+        "notebook": 4,
+        "tablet": 3,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": true,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": true,
+        "loop": false,
+        "space-Between": 15,
+        "direction": "horizontal",
+        "layout": false,
+        "cl_bg": "#ffffff",
+        "mg": "",
+        "pd": "60px,0,60px,0",
+        "mg_mb": "",
+        "pd_mb": "30px,0,30px,0"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

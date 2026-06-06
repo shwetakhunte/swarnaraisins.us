@@ -1,0 +1,542 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 0,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-about",
+      "blocks": {
+        "bd5b7c04-af26-4be3-8c31-174bed898a73": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "title": "Our Story",
+            "sub_title": "",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididunt ut labore et dolore mag na aliqua. Utes enim ad minim veniam, quis nostrud exerck itation ullam co laboris nisi ut aliquip ex ea commodo coes nsequat. Duis aute irure dolor in reprehenderit in.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididunt ut labore et dolore mag na aliqua. Utes enim ad minim veniam, quis nostrud exerck itation ullam co laboris nisi ut aliquip ex ea commodo coes nsequat. Duis aute irure </p>",
+            "width": "5",
+            "h_position": "left",
+            "v_position": "middle",
+            "txt_align": "left",
+            "mg": "",
+            "pd": ",,60px,",
+            "mg_mb": "",
+            "pd_mb": "0,0,0,0"
+          }
+        },
+        "d205ec2d-202a-4f1a-b3de-9d19d37a0891": {
+          "type": "banner_img",
+          "disabled": true,
+          "settings": {
+            "use_eq_height": false,
+            "image_ratio": "ratio2_1",
+            "link": "shopify://products/proenza-schouler-white-label-5",
+            "width": "7",
+            "mg": ",,80px,",
+            "pd": "",
+            "mg_mb": ",,40px,",
+            "pd_mb": ""
+          }
+        },
+        "text_GwyThF": {
+          "type": "text",
+          "settings": {
+            "title": "“Cubilia a nisi blandit sem cras nec,<br>\ntempor adipiscing rcu ullamcorper ligula.”",
+            "subheading": "",
+            "text": "<p>john doe / CEO Elessi</p>",
+            "button_label": "",
+            "button_link": "",
+            "width": "12",
+            "h_position": "center",
+            "v_position": "middle",
+            "txt_align": "center",
+            "mg": ",,100px,",
+            "pd": "",
+            "mg_mb": ",,50px,",
+            "pd_mb": ""
+          }
+        },
+        "image_card_kbxiXx": {
+          "type": "image_card",
+          "settings": {
+            "width": "6",
+            "pd_content": 5,
+            "h_position": "right",
+            "v_position": "top",
+            "txt_align": "right",
+            "order": "1",
+            "image": "shopify://shop_images/img8.png",
+            "use_eq_height": true,
+            "image_ratio": "ratio3_4",
+            "link": "",
+            "title": "Our Story",
+            "subtitle": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididunt ut labore et dolore mag na aliqua. Utes enim ad minim veniam, quis nostrud exerck itation ullam co laboris nisi ut aliquip ex ea commodo coes nsequat. t.</p><p></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididunt ut labore et dolore mag na aliqua. Utes enim ad minim veniam, quis nostrud exerck itation ullam co laboris nisi ut aliquip ex ea commodo coes nsequat. Duis aute irure dolor in reprehenderit in.</p>",
+            "button_label": "",
+            "mg": "",
+            "pd": "",
+            "mg_mb": "",
+            "pd_mb": ""
+          }
+        },
+        "image_card_9gdcmD": {
+          "type": "image_card",
+          "settings": {
+            "width": "6",
+            "pd_content": 8,
+            "h_position": "left",
+            "v_position": "top",
+            "txt_align": "left",
+            "order": "0",
+            "image": "shopify://shop_images/img6.png",
+            "use_eq_height": true,
+            "image_ratio": "ratio3_4",
+            "link": "",
+            "title": "",
+            "subtitle": "<p><strong>Address</strong><br/>6th Forrest Ray,<br/>Manhattan NYC 10001, USA</p><p></p><p><strong>Phone</strong><br/>Mobile: (+01)-800-3456-88 </p><p></p><p><strong>Email</strong><br/>support@gmail.com</p>",
+            "button_label": "",
+            "mg": "",
+            "pd": "",
+            "mg_mb": "",
+            "pd_mb": ""
+          }
+        }
+      },
+      "block_order": [
+        "bd5b7c04-af26-4be3-8c31-174bed898a73",
+        "d205ec2d-202a-4f1a-b3de-9d19d37a0891",
+        "text_GwyThF",
+        "image_card_kbxiXx",
+        "image_card_9gdcmD"
+      ],
+      "settings": {
+        "layout": false,
+        "container": 1170,
+        "cl_bg": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "60px,,,",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "8172325f-9ac4-4a6f-8801-ce5fc366ddff": {
+      "type": "faq-sections",
+      "blocks": {
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-0": {
+          "type": "faq",
+          "settings": {
+            "title": "Best Quanlity",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p>"
+          }
+        },
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-1": {
+          "type": "faq",
+          "settings": {
+            "title": "Customer Care",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p>"
+          }
+        },
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-2": {
+          "type": "faq",
+          "settings": {
+            "title": "Best Quality",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p>"
+          }
+        },
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-3": {
+          "type": "faq",
+          "settings": {
+            "title": "Support 24/7",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p>"
+          }
+        },
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-4": {
+          "type": "faq",
+          "settings": {
+            "title": "What We Do",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elitss ed do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. do eiusmod tempor incididu nt ut labore et dolore mag na aliqua. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-0",
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-1",
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-2",
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-3",
+        "template--17185129595165__8172325f-9ac4-4a6f-8801-ce5fc366ddff-1677666217414dfd20-4"
+      ],
+      "settings": {
+        "title": "What can we do for you ?",
+        "cl_title": "#333333",
+        "text_size": "small",
+        "text_transform": "none",
+        "show_contact": true,
+        "title_working_time": "Hour of Operation",
+        "working_time": "<p>Monday:<span>12-6PM</span></p>\n<p>Tuesday:<span>12-6PM</span></p>\n<p>Wednesday:<span>12-6PM</span></p>\n<p>Thursday:<span>12-6PM</span></p>\n<p>Friday:<span>12-6PM</span></p>\n<p>Saturday:<span>12-6PM</span></p>\n<p>Sunday:<span>Closed</span></p>",
+        "title_text_contact": "Careers",
+        "text_contact": "<p>If you’re interested in employment<br/>opportunities at Organix, please email us: </p><p><a href=\"mailto:aloshopify@alothemes.com\" title=\"mailto:aloshopify@alothemes.com\">aloshopify@alothemes.com</a></p>",
+        "layout": false,
+        "container": 1170,
+        "cl_bg": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,50px,",
+        "pd_mb": ""
+      }
+    },
+    "c86abfa8-64af-4215-b90c-9223c06bc23c": {
+      "type": "text-column-with-image",
+      "blocks": {
+        "template--17185129595165__c86abfa8-64af-4215-b90c-9223c06bc23c-1677659134714e961d-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ourteam_1.jpg",
+            "title": "Thomas snow",
+            "sub_title": "CEO/Founder",
+            "text": ""
+          }
+        },
+        "template--17185129595165__c86abfa8-64af-4215-b90c-9223c06bc23c-1677659134714e961d-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ourteam_2.jpg",
+            "title": "Pamela doe",
+            "sub_title": "CEO/Founder",
+            "text": ""
+          }
+        },
+        "template--17185129595165__c86abfa8-64af-4215-b90c-9223c06bc23c-1677659134714e961d-2": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ourteam_3.jpg",
+            "title": "Mirinda",
+            "sub_title": "Accountant",
+            "text": ""
+          }
+        },
+        "d9ac15c5-5851-4a14-92cf-971db579e594": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ourteam_4.jpg",
+            "title": "Jone doe",
+            "sub_title": "Developer",
+            "text": ""
+          }
+        },
+        "text_block_Kp8rx8": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ourteam_5.jpg",
+            "title": "Nick kon",
+            "sub_title": "Delivery Driver",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17185129595165__c86abfa8-64af-4215-b90c-9223c06bc23c-1677659134714e961d-0",
+        "template--17185129595165__c86abfa8-64af-4215-b90c-9223c06bc23c-1677659134714e961d-1",
+        "template--17185129595165__c86abfa8-64af-4215-b90c-9223c06bc23c-1677659134714e961d-2",
+        "d9ac15c5-5851-4a14-92cf-971db579e594",
+        "text_block_Kp8rx8"
+      ],
+      "settings": {
+        "hidden": false,
+        "title": "Our team",
+        "cl_title": "#333333",
+        "text_size": "small",
+        "text_transform": "none",
+        "h_position": "center",
+        "txt_align": "center",
+        "use-slider": true,
+        "visible": 5,
+        "widescreen": 5,
+        "desktop": 5,
+        "laptop": 5,
+        "notebook": 5,
+        "tablet": 4,
+        "landscape": 3,
+        "portrait": 2,
+        "mobile": 2,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 30,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1170,
+        "cl_bg": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "9c155839-5d6c-48fa-8ff1-e781fe61f099": {
+      "type": "testimonials",
+      "blocks": {
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-0": {
+          "type": "quote",
+          "settings": {
+            "cl_bg": "#ffffff",
+            "content": "<p>“The experience with Uminex has been nothing short of amazing. </p><p>So much better than other themes I’ve used – wish I had seen this one </p><p>first and saved my wasted time and money on other themes! I’d </p><p>recommend this theme in a heartbeat!”</p>",
+            "title": "Alexander Ball",
+            "address": "Founder/CEO at Uminex Store",
+            "rating": 5
+          }
+        },
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-1": {
+          "type": "quote",
+          "settings": {
+            "cl_bg": "#ffffff",
+            "content": "<p>“The experience with Uminex has been nothing short of amazing. </p><p>So much better than other themes I’ve used – wish I had seen this one </p><p>first and saved my wasted time and money on other themes! I’d </p><p>recommend this theme in a heartbeat!”</p>",
+            "title": "Alexander Ball",
+            "address": "Founder/CEO at Uminex Store",
+            "rating": 5
+          }
+        },
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-2": {
+          "type": "quote",
+          "settings": {
+            "cl_bg": "#ffffff",
+            "content": "<p>“The experience with Uminex has been nothing short of amazing. </p><p>So much better than other themes I’ve used – wish I had seen this one </p><p>first and saved my wasted time and money on other themes! I’d </p><p>recommend this theme in a heartbeat!”</p>",
+            "title": "Alexander Ball",
+            "address": "Founder/CEO at Uminex Store",
+            "rating": 5
+          }
+        },
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-3": {
+          "type": "quote",
+          "settings": {
+            "cl_bg": "#ffffff",
+            "content": "<p>“The experience with Uminex has been nothing short of amazing. </p><p>So much better than other themes I’ve used – wish I had seen this one </p><p>first and saved my wasted time and money on other themes! I’d </p><p>recommend this theme in a heartbeat!”</p>",
+            "title": "Alexander Ball",
+            "address": "Founder/CEO at Uminex Store",
+            "rating": 5
+          }
+        },
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-4": {
+          "type": "quote",
+          "settings": {
+            "cl_bg": "#ffffff",
+            "content": "<p>“The experience with Uminex has been nothing short of amazing. </p><p>So much better than other themes I’ve used – wish I had seen this one </p><p>first and saved my wasted time and money on other themes! I’d </p><p>recommend this theme in a heartbeat!”</p>",
+            "title": "Alexander Ball",
+            "address": "Founder/CEO at Uminex Store",
+            "rating": 5
+          }
+        },
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-5": {
+          "type": "quote",
+          "settings": {
+            "cl_bg": "#ffffff",
+            "content": "<p>“The experience with Uminex has been nothing short of amazing. </p><p>So much better than other themes I’ve used – wish I had seen this one </p><p>first and saved my wasted time and money on other themes! I’d </p><p>recommend this theme in a heartbeat!”</p>",
+            "title": "Alexander Ball",
+            "address": "Founder/CEO at Uminex Store",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-0",
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-1",
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-2",
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-3",
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-4",
+        "template--17185129595165__9c155839-5d6c-48fa-8ff1-e781fe61f099-167765856369e0dc1b-5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Happy Customers Say!",
+        "cl_title": "#ffffff",
+        "content": "",
+        "text_size": "small",
+        "text_transform": "capitalize",
+        "h_position": "center",
+        "txt_align": "center",
+        "show_text_bottom": false,
+        "text_bottom": "<p>Trusted customers are our happiness. Contact us.</p><p></p>",
+        "layout": false,
+        "container": 1410,
+        "border": 0,
+        "use-slider": true,
+        "visible": 3,
+        "widescreen": 3,
+        "desktop": 3,
+        "laptop": 3,
+        "notebook": 3,
+        "tablet": 2,
+        "landscape": 2,
+        "portrait": 1,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 18,
+        "direction": "horizontal",
+        "cl_bg": "#eeeeee",
+        "mg": "",
+        "pd": "50px,,50px,",
+        "mg_mb": "",
+        "pd_mb": "30px,,30px,"
+      }
+    },
+    "cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435": {
+      "type": "brand-list",
+      "blocks": {
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-1": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_blank"
+          }
+        },
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-2": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_blank"
+          }
+        },
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-3": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_blank"
+          }
+        },
+        "brand_HWjnNj": {
+          "type": "brand",
+          "settings": {
+            "url": "",
+            "open_link": "_blank"
+          }
+        },
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-4": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_blank"
+          }
+        },
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-5": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_blank"
+          }
+        },
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-6": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_blank"
+          }
+        }
+      },
+      "block_order": [
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-1",
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-2",
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-3",
+        "brand_HWjnNj",
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-4",
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-5",
+        "template--21324537069886__cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435-brand-6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "sub_title": "",
+        "cl_title": "#ffffff",
+        "cl_title_sub": "#888888",
+        "text_size": "medium",
+        "text_transform": "none",
+        "h_position": "left",
+        "txt_align": "left",
+        "border": 4,
+        "use_eq_height": true,
+        "image_ratio": "ratio2_1",
+        "use-slider": true,
+        "visible": 6,
+        "widescreen": 6,
+        "desktop": 6,
+        "laptop": 6,
+        "notebook": 5,
+        "tablet": 4,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 2,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": true,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 20,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1580,
+        "cl_bg": "#eeeeee",
+        "cl_bg_content": "",
+        "mg": "",
+        "pd": "50px,,50px,",
+        "mg_mb": "",
+        "pd_mb": "30px,,30px,"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "8172325f-9ac4-4a6f-8801-ce5fc366ddff",
+    "c86abfa8-64af-4215-b90c-9223c06bc23c",
+    "9c155839-5d6c-48fa-8ff1-e781fe61f099",
+    "cfbfbb8b-2554-4c98-a14b-ac1eeaf5e435"
+  ]
+}

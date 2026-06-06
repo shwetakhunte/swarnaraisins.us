@@ -1,0 +1,20 @@
+{%- capture img_html -%}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default:image.aspect_ratio %}
+    --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+<div data-image-id="{{ image.id }}" class="alo-image ratio overflow-hidden {{ image_class }}" 
+  style="{{ style | strip | strip_newlines }}">
+  {% if url %}<a class="block h-full " href="{{url}}" target="{{open_link}}" title=" " aria-label="link">{%- endif %}
+  {{
+    image
+    | image_url: width: image.width
+    | image_tag:
+      loading: 'lazy',
+      widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400',
+      class: 'lazyload motion-reduce default_media'
+  }}
+  {% if url %} </a>{% endif %}
+</div>
+{%- endcapture -%}
+{{ img_html | replace: 'src="', 'decoding="async" data-src="' | replace: 'srcset="', 'data-srcset="' }}

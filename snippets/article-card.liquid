@@ -1,0 +1,111 @@
+{% assign image = article.image.src %}
+{% assign url = article.url %}
+{% assign cl_first = section.settings.cl_first | plus:0 %}
+{% assign cl = section.settings.cl | plus:0 %}
+{% assign numb_text_first = section.settings.numb_text_first | plus:0 %}
+{% assign numb_text = section.settings.numb_text | plus:0 %}
+{%if forloop.first %}
+  <div class="{%if layout >= 4 %} list {% endif %} post-item {% if layout == 4%} full {% endif %}col-sm-12 col-md-{{cl_first | default:'4'}} {% if layout != 1 and layout != 4 and index == 1 %} even {% endif %}">    
+   <div class="item">
+    <div  class="images-card w-full h-full" >
+      {% if image != blank %}
+        {% render 'responsive-image',
+          image: image,
+          aspect_ratio:aspect_ratio,
+          url: url,
+          image_class: 'w-full h-full alo-border-radius'
+        %}
+      {% endif %}
+    </div>
+     <div class="post-info pt-20">  
+       
+       {% if blog.title %} <div class="blog"><a href="{{blog.url}}">{{blog.title}}</a></div>  {% endif %}
+        
+       <div class="head head-article">
+         <div class="title_blog">
+           <h3>
+             <a href="{{url}}" class="post-title">{{ article.title }}</a>
+           </h3>  
+         </div>
+       </div>
+      <div class="meta-post">
+        <div class="item-meta inner-date">
+          {% render 'icon-data' %}
+          <p>
+          <span class="day">{{ article.created_at | date: "%d" }}</span>
+          <span class="month">{{ article.created_at | date: "%b" }}</span>
+          </p>
+        </div>
+        <div class="item-meta author">{% render 'icon-login' %} <p><span>{{article.author}}</span></p></div>
+        <div class="item-meta comments">{% render 'icon-comment' %} <p><span>{{article.comments_count}} {{'blogs.article.comments' | t}} </span></p></div>
+      </div>
+       <div class="main-info-post">
+         {% if article.excerpt.size > 0 %}
+         {{ article.excerpt | strip_html | truncatewords: numb_text_first}}         
+         {% else %}
+         <div class="des"><p>{{ article.content | strip_html | truncatewords: numb_text_first}}</p></div>
+         {% endif %}   
+       </div>
+
+             <div class="read_more">
+                <a href="{{url }}" title="{{ article.title }}">
+                  {{'blogs.article.read_more' | t}}
+                </a>
+              </div>
+     </div>
+    
+     </div>
+  </div>
+{% else%}
+  {% assign index = forloop.index | modulo: 2 %}
+  <div class="{%if layout >= 4 %} list {% endif %} post-item {% if layout == 4%} full {% endif %}col-sm-12 col-md-{{cl | default:'4'}} {% if layout != 1 and layout != 4 and index == 1 %} even {% endif %}">
+   <div class="item">
+    <div  class="images-card w-full h-full overflow-hidden"  >
+      {% if image != blank %}
+        {% render 'responsive-image',
+          image: image,
+          aspect_ratio:aspect_ratio,
+          url: url,
+          image_class: 'w-full h-full alo-border-radius'
+        %}
+      {% endif %}
+    </div>
+     <div class="post-info pt-20">  
+       
+       {% if blog.title %} <div class="blog"><a href="{{blog.url}}">{{blog.title}}</a></div>  {% endif %}
+        
+       <div class="head head-article">
+         <div class="title_blog">
+           <h3>
+             <a href="{{url}}" class="post-title">{{ article.title }}</a>
+           </h3>  
+         </div>
+       </div>
+      <div class="meta-post">
+        <div class="item-meta inner-date">
+          {% render 'icon-data' %}
+          <p>
+          <span class="day">{{ article.created_at | date: "%d" }}</span>
+          <span class="month">{{ article.created_at | date: "%b" }}</span>
+          </p>
+        </div>
+        <div class="item-meta author">{% render 'icon-login' %} <p><span>{{article.author}}</span></p></div>
+        <div class="item-meta comments">{% render 'icon-comment' %} <p><span>{{article.comments_count}} {{'blogs.article.comments' | t}} </span></p></div>
+      </div>
+       <div class="main-info-post">
+         {% if article.excerpt.size > 0 %}
+         {{ article.excerpt | strip_html | truncatewords: numb_text}}         
+         {% else %}
+         <div class="des"><p>{{ article.content | strip_html | truncatewords: numb_text}}</p></div>
+         {% endif %}   
+       </div>
+             <div class="read_more">
+                <a href="{{url }}" title="{{ article.title }}">
+                  {{'blogs.article.read_more' | t}}
+                </a>
+              </div>
+     </div>
+    
+     </div>
+  </div>
+{% endif %}

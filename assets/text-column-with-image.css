@@ -1,0 +1,54 @@
+/* Text column with image*/
+.text-column-with-image {
+  position: relative;
+}
+.template-index .text-column-with-image:before {
+  content: "";
+  background-color: #ebeff4;
+  height: 1px;
+  max-width: 1440px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.laber_text-column-with-image .text_column_with_img {
+  overflow: hidden;
+}
+
+.text_column_with_img .text-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.text_column_with_img .h3 {
+  margin: 0;
+  background-repeat: no-repeat;
+  color: var(--cl-main);
+  position: relative;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.text_column_with_img .h4 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.text_column_with_img .rte-setting {
+  margin-bottom: 20px;
+}
+.text_column_with_img .rte-setting p {
+  color: #4d5574;
+  font-size: 16px;
+  margin: 0;
+}

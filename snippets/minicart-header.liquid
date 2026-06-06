@@ -1,0 +1,27 @@
+<li class="box-minicart">
+  <div class="minicart ">
+    <div class="cart-block  box-has-content">
+      <a
+        href="{{ routes.cart_url }}"
+        class="push_side header-icon"
+        {% if request.page_type != 'cart' %}
+          data-id="#js_cart_popup"
+        {% endif %}
+        title="{{'cart.general.title' | t}}"
+      >
+        <span class="icon">
+          {% render "icon-cart" %}
+          <span class="header__counter js-cart-count" data-js-cart-count="{{ cart.item_count }}">
+            {{- cart.item_count -}}
+          </span>
+        </span>
+        {% if settings.show_text_header_right %}
+        <span data-total-price class="total-price">
+          <span class="b">{{ 'cart.general.title' | t }} </span>
+          <span class="js-total-price"> {{ cart.total_price | money }}</span>
+        </span>
+        {% endif %}
+      </a>
+    </div>
+  </div>
+</li>

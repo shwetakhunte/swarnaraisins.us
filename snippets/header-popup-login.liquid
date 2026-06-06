@@ -1,0 +1,18 @@
+<dialog-modal>
+<a
+  dialog-trigger
+  href="#"
+  class="popup-login header-icon"
+  title="popup-{{'customer.login.log_in' | t}}"
+  aria-label="link"
+>
+  <span class="icon">
+    {% render 'icon-login' %}
+  </span>
+  <span>
+    <span class="text">{{ 'customer.login.log_in' | t }}</span>
+    <span class="b">{{ 'customer.login.account' | t }}</span>
+  </span>
+</a>
+{% render 'popup-login' %}
+</dialog-modal>

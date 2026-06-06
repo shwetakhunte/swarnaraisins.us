@@ -1,0 +1,99 @@
+.footer-top section {
+  border-top:1px solid var(--cl-border);
+}
+.footer-top .widget-title {
+  display: flex;
+  justify-content: space-between;
+  min-height: 30px;
+  align-items: center;
+  color: var(--cl-text);
+  text-transform: var(--text-transform);
+  font-size: var(--f-size);
+
+}
+.footer-top .widget-title .icon_mobile {
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    display:none;
+}
+.footer-top .widget.active .icon_mobile .laber-icon-down,
+.footer-top .widget .icon_mobile .laber-icon-up {
+  display:none;
+}
+.footer-top .widget.active .icon_mobile .laber-icon-up {
+  display:block;
+}
+.alo-logo-footer .content a,
+.alo-logo-footer .content {
+  color:var(--cl-text);
+}
+.alo-logo-footer .phone-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.alo-logo-footer .phone-footer p {
+  margin:0;
+  color: var(--cl-text);
+}
+.alo-logo-footer .phone-footer a {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 30px;
+  color:var(--cl-text);
+}
+.footer-top .menu .menu-item {
+  margin: 0;
+  line-height: 30px;
+}
+.footer-top .menu .menu-item a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer-top .menu .menu-item a .icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #E3E3E3;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.footer-top .menu .menu-item a .icon img {
+  width: 20px;
+  height: 20px;
+}
+.footer-top .footer-mail .field {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.footer-top .widget_footer .sub-email2,
+.footer-top .widget_footer .sub-email2 a,
+.footer-top .widget_footer .sub-email {
+      color: var(--cl-text);
+}
+.footer-top .footer-mail .field input {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  text-align: left;
+}
+.footer-top .footer-mail .field .field__button {
+    letter-spacing: .15em;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+@media (max-width: 767px) {
+.footer-top .widget-title .icon_mobile {
+    display:flex;
+  }
+.footer-top .widget_footer {
+  display:none;
+}
+}

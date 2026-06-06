@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 30,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 15
+      }
+    },
+    "main": {
+      "type": "main-contact",
+      "blocks": {
+        "1988c65b-ab60-4d1a-9087-bd70c51bd227": {
+          "type": "form_contact",
+          "settings": {
+            "right_title_block": "Get in Touch",
+            "content": "<p>Your email address will not be published. Required fields are marked *</p>"
+          }
+        },
+        "c30d9271-76e1-4b33-8e2c-4eb91a939fa7": {
+          "type": "Contact",
+          "settings": {
+            "title": "Contact Information",
+            "content": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra per inceptos pretium.</p>",
+            "show_address": true,
+            "address": "<p>268 St, South New York/NY 98944, United States.</p>",
+            "show_work_time": true,
+            "work_time": "<p>Monday – Friday: 9:00-20:00  </p><p>Saturady: 11:00 – 15:00</p>",
+            "show_phone": true,
+            "phone": "",
+            "show_email": true,
+            "email": "",
+            "header_use_social": true,
+            "type_social": "1"
+          }
+        }
+      },
+      "block_order": [
+        "1988c65b-ab60-4d1a-9087-bd70c51bd227",
+        "c30d9271-76e1-4b33-8e2c-4eb91a939fa7"
+      ],
+      "settings": {
+        "use_contact_map": true,
+        "map_iframe": "<iframe width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" referrerpolicy=\"no-referrer-when-downgrade\" src=\"https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7447.812492125131!2d105.83421174817529!3d21.036437010519947!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1726818278401!5m2!1svi!2s\"></iframe>",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": "",
+        "pd": ",,80px,",
+        "mg_mb": "",
+        "pd_mb": ",,40px,"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

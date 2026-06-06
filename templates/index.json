@@ -1,0 +1,488 @@
+{
+  "sections": {
+    "slideshow_VRX4a3": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "img",
+          "settings": {
+            "link_img": "/collections/all",
+            "open_link": "_self"
+          }
+        },
+        "slide_2": {
+          "type": "img",
+          "settings": {
+            "link_img": "/products/supply6-fibre-orangeburst",
+            "open_link": "_self"
+          }
+        },
+        "slide_3": {
+          "type": "img",
+          "settings": {
+            "link_img": "/products/supply6-360",
+            "open_link": "_self"
+          }
+        },
+        "slide_4": {
+          "type": "img",
+          "settings": {
+            "link_img": "/products/supply6-salts-lime",
+            "open_link": "_self"
+          }
+        },
+        "slide_5": {
+          "type": "img",
+          "settings": {
+            "link_img": "/products/supply6-360",
+            "open_link": "_self"
+          }
+        },
+        "slide_6": {
+          "type": "img",
+          "settings": {
+            "link_img": "/products/supply6-protein-wafer-strawberry",
+            "open_link": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4",
+        "slide_5",
+        "slide_6"
+      ],
+      "settings": {
+        "full-screen": false,
+        "h_des": 480,
+        "h_tb": 400,
+        "h_mb": 380,
+        "border": 12,
+        "use-slider": true,
+        "visible": 1,
+        "widescreen": 1,
+        "desktop": 1,
+        "laptop": 1,
+        "notebook": 1,
+        "tablet": 1,
+        "landscape": 1,
+        "portrait": 1,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": true,
+        "speed": "600",
+        "autoplay_delay": "5000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": true,
+        "auto-Height": false,
+        "pagination": true,
+        "loop": true,
+        "space-Between": 0,
+        "direction": "horizontal",
+        "position_dots": "center",
+        "cl_dots": "#014344",
+        "cl_dots_h": "#eb5624",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,40px,",
+        "pd_mb": ""
+      }
+    },
+    "why_we_exist": {
+      "type": "section-about-us",
+      "blocks": {
+        "why_1": {
+          "type": "text",
+          "settings": {
+            "source": "3",
+            "title": "Processed foods dominate our diets.",
+            "content": "",
+            "bg_color": "#ffffff"
+          }
+        },
+        "why_2": {
+          "type": "text",
+          "settings": {
+            "source": "3",
+            "title": "Soil depletion has reduced the quality of our food.",
+            "content": "",
+            "bg_color": "#ffffff"
+          }
+        },
+        "why_3": {
+          "type": "text",
+          "settings": {
+            "source": "3",
+            "title": "Busy lifestyles leave little time for balance.",
+            "content": "",
+            "bg_color": "#ffffff"
+          }
+        },
+        "why_4": {
+          "type": "text",
+          "settings": {
+            "source": "3",
+            "title": "Cultural habits often restrict key nutrients in your food.",
+            "content": "",
+            "bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "why_1",
+        "why_2",
+        "why_3",
+        "why_4"
+      ],
+      "settings": {
+        "title": "Why we exist",
+        "cl_title": "#014344",
+        "text_size": "medium",
+        "subtitle": "Modern life makes it nearly impossible to get all the nutrients your body needs.",
+        "cl_subtitle": "#eb5624",
+        "content_below": "At Supply6, we're here to help. Our mission is to bridge the gap between what your body needs & what your diet provides—without making your life harder. With products that are comprehensive, convenient, and effective, we make better health accessible, one simple step at a time. Because when you feel better, you live better.",
+        "h_position": "center",
+        "txt_align": "center",
+        "columns_desktop": 4,
+        "columns_laptop": 4,
+        "columns_tablet": 2,
+        "columns_landscape": 2,
+        "columns_mobile": "1",
+        "gap": 24,
+        "gap_mobile": 16,
+        "border": 12,
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,80px,",
+        "pd": "",
+        "mg_mb": ",,40px,",
+        "pd_mb": ""
+      }
+    },
+    "top_sellers": {
+      "type": "tab-product",
+      "blocks": {
+        "ts_all": {
+          "type": "col",
+          "settings": {
+            "title": "All Products",
+            "collection": "all",
+            "show_icon": false
+          }
+        },
+        "ts_special": {
+          "type": "col",
+          "settings": {
+            "title": "Supply6 360",
+            "collection": "organix",
+            "show_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "ts_all",
+        "ts_special"
+      ],
+      "settings": {
+        "title": "Meet our Top Sellers",
+        "cl_title": "#014344",
+        "text_size": "medium",
+        "subtitle": "~ Our Products ~",
+        "cl_subtitle": "#eb5624",
+        "col": "100%",
+        "f-size": 16,
+        "f-weight": 600,
+        "text_transform": "capitalize",
+        "text_align": "center",
+        "style_tab": "1",
+        "cl_text": "#014344",
+        "cl_text_h": "#eb5624",
+        "mb-tab": 40,
+        "max_count": 8,
+        "show_view_all": true,
+        "use-slider": true,
+        "visible": 4,
+        "widescreen": 4,
+        "desktop": 4,
+        "laptop": 4,
+        "notebook": 3,
+        "tablet": 2,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 2,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 20,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,80px,",
+        "pd": "",
+        "mg_mb": ",,40px,",
+        "pd_mb": ""
+      }
+    },
+    "as_seen_in": {
+      "type": "brand-list",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_self"
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_self"
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_self"
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "url": "#",
+            "open_link": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4"
+      ],
+      "settings": {
+        "title": "As seen in",
+        "cl_title": "#014344",
+        "text_size": "medium",
+        "text_transform": "uppercase",
+        "h_position": "center",
+        "txt_align": "center",
+        "border": 0,
+        "use_eq_height": true,
+        "image_ratio": "ratio3_2",
+        "use-slider": true,
+        "visible": 4,
+        "widescreen": 4,
+        "desktop": 4,
+        "laptop": 4,
+        "notebook": 4,
+        "tablet": 3,
+        "landscape": 3,
+        "portrait": 2,
+        "mobile": 2,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": true,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": false,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": true,
+        "space-Between": 30,
+        "direction": "horizontal",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,60px,",
+        "pd": "",
+        "mg_mb": ",,40px,",
+        "pd_mb": ""
+      }
+    },
+    "quiz_banner": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"take-quiz\"><div class=\"container\"><div class=\"take-quiz_wrap\"><div class=\"take-quiz_img-wrap\"><img src=\"https://supplysix.com/cdn/shop/files/quize_copy_1.png?v=1717491307&width=400\" alt=\"supply6\" class=\"take-quiz_img\"></div><div class=\"take-quiz_content-col\"><div class=\"take-quiz_content-col_wrap\"><h4 class=\"take-quiz_content-title\">Not sure where to start?</h4><div class=\"take-quiz_content-desc\">Take the Quiz to find the right product for you.</div><a href=\"https://www.supplysix.com/tools/perfect-product-finder/find-your-perfect-match#/\" class=\"take-quiz_link\">Take Quiz</a></div></div></div></div></div>",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "usp_grid": {
+      "type": "benefit",
+      "blocks": {
+        "usp_1": {
+          "type": "shipping",
+          "settings": {
+            "title": "Tired no matter how much you rest.",
+            "text": "",
+            "pt": 0
+          }
+        },
+        "usp_2": {
+          "type": "shipping",
+          "settings": {
+            "title": "More sick days than usual.",
+            "text": "",
+            "pt": 0
+          }
+        },
+        "usp_3": {
+          "type": "shipping",
+          "settings": {
+            "title": "Gut issues that won't settle.",
+            "text": "",
+            "pt": 0
+          }
+        },
+        "usp_4": {
+          "type": "shipping",
+          "settings": {
+            "title": "Feeling off, but can't explain why.",
+            "text": "",
+            "pt": 0
+          }
+        }
+      },
+      "block_order": [
+        "usp_1",
+        "usp_2",
+        "usp_3",
+        "usp_4"
+      ],
+      "settings": {
+        "title": "Your body is paying the price!",
+        "sub_title": "",
+        "text_size": "medium",
+        "text_transform": "none",
+        "source": "3",
+        "style": "1",
+        "col_pr": "4",
+        "col_pr_tb": "2",
+        "col_pr_mb": "1",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#f6f4f1",
+        "cl_icon": "#014344",
+        "cl_heading": "#014344",
+        "cl_text": "#1b1b1b",
+        "mg": ",,80px,",
+        "pd": "60px,,60px,",
+        "mg_mb": ",,40px,",
+        "pd_mb": "40px,,40px:"
+      }
+    },
+    "faq_block": {
+      "type": "faq-sections",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "title": "We give you what’s missing",
+            "text": "<p>The vitamins, minerals, and nutrients your meals don’t provide.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "title": "We make it easy",
+            "text": "<p>Supplements designed to fit into your daily routine effortlessly.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "title": "We did our research",
+            "text": "<p>Our supplements are Bio-available & Effective.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ],
+      "settings": {
+        "title": "But this ends today",
+        "cl_title": "#014344",
+        "text_size": "medium",
+        "text_transform": "none",
+        "show_contact": false,
+        "layout": false,
+        "container": 800,
+        "cl_bg": "#ffffff",
+        "mg": ",,80px,",
+        "pd": "",
+        "mg_mb": ",,40px,",
+        "pd_mb": ""
+      }
+    },
+    "featured_blog": {
+      "type": "featured_blog",
+      "settings": {
+        "title": "Latest Blogs",
+        "cl_title": "#014344",
+        "text_size": "medium",
+        "blog": "news",
+        "limit": 3,
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": "1",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": ",,80px,",
+        "pd": "",
+        "mg_mb": ",,40px,",
+        "pd_mb": ""
+      }
+    },
+    "newsletter_signup": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Join the club",
+        "subtitle": "To Stay Healthy and updated",
+        "cl_title": "#014344",
+        "cl_subtitle": "#eb5624",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#f6f4f1",
+        "mg": ",,80px,",
+        "pd": "60px,,60px,",
+        "mg_mb": ",,40px,",
+        "pd_mb": "40px,,40px:"
+      }
+    }
+  },
+  "order": [
+    "slideshow_VRX4a3",
+    "why_we_exist",
+    "top_sellers",
+    "as_seen_in",
+    "quiz_banner",
+    "usp_grid",
+    "faq_block",
+    "featured_blog",
+    "newsletter_signup"
+  ]
+}

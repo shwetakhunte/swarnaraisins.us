@@ -1,0 +1,56 @@
+{%- if request.page_type == 'product' %}
+  {{ 'drift-basic.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'drift.min.js' | asset_url }}" defer="defer"></script>
+{% endif -%}
+{% assign page_type = request.page_type %}
+<script
+  type="application/json"
+  id="magepowapps-zoom-settings"
+  data-page_type="{{ page_type }}"
+  data-handle="{{ product.handle }}"
+  data-id="{{ product.id }}"
+>
+  {{ section.settings | json }}
+</script>
+{% style %}
+  :root{
+    --drift-bg-opacity: {{ section.settings.bgOpacity }};
+  }
+  .magezoom-init .drift-pane {
+    /* Disable event in popup => Fix error lag effect */
+    z-index: 99;
+    pointer-events: none;
+  }
+  .magezoom-init .drift-pane, .magezoom-init .drift-zoom-pane, .magezoom-init .drift-bounding-box {
+    z-index: {{ section.settings.zIndex }};
+  }
+  .magezoom-init .drift-zoom-pane.drift-opening {
+    {%- if backgroundMask != blank -%}
+    background-color: {{ backgroundMask }};
+    {%- endif -%}
+    opacity: {{ section.settings.bgOpacity }};
+  }
+  .magezoom-init .drift-zoom-pane {
+      border: 1px solid var(--color-border);
+      border-radius: var(--alo-border-radius);
+  }
+  .magezoom-init .drift-zoom-pane-loader:before,
+  .magezoom-init .drift-zoom-pane-loader:after{
+      {%- if section.settings.loaderColor != blank -%}
+      background-color: {{ section.settings.loaderColor }};
+      {%- endif -%}
+  }
+  .magezoom-init .drift-zoom-pane.drift-inline {
+    {%- if section.settings.zoomWidth > 0 -%}
+      width: {{ section.settings.zoomWidth }}px;
+    {%- endif -%}
+    {%- if section.settings.zoomHeight > 0 -%}
+      height: {{ section.settings.zoomHeight }}px;
+    {%- endif -%}
+    {%- if section.settings.borderRadius == -1 -%}
+      border-radius: 50%;
+    {%- else -%}
+       border-radius: {{ section.settings.borderRadius }}%;
+    {%- endif -%}
+  }
+{% endstyle %}

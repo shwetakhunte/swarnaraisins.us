@@ -1,0 +1,127 @@
+/* Product countdown banner */
+.laber_countdown_banner {
+  position: relative;
+}
+.laber_countdown_banner .wrap-infor {
+  display: flex;
+}
+.laber_countdown_banner .content-countdown .product-inner {
+}
+.laber_countdown_banner .content-countdown .wrap_title {
+  padding:0;
+  gap:0;
+}
+.laber_countdown_banner .content-countdown .wrap_title:before {display:none;}
+.laber_countdown_banner .content-countdown .wrap_title .title2 {
+  font-size: 18px;
+  color: var(--cl-text);
+}
+.laber_countdown_banner .content-countdown .wrap_title .title1 {
+  color: var(--cl-text);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 40px;
+}
+.laber_countdown_banner .content-countdown .wrap_title .subtitle {
+  font-size: 16px;
+  line-height: 23px;
+  color: var(--cl-text);
+}
+.laber_countdown_banner .cms-countdown {
+  display: inline-flex;
+  gap: 30px;
+}
+.laber_countdown_banner .cms-countdown .wrap_title {
+  align-items: baseline;
+  display: inline-flex;
+}
+.laber_countdown_banner .cms-countdown .box-count {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  align-items: flex-end;
+}
+.laber_countdown_banner .cms-countdown .box-count:last-child {
+}
+.laber_countdown_banner .cms-countdown .box-count .number {
+  color: var(--cl-countdown);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width:36px;
+}
+.laber_countdown_banner .cms-countdown .box-count .number b {
+  font-weight: 600;
+}
+.laber_countdown_banner .cms-countdown .box-count .text {
+  color: var(--cl-countdown);
+  font-size: 13px;
+  line-height: 23px;
+  padding: 0;
+  opacity: .8;
+}
+.laber_countdown_banner .content-countdown .button {
+    height: 45px;
+    padding: 0 30px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 200px;
+    gap: 5px;
+    line-height: 45px;
+    text-transform: uppercase;
+}
+
+/* ipad pro */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .laber_countdown_banner .countdown_banner .laber_bg_lz {
+    padding-top: 550px !important;
+  }
+}
+/* ipad  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .laber_countdown_banner .countdown_banner .laber_bg_lz {
+    padding-top: 550px !important;
+  }
+}
+/* mobile  */
+@media only screen and (max-width: 767px) {
+  .laber_countdown_banner .countdown_banner .laber_bg_lz {
+    padding-top: 410px !important;
+  }
+  .laber_countdown_banner .cms-countdown {
+    gap: 15px;
+  }
+  .laber_countdown_banner .cms-countdown .box-count .number {
+    font-size: 25px;
+    justify-content: center;
+  }
+  .laber_countdown_banner .cms-countdown .box-count .text {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .laber_countdown_banner .content-countdown .wrap_title .title2 {
+    font-size:15px;
+  }
+  .laber_countdown_banner .content-countdown .wrap_title .title1 {
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .laber_countdown_banner .content-countdown .wrap_title .subtitle {
+    font-size:14px;
+  }
+  .laber_countdown_banner .cms-countdown .box-count {
+      gap: 5px;
+      flex-direction: column;
+      align-items: center;
+  }
+}
+/* End product countdown banner*/

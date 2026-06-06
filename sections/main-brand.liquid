@@ -1,0 +1,124 @@
+{{ 'main-brand.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign sid = section.id
+  assign list_alphabet = section.settings.alphabet | remove: ' ' | split: ','
+%}
+<section id="laber_{{sid}}">
+  <div class="page-brands">
+    <div class="container">
+      {% if section.settings.show_page %}
+        <h1 class="main-page-title">
+          {{ page.title | escape }}
+        </h1>
+      {% endif %}
+      {% comment %}
+        <ul id="brandsCode" class="brands-list-code">
+          <li data-code="all" class="all-brands brand-filter active"><a href="#" role="button">Show All</a></li>
+          {% for alphabet in list_alphabet %}
+              <li class="brand-filter " data-code="{{ alphabet }}"><a href="#brand-{{ alphabet }}" data-href="a" role="button">{{ alphabet }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endcomment %}
+      <filter-search class="brandsWrap" data-show-empty="false">
+        <div class="search-brand">
+          <div class="title">{{ 'sections.main_brand.search_brand' | t }}</div>
+          <input type="text" class="search" name="search" placeholder="{{'sections.main_brand.enter_item_name' |t}}">
+        </div>
+        {% for alphabet in list_alphabet %}
+          {% assign brandhtml = '' %}
+          {% for product_vendor in shop.vendors %}
+            {% assign f_letter = product_vendor | slice: 0 | handleize %}
+            {% assign alp = alphabet | handleize %}
+            {% if alp == f_letter %}
+              {% capture brandhtml %}{{brandhtml}}<li class="brand item">{{ product_vendor | link_to_vendor }}</li>{% endcapture %}
+            {% endif %}
+          {% endfor %}
+          {% if brandhtml != '' %}
+            <div id="brands-code-{{ alphabet }}" class="brands-group group" data-code="{{ alphabet }}">
+              <h3 class="brands-group-title">{{ alphabet }}</h3>
+              <ul class="brands-group-list">
+                {{ brandhtml }}
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </filter-search>
+    </div>
+  </div>
+</section>
+{%- render 'section_style' -%}
+{% schema %}
+ {
+   "name": "Main Brands",
+   "settings": [
+       {
+       "type": "checkbox",
+       "id": "show_page",
+       "label": "show Name page",
+       "default": false
+       },
+       {
+         "type": "textarea",
+         "id": "alphabet",
+         "label": "Alphabet",
+         "default":"a, b, c, d, e, f, g, h ,i ,k , l, m, n, o, p, q, r, s, t, u, v, w, x, y, z.",
+         "info": "Note: Separate letters with a comma \",\""
+       },
+       {
+       "type": "header",
+       "content": "== setting content"
+       },
+       {
+       "type": "color",
+       "id": "cl_bg",
+       "label": "Background color",
+       "default": "#fff"
+       },
+
+       {
+       "type": "text",
+       "id": "pd_c",
+       "label": "Padding",
+       "info":"Padding top, Padding right, Padding bottom, Padding left. If you not use to blank"
+       },
+       {
+       "type": "header",
+       "content": "== Setting PC",
+       "info":"Margin"
+       },
+       {
+       "type": "text",
+       "id": "mg",
+       "label": "Margin",
+       "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+       },
+       {
+       "type": "text",
+       "id": "pd",
+       "label": "Padding",
+       "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+       },
+       {
+       "type": "header",
+       "content": "== Design Mobile Options"
+       },
+       {
+       "type": "text",
+       "id": "mg_mb",
+       "label": "Margin"
+       },
+       {
+       "type": "text",
+       "id": "pd_mb",
+       "label": "Padding"
+       }
+
+]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,54 @@
+/* Breadcrumb */
+.breadcrumbs {
+  background-color: #fff;
+  position: relative;
+  background-size: cover;
+  background-position: center bottom;
+}
+.breadcrumbs .outline-breadcrum {
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum h2 {
+  color: var(--cl-title-breadcrumb);
+  text-transform: capitalize;
+  font-size: 24px;
+  line-height: 1;
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul {
+  display: inline-flex;
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul li {
+  display: inline-flex;
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul li a {
+  color: var(--cl-text-breadcrumb);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul li:last-child span {
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul li a:hover,
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul li:last-child span {
+  color: var(--cl-title-breadcrumb);
+}
+
+.breadcrumbs .outline-breadcrum .wrap-breadcrum ul li:not(:first-child)::before {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: var(--cl-text-breadcrumb);
+  content: "\e951";
+  font-family: icon-dukamarket;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumbs .outline-breadcrum .wrap-breadcrum h2 {
+    font-size: 18px;
+  }
+}

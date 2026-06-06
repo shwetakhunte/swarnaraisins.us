@@ -1,0 +1,468 @@
+/*about page*/
+.page-width ul,
+.page-width ol {
+  margin-left: 30px;
+  list-style: unset;
+  margin-bottom: 20px;
+}
+.type_about {
+}
+.type_about .content_about_us .sub_title {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: var(--cl-link-hover);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+}
+.type_about .content_about_us .title {
+  color: var(--cl-main);
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.type_about .content_about_us .content ul {
+  padding-top: 20px;
+}
+.type_about .content_about_us .content li {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+.type_about .content_about_us .content li i {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  background: var(--cl-hover);
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.content-text .about-title {
+  color: var(--cl-main);
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+}
+.content-text .about-subtitle {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: var(--cl-link-hover);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+}
+.content-text .content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+.alo-image {
+  overflow: hidden;
+  line-height: 1;
+}
+.alo-image img {
+  transform: scale(1);
+  -webkit-transition: all 240ms linear 0ms;
+  -khtml-transition: all 240ms linear 0ms;
+  -moz-transition: all 240ms linear 0ms;
+  -ms-transition: all 240ms linear 0ms;
+  -o-transition: all 240ms linear 0ms;
+  transition: all 240ms linear 0ms;
+}
+.content-text .content {
+}
+.image_card .about-btn,
+.content-text .about-btn {
+  padding: 0;
+}
+.image_card .about-btn a,
+.content-text .about-btn a {
+  position: relative;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 30px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+.image_card .about-btn a:before,
+.content-text .about-btn a:before {
+  content: "";
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-transform: capitalize;
+  background-color: var(--cl-link);
+  display: block;
+  position: absolute;
+  -webkit-transition: all 240ms linear 0ms;
+  -khtml-transition: all 240ms linear 0ms;
+  -moz-transition: all 240ms linear 0ms;
+  -ms-transition: all 240ms linear 0ms;
+  -o-transition: all 240ms linear 0ms;
+  transition: all 240ms linear 0ms;
+}
+.image_card .about-btn a:hover:before,
+.content-text .about-btn a:hover:before {
+  right: 100%;
+  opacity: 0;
+}
+.image_card .about-btn a:after,
+.content-text .about-btn a:after {
+  content: "";
+  height: 2px;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: var(--cl-link-hover);
+  display: block;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: all 240ms linear 0ms;
+  -khtml-transition: all 240ms linear 0ms;
+  -moz-transition: all 240ms linear 0ms;
+  -ms-transition: all 240ms linear 0ms;
+  -o-transition: all 240ms linear 0ms;
+  transition: all 240ms linear 0ms;
+}
+.image_card .about-btn a:hover:after,
+.content-text .about-btn a:hover:after {
+  left: 0;
+  opacity: 1;
+}
+
+.image_card .about-btn {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px;
+  margin-top: 15px;
+}
+.image_card {
+  line-height: 1;
+}
+.image_card .about-title {
+  color: var(--cl-main);
+  font-weight: 500;
+  font-size: 30px;
+}
+.image_card .about-subtitle {
+  font-size: 16px;
+  line-height: 24px;
+}
+.image_card .about-subtitle p {
+  display: table;
+}
+@media only screen  and (min-width: 1024px) {
+  .image_card .content {
+    padding: 0 var(--pad);
+  }
+}
+/*end about page*/
+
+/*============== FAQ'S page ============== */
+
+.page-faqs {
+}
+.page-faqs .head {
+  margin: 0;
+}
+.page-faqs .head .title {
+  font-size: 30px;
+  color: var(--cl-main);
+  font-weight: 600;
+  line-height: 100px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.page-faqs .faqs_block:last-child {
+  padding-bottom: 30px;
+}
+.page-faqs .content-offset-right {
+  margin-left: auto;
+  order: 2;
+}
+@media (min-width: 1024px) {
+  .page-faqs .content-offset-right {
+    padding-left: 90px;
+    position: relative;
+  }
+  .page-faqs .content-offset-right:before {
+    content: "";
+    border-left: 1px solid #e5e8ec;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    bottom: 0;
+    width: 1px;
+  }
+}
+.page-faqs .title_faqs {
+    padding: 20px 0;
+    color: var(--cl-main);
+    font-size: 20px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.page-faqs .content .item {
+  display: block;
+  visibility: visible;
+  border: 1px solid var(--cl-border);
+  padding: 0 15px;
+  margin-bottom: 15px;
+  border-radius: var(--rounded);
+}
+.page-faqs .content .item.active {
+}
+
+.page-faqs .content .item .heading-title {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+.page-faqs .content .item a {
+    display: flex;
+    box-sizing: border-box;
+    text-decoration: none;
+    position: relative;
+    transition: color .2s ease-in-out;
+    box-shadow: none;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 28px;
+    padding: 15px 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--cl-link);
+    border-bottom: 1px solid transparent;
+}
+.page-faqs .content .item.active a {
+  color: var(--cl-link-h);
+  border-color: var(--cl-border);
+}
+.page-faqs .content .item a .faqs-icon {
+  font-size: 20px;
+}
+.page-faqs .content .item.active a .faqs-icon i:before {
+  content: "\e9c0";
+}
+
+.page-faqs .content .item .content-faqs {
+    height: 0;
+    text-align: justify;
+    box-sizing: content-box;
+    padding: 0;
+    background: var(--bg-body) !important;
+    border: 0 !important;
+    color: var(--cl-text-body);
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 0 0 var(--rounded) var(--rounded);
+    border: 2px solid var(--cl-b-vertical);
+    -webkit-transition: all .5s linear 0s;
+    -khtml-transition: all .5s linear 0s;
+    -moz-transition: all .5s linear 0s;
+    -ms-transition: all .5s linear 0s;
+    -o-transition: all .5s linear 0s;
+    transition: all .5s linear 0s;
+    filter: alpha(opacity = 0);
+    transform: scaleY(0);
+    -webkit-transform: scale(1, 0);
+    -moz-transform: scale(1, 0);
+    -o-transform: scale(1, 0);
+    -ms-transform: scale(1, 0);
+    -webkit-transform-origin: 0 0 0;
+    transform-origin: 0 0 0;
+}
+.page-faqs .content .item.active .content-faqs {
+  opacity: 1;
+  overflow: visible;
+  pointer-events: auto;
+  filter: alpha(opacity = 100);
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1);
+  height: auto;
+  padding: 20px 0;
+}
+.page-faqs .faq_content {
+  border-bottom: 1px solid var(--cl-border);
+  padding-bottom: 20px;
+}
+.page-faqs .faq_content h3 {
+  margin: 0 0 10px;
+  color: var(--cl-main);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+.page-faqs .faq_content .faq_desc {
+}
+.page-faqs .faq_content .faq_desc p {
+  line-height: 25px;
+  font-weight: 400;
+  font-size: 16px;
+}
+.page-faqs .faq_content .faq_desc ul {
+  padding: 0;
+  margin-bottom: 15px;
+}
+.page-faqs .faq_content .faq_desc ul li {
+  line-height: 30px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* End FAQ'S */
+/*============== contat page ============== */
+.errorForm p {
+  color: var(--cl-secondary);
+}
+.contact-page {
+}
+.contact-page .map {
+  border-radius: var(--rounded);
+  overflow: hidden;
+}
+.contact-page .successForm {
+  margin-bottom: 15px;
+  color: green;
+}
+.contact-page .contact-info {
+  padding: 70px 0 0 15px;
+}
+.contact-page .information-form {
+  padding: 70px 15px 0 0;
+}
+.contact-page .contact-info h2 {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.content-form .contact-info h3,
+.content-form .information-form .main-title {
+  color: var(--cl-main);
+  border: none;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 30px;
+  background: none;
+}
+.content-form .contact-info .content,
+.content-form .information-form .content {
+  padding: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+.contact-page .content-form .input-info {
+  height: 45px;
+  margin-bottom: 20px;
+  min-width: 100%;
+  font-weight: 500;
+  color: var(--cl-text-body);
+}
+.contact-page .content-form textarea.input-info {
+  padding: 20px;
+  min-height: 200px;
+  border: 1px solid var(--cl-border);
+  background-color:var(--bg-body);
+}
+
+.contact-page .map iframe {
+  width: 100%;
+}
+.sc-hihest-quality .text-content {
+}
+.sc-hihest-quality .text-content h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--cl-main);
+  margin-bottom: 10px;
+}
+.sc-hihest-quality .text-content .rte-setting p {
+  margin: 0 0 10px 0;
+  line-height: 1;
+}
+.nb_sale {
+  height: auto;
+}
+.content-nb-sale {
+}
+.content-nb-sale .about-subtitle {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  color: var(--cl-link-hover);
+}
+.content-nb-sale .about-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 10px;
+  color: var(--cl-main);
+}
+.content-nb-sale .subheading {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+.content-nb-sale count-up {
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.content-nb-sale count-up .counter {color: var(--cl-secondary);}
+.content-nb-sale count-up .symbol {color: var(--cl-main);font-weight: 500;}
+.collection-wishlist .collection-wishlist-empty {
+  padding-top: 100px;
+  background: var(--bg-body);
+  padding-bottom: 100px;
+  text-align: center;
+  border: 1px solid var(--cl-border);
+  border-radius: var(--rounded);
+}
+.collection-wishlist .collection-wishlist-empty p {
+  font-size: 18px;
+  margin: 0;
+  color: var(--cl-main);
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.page-wishlist  grid-slider .swiper-slide {
+  opacity: 1;
+}
+.page-wishlist  grid-slider .swiper-wrapper {
+  overflow: visible !important;
+}
+/*============== end contat page ============== */
+/* ipad pro */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+}
+/* ipad  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .contact-page .contact-info,
+  .contact-page .information-form {
+    padding: 30px 0;
+  }
+}
+/* mobile  */
+@media only screen and (max-width: 767px) {
+  .contact-page .contact-info,
+  .contact-page .information-form {
+    padding: 30px 0;
+  }
+}

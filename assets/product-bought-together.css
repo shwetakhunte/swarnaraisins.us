@@ -1,0 +1,251 @@
+
+.alo-bought-together {}
+.alo-bought-together .alo-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.alo-bought-together .alo-title .h3 {
+  font-weight: var(--font-weight);
+  position:relative;
+  padding-bottom: 15px;
+}
+
+.alo-bought-together .alo-title.small .h3 {
+    font-size: 24px;
+  line-height: 24px;
+}
+.alo-bought-together .alo-title.medium .h3 {
+    font-size: 34px;
+  line-height: 34px;
+}
+.alo-bought-together .alo-title.medium .h3 {
+    font-size: 44px;
+  line-height: 44px;
+}
+
+.alo-bought-together .bought-together {
+  display: flex;
+  gap: var(--alo-gap);
+}
+.alo-bought-together .bought-together .product-bought-together{
+  width: calc(100% - 300px - var(--alo-gap));
+}
+.product-bought-together .swiper-slide {
+  position:relative;
+}
+
+.product-bought-together .product-item .product-collection {
+}
+.product-bought-together product-item.product-item .product-collection:after {display:none;}
+.product-bought-together .product-item .product-collection__image {
+  overflow: initial;
+}
+.product-bought-together .swiper-initialized .swiper-slide:not(:first-child) .item-product:before {
+  content: "\e9dd";
+  font-family: icon-dukamarket !important;
+  position: absolute;
+  top: 50%;
+  left: calc(var(--perload-gap)* -1);
+  display: flex;
+  width: var(--perload-gap);
+  justify-content: center;
+  align-items: center;
+  color: var(--cl-main);
+  height: var(--perload-gap);
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+.product-bought-together .product-item .product-collection__content,
+.product-bought-together .product-item .product-collection__image {opacity: .3;pointer-events: none;}
+.product-bought-together .selected-product .product-collection__content,
+.product-bought-together .selected-product .product-collection__image {opacity: 1;pointer-events: auto;}
+.product-bought-together .product-item .alo-checkbox {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    width: 28px;
+    height: 28px; 
+}
+.product-bought-together .product-item .alo-checkbox .bought-together-checkbox{
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.product-bought-together .product-item .alo-checkbox span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--cl-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--cl-border);
+    border-radius: var(--rounded);
+    pointer-events: none;
+    color: #fff;
+    font-size: 14px;
+}
+.product-bought-together .product-item .selected-product  .alo-checkbox span i.icon-x,
+.product-bought-together .product-item .alo-checkbox span i.icon-check{display:none}
+.product-bought-together .product-item .selected-product  .alo-checkbox span i.icon-check{display:block;}
+
+.product-bought-together .bought-together-main .alo-checkbox .bought-together-checkbox{
+  cursor: auto;
+  pointer-events: none;
+}
+.product-bought-together .bought-together-main .alo-checkbox span{
+  background: #9f9f9f;
+} 
+.alo-bought-together .bought-together .btn-total {
+    max-width: 25%;
+    width: 100%;
+}
+.alo-bought-together .item-product .image-product {}
+.alo-bought-together .item-product .image-product .card__media {}
+.alo-bought-together .item-product .image-product a.image_product {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.alo-bought-together .bought-together .info-bought-together {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: var(--rounded);
+  border: 1px solid var(--cl-border);
+}
+.alo-bought-together .bought-together .info-bought-together .total-product-price {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+} 
+.alo-bought-together .bought-together .info-bought-together .total-price {
+  color: var(--cl-main);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 15px;
+  margin-bottom: 15px;
+}
+
+.alo-bought-together .bought-together .info-bought-together .total-product-price .compare-price,
+.alo-bought-together .bought-together .info-bought-together .total-product-price .special-price {
+    color: var(--cl-current-product);
+    text-decoration: unset;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+}
+.alo-bought-together .bought-together .info-bought-together.hidden-save .total-product-price .special-price {
+  color: var(--cl-price-product);
+}
+.alo-bought-together .bought-together .info-bought-together .total-product-price .compare-price {
+  text-decoration: line-through;
+  color: var(--cl-compare-price-product);
+  font-weight: 400;
+}
+.alo-bought-together .bought-together .info-bought-together.hidden-save  .price-regular {
+  display:none;
+}
+.alo-bought-together .bought-together .info-bought-together .add-bought-together {
+  cursor: pointer;
+  height: 45px;
+  margin-bottom: 15px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: .15em;
+}
+.alo-bought-together .bought-together .info-bought-together .add-bought-together:before {
+  content: "";
+  display: inline-block;
+  border: 2px solid var(--cl-border);
+  border-radius: 50%;
+  border-top: 2px solid #fff;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  width: 15px;
+  height: 15px;
+  animation: spin 1.4s linear infinite;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  -webkit-transform: translate(0,-50%);
+  -ms-transform: translate(0,-50%);
+  transform: translateY(-50%);
+}
+.alo-bought-together .bought-together .info-bought-together .add-bought-together.loading:before {
+    opacity: 1;
+    visibility: visible;
+}
+.alo-bought-together .bought-together .info-bought-together .add-bought-together.loading span {
+  opacity: .3;
+}
+.alo-bought-together .bought-together .info-bought-together.hidden-save .save-cost {
+  display:none;
+}
+.alo-bought-together .bought-together .info-bought-together .save-cost .save-price {
+  font-weight: 500;
+  color: var(--cl-price-product);
+}
+.alo-discount-announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.alo-discount-announcement .discount_announcement p {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 0;
+  line-height: 25px;
+}
+.alo-discount-announcement .discount_announcement p svg{
+  height: 16px;
+  margin: 0 5px;
+}
+.alo-discount-announcement .discount_announcement p span {
+  font-weight: 500;
+  color:var(--cl-main);
+  padding: 0 4px;
+}
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .alo-bought-together .bought-together {
+        flex-direction: column;
+  }
+  .alo-bought-together .bought-together .product-bought-together,
+  .alo-bought-together .bought-together .info-bought-together {
+    width: 100%;
+  }
+}

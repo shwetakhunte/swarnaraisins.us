@@ -1,0 +1,4 @@
+<span class="icon">
+  {%- capture img_html -%}{{ image | image_url: width: 30 | image_tag: width: nil  }}{%- endcapture -%}
+  {{ img_html | replace: 'src="', 'decoding="async" class="lazyload" data-src="' }}
+</span>

@@ -1,0 +1,306 @@
+{%- liquid
+  assign bid = block_id
+  assign se_blocks = section_blocks
+  assign arr_id = se_blocks | map: 'id'
+  assign arr_id_size = arr_id |split:bid | first |split:',' | size
+  assign block = se_blocks | where: "id", bid | first
+  assign arr_type = "dropdown,logo,btn,simple,mega" -%}
+	{%- for block in se_blocks offset:arr_id_size -%}
+	  {%- if arr_type contains block.type %}{% break %}{% endif -%}
+            {%- case block.type -%} 
+                {%- when 'banner' %}{% assign c_bid = block.id %}{% assign image = block.settings.image -%}
+	         <div id="bk_{{c_bid}}" class="type_mn_banner menu-item col-lg-{{block.settings.col}} col-md-12 col-sm-12">
+		        <div class="banner_menu">
+                    {%- if image != blank -%}
+                          {%   assign url = block.settings.url | default:'#' %}
+                          {%   assign open_link = block.settings.open_link %}
+                          {% render 'responsive-image', image: image, image_class: 'w-full h-full ',url: url, open_link: open_link   %}
+                    {%- else -%}
+                      {% if aspect_ratio != blank %}
+                             {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                          {% else %}
+                              {%- assign ratio = 100 -%}
+                          {% endif %}
+                          <div class="image-card__img overflow-hidden ratio" style="--ratio-percent: {{ ratio }}%;">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                          </div>
+                    {%- endif -%}
+                    <p class="title"><a href="{{ url }}" title="{{ block.settings.title }}" target="{{open_link}}">{{ block.settings.title }}</a></p>
+		        </div>
+	         </div>
+         {%- when 'cat' -%}
+
+				  {%- assign collection = collections[block.settings.collection] -%}
+                  {%   assign url =  collection.url | default: '#' %}
+				  {%- assign image = block.settings.image | default:collection.image -%}
+				  {%- assign home_t = 'homepage.onboarding.collection_title' | t  | append:' #' | append:for_i -%} 
+            	<div id="bk_{{block.id}}" class="type_mn_pr menu-item sub-column-item col-lg-{{block.settings.col}} col-md-12 col-sm-12 ">
+					<div class="cat_grid_item cat_space_item">
+					  <div class="cat_grid_item__content images-card">
+                      
+					    
+					      {%- if image != blank -%}
+					         {% render 'responsive-image', image: image ,url: url ,  image_class: 'w-full h-full' %}
+					      {%- else -%}
+					        {% if aspect_ratio != blank %}
+                               {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                            {% else %}
+                                {%- assign ratio = 100 -%}
+                            {% endif %}
+                            <div class="image-card__img overflow-hidden ratio" style="--ratio-percent: {{ ratio }}%;">
+                              {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                              {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                            </div>
+					      {%- endif -%}
+					
+					    <div class="cat_grid_item__wrapper">
+					      <div class="cat_grid_item__title">
+                            <a href="{{ url }}" title=" {{ block.settings.title | default:collection.title | default:home_t }}">	
+                              {{ block.settings.title | default:collection.title | default:home_t }} - {{collection.all_products_count}}
+                            </a>
+                          </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+
+	      {%- when 'pr' -%}
+		      	{%- assign tcat = block.settings.id_cat | default:"all" -%}
+				{%- assign collection = collections[tcat] -%}
+		      	{%- if collection.products.size == 0 -%}{% continue %}{%- endif -%}
+				{%- assign limit = block.settings.limit -%}
+	         <div id="bk_{{block.id}}" class="type_product type_link menu-item col-lg-{{block.settings.col}} col-md-12 col-sm-12">
+               <a href="{{ collection.url | default:'/admin/collections' }} " class="heading" target="_self">{{block.settings.tt_Product}}</a>
+               <div class="laberProducts-column">
+                   {%- for product in collection.products limit:limit -%}                 		
+                      	{%- render 'product_menu',product:product -%}
+                   {%- endfor -%}
+                      
+               </div>
+	         </div>			 
+	      {%- when 'link' -%}
+             {%- assign llists = linklists[block.settings.menu].links -%}
+             {%- assign llists_2 = linklists[block.settings.menu2].links -%}
+	         {%- if llists.size == 0 -%}{% continue %}{%- endif -%}
+	         <div id="bk_{{block.id}}" class="type_link menu-item col-lg-{{block.settings.col}} col-md-12 col-sm-12">
+	         		{%- if block.settings.tt_hd != blank %}
+                    	<h3 >
+                		<a href="{{ block.settings.url }}" class="heading" target="{{block.settings.open_link}}">
+                			{{ block.settings.tt_hd }}
+               			</a>
+               			</h3>
+               		{% endif -%}
+					<ul class="sub-column">
+                      {%- for link in llists -%}
+                      {%- if link.links != blank -%}
+                          {% assign sub_image = link.object.image | default: link.object.products[0].featured_image  %}
+                           <li class="menu-item menu-item-has-children {% if link.active %} current{% endif %}">
+                             <a href="{{ link.url }}">
+                                 {% if sub_image != blank %}
+                                  {% render 'image-category', image: sub_image %}
+                                {% endif %}
+                                <span>{{ link.title }}</span>
+                             </a>
+                             <ul class="submenu sub-menu-2">
+        			            	{%- for child_link in link.links -%}
+        				            	{%- if child_link.links != blank -%}
+                                          {% assign sub_image_child_2 = child_link.object.image | default: child_link.object.products[0].featured_image  %}
+        					               <li class="menu-item menu-item-has-children{% if child_link.active %} current{% endif %}">
+        					                  <a href="{{ child_link.url }}">
+                                                {% if sub_image_child_2 != blank %}
+                                                  {% render 'image-category', image: sub_image_child_2 %}
+                                                {% endif %}
+                                                <span>{{ child_link.title }}</span>  
+                                              </a>
+        					                  <ul class="submenu sub-menu-3">
+        					                  	{%- for grandchild_link in child_link.links -%}
+                                                    {% assign sub_image_child_3 = grandchild_link.object.image | default: grandchild_link.object.products[0].featured_image  %}
+        					                        <li class="menu-item{% if menu.active %} current{% endif %}">
+                                                      <a href="{{ grandchild_link.url }}">
+                                                        {% if sub_image_child_3 != blank %}
+                                                          {% render 'image-category', image: sub_image_child_3 %}
+                                                        {% endif %}
+                                                        <span>{{ grandchild_link.title }}</span>  
+                                                      </a>
+                                                	</li>
+        					                     {%- endfor -%}
+        					                  </ul>
+        					               </li>
+        				               {%- else -%}
+                                            {% assign sub_image_child_2 = child_link.object.image | default: child_link.object.products[0].featured_image  %}
+                                  			<li class="menu-item{% if child_link.active %} current{% endif %}">
+                                              <a href="{{ child_link.url }}">
+                                                {% if sub_image_child_2 != blank %}
+                                                  {% render 'image-category', image: sub_image_child_2 %}
+                                                {% endif %}
+                                                <span>{{ child_link.title }}</span> 
+                                              </a>
+                                  			</li>
+        				               {%- endif -%}
+        			               {%- endfor -%}
+        			            </ul>
+                           </li>
+                      {% else %}  
+                      {% assign sub_image = link.object.image | default: link.object.products[0].featured_image  %}
+                       <li class="menu-item{% if link.active %} current{% endif %}">
+                         <a href="{{ link.url }}">
+                             {% if sub_image != blank %}
+                              {% render 'image-category', image: sub_image %}
+                            {% endif %}
+                            <span>{{ link.title }}</span>
+                         </a>
+                       </li>
+                      {% endif %}
+                   {%- endfor -%}
+					</ul>
+
+                    {%- if block.settings.tt_hd2 != blank %}
+                    	<h3 class="menu2">
+                		<a href="{{ block.settings.url2 }}" class="heading" target="{{block.settings.open_link2}}">
+                			{{ block.settings.tt_hd2 }}
+               			</a>
+               			</h3>
+					<ul class="sub-column">
+                      {%- for link in llists_2 -%}
+                      {%- if link.links != blank -%}
+                          {% assign sub_image = link.object.image | default: link.object.products[0].featured_image  %}
+                           <li class="menu-item menu-item-has-children {% if link.active %} current{% endif %}">
+                             <a href="{{ link.url }}">
+                                 {% if sub_image != blank %}
+                                  {% render 'image-category', image: sub_image %}
+                                {% endif %}
+                                <span>{{ link.title }}</span>
+                             </a>
+                             <ul class="submenu sub-menu-2">
+        			            	{%- for child_link in link.links -%}
+        				            	{%- if child_link.links != blank -%}
+                                          {% assign sub_image_child_2 = child_link.object.image | default: child_link.object.products[0].featured_image  %}
+        					               <li class="menu-item menu-item-has-children{% if child_link.active %} current{% endif %}">
+        					                  <a href="{{ child_link.url }}">
+                                                {% if sub_image_child_2 != blank %}
+                                                  {% render 'image-category', image: sub_image_child_2 %}
+                                                {% endif %}
+                                                <span>{{ child_link.title }}</span>  
+                                              </a>
+        					                  <ul class="submenu sub-menu-3">
+        					                  	{%- for grandchild_link in child_link.links -%}
+                                                    {% assign sub_image_child_3 = grandchild_link.object.image | default: grandchild_link.object.products[0].featured_image  %}
+        					                        <li class="menu-item{% if menu.active %} current{% endif %}">
+                                                      <a href="{{ grandchild_link.url }}">
+                                                        {% if sub_image_child_3 != blank %}
+                                                          {% render 'image-category', image: sub_image_child_3 %}
+                                                        {% endif %}
+                                                        <span>{{ grandchild_link.title }}</span>  
+                                                      </a>
+                                                	</li>
+        					                     {%- endfor -%}
+        					                  </ul>
+        					               </li>
+        				               {%- else -%}
+                                            {% assign sub_image_child_2 = child_link.object.image | default: child_link.object.products[0].featured_image  %}
+                                  			<li class="menu-item{% if child_link.active %} current{% endif %}">
+                                              <a href="{{ child_link.url }}">
+                                                {% if sub_image_child_2 != blank %}
+                                                  {% render 'image-category', image: sub_image_child_2 %}
+                                                {% endif %}
+                                                <span>{{ child_link.title }}</span> 
+                                              </a>
+                                  			</li>
+        				               {%- endif -%}
+        			               {%- endfor -%}
+        			            </ul>
+                           </li>
+                      {% else %}  
+                      {% assign sub_image = link.object.image | default: link.object.products[0].featured_image  %}
+                       <li class="menu-item{% if link.active %} current{% endif %}">
+                         <a href="{{ link.url }}">
+                             {% if sub_image != blank %}
+                              {% render 'image-category', image: sub_image %}
+                            {% endif %}
+                            <span>{{ link.title }}</span>
+                         </a>
+                       </li>
+                      {% endif %}
+                   {%- endfor -%}
+					</ul>
+                    {% endif %} 
+	         </div>
+	      {%- when 'link2' -%}
+				{%- assign llists = linklists[block.settings.menu].links -%}
+	         	{%- if llists.size == 0 -%}{% continue %}{%- endif -%}
+                 <div id="bk_{{block.id}}" class="type_link menu-item  col-lg-{{block.settings.col}} col-md-12 col-sm-12">
+                   <ul class="sub-column">
+                    {%- for link in llists -%}
+                      {%- if link.links != blank -%}
+                          {% assign sub_image = link.object.image | default: link.object.products[0].featured_image  %}
+                           <li class="menu-item menu-item-has-children {% if link.active %} current{% endif %}">
+                             <a href="{{ link.url }}">
+                                 {% if sub_image != blank %}
+                                  {% render 'image-category', image: sub_image %}
+                                {% endif %}
+                                <span>{{ link.title }}</span>
+                             </a>
+                             <ul class="submenu sub-menu-2">
+        			            	{%- for child_link in link.links -%}
+        				            	{%- if child_link.links != blank -%}
+                                          {% assign sub_image_child_2 = child_link.object.image | default: child_link.object.products[0].featured_image  %}
+        					               <li class="menu-item menu-item-has-children{% if child_link.active %} current{% endif %}">
+        					                  <a href="{{ child_link.url }}">
+                                                {% if sub_image_child_2 != blank %}
+                                                  {% render 'image-category', image: sub_image_child_2 %}
+                                                {% endif %}
+                                                <span>{{ child_link.title }}</span>  
+                                              </a>
+        					                  <ul class="submenu sub-menu-3">
+        					                  	{%- for grandchild_link in child_link.links -%}
+                                                    {% assign sub_image_child_3 = grandchild_link.object.image | default: grandchild_link.object.products[0].featured_image  %}
+        					                        <li class="menu-item{% if menu.active %} current{% endif %}">
+                                                      <a href="{{ grandchild_link.url }}">
+                                                        {% if sub_image_child_3 != blank %}
+                                                          {% render 'image-category', image: sub_image_child_3 %}
+                                                        {% endif %}
+                                                        <span>{{ grandchild_link.title }}</span>  
+                                                      </a>
+                                                	</li>
+        					                     {%- endfor -%}
+        					                  </ul>
+        					               </li>
+        				               {%- else -%}
+                                            {% assign sub_image_child_2 = child_link.object.image | default: child_link.object.products[0].featured_image  %}
+                                  			<li class="menu-item{% if child_link.active %} current{% endif %}">
+                                              <a href="{{ child_link.url }}">
+                                                {% if sub_image_child_2 != blank %}
+                                                  {% render 'image-category', image: sub_image_child_2 %}
+                                                {% endif %}
+                                                <span>{{ child_link.title }}</span> 
+                                              </a>
+                                  			</li>
+        				               {%- endif -%}
+        			               {%- endfor -%}
+        			            </ul>
+                           </li>
+                      {% else %}  
+                      {% assign sub_image = link.object.image | default: link.object.products[0].featured_image  %}
+                       <li class="menu-item{% if link.active %} current{% endif %}">
+                         <a href="{{ link.url }}">
+                             {% if sub_image != blank %}
+                              {% render 'image-category', image: sub_image %}
+                            {% endif %}
+                            <span>{{ link.title }}</span>
+                         </a>
+                       </li>
+                      {% endif %}
+                   {%- endfor -%}
+                  </ul>   
+                 </div>
+	      {%- when 'html' -%}
+				<div id="bk_{{block.id}}" class="type_mn_html menu-item sub-column-item col-lg-{{block.settings.col}} col-md-12 col-sm-12">
+                  {{- block.settings.html -}}
+				</div>
+	      {%- else -%}
+			<style>
+              #item_{{bid}} .submenu {display: none !important}
+			</style>
+            {% endcase %}
+        {% endfor %}

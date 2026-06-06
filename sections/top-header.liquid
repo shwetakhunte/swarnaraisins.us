@@ -1,0 +1,741 @@
+{% if section.settings.home_page_only == false or template.name == 'index' %}
+{{ 'top-header.css' | asset_url | stylesheet_tag }}  
+  <top-header class="{% if section.settings.hide_mobile %}hide-mobile{% endif %}">
+    <div class="container {% if section.settings.layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+      <div class="row">
+          {%- for block in section.blocks -%}
+            {% assign text_align = block.settings.text_align %}
+            {% case block.settings.col %}
+                {% when '16%' %}
+                    {%- assign block_width = 'col-lg-2 col-md-2 col-12' -%}
+                {% when '25%' %}
+                    {%- assign block_width = 'col-lg-3 col-md-3 col-12' -%}
+                {% when '33%' %}
+                    {%- assign block_width = 'col-lg-4 col-md-4 col-12' -%}
+                {% when '42%' %}
+                    {%- assign block_width = 'col-lg-5 col-md-5 col-12' -%}
+                {% when '50%' %}
+                    {%- assign block_width = 'col-lg-6 col-md-6 col-12' -%}
+                {% when '58%' %}
+                    {%- assign block_width = 'col-lg-7 col-md-7 col-12' -%}
+                {% when '66%' %}
+                    {%- assign block_width = 'col-lg-8 col-md-8 col-12' -%}
+                {% when '75%' %}
+                    {%- assign block_width = 'col-lg-9 col-md-9 col-12' -%}
+                {% when '100%' %}
+                    {%- assign block_width = 'col-12' -%}
+            {% endcase %}
+          {%- case block.type -%}
+          	{%- when 'contac_header' -%} 
+          		<div class=" {{ block_width }}  hide-mobile {% if block.settings.hide_mobile %}hide-mobile {% endif %}">
+                    <div class="top_contact h_{{text_align}} flex">
+                      <ul>
+                        {%- if block.settings.show_phone -%}
+                              <li><a href="tel:{{shop.phone}}"><i class="icon-phone-call"></i> {{shop.phone}}</a></li>
+                         {%endif%}
+                         {%- if block.settings.show_email -%}
+                              <li><a href="mailto:{{shop.email}}"><i class="icon-mail"></i> {{shop.email}}</a></li>
+                         {%endif%}
+                      </ul>
+                    </div>
+                  </div>
+          	{%- when 'message' -%} 
+                  	<div class="wrapper-bar-message {{ block_width }} {% if block.settings.hide_mobile %}hide-mobile {% endif %}">
+                        {% if block.settings.message_text %}
+                          <div class="h_{{text_align}} flex">
+                            <div class="announcement-text" style="--font-size:{{ block.settings.f-size }}px;--text-transform:{{ block.settings.text_transform }};">
+                              {% if block.settings.code_icon %}{{ block.settings.code_icon }}{% endif %}
+                              {{ block.settings.message_text }}
+                            </div>
+                         </div>
+                       {% endif %}
+                      </div>
+            {%- when 'my_activity' -%} 
+            <div class="h_{{text_align}} flex alo-gap {{ block_width }}  {% if block.settings.hide_mobile %}hide-mobile {% endif %}">
+              {% if block.settings.menu_topbar != blank%}
+                <ul class="menu" style="--font-size:{{ block.settings.f-size }}px;--text-transform:{{ block.settings.text_transform }};">
+                  {% assign handle = block.settings.menu_topbar %}     
+                  {% for link in linklists[handle].links %}
+                      <li><a href="{{link.url}}"> {{ link.title }} </a></li>
+                  {% endfor %}
+                </ul>
+                {%endif%}
+              {%if block.settings.header_use_language or block.settings.header_use_currency %}
+               {% assign show_flag = block.settings.show_flag %}
+                <ul class="menu-language parent-list" style="--font-size:{{ block.settings.f-size }}px;--text-transform:{{ block.settings.text_transform }};">
+                  {%if block.settings.header_use_language%}
+                    {% render 'language', show_flag:show_flag %} 
+                  {% endif %}
+                  {%if block.settings.header_use_currency %}
+                    {% render 'currency' %}
+                  {% endif %}
+                </ul> 
+              {% endif %}
+              {%if block.settings.display_account or block.settings.display_search or block.settings.display_wishlist or block.settings.display_compare %}
+              <ul class="parent-list">
+                {%if block.settings.display_account%}
+                  {% render 'signin-top-header' %}
+                {% endif %}
+                {% if block.settings.display_search %}
+                <li class="header_search hide-mobile">
+                  <trigger-click class="header-icon" data-target="dialog-modal .header-search">
+                    <span class="icon">
+                    {% render 'icon-search' %}
+                    </span>
+                  </trigger-click>
+                </li>
+                {% endif %}
+                {% if block.settings.display_wishlist %}
+                  <li class="hide-mobile">
+                    {% render 'mini-wishlist' %}
+                  </li>
+                {% endif %}
+                {% if block.settings.display_compare %}
+                  <li class="hide-mobile">
+                    {% render 'mini-compare' %}
+                  </li>
+                {% endif %}
+              </ul>
+              {% endif %}
+            </div>
+          	{%- when 'menu' -%} 
+          		<div class="h_{{text_align}} flex flex-wrap {{ block_width }}  {% if block.settings.hide_mobile %}hide-mobile {% endif %}">
+                    	{% if block.settings.menu_topbar != blank%}
+                    	<ul class="menu" style="--font-size:{{ block.settings.f-size }}px;--text-transform:{{ block.settings.text_transform }};">
+                          {% assign handle = block.settings.menu_topbar %}     
+                          {% for link in linklists[handle].links %}
+                              <li><a href="{{link.url}}"> {{ link.title }} </a></li>
+                          {% endfor %}
+                        </ul>
+                    	{%endif%}
+                      {% assign type_social = block.settings.type_social | plus: 0 %}
+                      {%if block.settings.header_use_social%}
+                          {%- if type_social == 1 -%}
+                            {% render 'social_link' class:'bottom' %}
+                          {%- else -%}
+                            {% render 'social-sharing' class:'bottom' %}
+                          {%- endif -%}
+                      {% endif %}
+                    	
+                    </div>
+          {%- endcase -%}
+          {%- endfor -%}
+      </div>
+    </div>
+  </top-header>
+{% style%}
+:root {
+  --h-topheader:{{ section.settings.h_topheader}}px;
+  --bg-top-header:{{section.settings.bg_top_header}};
+  --cl-b-top-header:{{section.settings.cl_border_top}};
+  --cl-t-top-header:{{section.settings.cl_text}};
+  --cl-t-top-header-h:{{section.settings.cl_text_h}};
+}
+{%endstyle%}
+{% endif %}
+{% schema %}
+  {
+    "name": "Top header",
+    "class":"cms-top-header",
+    "settings": [
+		{
+          "type": "header",
+          "content": "General settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_mobile",
+          "label": "Hide (mobile)",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "home_page_only",
+          "label": "Home page only",
+          "default": true
+        },    
+		{
+        "type": "checkbox",
+        "id": "layout",
+        "label": "Full width",
+        "default": false
+        },
+        {
+            "type": "range",  
+            "id": "container",  
+            "label": "Container width",
+            "min": 1200,
+            "max": 1900,
+            "step": 10,
+            "unit": "px",
+            "default": 1410 
+        },
+        {
+            "type": "range",  
+            "id": "h_topheader",  
+            "label": "Height",
+            "min": 40,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "default": 40 
+        },
+		{
+          "type": "header",
+          "content": "Design"
+        },
+        {
+          "type": "color",
+          "id": "bg_top_header",
+          "label": "Background color",
+          "default": "#f5f5f5"
+        },
+        {
+          "type": "color",
+          "id": "cl_border_top",
+          "label": "Border color",
+          "default": "#f5f5f5"
+        },
+		{
+          "type": "color",
+          "id": "cl_text",
+          "label": "Color text",
+          "default": "#777"
+        },
+		{
+          "type": "color",
+          "id": "cl_text_h",
+          "label": "Color hover",
+          "default": "#343e45"
+        }
+	],
+	"blocks": [
+		{
+          "type": "contac_header",
+          "name": "Top contac header",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "checkbox",
+              "id": "hide_mobile",
+              "label": "Hide mobile",
+              "default": false
+              },
+              {
+          "type": "checkbox",
+          "id": "show_phone",
+          "label": "Show Phone",
+          "default": true
+          },
+          {
+          "type": "checkbox",
+          "id": "show_email",
+          "label": "Show Email",
+          "default": true
+          },	    
+				{
+                "type": "select",
+                "id": "text_align",
+                "default": "left",
+                "options": [ 
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+                ],
+                  "label": "text align:"
+              },
+              {
+        "type": "select",
+        "id": "col",
+        "default": "33%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        }
+          ]
+        },
+		{
+          "type": "message",
+          "name": "Announcement text",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "checkbox",
+              "id": "hide_mobile",
+              "label": "Hide mobile",
+              "default": false
+              },
+              {
+                "type": "html",
+                "id": "code_icon",
+                "label": "Code icon SVG"
+              },
+              {
+                "type": "richtext",
+                "id": "message_text",
+                "label": "Content",
+                "default": "<p>Free Delivery over £40 to most of UK*</p>"
+              },
+              {
+                  "type": "range",  
+                  "id": "f-size",  
+                  "label": "Font size",
+                  "min": 12,
+                  "max": 20,
+                  "step": 0.5,
+                  "unit": "px",
+                  "default": 14 
+              },
+              {
+              "type": "select",
+              "id": "text_transform",
+              "default": "none",
+              "options": [
+               {
+                  "value": "none",
+                  "label": "None"
+               },
+               {
+                  "value": "capitalize",
+                  "label": "Capitalize"
+               },
+               {
+                  "value": "lowercase",
+                  "label": "Lowercase"
+               },
+               {
+                  "value": "uppercase",
+                  "label": "Uppercase"
+                }
+              ],
+              "label": "Text transform:"
+            },
+			  {
+                "type": "select",
+                "id": "text_align",
+                "default": "left",
+                "options": [ 
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+                ],
+                  "label": "text align:"
+              },	
+              {
+        "type": "select",
+        "id": "col",
+        "default": "33%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        }
+          ]
+        },
+        
+        {
+          "type": "my_activity",
+          "name": "My activity",
+          "settings": [
+            {
+              "type": "checkbox",
+              "id": "hide_mobile",
+              "label": "Hide mobile",
+              "default": false
+              },
+            {
+                  "type": "range",  
+                  "id": "f-size",  
+                  "label": "Font size",
+                  "min": 12,
+                  "max": 20,
+                  "step": 0.5,
+                  "unit": "px",
+                  "default": 14 
+              },
+            {
+              "type": "select",
+              "id": "text_transform",
+              "default": "none",
+              "options": [
+               {
+                  "value": "none",
+                  "label": "None"
+               },
+               {
+                  "value": "capitalize",
+                  "label": "Capitalize"
+               },
+               {
+                  "value": "lowercase",
+                  "label": "Lowercase"
+               },
+               {
+                  "value": "uppercase",
+                  "label": "Uppercase"
+                }
+              ],
+              "label": "Text transform:"
+            },
+            {
+            "type": "header",
+            "content": "Language and currency",
+            },
+            {
+                "type": "checkbox",
+                "id": "header_use_currency",
+                "label": "Display currency on top bar",
+                "default": true
+              },
+              {
+                "type": "checkbox",
+                "id": "header_use_language",
+                "label": "Display language on top bar",
+                "default": true
+              },
+            {
+                "type": "checkbox",
+                "id": "show_flag",
+                "label": "Show Flag Image",
+                "default": true
+              },
+            {
+            "type": "header",
+            "content": "Utilities",
+            },
+            {
+                "type": "checkbox",
+                "id": "display_search",
+                "label": "Display search",
+                "default": true
+              },
+            {
+                "type": "checkbox",
+                "id": "display_wishlist",
+                "label": "Display wishlist",
+                "default": true
+              },
+              {
+                "type": "checkbox",
+                "id": "display_compare",
+                "label": "Display compare",
+                "default": true
+              },
+              {
+                "type": "checkbox",
+                "id": "display_account",
+                "label": "Display Account",
+                "default": true
+              },
+              
+				{
+                "type": "select",
+                "id": "text_align",
+                "default": "left",
+                "options": [ 
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+                ],
+                  "label": "text align:"
+              },	
+              {
+        "type": "select",
+        "id": "col",
+        "default": "33%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        }
+          ]
+        },
+		{
+          "type": "menu",
+          "name": "Menu Top",
+          "limit": 1,
+          "settings": [
+				{
+                "type": "header",
+                "content": "Top Menu"
+              },
+              {
+              "type": "checkbox",
+              "id": "hide_mobile",
+              "label": "Hide mobile",
+              "default": false
+              },
+				{
+                "type": "link_list",
+                "id": "menu_topbar",
+                "label": "Add topbar menu"
+              },
+              {
+                  "type": "range",  
+                  "id": "f-size",  
+                  "label": "Font size",
+                  "min": 12,
+                  "max": 20,
+                  "step": 0.5,
+                  "unit": "px",
+                  "default": 14 
+              },
+              {
+              "type": "select",
+              "id": "text_transform",
+              "default": "none",
+              "options": [
+               {
+                  "value": "none",
+                  "label": "None"
+               },
+               {
+                  "value": "capitalize",
+                  "label": "Capitalize"
+               },
+               {
+                  "value": "lowercase",
+                  "label": "Lowercase"
+               },
+               {
+                  "value": "uppercase",
+                  "label": "Uppercase"
+                }
+              ],
+              "label": "Text transform:"
+            },
+              {
+                "type": "header",
+                "content": "Social settings"
+              },
+              {
+                "type": "checkbox",
+                "id": "header_use_social",
+                "label": "Display social on top bar",
+                "default": true,
+                "info":"Note: you can edit social at 'Theme settings' -> 'Social media'"
+              },
+			  {
+               "type": "select",
+               "id": "type_social",
+               "label": "Show sharing Or link:",
+               "options": [
+                 {
+                   "value": "1",
+                   "label": "Social link"
+                 },
+                 {
+                   "value": "2",
+                   "label": "Social sharing"
+                 }
+               ],
+               "default": "2"
+              },
+			  
+				{
+                "type": "select",
+                "id": "text_align",
+                "default": "left",
+                "options": [ 
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+                ],
+                  "label": "text align:"
+              },	
+              {
+        "type": "select",
+        "id": "col",
+        "default": "33%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        }
+          ]
+        }
+		
+		
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

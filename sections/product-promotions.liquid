@@ -1,0 +1,592 @@
+{%- liquid
+  assign limit = section.settings.limit
+  assign collection = collections[section.settings.collection_id]
+  assign key = search.terms | default: request.page_type | strip
+  assign page_type = section.settings[key]
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+  assign space_between = section.settings.space-Between
+-%}
+{% if section.settings.use_promotion %}
+  {%- for i in (1..1) -%}
+    {%- unless page_type or collection == blank %}{% break %}{% endunless -%}
+    {%- capture url_cat -%}{%- if routes.root_url != '/' -%}{{routes.root_url}}{%- endif -%}{% if collection %}/collections/{{collection.handle}}{% endif %}{%- endcapture -%}
+    {%- paginate collection.products by limit -%}
+      <product-promotions
+        id="{{section.id}}"
+      >
+        <dialog-modal>
+          <template>
+            <dialog
+              class="product-promotions alo-background-color"
+              modal-mode="mega"
+              data-match-media="(min-width: 768px)"
+              data-autoplay="{{section.settings.timeout | times: 1000}}"
+              data-cookie="product-promotions"
+              data-expires="{{section.settings.day_next}} "
+              data-destroy="true"
+              style="--bg-color:{{section.settings.cl_bg}};"
+            >
+              <dialog-content style="padding:{{ section.settings.pad }}px;">
+              {% if section.settings.title != blank %}
+                <div class="wrap_title w_{{ section.settings.h_position }} text_{{section.settings.txt_align}} mb-30 {{ section.settings.text_size }}">
+                    <div class="block-title h3 text-transform {% if section.settings.cl_underline != 'rgba(0,0,0,0)' %}title-hr{% endif %}" style="--text-transform:{{ section.settings.text_transform }};--cl-text:{{ section.settings.cl_title }};--cl-underline:{{ section.settings.cl_underline }}">
+                      <span>{{section.settings.title}}</span>
+                    </div>
+                    {% if section.settings.content %}
+                      <div class="content">
+                        {{ section.settings.content }}
+                      </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+              <div class="product_section">
+                <div class="products-arrivals">
+                  {% # theme-check-disable %}
+                  {% include 'grid-slider', settings: section.settings %}
+                  <grid-slider class="grid-slider promotion-popup-slider" {{ gridSlider }}>
+                    <div
+                      class="swiper iSwiper"
+                      {%- render 'skeleton', settings: section.settings -%}
+                      style="--perload-gap: {{ space_between}}px"
+                    >
+                      <div class="swiper-wrapper">
+                        {%- if collection != blank -%}
+                          {%- capture url_cat -%}{%- if routes.root_url != '/' -%}{{routes.root_url}}{%- endif -%}{% if collection %}/collections/{{collection.handle}}{% endif %}{%- endcapture -%}
+                          {%- for product in collection.products limit: section.settings.limit -%}
+                            {%- if settings.productlazyload == true -%}
+                              <div
+                                class="swiper-slide lazyload scroll-trigger"
+                                data-include="{{url_cat}}/products/{{product.handle}}/?view=pr_lazy_load"
+                              ></div>
+                            {% else %}
+                              <div
+                                class="swiper-slide scroll-trigger "
+                              >
+                                {% include 'product_style' %}
+                              </div>
+                            {%- endif -%}
+                            {% assign index = index | plus: 1 %}
+                          {%- endfor -%}
+                        {%- else -%}
+                          {%- for i in (1..section.settings.limit) -%}
+                            <div class="swiper-slide pr_grid_item">
+                              {% render 'product_demo' %}
+                            </div>
+                          {%- endfor -%}
+                        {%- endif -%}
+                      </div>
+                      {% if section.settings['use-slider'] == true %}
+                        {% if navigation %}
+                          <div class="swiper-button-next"></div>
+                          <div class="swiper-button-prev"></div>
+                        {% endif %}
+                        {% if pagination %}
+                          <div class="swiper-pagination"></div>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  </grid-slider>
+                  {% # theme-check-enable %}
+                </div>
+              </div>
+              {% if section.settings.show_view_all %}
+                    <div class="bn_button viewall text-center pt-30">
+                      <a class="btn" href="{{ collection.url | default:'#' }}" style="display: inline-flex;">
+                        {{- 'collections.general.view_more' | t }}
+                       </a>
+                    </div>
+                  {% endif %}
+                </dialog-content>
+            </dialog>
+          </template>
+        </dialog-modal>
+      </product-promotions>
+    {%- endpaginate -%}
+  {%- endfor -%}
+{% endif %}
+{%- schema -%}
+{
+  "name": "Product promotions",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Enable an exit popup if user attempts to navigate away from current page as a means of influencing user action on store."
+    },
+    {
+      "type": "paragraph",
+      "content": "Only visible on desktop."
+    },
+ {
+        "type": "checkbox",
+        "id": "use_promotion",
+        "label": "Show promotion popup",
+        "default": true
+ },
+
+    {
+      "type": "header",
+      "content": "== Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "what are you looking for?"
+    },
+    {
+      "type": "color",
+      "id": "cl_title",
+      "label": "Color Heading",
+      "default": "#333"
+    },
+    {
+      "type": "color",
+      "id": "cl_underline",
+      "label": "Color underline",
+      "default": "#c60f14",
+      "info":"If you do not want to use it, you can leave it blank."
+    },  
+    {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content"
+      },
+    {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+    {
+        "type": "select",
+        "id": "text_transform",
+        "default": "none",
+        "options": [
+         {
+            "value": "none",
+            "label": "None"
+         },
+         {
+            "value": "capitalize",
+            "label": "Capitalize"
+         },
+         {
+            "value": "lowercase",
+            "label": "Lowercase"
+         },
+         {
+            "value": "uppercase",
+            "label": "Uppercase"
+          }
+        ],
+        "label": "Text transform:"
+      },
+       {
+        "type": "select",
+        "id": "h_position",
+        "label": "Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "txt_align",
+            "label": "Text Align",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },   
+    {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label":"Show View all button",
+        "default": false
+      },
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "id": "collection_id",
+      "type": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "Products per page",
+      "info": "Number of products per page",
+      "default": 4
+    },
+    {
+        "type": "header",
+        "content": "---- Promtion Product GridSlider ----",
+        "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+    },
+    {
+        "type": "checkbox",
+        "id": "use-slider",
+        "label": "Use slider?",
+        "default": true
+    },
+    {
+         "type": "range",
+         "id": "visible",
+         "label": "Columns in Visible",
+      "info": "Item(s) in screen ( Size >= 1920 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 5
+     },
+     {
+         "type": "range",
+         "id": "widescreen",
+         "label": "Columns in Widescreen",
+      "info": "Item(s) in screen ( 1480 <= Size < 1920 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 4
+     },
+     {
+         "type": "range",
+         "id": "desktop",
+         "label": "Columns in Desktop",
+      "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 4
+     },
+     {
+         "type": "range",
+         "id": "laptop",
+         "label": "Columns in Laptop",
+      "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 4
+     },
+     {
+         "type": "range",
+         "id": "notebook",
+         "label": "Columns in Notebook",
+      "info": "Item(s) in screen ( 768 <= Size < 992 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 3
+     },
+     {
+         "type": "range",
+         "id": "tablet",
+         "label": "Columns in Tablet",
+      "info": "Item(s) in screen ( 576 <= Size < 768 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "unit": "pds",
+         "default": 3
+     },
+     {
+         "type": "range",
+         "id": "landscape",
+         "label": "Columns in Landscape",
+      "info": "Item(s) in screen ( 480 <= Size < 576 )",
+         "min": 1,
+         "max": 6,
+         "step": 1,
+         "default": 2
+     },
+     {
+         "type": "range",
+         "id": "portrait",
+         "label": "Columns in Portrait",
+      "info": "Item(s) in screen ( 360 < Size < 480 )",
+         "min": 1,
+         "max": 6,
+         "step": 1,
+         "default": 2
+     },
+     {
+         "type": "range",
+         "id": "mobile",
+         "label": "Columns in Mobile",
+      "info": "Item(s) in screen ( Size < = 360 )",
+         "min": 1,
+         "max": 4,
+         "step": 1,
+         "default": 1
+     },
+     {
+         "type": "range",
+         "id": "slides-Per-Group",
+         "label": "Slide Per Group",
+         "info": "The number of items slide to scroll",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 1
+     },
+     {
+         "type": "range",
+         "id": "rows",
+         "label": "Rows Slider",
+         "min": 1,
+         "max": 3,
+         "step": 1,
+         "default": 1
+     },
+     {
+         "type": "checkbox",
+         "id": "autoplay",
+         "label": "Autoplay",
+         "default": true
+     },
+     {
+         "type": "text",
+         "id": "speed",
+         "label": "Speed",
+         "default": "300",
+         "info": "Duration of transition between slides (in ms)"
+     },
+     {
+         "type": "text",
+         "id": "autoplay_delay",
+         "label": "Auto Play delay",
+         "default": "3000",
+         "info": "Delay between transitions (in ms)"
+     },
+     {
+         "type": "checkbox",
+         "id": "navigation",
+         "label": "Navigation",
+         "info": "Arrows next,prev",
+         "default": true
+     },
+     {
+         "type": "select",
+         "id": "effect",
+         "label": "effect",
+         "options": [
+          {
+             "value": "coverflow",
+             "label": "Coverflow"
+           },
+          {
+             "value": "creative",
+             "label": "Creative"
+           },
+          {
+             "value": "cube",
+             "label": "Cube"
+           },
+          {
+             "value": "fade",
+             "label": "Fade"
+           },
+          {
+             "value": "flip",
+             "label": "Flip"
+           },
+          {
+             "value": "slide",
+             "label": "Slide"
+          }
+         ],
+         "default": "slide"
+     },
+     {
+         "type": "checkbox",
+         "id": "centered-Slides",
+         "label": "centered Slides",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "auto-Height",
+         "label": "Auto Height",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "pagination",
+         "label": "Pagination",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "loop",
+         "label": "Loop",
+         "default": false
+     },
+     {
+         "type": "range",
+         "id": "space-Between",
+         "label": "Space Between",
+         "info": "Distance between slides in px.",
+         "min": 0,
+         "max": 15,
+         "step": 0.5,
+         "unit": "px",
+         "default": 10
+     },
+     {
+         "type": "select",
+         "id": "direction",
+         "label": "Direction",
+         "options": [
+          {
+             "value": "horizontal",
+             "label": "Horizontal"
+           },
+          {
+             "value": "vertical",
+             "label": "Vertical"
+           }
+         ],
+         "default": "horizontal"
+     },
+
+    {
+      "type": "header",
+      "content": "Select page to display:"
+    },
+    {
+      "type": "checkbox",
+      "id": "index",
+      "label": "Home page",
+      "default": true,
+      "info": "Popup Product will display on home page"
+    },
+    {
+      "type": "checkbox",
+      "id": "product",
+      "label": "Product single",
+      "default": false,
+      "info": "Popup Product will display on Product single"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection",
+      "label": "Collection page",
+      "default": false,
+      "info": "Popup Product will display on Collection page"
+    },
+    {
+      "type": "checkbox",
+      "id": "article",
+      "label": "Article page",
+      "default": false,
+      "info": "Popup Product will display on Article page"
+    },
+    {
+      "type": "checkbox",
+      "id": "blog",
+      "label": "Blog page",
+      "default": false,
+      "info": "Popup Product will display on Blog page"
+    },
+    {
+      "type": "checkbox",
+      "id": "cart",
+      "label": "Cart page",
+      "default": false,
+      "info": "Popup Product will display on Cart page"
+    },
+    {
+      "type": "checkbox",
+      "id": "page",
+      "label": "Other page",
+      "default": false,
+      "info": "Popup Product will display on Other page"
+    },
+    {
+      "type": "range",
+      "id": "timeout",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "sec",
+      "label": "Delay time (second)",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Show popup after Settings"
+    },
+    {
+      "type": "range",
+      "id": "day_next",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "day",
+      "label": "Day next show (n)",
+      "info": "if customer close the popup, next show will be after 'n' days",
+      "default": 7
+    },
+    {
+    "type": "color",
+    "id": "cl_bg",
+    "label": "Background color",
+    "default": "#fff"
+    },
+    {
+         "type": "range",
+         "id": "pad",
+         "label": "Padding",
+         "min": 0,
+         "max": 50,
+         "step":5,
+         "unit": "px",
+         "default": 10
+     }
+  ]
+}
+{%- endschema -%}

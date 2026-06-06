@@ -1,0 +1,250 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": true,
+        "bg_breadcrumb_blog": "shopify://shop_images/organic-breadcrumb-1.jpg",
+        "bg": "#f8f8f8",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "center",
+        "txt_align": "center",
+        "b_height": 200,
+        "mg_bottom": 30,
+        "mobile_bg": "#f8f8f8",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 20
+      }
+    },
+    "collection-header": {
+      "type": "collection-header",
+      "disabled": true,
+      "settings": {
+        "show_full_width": false,
+        "custom_width": 1410,
+        "show_collection_image": true,
+        "h_des": "250px",
+        "h_tb": "200px",
+        "h_mb": "150px",
+        "cl_bg": "#ffffff",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sub-collection": {
+      "type": "sub-collection",
+      "blocks": {
+        "3cd706a4-cc1b-4e7a-94d4-44e18ea4f701": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_1.png",
+            "url": "shopify://collections/vegetables",
+            "title": "Vegetables"
+          }
+        },
+        "2e238be5-2b74-455b-b748-7d8d75eeb0c0": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_2.png",
+            "url": "shopify://collections/fresh-fruits",
+            "title": "Fresh Fruits"
+          }
+        },
+        "7b9e49b8-a51b-4f33-9d8a-1d09ee99212d": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_3.png",
+            "url": "shopify://collections/fruit-drink",
+            "title": "Fruit Drink"
+          }
+        },
+        "abad2968-9ce0-4684-a404-4691f689d856": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_4.png",
+            "url": "shopify://collections/fresh-bakery",
+            "title": "Fresh Bakery"
+          }
+        },
+        "15eb3ecc-1367-44ec-a0a4-c8d2efb55a27": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_5.png",
+            "url": "shopify://collections/biscuits-snack",
+            "title": "Biscuits Snack"
+          }
+        },
+        "collection_dQ73DY": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_6.png",
+            "url": "shopify://collections/fresh-meat",
+            "title": "Fresh Meat"
+          }
+        },
+        "e0dc387f-2eaf-40fb-a356-7325019fe15e": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/coll_7.png",
+            "url": "shopify://collections/fresh-milk",
+            "title": "Fresh Milk"
+          }
+        }
+      },
+      "block_order": [
+        "3cd706a4-cc1b-4e7a-94d4-44e18ea4f701",
+        "2e238be5-2b74-455b-b748-7d8d75eeb0c0",
+        "7b9e49b8-a51b-4f33-9d8a-1d09ee99212d",
+        "abad2968-9ce0-4684-a404-4691f689d856",
+        "15eb3ecc-1367-44ec-a0a4-c8d2efb55a27",
+        "collection_dQ73DY",
+        "e0dc387f-2eaf-40fb-a356-7325019fe15e"
+      ],
+      "settings": {
+        "title": "",
+        "cl_title": "#333333",
+        "text_size": "small",
+        "text_transform": "capitalize",
+        "use_eq_height": false,
+        "image_ratio": "ratio1_1",
+        "custom_ratio": "5/6",
+        "use-slider": true,
+        "visible": 7,
+        "widescreen": 7,
+        "desktop": 7,
+        "laptop": 7,
+        "notebook": 6,
+        "tablet": 4,
+        "landscape": 3,
+        "portrait": 2,
+        "mobile": 2,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 15,
+        "direction": "horizontal",
+        "layout": false,
+        "custom_width": 1410,
+        "cl_bg": "rgba(0,0,0,0)",
+        "mg": ",,50px,",
+        "pd": "",
+        "mg_mb": ",,20px,",
+        "pd_mb": ""
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "932fc3a4-132b-4a34-b5d0-91df6362734c": {
+          "type": "menu",
+          "settings": {
+            "enable_menu_categories": true,
+            "title_categories": "All Categories",
+            "menu": "categories",
+            "use_thumb": true,
+            "show_prod_qty": true
+          }
+        },
+        "656842f6-b434-4fb5-9828-e777c5f78a3d": {
+          "type": "product",
+          "settings": {
+            "title": "Featured product",
+            "product_list": [
+              "annurca-apples",
+              "apples-granny",
+              "bananas",
+              "basil-pesto-wingreens-farms"
+            ]
+          }
+        },
+        "d1f87686-4bdb-47c4-a938-983ce2683a19": {
+          "type": "banner_img",
+          "settings": {
+            "image_promobox": "shopify://shop_images/img_newsletter.jpg",
+            "url": "shopify://collections/fashion-women",
+            "btn": "Shop now",
+            "button_style": "alo_btn-white",
+            "ct_color": "default"
+          }
+        }
+      },
+      "block_order": [
+        "932fc3a4-132b-4a34-b5d0-91df6362734c",
+        "656842f6-b434-4fb5-9828-e777c5f78a3d",
+        "d1f87686-4bdb-47c4-a938-983ce2683a19"
+      ],
+      "settings": {
+        "full-width": false,
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "h_des": "200px",
+        "h_tb": "200px",
+        "h_mb": "85px",
+        "products_per_page": 28,
+        "grid_list": "4",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "w_sidebar": 300,
+        "col_gap": 30,
+        "filter_right": true,
+        "enable_sorting": true,
+        "visible": 4,
+        "widescreen": 4,
+        "desktop": 4,
+        "laptop": 3,
+        "notebook": 2,
+        "tablet": 2,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "padding_lr": 15,
+        "use_border_for_product": true,
+        "mg": ",,100px,",
+        "pd": ",,,",
+        "mg_mb": ",,50px,",
+        "pd_mb": ",,,"
+      }
+    },
+    "collection-description": {
+      "type": "collection-description",
+      "settings": {
+        "show_full_width": false,
+        "custom_width": 1410,
+        "show_collection_description": true,
+        "cl_desc": "#333333",
+        "cl_bg": "#ffffff",
+        "mg": ",,100px,",
+        "pd": "",
+        "mg_mb": ",,50px,",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "collection-header",
+    "sub-collection",
+    "product-grid",
+    "collection-description"
+  ]
+}

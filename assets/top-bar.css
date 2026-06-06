@@ -1,0 +1,107 @@
+top-bar {
+  position: relative;
+  z-index: 10;
+  font-size: 16px;
+  height: var(--h-top-bar);
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-top-bar);
+  border-bottom: 1px solid var(--cl-bd-top-bar);
+  -webkit-transition: all .4s linear 0ms;
+  -khtml-transition: all .4s linear 0ms;
+  -moz-transition: all .4s linear 0ms;
+  -ms-transition: all .4s linear 0ms;
+  -o-transition: all .4s linear 0ms;
+  transition: all .4s linear 0ms;
+}
+top-bar.close-bar {
+  height: 0;
+  opacity: 0;
+}
+.announcement-close {
+  color: var(--color-text-top-bar) !important;
+  display: flex;
+  align-items: center;
+}
+.announcement-close .icon-btn-close {
+  -webkit-transition: all 0.24s linear 0ms;
+  -khtml-transition: all 0.24s linear 0ms;
+  -moz-transition: all 0.24s linear 0ms;
+  -ms-transition: all 0.24s linear 0ms;
+  -o-transition: all 0.24s linear 0ms;
+  transition: all 0.24s linear 0ms;
+}
+.announcement-close:hover .icon-btn-close {
+  transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+}
+top-bar .announcement-bar__message {
+  color: var(--cl-text);
+  margin: 0;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  text-transform: var(--text-transform);
+}
+top-bar .announcement-bar__message a {
+    color: var(--cl-text);
+}
+top-bar .announcement-bar__message a:hover {
+    color: var(--cl-text-h);
+}
+top-bar .text-horizontal-running {
+  padding:0;
+}
+top-bar .text-horizontal-running .wrap-text {
+  height: var(--h-top-bar);
+}
+
+top-bar .text-slider {
+  width: 100%;
+  max-width: var(--w-slide);
+  margin: 0 auto;
+}
+top-bar .text-slider .text {
+  height: var(--h-top-bar);
+  padding: 0 40px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--cl-text);
+}
+top-bar .text-slider .text p {
+  margin:0;
+}
+top-bar .text-slider .text a {
+  color: var(--cl-text);
+  text-decoration: underline;
+}
+top-bar grid-slider.grid-slider .swiper-button-next {
+    right: 0;
+}
+top-bar grid-slider.grid-slider .swiper-button-prev {
+    left: 0;
+}
+top-bar grid-slider.grid-slider .swiper-button-prev, 
+top-bar grid-slider.grid-slider .swiper-button-next {
+  opacity: 1;
+  width: 40px;
+  height: var(--h-top-bar);
+  color: var(--cl-text);
+  font-size: 20px;
+  border-radius: 0;
+  margin: 0;
+  border: none;
+  padding: 0;
+  top: 0;
+  background: var(--bg-top-bar);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  box-shadow: 0 0 0;
+}
+@media (max-width: 767px) {
+  top-bar h_left,
+  top-bar h_right {
+    justify-content: center;
+  }
+}

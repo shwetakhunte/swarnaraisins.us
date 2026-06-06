@@ -1,0 +1,213 @@
+{% for block in section.blocks %}
+  {% liquid
+      assign sett_equal = block.settings.use_eq_height
+      assign image_ratio = block.settings.image_ratio
+      if sett_equal 
+      case image_ratio
+        when 'ratio2_1'
+            assign aspect_ratio = 2.0
+        when 'ratio3_2'
+            assign aspect_ratio = 1.5
+        when 'ratio4_3'
+            assign aspect_ratio = 1.333
+        when 'ratio1_1'
+            assign aspect_ratio = 1.0
+        when 'ratio3_4'
+            assign aspect_ratio = 0.75
+        when 'ratio2_3'
+            assign aspect_ratio = 0.66667
+        when 'ratio1_2'
+            assign aspect_ratio = 0.5
+      endcase 
+      endif
+    %}
+              {%- case block.type -%}
+                {% when 'image_card' %}
+                  <div class="col-xs-12 col-sm-12  col-md-{{ block.settings.width }} col-lg-{{ block.settings.width }}">
+                    <div id="bk_{{ block.id }}" class="bk-image-card sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }}">
+                      <div class="image_card w-full">
+                        {% assign image = block.settings.image %}
+                        {% assign url = block.settings.link %}
+
+                        {% if image != blank %}
+                          {% render 'responsive-image',
+                            image: image,
+                            aspect_ratio:aspect_ratio,
+                            url: url,
+                            image_class: 'w-full h-full'
+                          %}
+                        {% else %}
+                          {% if aspect_ratio != blank %}
+                             {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                          {% else %}
+                              {%- assign ratio = 100 -%}
+                          {% endif %}
+                          <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                          </div>
+                        {% endif %}
+                        <div class="content-image flex {{ block.settings.design_banner }} {% if block.settings.button_label != blank %}with-button{% endif %} h_{{block.settings.h_position}} v_{{block.settings.v_position}} text_{{block.settings.txt_align}}">
+                        <div>
+                        {% if block.settings.title != blank %}
+                          <div class="h3 title text-{{ block.settings.text_color }}">{{ block.settings.title }}</div>
+                        {% endif %}
+                        {% if block.settings.content != blank %}
+                          <div class="content text-{{ block.settings.text_color }}">{{ block.settings.content }}</div>
+                        {% endif %}
+                        {% if block.settings.button_label != blank %}
+                          <div class="img-btn">
+                            <a class="btn {{ block.settings.button_style }} {{ block.settings.button_size }}" href="{{ block.settings.button_link | default:'#' }}" title="{{ block.settings.button_label }}">
+                              {{- block.settings.button_label -}}
+                            </a>
+                          </div>
+                        {% endif %}
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% when 'image' %}
+                  <div class="col-xs-12 col-sm-12  col-md-{{ block.settings.width }} col-lg-{{ block.settings.width }}">
+                    <div id="bk_{{ block.id }}" class="bk-image-card sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }}">
+                      <div class="image_card w-full">
+                        {% assign image = block.settings.image %}
+                        {% assign url = block.settings.link %}
+
+                        {% if image != blank %}
+                          {% render 'responsive-image',
+                            image: image,
+                            aspect_ratio:aspect_ratio,
+                            url: url,
+                            image_class: 'w-full h-full'
+                          %}
+                        {% else %}
+                          {% if aspect_ratio != blank %}
+                             {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                          {% else %}
+                              {%- assign ratio = 100 -%}
+                          {% endif %}
+                          <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% when 'text' %}
+                  <div class="col-xs-12 col-sm-12 col-md-{{ block.settings.width }} col-lg-{{ block.settings.width }}">
+                    <div
+                      id="bk_{{ block.id }}"
+                      class="sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }} flex h_{{block.settings.h_position}} v_{{block.settings.v_position}} text_{{block.settings.txt_align}} h-full"
+                    >
+                      <div class="content_text {{ block.settings.text_size }}">
+                        {% if block.settings.subheading != blank %}
+                          <div class="h4 subtitle text-{{ block.settings.text_color }} alo-text-transform" style="--alo-text-transform:{{ block.settings.text_transform }}">{{ block.settings.subheading }}</div>
+                        {% endif %}
+                        {% if block.settings.title != blank %}
+                          <div class="h3 section-title text-{{ block.settings.text_color }} alo-text-transform" style="--alo-text-transform:{{ block.settings.text_transform }}">{{ block.settings.title }}</div>
+                        {% endif %}
+
+                        {% if block.settings.text != blank %}
+                          <div class="content text-{{ block.settings.text_color }}">
+                            {{ block.settings.text }}
+                          </div>
+                        {% endif %}
+                        {% if block.settings.button_label != blank %}
+                          <div class="text-btn ">
+                            <a class="btn {{ block.settings.button_style }} {{ block.settings.button_size }}" href="{{ block.settings.button_link | default:'#'}}" title="{{ block.settings.button_label }}" aria-label="link">
+                              {{- block.settings.button_label -}}
+                            </a>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {%- when 'video' -%}
+                  {%- assign image = block.settings.image -%}
+                  <div class="col-xs-12 col-sm-12 col-md-{{ block.settings.width }} col-lg-{{ block.settings.width }}">
+                    <div id="bk_{{ block.id }}" class="sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }} banner_img">
+                      <div class="video_us_img relative" {{ block.shopify_attributes }}>
+                        {% if image != blank %}
+                          {% render 'responsive-image',
+                            image: image,
+                            border: border,
+                            aspect_ratio:aspect_ratio,
+                            image_class: 'w-full h-full'
+                          %}
+                        {% else %}
+                          {% if aspect_ratio != blank %}
+                             {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                          {% else %}
+                              {%- assign ratio = 100 -%}
+                          {% endif %}
+                          <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                          </div>
+                        {% endif %}
+                        {%- if block.settings.video_url != blank -%}
+                          <div class="overlay_video">
+                            <a
+                              data_js_mfp_video
+                              class="video-control__play"
+                              href="{{block.settings.video_url}}"
+                              target="_blank"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                role="presentation"
+                                class="icon icon-play"
+                                viewBox="0 0 20 40"
+                              >
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.6 16.8L7 1.5C5.6.3 4 .2 2.9.7 1.6 1.4.8 2.7.7 3.8v31.7c0 1.8 1.1 3.3 3.1 3.3 1.5 0 2.5-.5 3.4-1.4l16.4-15.7c1.5-1.4 1.5-3.6 0-4.9z"></path>
+                              </svg>
+                            </a>
+                          </div>
+                        {%- endif -%}
+                        
+                      </div>
+                    </div>
+                  </div>
+                {% when 'content' %}
+                  {% assign title = block.settings.title %}
+                  {% assign sub_title = block.settings.sub_title %}
+                  {% assign content = block.settings.content %}
+                  <div class="col-xs-12 col-sm-12 col-md-{{ block.settings.width }} col-lg-{{ block.settings.width }}">
+                    <div
+                      id="bk_{{ block.id }}"
+                      class="sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }} flex h_{{block.settings.h_position}} v_{{block.settings.v_position}} text_{{block.settings.txt_align}} h-full"
+                    >
+                      <div class="content_about_us">
+                        {% if sub_title != blank %}
+                          <p class="sub_title text-{{ block.settings.text_color }}">{{ sub_title }}</p>
+                        {% endif %}
+                        {% if title != blank %}
+                          <p class="title h3 text-{{ block.settings.text_color }}">{{ title }}</p>
+                        {% endif %}
+                        {% if content != blank %}
+                          <div class="content text-{{ block.settings.text_color }}">{{ content }}</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% when 'html' %}
+                  {% assign content = block.settings.content %}
+                  <div class="col-xs-12 col-sm-12 col-md-{{ block.settings.width }} col-lg-{{ block.settings.width }}">
+                    <div
+                      id="bk_{{ block.id }}"
+                      class="sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }} flex h_{{block.settings.h_position}} v_{{block.settings.v_position}} text_{{block.settings.txt_align}} h-full"
+                    >
+                      <div class="custom_html">
+                        {% if content != blank %}
+                          <div class="content">{{ content }}</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% when 'line' %}
+                  <div id="bk_{{ block.id }}" class="sm:mb-{{ block.settings.sm_mb }} mb-{{ block.settings.mb }} sm:mt-{{ block.settings.sm_mt }} mt-{{ block.settings.mt }}col-xs-12 col-sm-12"><div class="line alo-background-color alo" style="--alo-background-color:{{ block.settings.cl_line }}"></div></div>
+              {% endcase %}
+            {% endfor %}

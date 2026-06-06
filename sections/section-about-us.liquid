@@ -1,0 +1,503 @@
+{% liquid
+  assign sid = section.id
+  assign layout = section.settings.layout
+  assign blocks = section.blocks
+%}
+{{ 'section-about-us.css' | asset_url | stylesheet_tag }}
+  <section id="laber_{{sid}}" class="">
+    <div class="container {% if layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+      {% if section.settings.title != blank %}
+            <div class="wrap_title sm:mb-10 w_{{ section.settings.h_position }} text_{{section.settings.txt_align}} mb-30 {{ section.settings.text_size }} ">
+              {% if section.settings.subtitle != blank %}
+                <div class="section-subtitle" style="--cl-text:{{ section.settings.cl_subtitle }};" bis_skin_checked="1">{{ section.settings.subtitle }}</div>
+              {% endif %}
+              <div class="h3 section-title " style="--cl-text:{{ section.settings.cl_title }};">{{section.settings.title}}</div>  
+              {% if section.settings.content != blank %}
+                <div class="content">{{section.settings.content}}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+      <div class="section_content ">
+        <div class="part">
+          <grid-wrap class="flex flex-wrap alo-gap content-grid"
+            style="
+                  --rounded:{{ section.settings.border }}px;
+                  --col-desktop:{{ section.settings.columns_desktop }};
+                  --col-laptop:{{ section.settings.columns_laptop }};
+                  --col-tablet:{{ section.settings.columns_tablet }};
+                  --col-landscape:{{ section.settings.columns_landscape }};
+                  --col-mobile:{{ section.settings.columns_mobile }};
+                  --alo-gap-m:{{section.settings.gap_mobile}}px;
+                  --alo-gap:{{ section.settings.gap }}px;"
+            >
+            {% for block in blocks %}
+              {%- case block.type -%}
+                {% when 'text' %}
+                  <grid-item id="bk_{{ block.id }}" class="item">
+                      <div class="content-text" style="--bg-color:{{ block.settings.bg_color}}">
+                        <div class="alo-icon mb-20 sm:mb-10" style="--cl-icon:{{ block.settings.cl_icon }}">
+                          {% assign source = block.settings.source | plus : 0  %}
+                          {% if source == 1 %}
+                            {% if block.settings.icon != blank %}
+                                <div class="iconfont" style=" width: 65px; height: 65px; --rounded: 100%;">
+                                 <i class="{{ block.settings.icon }}"></i>
+                                </div>
+                              {% else %}
+                                 {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                                 <div style=" width: 65px; height: 65px; --rounded: 100%;">
+                                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                                 </div>
+                              {% endif %}
+                          {% elsif source == 2  %}
+                            {% if block.settings.icon_img != blank %}
+                                <div class="alo-icon-image" style="--rounded: 100%;">
+                                  {% assign image = block.settings.icon_img %}
+                                  {%- assign image_alt = image.alt | default: block.settings.title | escape -%}
+                                  {%- assign image_height = block.settings.image_max_width | divided_by: block.settings.image.aspect_ratio -%}
+                                  {% capture sizes %}(max-width: {{ block.settings.image_max_width | times: 2 }}px) 50vw, {{ block.settings.image_max_width }}px{% endcapture %}
+                                  {% capture widths %}{{ block.settings.image_max_width }}, {{ block.settings.image_max_width | times: 1.5 | round }}, {{ block.settings.image_max_width | times: 2 }}{% endcapture %}
+                                  {{ image | image_url: width: 600 | image_tag:
+                                    class: 'i-image',
+                                    widths: widths,
+                                    height: image_height,
+                                    width: block.settings.image_max_width,
+                                    alt: image_alt,
+                                    sizes: sizes,
+                                    preload: true
+                                  }}
+                                </div>
+                              {% else %}
+                                 {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                                 <div style=" width: 65px; height: 65px; --rounded: 100%;">
+                                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                                 </div>
+                              {% endif %}
+                          {% else %}
+                            
+                              <div class="icon-svg">
+                               {% if block.settings.icon_svg != blank %}
+                                 {{ block.settings.icon_svg }}
+                              {% else %}
+                                 {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                                 <div style=" width: 65px; height: 65px; --rounded: 100%;">
+                                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                                 </div>
+                              {% endif %}
+                              </div>
+                          {% endif %}
+                          
+                        </div>
+                        {% if block.settings.title != blank %}
+                          <h2 class="about-title mb-10 sm:mb-10" style="--cl-text:{{ block.settings.cl_title }}">{{ block.settings.title }}</h2>
+                        {% endif %}
+                        {% if block.settings.content != blank %}
+                          <div class="content mb-10 sm:mb-10" style="--cl-text:{{ block.settings.cl_content }}">
+                            {{ block.settings.content }}
+                          </div>
+                        {% endif %}
+                        {% if block.settings.link_name != blank %}
+                          <div class="link" style="--cl-link:{{ block.settings.cl_link }}">
+                            <a href="{{ block.settings.link | default:"#" }}">{{ block.settings.link_name }}</a>
+                          </div>
+                        {% endif %}
+                      </div>
+                  </grid-item>
+              {% endcase %}
+            {% endfor %}
+          </grid-wrap>
+        </div>
+        {% if section.settings.content_below %}
+              <div class="view_all pt-40">
+                {{ section.settings.content_below }} {{- 'chevron.svg' | inline_asset_content -}}
+              </div>  
+            {% endif %}                    
+      </div>
+    </div>
+  </section>
+{%- render 'section_style' -%}
+{%- schema -%}
+ {
+   "name": "About us (home)",
+   "class": "laber_section cms_section type_section_about",
+   "settings": [
+     {
+       "type": "header",
+       "content": "== header title"
+     },
+       {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+     {
+       "type": "color",
+       "id": "cl_title",
+       "label": "color Title",
+       "default": "#333"
+     },
+    {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+     {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Sub Title"
+       
+    },
+     {
+       "type": "color",
+       "id": "cl_subtitle",
+       "label": "color Sub title",
+       "default": "#333"
+     },
+     {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content"
+      },
+     {
+        "type": "inline_richtext",
+        "id": "content_below",
+        "label": "content below "
+      },
+     {
+        "type": "select",
+        "id": "h_position",
+        "label": "Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "txt_align",
+            "label": "Text Align",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          }, 
+     {
+       "type": "header",
+       "content": "== Setting Grid"
+     },
+     {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "info": "Item(s) in screen ( Size >= 1200 )",
+      "label": "t:sections.main-search.settings.columns_desktop.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_laptop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "info": "Item(s) in screen ( 992 <= Size < 1199 )",
+      "label": "Number of columns on laptop"
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "info": "Item(s) in screen ( 768 <= Size < 991 )",
+      "label": "Number of columns on tablet"
+    },
+    {
+      "type": "range",
+      "id": "columns_landscape",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "info": "Item(s) in screen ( 480 <= Size < 767 )",
+      "label": "Number of columns on landscape"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-search.settings.columns_mobile.label",
+      "info": "Item(s) in screen ( Size < = 480 )",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-search.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-search.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 20,
+      "unit": "Px",
+      "label": "Gap"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "Px",
+      "default": 10,
+      "label": "Gap mobile"
+    },
+     {
+      "type": "range",
+      "id": "border",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default":10,
+      "unit": "px",
+      "label": "Border"
+    },
+       {
+       "type": "header",
+       "content": "== Setting container"
+     },
+     {
+      "type": "checkbox",
+      "id": "layout",
+      "label": "Full width",
+      "default": false
+      },
+      {
+          "type": "range",  
+          "id": "container",  
+          "label": "Container width",
+          "min": 1170,
+          "max": 1900,
+          "step": 10,
+          "unit": "px",
+          "default": 1410 
+      },
+     {
+     "type": "color",
+     "id": "cl_bg",
+     "label": "Background color",
+     "default": "#fff"
+     },
+     {
+         "type": "image_picker",
+         "id": "bg_image",
+         "label": "Background image",
+       },
+  {
+       "type": "header",
+       "content": "== Setting PC",
+	"info":"Margin"
+     },
+     {
+       "type": "text",
+       "id": "mg",
+       "label": "Margin",
+       "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+     },
+     {
+       "type": "text",
+       "id": "pd",
+       "label": "Padding",
+       "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+     },
+    {
+       "type": "header",
+       "content": "== Design Mobile Options"
+     },
+     {
+       "type": "text",
+       "id": "mg_mb",
+       "label": "Margin"
+     },
+     {
+       "type": "text",
+       "id": "pd_mb",
+       "label": "Padding"
+     }
+
+   ],
+"blocks": [
+     {
+     "type": "text",
+     "name": "About us",
+     "settings": [
+       {
+            "type": "header",
+            "content": "== Icon Options"
+          },
+         {
+            "type": "select",
+            "id": "source",
+            "label": "Show icon",
+            "default": "3",
+            "options": [
+              {
+                "value": "1",
+                "label": "icon font"
+              },
+              {
+                "value": "2",
+                "label": "icon image"
+              },
+              {
+                "value": "3",
+                "label": "icon svg"
+              }
+            ]
+          },
+          {
+             "type": "text",
+             "id": "icon",
+             "label": "Icons name",
+             "default": "fa fa-truck"
+          },
+          {
+            "type": "html",
+            "id": "icon_svg",
+            "label": "Code SVG"
+          },
+          {
+          "type": "color",
+          "id": "cl_icon",
+          "label": "Color Icon",
+          "default": "#333"
+          },  
+           {
+              "type": "image_picker",
+              "id": "icon_img",
+              "label": "icon image"
+          },
+           {
+            "type": "range",
+            "id": "image_max_width",
+            "label":"Custom image width",
+            "min": 50,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "default": 50
+          },
+          {
+            "type": "header",
+            "content": "== Text Options"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title"
+          },
+          {
+          "type": "color",
+          "id": "cl_title",
+          "label": "Color Heading",
+          "default": "#333"
+        }, 
+          {
+             "type": "richtext",
+             "id": "content",
+             "label": "Content",
+             "default": "<p>Use this text to describe.</p>"
+           },
+         {
+          "type": "color",
+          "id": "cl_content",
+          "label": "Color Content",
+          "default": "#999"
+        },
+       {
+          "type": "text",
+          "id": "link_name",
+          "label": "Link Name",
+          "default": "Learn more"
+        }, 
+       {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }, 
+       {
+          "type": "color",
+          "id": "cl_link",
+          "label": "Color link",
+          "default": "#333"
+        }, 
+       {
+        "type": "header",
+        "content": "== == == == == =="
+      },
+         {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#fff"
+      },
+     ]
+   }
+     
+	
+],
+       "presets": [
+         {
+          "name": "About us (home)",
+          "category": "Text"
+        }
+    ]
+ }
+{%- endschema -%}

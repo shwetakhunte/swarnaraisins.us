@@ -1,0 +1,27 @@
+<mini-compare data-modal class="laber-compare">
+  <a
+    href="#"
+    class="header-icon"
+    title="{{'general.compare.title' | t}}"
+    aria-label="link"
+  >
+    <span class="icon">
+    {% render "icon-compare" %}
+    <span class="header__counter" data-js-compare-count="0">0</span>
+    </span>
+    {% if settings.show_text_header_right %}
+      <span class="b">{{ 'general.compare.title' | t }}</span>
+    {% endif %}
+  </a>
+  <!--
+    <a
+      href="{{ routes.root_url }}pages/compare"
+      class="header-icon"
+      title="{{'general.compare.title' | t}}"
+      aria-label="link"
+    >
+      <i class="icon-layers" aria-hidden="true"></i>
+      <span class="header__counter" data-js-compare-count="0">0</span>
+    </a>
+  -->
+</mini-compare>

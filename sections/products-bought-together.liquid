@@ -1,0 +1,545 @@
+{{ 'product-bought-together.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign sid = section.id
+  assign space_between = section.settings['space-Between']
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+
+  if section.settings['use-slider']
+    assign use_slider = true
+  else
+    assign use_slider = false
+  endif
+
+  assign bought_together = product.metafields.custom.bought_together
+  assign product_bogether = bought_together.value
+%}
+{% if product_bogether != blank %}
+  <section id="laber_{{sid}}" style="--rounded:{{ section.settings.border }}px; --alo-gap:{{ space_between }}px;">
+    <bought-together data-product-main-require="true">
+      {% if section.settings.title != blank %}
+        <div
+          class="wrap_title mb-30 sm:mb-20 {{ section.settings.text_size }}"
+        >
+          <h3
+            class="section-title alo-text-transform"
+            style="
+              --cl-text:{{ section.settings.cl_title |default:"#333333" }};
+              --alo-text-transform:{{ section.settings.text_transform }}
+            "
+          >
+            {{ section.settings.title }}
+          </h3>
+        </div>
+      {% endif %}
+      <div class="bought-together">
+        <div class="product-bought-together">
+          <div class="products-arrivals ">
+            <div class="section-content">
+              {% # theme-check-disable %}
+              <script class="data-json-discounts" type="application/json">
+                {{ discounts | json }}
+              </script>
+              {% include 'grid-slider', settings: section.settings %}
+              <grid-slider class="grid-slider" {{ gridSlider }}>
+                <div
+                  class="swiper iSwiper"
+                  {%- render 'skeleton', settings: section.settings -%}
+                  style="--perload-gap: {{ space_between}}px"
+                >
+                  <div class="swiper-wrapper {% if use_slider== false %}flex-wrap{% endif %}">
+                    {% render 'product-bought-together',
+                      section: section,
+                      product: product,
+                      classes: 'bought-together-main'
+                    %}
+                    {% liquid
+                      assign total_price = product.price
+                      assign total_compare_price = product.compare_at_price | default: product.price
+                      for item in product_bogether
+                        assign total_price = item.price | plus: total_price
+                        assign total_compare_price = item.compare_at_price | default: item.price | plus: total_compare_price
+                        render 'product-bought-together', product: item
+                      endfor
+                    %}
+                  </div>
+                  {% if use_slider == true %}
+                    {% if navigation %}
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    {% endif %}
+                    {% if pagination %}
+                      <div class="swiper-pagination"></div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </grid-slider>
+              {% # theme-check-enable %}
+            </div>
+          </div>
+        </div>
+        <div class="info-bought-together {% if total_compare_price <= total_price %}hidden-save{% endif %}">
+          {% if section.blocks.size > 0 %}
+            {% assign items = product_bogether.count | plus: 1 %}
+            <div class="alo-discount-announcement discount-items-{{ items }}">
+              {%- for block in section.blocks -%}
+                {% assign qty_item = block.settings.qty_items %}
+                {% assign value = block.settings.value | plus: 0 %}
+                {% if value == 1 %}
+                  {% assign discount = block.settings.percent %}
+                {% else %}
+                  {% assign discount = block.settings.amount | money %}
+                {% endif %}
+                <div class="alo-discount qty_item_{{ qty_item }}  {% if items != qty_item%}hidden{%endif%}">
+                  <div class="discount_announcement">
+                    <p>
+                      {% render 'icon-discount' %}
+                      {{
+                        'sections.products-bought-together.discount_announcement_html'
+                        | t: qty_item: qty_item, value: discount
+                      }}
+                    </p>
+                    <p>{{ 'sections.products-bought-together.announcement' | t }}</p>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {% endif %}
+
+          <div class="total-price">{{ 'sections.products-bought-together.total' | t }}</div>
+          <div class="total-product-price">
+            <div class="price price-regular">
+              <span class="compare-price">{{ total_compare_price | money }}</span>
+            </div>
+            <div class="price price-special">
+              <span class="special-price">{{ total_price | money }}</span>
+            </div>
+          </div>
+          <button class="add-bought-together btn">
+            <span class="label">{{ 'sections.products-bought-together.Add_selected_item' | t }}</span>
+          </button>
+          <div class="save-cost">
+            <span class="label">{{ 'sections.products-bought-together.You_are_saving' | t }}</span>
+            <span class="save-price">{{ total_compare_price | minus: total_price | money }}</span>
+          </div>
+        </div>
+      </div>
+    </bought-together>
+  </section>
+  {%- render 'section_style' -%}
+{% endif %}
+{%- schema -%}
+{
+  "name": "Products Bought Together",
+  "class": "alo-bought-together",
+    	"blocks": [
+    {
+      "type": "discount",
+      "name": "Discount announcement",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "The price is updated correctly with the \"Discounts\" you have set."
+        },
+        {
+            "type": "number",
+            "id": "qty_items",
+            "label": "Minimum quantity of items",
+            "default": 2
+        },
+        {
+          "type": "select",
+          "id": "value",
+          "default": "1",
+          "options": [
+            {
+              "value": "1",
+              "label": "Percentage"
+           },
+           {
+              "value": "2",
+              "label": "Fixed amount"
+           }
+          ],
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "percent",
+          "label": "Percentage"
+        },
+        {
+          "type": "text",
+          "id": "amount",
+          "label": "Fixed amount"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Heading",
+    "default": "Frequently Bought Together"
+  },
+    {
+   "type": "color",
+   "id": "cl_title",
+   "label": "Color title",
+   "default": "#333"
+   },
+   {
+    "type": "select",
+    "id": "text_size",
+    "default": "medium",
+    "options": [
+      {
+        "value": "small",
+        "label": "small"
+     },
+     {
+        "value": "medium",
+        "label": "Medium"
+     },
+     {
+        "value": "large",
+        "label": "Large"
+      }
+    ],
+    "label": "Text size"
+  },
+  {
+          "type": "select",
+          "id": "text_transform",
+          "default": "none",
+          "options": [
+           {
+              "value": "none",
+              "label": "None"
+           },
+           {
+              "value": "capitalize",
+              "label": "Capitalize"
+           },
+           {
+              "value": "lowercase",
+              "label": "Lowercase"
+           },
+           {
+              "value": "uppercase",
+              "label": "Uppercase"
+            }
+          ],
+          "label": "Text transform:"
+        },
+{
+    "type": "checkbox",
+    "id": "product-main-require",
+    "label": "Product main require?",
+    "default": true
+},
+
+    {
+      "type": "header",
+      "content": "---- Collection Product Slider ----",
+      "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+  },
+  {
+      "type": "checkbox",
+      "id": "use-slider",
+      "label": "Use slider?",
+      "default": true
+  },
+  {
+     "type": "range",
+     "id": "visible",
+     "label": "Columns in Visible",
+  "info": "Item(s) in screen ( Size >= 1920 )",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 5
+  },
+  {
+     "type": "range",
+     "id": "widescreen",
+     "label": "Columns in Widescreen",
+  "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 4
+  },
+  {
+     "type": "range",
+     "id": "desktop",
+     "label": "Columns in Desktop",
+  "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 4
+  },
+  {
+     "type": "range",
+     "id": "laptop",
+     "label": "Columns in Laptop",
+  "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 4
+  },
+  {
+     "type": "range",
+     "id": "notebook",
+     "label": "Columns in Notebook",
+  "info": "Item(s) in screen ( 768 <= Size < 992 )",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 3
+  },
+  {
+     "type": "range",
+     "id": "tablet",
+     "label": "Columns in Tablet",
+  "info": "Item(s) in screen ( 576 <= Size < 768 )",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": "pds",
+     "default": 3
+  },
+  {
+     "type": "range",
+     "id": "landscape",
+     "label": "Columns in Landscape",
+  "info": "Item(s) in screen ( 480 <= Size < 576 )",
+     "min": 1,
+     "max": 6,
+     "step": 1,
+     "default": 2
+  },
+  {
+     "type": "range",
+     "id": "portrait",
+     "label": "Columns in Portrait",
+  "info": "Item(s) in screen ( 360 < Size < 480 )",
+     "min": 1,
+     "max": 6,
+     "step": 1,
+     "default": 2
+  },
+  {
+     "type": "range",
+     "id": "mobile",
+     "label": "Columns in Mobile",
+  "info": "Item(s) in screen ( Size < = 360 )",
+     "min": 1,
+     "max": 4,
+     "step": 1,
+     "default": 1
+  },
+  {
+     "type": "range",
+     "id": "slides-Per-Group",
+     "label": "Slide Per Group",
+     "info": "The number of items slide to scroll",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 1
+  },
+  {
+     "type": "range",
+     "id": "rows",
+     "label": "Rows Slider",
+     "min": 1,
+     "max": 3,
+     "step": 1,
+     "default": 1
+  },
+  {
+     "type": "checkbox",
+     "id": "autoplay",
+     "label": "Autoplay",
+     "default": true
+  },
+  {
+     "type": "text",
+     "id": "speed",
+     "label": "Speed",
+     "default": "300",
+     "info": "Duration of transition between slides (in ms)"
+  },
+  {
+     "type": "text",
+     "id": "autoplay_delay",
+     "label": "Auto Play delay",
+     "default": "3000",
+     "info": "Delay between transitions (in ms)"
+  },
+  {
+     "type": "checkbox",
+     "id": "navigation",
+     "label": "Navigation",
+     "info": "Arrows next,prev",
+     "default": true
+  },
+  {
+     "type": "select",
+     "id": "effect",
+     "label": "effect",
+     "options": [
+      {
+         "value": "coverflow",
+         "label": "Coverflow"
+       },
+      {
+         "value": "creative",
+         "label": "Creative"
+       },
+      {
+         "value": "cube",
+         "label": "Cube"
+       },
+      {
+         "value": "fade",
+         "label": "Fade"
+       },
+      {
+         "value": "flip",
+         "label": "Flip"
+       },
+      {
+         "value": "slide",
+         "label": "Slide"
+      }
+     ],
+     "default": "slide"
+  },
+  {
+     "type": "checkbox",
+     "id": "centered-Slides",
+     "label": "centered Slides",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "auto-Height",
+     "label": "Auto Height",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "pagination",
+     "label": "Pagination",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "loop",
+     "label": "Loop",
+     "default": false
+  },
+  {
+     "type": "range",
+     "id": "space-Between",
+     "label": "Space Between",
+     "info": "Distance between slides in px.",
+     "min": 0,
+     "max": 30,
+     "step": 0.5,
+     "unit": "px",
+     "default": 10
+  },
+  {
+     "type": "select",
+     "id": "direction",
+     "label": "Direction",
+     "options": [
+      {
+         "value": "horizontal",
+         "label": "Horizontal"
+       },
+      {
+         "value": "vertical",
+         "label": "Vertical"
+       }
+     ],
+     "default": "horizontal"
+  },
+    {
+      "type": "header",
+      "content": "== Design Options"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "default": "container",
+      "options": [
+       {
+          "value": "container",
+          "label": "Container"
+       },
+       {
+          "value": "full-width",
+          "label": "Full Width"
+        }
+      ],
+      "label": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "cl_bg",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+    "type": "range",
+      "id": "border",
+      "label": "Border",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+  },
+     {
+      "type": "text",
+      "id": "mg",
+      "label": "Margin",
+      "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+    },
+    {
+      "type": "text",
+      "id": "pd",
+      "label": "Padding",
+      "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+    },
+    {
+      "type": "header",
+      "content": "== Design Mobile Options"
+    },
+    {
+      "type": "text",
+      "id": "mg_mb",
+      "label": "Margin"
+    },
+    {
+      "type": "text",
+      "id": "pd_mb",
+      "label": "Padding"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Products Bought Together",
+      "category": "Product"
+    }
+  ]
+}
+{%- endschema -%}

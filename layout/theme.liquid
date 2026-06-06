@@ -1,0 +1,178 @@
+{%- capture html_content -%}
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no;">
+  {%- if canonical_url != blank  -%}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- endif -%}
+  {% # theme-check-disable %}
+  <link rel="prefetch" as="document" href="https://{{shop.domain}}">
+  <link rel="preconnect" href="//{{shop.permanent_domain}}" crossorigin>
+  <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="//fonts.shopifycdn.com" crossorigin>
+  <link rel="preconnect" href="//cdn.shopifycloud.com" crossorigin>
+  <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+  {% # theme-check-enable %}
+  {% capture seo_title %}
+    {{ page_title }}
+    {% if current_tags %}{%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}{% endif %}
+    {% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}
+    {% unless page_title contains shop.name %}&ndash; {{ shop.name }}{% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title | strip_newlines | remove:"  " }}</title>
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+  {%- if settings.favicon != blank %}<link rel="shortcut icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">{% endif -%}
+  {%- if settings.favicon_apple != blank %}<link rel="apple-touch-icon-precomposed" type="image/png" sizes="152x152" href="{{ settings.favicon_apple | image_url: width: 152 }}">{% endif -%}
+  {% comment %}{% include 'social-meta-tags' %} {% endcomment %}
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <!-- <script src="{{ 'preconnect.js' | asset_url }}" async></script> -->
+  {% # theme-check-disable %}{% include 'language-rtl' %}{% # theme-check-enable %}
+  {% include 'header-stylesheets' , rtl_classes: rtl_classes %}
+  {% render 'header-scripts' %}  
+  <script>
+    var theme = { currency :'{{ shop.currency }}', moneyFormat: {{ shop.money_format | json }},moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }}, {% if customer %}customer: {id : {{customer.id}}, name: '{{customer.name}}'}{% endif %}},
+        shopCurrency = '{{ shop.currency }}';
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    const type_name = "{{request.page_type}}", t_cartCount = 1,t_shop_currency = "USD", t_moneyFormat = "\u003cspan class='money'\u003e${{amount}}\u003c\/span\u003e", t_cart_url = "\/cart", pr_re_url = "\/recommendations\/products"; 
+    document.addEventListener("DOMContentLoaded", function() {
+          function fadeOut(el){if(!el) return; el.style.opacity=1;(function fade(){if((el.style.opacity-=.1)<0){el.style.display="none";}else{requestAnimationFrame(fade);}})();}
+          fadeOut(document.querySelector('.page-load'));
+          document.body.classList.remove('skeleton-page');
+    });   
+  </script>
+	{{ content_for_header }}
+</head>
+{%- assign admin_sp = request.design_mode -%}
+{%- assign use_sidebar_homepage = settings.use_sidebar_homepage -%}
+<body id="{{ page_title | handle }}" 
+    class="skeleton-page {% if admin_sp %} alo-admin {%else%} alo-frontend {% endif %} {% if template contains 'index' %} home {%else%} subpage {% endif %} {% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}  {{ rtl_classes }}" 
+    data-header="{{settings.select_header}}"
+    >
+{% if template contains 'index' %} <h1 class="site-header__logo d-none">{{ shop.name }}</h1>{% endif %}
+  {%if settings.show_load_page%}
+  <div class="page-load circle-loadding"><span></span></div>
+  {%endif%}
+  <div class="main">
+  <header id="header">  
+      {% sections 'header-group' %} 
+      {%- if settings.use_vertical_menu -%}
+        {% section 'vertical_menu' %}
+      {% endif %}
+  </header>
+    {% if template contains 'product' %} 
+    	{% section 'breadcrumb' %}
+        <div class="page-container clearfix {%if settings.show_product_sidebar%}sidebar-product{%endif%}" id="PageContainer">
+          <div class="container {%if settings.product_page_layout %}full-width{%endif%}" style="--alo-container-width:{{ settings.product_page_container }}px;">
+          <div class="row">
+            {%if settings.show_product_sidebar%}
+            <div class="hide-mobile col-lg-auto col-xs-12  col-sm-4 col-md-3 col-lg-3 sidebar sidebar-{{settings.product_info_layout}}">
+              {% section 'product_sidebar' %}
+            </div>
+            {%endif%}
+            <main id="MainContent " class="col">
+              {{ content_for_layout }}
+            </main>
+          </div>
+          </div>
+        </div>
+      
+        {% section 'related-products' %}
+    	{% section 'products-recently-viewed' %}
+
+   	{%else%}
+
+      {% if use_sidebar_homepage and template contains 'index'  %}
+          <a href="javascript:void(0)" class="js-mobile-sidebar mobile-sidebar-btn">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.cls-1{fill:none;}</style></defs><title></title><g data-name="Layer 2" id="Layer_2"><path d="M28,10H4A1,1,0,0,1,4,8H28a1,1,0,0,1,0,2Z"></path><path d="M28,17H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"></path><path d="M28,24H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"></path></g><g id="frame"><rect class="cls-1" height="32" width="32"></rect></g>
+            </svg>
+              {{ 'sections.sidebar.sidebar' | t}}
+          </a>
+          <div class="page-container use_sidebar_homepage  clearfix">
+            <div class="container">
+              <div class="wrap-sidebar">
+                <sidebar class="index-sidebar index-sidebar-{{settings.select_sidebar}}">
+                    <trigger-click data-target=".js-mobile-sidebar" class="js-close-sidebar close-sidebar-btn">
+                      <i class="icon-x"></i>
+                    </trigger-click>
+                  {% section 'sidebar' %}
+                </sidebar>
+                <main class="side-content">
+                    {%- sections 'side-content' -%}
+                </main>
+              </div>
+            </div>
+          </div>
+      {% endif %}
+      <div class="page-container clearfix" id="PageContainer">
+        <main id="MainContent">
+          {{ content_for_layout }}
+        </main>
+      </div>
+    {%endif%}
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+    {% render 'header-search-popup' %}
+    {%- sections 'overlay-group' -%}
+    {% if settings.enable_crisp_chat %}{{ settings.code_crisp_chat }}{% endif %}
+    {% if settings.show_button_rtl %}
+    {% endif %}
+    {% if request.page_type != 'cart' %}
+      <div id="js_cart_popup" class="hero_canvas">
+        {% render 'minicart' %}
+      </div>
+    {% endif %}
+  </div>
+<script>
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+      window.products = {
+        pre_order: "{{ 'products.product.pre_order' |t }}",
+        add_to_cart: "{{ 'products.product.add_to_cart' |t }}",
+        out_of_stock: "{{ 'products.product.out_stock' |t }}",
+        label: {
+          "hot": "{{ 'products.product.label.hot' |t }}",
+          "new": "{{ 'products.product.label.new' |t }}",
+          "sale": "{{ 'products.product.label.sale' |t }}"
+        },
+        stock_countdown_html: "{{ 'products.product.stock_countdown_html' | t }}",
+        value_in_stock_html: "{{ 'products.product.value_in_stock_html' | t }}",
+        variant_auto_match: "{{ settings.product_variant_auto_match_disable }}"
+      };
+      window.ajaxcart = {
+        enabled: ( '{{ settings.ajaxcart_enabled }}' == 'true' ),
+        added: "{{ 'products.product.add_to_cart_pr.added' | t }}",
+        soldOut : "{{ 'products.product.add_to_cart_pr.sold_out' | t }}",
+        selectOptions: "{{ 'products.product.add_to_cart_pr.select_options' | t }}",
+        disableAutoSelect: ( '{{ settings.product_variant_auto_select }}' == 'disable' ),
+        ajaxcartAfter: {% if settings.ajaxcart_after != nil %}"{{ settings.ajaxcart_after }}"{% else %}"sidebar_cart"{% endif %}
+      };
+      window.dynamicTitlte = {
+          msg1: "{{ settings.dynamic_title1 }}",
+          msg2: "{{ settings.dynamic_title2 }}"
+      }
+  </script>
+
+  {%- if settings.predictive_search_enabled -%}
+    <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+  {%- render 'back-to-top' -%}
+</body>
+</html>
+{%- endcapture -%}
+{%- render 'minify-code', html_content: html_content -%}

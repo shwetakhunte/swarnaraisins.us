@@ -1,0 +1,73 @@
+<magic-accordion>
+  <menu id="menu_mb_ul" class="nav-accordion laber_mb_menu">
+    {%- for link in linklists[menu].links -%}
+      {% assign sub_image = link.object.image | default: link.object.products[0].featured_image %}
+      {%- if link.links != blank -%}
+        <li class="menu-item item-level-0 has-children {% if use_thumb %}thumb{% endif %} {% if link.active %}active{% endif %}">
+          <a href="{{link.url}}">
+            {% if sub_image != blank and use_thumb %}
+              {% render 'image-category', image: sub_image %}
+            {% endif %}
+            <span>
+              {{- link.title -}}
+              {% if link.object.all_products_count and show_prod_qty %}
+                <span class="n_products">({{ link.object.all_products_count }})</span>
+              {%- endif -%}
+            </span>
+          </a>
+          <ul class="sub-menu1">
+            {%- for child_link in link.links -%}
+              {% assign sub_image_child_1 = child_link.object.image
+                | default: child_link.object.products[0].featured_image
+              %}
+              {%- if child_link.links != blank -%}
+                <li class="menu-item item-level-1 has-children {% if use_thumb %}thumb{% endif %} {% if child_link.active %} active{% endif %}">
+                  <a href="{{child_link.url}}">
+                    {% if sub_image_child_1 != blank and use_thumb %}
+                      {% render 'image-category', image: sub_image_child_1 %}
+                    {% endif %}
+                    <span>{{ child_link.title }} </span>
+                  </a>
+                  <ul class="sub-menu2">
+                    {%- for grandchild_link in child_link.links -%}
+                      {% assign sub_image_child_2 = grandchild_link.object.image | default: grandchild_link.object.products[0].featured_image %}
+                      <li class="menu-item item-level-2 {% if use_thumb %}thumb{% endif %} {% if grandchild_link.active %} active{% endif %}">
+                        {% if sub_image_child_2 != blank and use_thumb %}
+                          {% render 'image-category', image: sub_image_child_2 %}
+                        {% endif %}
+                        <a href="{{grandchild_link.url}}"> {{ grandchild_link.title }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </li>
+              {%- else -%}
+                <li class="menu-item item-level-1 {% if use_thumb %}thumb{% endif %} {% if child_link.active %} active{% endif %}">
+                  <a href="{{child_link.url}}">
+                    {% if sub_image_child_1 != blank and use_thumb %}
+                      {% render 'image-category', image: sub_image_child_1 %}
+                    {% endif %}
+                    <span>{{ child_link.title }} </span>
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </li>
+      {%- else -%}
+        <li class="menu-item item-level-0 {% if use_thumb %}thumb{% endif %} {% if link.active %} active{% endif %}">
+          <a href="{{link.url}}">
+            {% if sub_image != blank and use_thumb %}
+              {% render 'image-category', image: sub_image %}
+            {% endif %}
+            <span>
+              {{- link.title -}}
+              {% if link.object.all_products_count and show_prod_qty %}
+                <span class="n_products">({{ link.object.all_products_count }})</span>
+              {%- endif %}
+            </span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </menu>
+</magic-accordion>

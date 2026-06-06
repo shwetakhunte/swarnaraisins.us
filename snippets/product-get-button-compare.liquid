@@ -1,0 +1,10 @@
+<shop-compare
+  class="{{ class }} alo_tooltip compare-button btn--status"
+  data-handle="{{product.handle}}"
+  aria-label="link"
+>
+  {% render 'icon-compare', class:'add' %}
+  {% render 'icon-compare', class:'delete' %}
+  <span class="text alo_tooltip-content">{{ 'products.product.add_to_compare.title' | t }}</span>
+  <span class="added alo_tooltip-content" data-button-content="delete">{{ 'products.product.add_to_compare.added' | t }}</span>
+</shop-compare>

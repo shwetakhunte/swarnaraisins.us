@@ -1,0 +1,406 @@
+{%- assign image_border_product = settings.image_border_product -%}
+{%- liquid
+  assign visible = section.settings.visible
+  assign widescreen = section.settings.widescreen
+  assign desktop = section.settings.desktop
+  assign laptop = section.settings.laptop
+  assign notebook = section.settings.notebook
+  assign tablet = section.settings.tablet
+  assign rows = section.settings.rows | plus: 0
+  assign space_between = section.settings['space-Between']
+  assign sett_equal = settings.use_eq_height_product
+  assign image_ratio = settings.image_ratio_product
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio5_6'
+        assign aspect_ratio = 0.8333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio6_5'
+        assign aspect_ratio = 1.2
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+-%}
+<media-gallery
+  class="product-media-gallery col-xs-12 col-sm-12 {% if product_page_design =='grid_2_column' %} col-md-7 col-lg-7{% else %} col-md-6 col-lg-6{% endif %} "
+>
+  <div class="sticky-sidebar">
+    <div class="product-gallery {% if product_page_design == "default"%}{{ section.settings.pos_thumb }}-thumbnail {% endif %}">
+      {% if section.settings.zoomEnabled == true %}
+        {% render 'product-zoom', section: section %}
+      {% endif %}
+      {%- if product_page_design != 'grid_1_column' and product_page_design != 'grid_2_column' -%}
+        <gallery
+          class="col-main"
+          data-zoom-enabled="{{ section.settings.zoomEnabled }}"
+          data-zoom-width="{{section.settings.zoomWidth}}"
+          data-zoom-height="{{section.settings.zoomHeight}}"
+          data-zoom-factor="{{section.settings.zoomFactor}}"
+          data-zoom-type="{{section.settings.zoomType}}"
+          data-zoom-effect="{{section.settings.zoomEffect}}"
+          data-zoom-effect-duration="{{section.settings.effectDuration}}"
+        >
+          <div
+            class="swiper gallery-main"
+            data-zoom="true"
+            data-autoplay="false"
+            data-slides-Per-View="1"
+            data-slides-Per-Group="1"
+            data-watch-Slides-Progress="true"
+            data-watch-Slides-Visibility="true"
+            data-navigation='{"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}'
+            data-pagination='{"el": ".swiper-pagination", "clickable": "true"}'
+          >
+            <div class="swiper-wrapper">
+              {% for media in product.media %}
+                {% if media.media_type == 'image' %}
+                  <div
+                    data-media-id="{{ media.id }}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    {%- if media.src -%}
+                      {% assign ratio = aspect_ratio | default: media.src.aspect_ratio %}
+                      <div
+                        class="swiper-zoom-container ratio"
+                        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                      >
+                        <img
+                          {% if settings.product_info_enable_zoom %}
+                            data-zoom-image="{{ media.src | image_url: width: 1920 }}"
+                          {% endif %}
+                          srcset="
+                            {%- if media.preview_image.width >= 550 -%}{{ media.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
+                            {%- if media.preview_image.width >= 1100 -%}{{ media.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                            {%- if media.preview_image.width >= 1445 -%}{{ media.preview_image | image_url: width: 1445 }} 1445w,{%- endif -%}
+                            {%- if media.preview_image.width >= 1680 -%}{{ media.preview_image | image_url: width: 1680 }} 1680w,{%- endif -%}
+                            {%- if media.preview_image.width >= 2048 -%}{{ media.preview_image | image_url: width: 2048 }} 2048w,{%- endif -%}
+                            {%- if media.preview_image.width >= 2200 -%}{{ media.preview_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                            {%- if media.preview_image.width >= 2890 -%}{{ media.preview_image | image_url: width: 2890 }} 2890w,{%- endif -%}
+                            {%- if media.preview_image.width >= 4096 -%}{{ media.preview_image | image_url: width: 4096 }} 4096w,{%- endif -%}
+                            {{ media.preview_image | image_url }} {{ media.preview_image.width }}w
+                          "
+                          sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+                          src="{{ media.preview_image | image_url: width: 1445 }}"
+                          sizes="(min-width: 1170px) {{ 1170 | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                          alt="{{ media.src.alt | escape }}"
+                          class="main-image js-image-{{media.id }}"
+                          width="{{ media.src.width }}"
+                          height="{{ media.src.height }}"
+                          loading="lazy"
+                        >
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {% elsif media.media_type == 'video' %}
+                  {% assign ratio = aspect_ratio | default: media.src.aspect_ratio %}
+                  <div
+                    data-media-id="{{media.id}}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide video overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    <div class="ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+                      {{
+                        media
+                        | media_tag: image_size: '1048x', autoplay: true, loop: loop, controls: true, preload: 'none'
+                      }}
+                    </div>
+                  </div>
+                {% elsif media.media_type == 'external_video' %}
+                  {% assign ratio = aspect_ratio | default: media.src.aspect_ratio %}
+                  <div
+                    data-media-id="{{media.id}}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide video overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    <div class="ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+                      {{ media | media_tag }}
+                    </div>
+                  </div>
+                {% elsif media.media_type == 'model' %}
+                  <div
+                    data-media-id="{{media.id}}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide swiper-no-swiping model overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    {% # theme-check-disable %}
+                    {% include 'product-media-model' %}
+                    {% # theme-check-enable %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </gallery>
+        {% # theme-check-disable %}
+        <thumbnail class="col-thumbnail">
+          {% include 'grid-slider', settings: section.settings %}
+          <div
+            class="swiper gallery-thumbnail"
+            {{ gridSlider }}
+            data-tablet="{{ tablet }}"
+            data-notebook="{{ notebook }}"
+            data-laptop="{{ laptop }}"
+            data-desktop="{{ desktop }}"
+            data-widescreen="{{ widescreen }}"
+            data-visible="{{ visible }}"
+            data-space-Between="{{ space_between}}"
+            style="--perload-gap: {{ space_between}}px"
+          >
+            <div class="swiper-wrapper {% if rows > 1 %}flex-wrap{% endif %}">
+              {% for media in product.media %}
+                {% if media.media_type == 'image' %}
+                  <div
+                    data-media-id="{{ media.id }}"
+                    data-media_type="{{ media.media_type }}"
+                    data-image="{{ media.src | img_url: 'grande' }}"
+                    class="swiper-slide thumb image"
+                  >
+                    {% assign ratio = aspect_ratio | default: media.src.aspect_ratio %}
+                    <div
+                      class="ratio alo-border-radius"
+                      style="--alo-border-radius:{{ image_border_product }}px; --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                    >
+                      <img
+                        srcset="
+                          {%- if media.src.width >= 165 -%}{{ media.src | image_url: width: 165 }} 165w,{%- endif -%}
+                          {%- if media.src.width >= 360 -%}{{ media.src | image_url: width: 360 }} 360w,{%- endif -%}
+                          {%- if media.src.width >= 533 -%}{{ media.src | image_url: width: 533 }} 533w,{%- endif -%}
+                          {%- if media.src.width >= 720 -%}{{ media.src | image_url: width: 720 }} 720w,{%- endif -%}
+                          {%- if media.src.width >= 940 -%}{{ media.src | image_url: width: 940 }} 940w,{%- endif -%}
+                          {%- if media.src.width >= 1066 -%}{{ media.src | image_url: width: 1066 }} 1066w,{%- endif -%}
+                          {{ media.src | image_url }} {{ media.src.width }}w
+                        "
+                        src="{{ media.src | image_url: width: 533 }}"
+                        sizes="(min-width: 1170px) {{ 1170 | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                        alt="{{ media.src.alt | escape }}"
+                        class="main-image js-image-{{media.id }}"
+                        width="{{ media.src.width }}"
+                        height="{{ media.src.height }}"
+                        loading="lazy"
+                      >
+                    </div>
+                  </div>
+                {% elsif media.media_type == 'video' %}
+                  <div
+                    data-media-id="{{ media.id }}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide thumb video"
+                  >
+                    {% assign ratio = aspect_ratio | default: media.preview_image.aspect_ratio %}
+                    {%- if media.preview_image -%}
+                      <div
+                        class="ratio alo-border-radius"
+                        style="--alo-border-radius:{{ image_border_product }}px; --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                      >
+                        <img
+                          srcset="
+                            {%- if media.preview_image.width >= 165 -%}{{ media.preview_image | image_url: width: 165 }} 165w,{%- endif -%}
+                            {%- if media.preview_image.width >= 360 -%}{{ media.preview_image | image_url: width: 360 }} 360w,{%- endif -%}
+                            {%- if media.preview_image.width >= 533 -%}{{ media.preview_image | image_url: width: 533 }} 533w,{%- endif -%}
+                            {%- if media.preview_image.width >= 720 -%}{{ media.preview_image | image_url: width: 720 }} 720w,{%- endif -%}
+                            {%- if media.preview_image.width >= 940 -%}{{ media.preview_image | image_url: width: 940 }} 940w,{%- endif -%}
+                            {%- if media.preview_image.width >= 1066 -%}{{ media.preview_image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                            {{ media.preview_image | image_url }}
+                          "
+                          src="{{ media.preview_image | image_url: width: 533 }}"
+                          sizes="(min-width: 1170px) {{ 1170 | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                          alt="{{ media.preview_image.alt | escape }}"
+                          class="main-image js-image-{{media.id }}"
+                          width="{{ media.preview_image.width }}"
+                          height="{{ media.preview_image.height }}"
+                          loading="lazy"
+                        >
+                        {% render 'icon-video' %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {% elsif media.media_type == 'external_video' %}
+                  <div
+                    data-media-id="{{ media.id }}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide thumb video"
+                  >
+                    {% assign ratio = aspect_ratio | default: media.preview_image.aspect_ratio %}
+                    {%- if media.preview_image -%}
+                      <div
+                        class="ratio alo-border-radius"
+                        style="--alo-border-radius:{{ image_border_product }}px; --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                      >
+                        <img
+                          srcset="
+                            {%- if media.preview_image.width >= 165 -%}{{ media.preview_image | image_url: width: 165 }} 165w,{%- endif -%}
+                            {%- if media.preview_image.width >= 360 -%}{{ media.preview_image | image_url: width: 360 }} 360w,{%- endif -%}
+                            {%- if media.preview_image.width >= 533 -%}{{ media.preview_image | image_url: width: 533 }} 533w,{%- endif -%}
+                            {%- if media.preview_image.width >= 720 -%}{{ media.preview_image | image_url: width: 720 }} 720w,{%- endif -%}
+                            {%- if media.preview_image.width >= 940 -%}{{ media.preview_image | image_url: width: 940 }} 940w,{%- endif -%}
+                            {%- if media.preview_image.width >= 1066 -%}{{ media.preview_image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                            {{ media.preview_image | image_url }}
+                          "
+                          src="{{ media.preview_image | image_url: width: 533 }}"
+                          sizes="(min-width: 1170px) {{ 1170 | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                          alt="{{ media.preview_image.alt | escape }}"
+                          class="main-image js-image-{{media.id }}"
+                          width="{{ media.preview_image.width }}"
+                          height="{{ media.preview_image.height }}"
+                          loading="lazy"
+                        >
+                        {% include 'icon-video' %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {% elsif media.media_type == 'model' %}
+                  <div
+                    data-media-id="{{ media.id }}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide thumb model"
+                  >
+                    {% assign ratio = aspect_ratio | default: media.preview_image.aspect_ratio %}
+                    <div
+                      class="ratio alo-border-radius"
+                      style="--alo-border-radius:{{ image_border_product }}px; --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                    >
+                      {% include 'icon-3d' %}
+                      <img
+                        srcset="
+                          {% if media.preview_image.width >= 288 %}{{ media.preview_image | image_url: width: 288 }} 288w,{% endif %}
+                          {% if media.preview_image.width >= 576 %}{{ media.preview_image | image_url: width: 576 }} 576w,{% endif %}
+                          {% if media.preview_image.width >= 550 %}{{ media.preview_image | image_url: width: 550 }} 550w,{% endif %}
+                          {% if media.preview_image.width >= 1100 %}{{ media.preview_image | image_url: width: 1100 }} 1100w,{% endif %}
+                          {{ media.preview_image | image_url }} {{ media.preview_image.width }}w
+                        "
+                        src="{{ media | image_url: width: 550, height: 550 }}"
+                        sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                        loading="lazy"
+                        width="576"
+                        height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                        alt="{{ media.preview_image.alt | escape }}"
+                        loading="lazy"
+                      >
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </thumbnail>
+        {% # theme-check-enable %}
+      {% else %}
+        {% comment %}Display image as grid{% endcomment %}
+        <gallery
+          data-grid-main
+          class="swiper main-gallery"
+          data-zoom-enabled="{{ section.settings.zoom-enabled }}"
+          data-zoom-width="{{section.settings.zoom-width}}"
+          data-zoom-height="{{section.settings.zoom-height}}"
+          data-zoom-level="{{section.settings.zoom-level}}"
+          data-zoom-style="{{section.settings.zoom-style}}"
+          data-zoom-effect="{{section.settings.zoom-effect}}"
+          data-zoom-effect-duration="{{section.settings.zoom-effect-duration}}"
+        >
+          <div
+            class="swiper gallery-main-grid"
+            data-autoplay="false"
+            data-match-media="(max-width: 768px)"
+            data-slides-Per-View="1"
+            data-slides-Per-Group="1"
+            data-watch-Slides-Progress="true"
+            data-watch-Slides-Visibility="true"
+            data-navigation='{"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}'
+            data-pagination='{"el": ".swiper-pagination", "clickable": "true"}'
+          >
+            <div class="swiper-wrapper">
+              {% for media in product.media %}
+                {% if media.media_type == 'image' %}
+                  <div
+                    data-media-id="{{ media.id }}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    {%- if media.src -%}
+                      {% assign ratio = aspect_ratio | default: media.src.aspect_ratio %}
+                      <div class="ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+                        <img
+                          {% if settings.product_info_enable_zoom %}
+                            data-zoom-image="{{ media.src | image_url: width: 1920 }}"
+                          {% endif %}
+                          srcset="
+                            {%- if media.src.width >= 165 -%}{{ media.src | image_url: width: 165 }} 165w,{%- endif -%}
+                            {%- if media.src.width >= 360 -%}{{ media.src | image_url: width: 360 }} 360w,{%- endif -%}
+                            {%- if media.src.width >= 533 -%}{{ media.src | image_url: width: 533 }} 533w,{%- endif -%}
+                            {%- if media.src.width >= 720 -%}{{ media.src | image_url: width: 720 }} 720w,{%- endif -%}
+                            {%- if media.src.width >= 940 -%}{{ media.src | image_url: width: 940 }} 940w,{%- endif -%}
+                            {%- if media.src.width >= 1066 -%}{{ media.src | image_url: width: 1066 }} 1066w,{%- endif -%}
+                            {{ media.src | image_url }} {{ media.src.width }}w
+                          "
+                          src="{{ media.src | image_url: width: 550 }}"
+                          sizes="(min-width: 1170px) {{ 1170 | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                          alt="{{ media.src.alt | escape }}"
+                          class="main-image js-image-{{media.id }}"
+                          width="{{ media.src.width }}"
+                          height="{{ media.src.height }}"
+                          loading="lazy"
+                        >
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {% elsif media.media_type == 'video' %}
+                  <div
+                    data-media-id="{{media.id}}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide video overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    {{
+                      media
+                      | media_tag: image_size: '1048x', autoplay: true, loop: loop, controls: true, preload: 'none'
+                    }}
+                  </div>
+                {% elsif media.media_type == 'model' %}
+                  <div
+                    data-media-id="{{media.id}}"
+                    data-media_type="{{ media.media_type }}"
+                    class="swiper-slide model overflow-hidden alo-border-radius"
+                    style="--alo-border-radius:{{ image_border_product }}px;"
+                  >
+                    {% render 'product-media-model', product: product, section: section %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </gallery>
+      {% endif %}
+    </div>
+  </div>
+</media-gallery>

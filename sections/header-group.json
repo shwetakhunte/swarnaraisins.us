@@ -1,0 +1,399 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "top-bar": {
+      "type": "top-bar",
+      "blocks": {
+        "0acdf3d5-9c21-481a-b5c1-f04f5d89c1a2": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "message_text": "<p>Senior's Member Discount Days!  Save 25% <a href=\"#\" title=\"#\">All Day</a></p>",
+            "f-size": 16,
+            "f-weight": 500,
+            "text_transform": "none",
+            "text_align": "center",
+            "color_link": "#ffffff",
+            "color_link_hover": "#008060",
+            "col": "100%"
+          }
+        },
+        "text_running_JtGMWE": {
+          "type": "text_running",
+          "settings": {
+            "limit": 15,
+            "text": "<p>Lifetime Warranty 🌴 Easy Returns 🌴 <a href=\"#\" title=\"#\">Free US Shipping</a> on $75+</p>",
+            "slider_direction": "slide-left",
+            "healing_speed": 20,
+            "cl_text": "#000000",
+            "col": "100%"
+          }
+        },
+        "text_slider_byCVYw": {
+          "type": "text_slider",
+          "disabled": true,
+          "settings": {
+            "text_1": "<p>FREE SHIPPING from $150.00</p>",
+            "text_2": "<p>FREE SHIPPING from $150.00</p>",
+            "text_3": "<p>FREE SHIPPING from $150.00</p>",
+            "text_4": "<p>FREE SHIPPING from $150.00</p>",
+            "text_5": "<p>FREE SHIPPING from $150.00</p>",
+            "cl_text": "#ffffff",
+            "text_align": "center",
+            "col": "100%",
+            "w_slide": 860,
+            "use-slider": true,
+            "visible": 1,
+            "widescreen": 1,
+            "desktop": 1,
+            "laptop": 1,
+            "notebook": 1,
+            "tablet": 1,
+            "landscape": 1,
+            "portrait": 1,
+            "mobile": 1,
+            "slides-Per-Group": 1,
+            "rows": 1,
+            "autoplay": false,
+            "speed": "300",
+            "autoplay_delay": "3000",
+            "navigation": true,
+            "effect": "slide",
+            "centered-Slides": false,
+            "auto-Height": false,
+            "pagination": false,
+            "loop": false,
+            "space-Between": 10,
+            "direction": "horizontal"
+          }
+        }
+      },
+      "block_order": [
+        "0acdf3d5-9c21-481a-b5c1-f04f5d89c1a2",
+        "text_running_JtGMWE",
+        "text_slider_byCVYw"
+      ],
+      "disabled": true,
+      "settings": {
+        "hide_top_header_mobile": true,
+        "home_page_only": true,
+        "show_close_btn": false,
+        "layout": true,
+        "container": 1410,
+        "h_topbar": 50,
+        "bg_top_header": "#f6ebdc",
+        "cl_bd_top_bar": "#f3f3f3",
+        "cl_text": "#333333"
+      }
+    },
+    "top-header": {
+      "type": "top-header",
+      "blocks": {
+        "message_UNyzVF": {
+          "type": "message",
+          "settings": {
+            "hide_mobile": true,
+            "code_icon": "<svg width=\"21\" height=\"20\" viewbox=\"0 0 21 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M6.16805 0.419922V9.74992H2.16992C2.16992 9.74992 2.16992 13.868 2.16992 15.1987C2.16992 16.5293 3.4093 17.0799 4.32742 17.0799C5.24555 17.0799 14.4899 17.0799 16.8312 17.0799C17.8412 17.0799 18.8305 16.0974 18.8305 15.0805C18.8305 14.3462 18.8305 0.419922 18.8305 0.419922H6.16805ZM4.32742 16.4137C3.91242 16.4137 2.8368 16.1955 2.8368 15.1987V10.4162H6.16867V14.9112C6.16867 15.3574 5.58555 16.4137 4.66617 16.4137H4.32742ZM18.1637 15.0805C18.1637 15.728 17.4787 16.4137 16.8305 16.4137H6.13492C6.58367 15.9462 6.8343 15.3318 6.8343 14.9112V1.08617H18.163L18.1637 15.0805Z\" fill=\"#fff\"></path>\n<path d=\"M8.16748 2.41895H16.8306V3.0852H8.16748V2.41895Z\" fill=\"#fff\"></path>\n<path d=\"M8.16748 11.416H16.8306V12.0823H8.16748V11.416Z\" fill=\"#fff\"></path>\n<path d=\"M8.16748 13.748H16.8306V14.4143H8.16748V13.748Z\" fill=\"#fff\"></path>\n<path d=\"M16.8306 4.75098H8.16748V9.7491H16.8306V4.75098ZM16.1644 9.08285H8.83373V5.41785H16.1644V9.08285Z\" fill=\"#fff\"></path>\n</svg>",
+            "message_text": "<p>Add anything here or just remove it...</p>",
+            "f-size": 14,
+            "text_transform": "none",
+            "text_align": "left",
+            "col": "50%"
+          }
+        },
+        "my_activity_CNLiBe": {
+          "type": "my_activity",
+          "settings": {
+            "hide_mobile": false,
+            "f-size": 14,
+            "text_transform": "none",
+            "header_use_currency": true,
+            "header_use_language": true,
+            "show_flag": true,
+            "display_search": false,
+            "display_wishlist": false,
+            "display_compare": false,
+            "display_account": false,
+            "text_align": "right",
+            "col": "50%"
+          }
+        }
+      },
+      "block_order": [
+        "message_UNyzVF",
+        "my_activity_CNLiBe"
+      ],
+      "settings": {
+        "hide_mobile": true,
+        "home_page_only": false,
+        "layout": false,
+        "container": 1410,
+        "h_topheader": 40,
+        "bg_top_header": "#124a2f",
+        "cl_border_top": "#124a2f",
+        "cl_text": "#ffffff",
+        "cl_text_h": "#7fba00"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "dropdown_KYBURf": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Home",
+            "url": "/",
+            "open_link": "_self",
+            "menu": "home-page",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "",
+            "lb_cl": "",
+            "bg": "#ffffff"
+          }
+        },
+        "f1985b73-73ae-40d4-a44d-6512fa2bed65": {
+          "type": "mega",
+          "settings": {
+            "title": "Shop",
+            "url": "shopify://collections/organix",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "SALE",
+            "lb_cl": "#4cd964",
+            "pos_rel": false,
+            "wid": "cus",
+            "cus_wid": 1200,
+            "bg": "#ffffff"
+          }
+        },
+        "0dc3b769-8f81-4021-b808-27c4122df832": {
+          "type": "link",
+          "settings": {
+            "tt_hd": "Shop Layouts",
+            "url": "/",
+            "open_link": "_self",
+            "menu": "shop-layouts",
+            "col": "3"
+          }
+        },
+        "556a4905-9d7f-4bca-9ebc-608af9796559": {
+          "type": "link",
+          "settings": {
+            "tt_hd": "Shop catalog",
+            "url": "#",
+            "open_link": "_self",
+            "menu": "shop-catalog",
+            "col": "3"
+          }
+        },
+        "91997113-1e93-40ae-bf7d-3fedaa54aa17": {
+          "type": "link",
+          "settings": {
+            "tt_hd": "Product Features",
+            "url": "#",
+            "open_link": "_self",
+            "menu": "product-features",
+            "col": "2"
+          }
+        },
+        "d86acdc9-b2b3-4af6-9ae8-1ec6f2fbb036": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/estratto-di-limone-insal-arte-_1_690ab994-3022-425c-89ed-b06fbbeec21d.jpg",
+            "title": "Fresh Milk",
+            "url": "shopify://collections/fresh-milk",
+            "open_link": "_blank",
+            "col": "3"
+          }
+        },
+        "dfd71c66-4221-484e-8152-884510305448": {
+          "type": "mega",
+          "settings": {
+            "title": "Product",
+            "url": "shopify://collections/all",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "NEW",
+            "lb_cl": "#007aff",
+            "pos_rel": false,
+            "wid": "cus",
+            "cus_wid": 1400,
+            "bg": "#ffffff"
+          }
+        },
+        "df961956-d87e-4b9a-a2bb-f09f92d4db0c": {
+          "type": "link",
+          "settings": {
+            "tt_hd": "Product Details",
+            "url": "#",
+            "open_link": "_self",
+            "menu": "product-details",
+            "col": "2"
+          }
+        },
+        "0dcb3f77-681c-42bb-8815-4e2aa1ae5a10": {
+          "type": "link",
+          "settings": {
+            "tt_hd": "Product type",
+            "url": "/",
+            "open_link": "_self",
+            "menu": "product-type",
+            "col": "2"
+          }
+        },
+        "a7a978cf-56f8-42a6-8baf-8cca23e4a73a": {
+          "type": "link",
+          "settings": {
+            "tt_hd": "Thumbnails and zoom",
+            "url": "#",
+            "open_link": "_self",
+            "menu": "thumbnails-and-zoom",
+            "col": "2"
+          }
+        },
+        "banner_yUrcG3": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/img_newsletter.jpg",
+            "title": "Organix",
+            "url": "shopify://collections/organix",
+            "open_link": "_self",
+            "col": "3"
+          }
+        },
+        "dropdown_CYDyGE": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Collections",
+            "url": "/collections",
+            "open_link": "_self",
+            "menu": "categories",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "Hot",
+            "lb_cl": "#e42e2d",
+            "bg": "#ffffff"
+          }
+        },
+        "daf2536b-aac6-4535-9831-6849a83dec8a": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo_max_width": 210
+          }
+        },
+        "29ad91fc-8806-4b0f-88d0-8e863ef7fe8c": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Pages",
+            "url": "#",
+            "open_link": "_self",
+            "menu": "pages",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "",
+            "lb_cl": "",
+            "bg": "#ffffff"
+          }
+        },
+        "4df142f1-d9c4-4ea6-83b7-ce00f3f734ce": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Blog",
+            "url": "shopify://blogs/organix",
+            "open_link": "_self",
+            "menu": "blog",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#007aff",
+            "lb": "",
+            "lb_cl": "#007aff",
+            "bg": "#ffffff"
+          }
+        },
+        "header-1": {
+          "type": "simple",
+          "settings": {
+            "title": "Contact Us",
+            "url": "shopify://pages/contact",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "3965da57-f7d5-4271-97a2-a0a4b93bf9c4": {
+          "type": "simple",
+          "disabled": true,
+          "settings": {
+            "title": "Buy Themes!",
+            "url": "#",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ffffff",
+            "lb": "",
+            "lb_cl": ""
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_KYBURf",
+        "f1985b73-73ae-40d4-a44d-6512fa2bed65",
+        "0dc3b769-8f81-4021-b808-27c4122df832",
+        "556a4905-9d7f-4bca-9ebc-608af9796559",
+        "91997113-1e93-40ae-bf7d-3fedaa54aa17",
+        "d86acdc9-b2b3-4af6-9ae8-1ec6f2fbb036",
+        "dfd71c66-4221-484e-8152-884510305448",
+        "df961956-d87e-4b9a-a2bb-f09f92d4db0c",
+        "0dcb3f77-681c-42bb-8815-4e2aa1ae5a10",
+        "a7a978cf-56f8-42a6-8baf-8cca23e4a73a",
+        "banner_yUrcG3",
+        "dropdown_CYDyGE",
+        "daf2536b-aac6-4535-9831-6849a83dec8a",
+        "29ad91fc-8806-4b0f-88d0-8e863ef7fe8c",
+        "4df142f1-d9c4-4ea6-83b7-ce00f3f734ce",
+        "header-1",
+        "3965da57-f7d5-4271-97a2-a0a4b93bf9c4"
+      ],
+      "settings": {
+        "layout": false,
+        "container": 1410,
+        "h-menu": 50,
+        "f-size": 15,
+        "f-weight": 500,
+        "text_transform": "capitalize",
+        "show_thumb_collection": true,
+        "enable_icon_menu": true,
+        "enable_text_right": false,
+        "text": "<p><strong> </strong><a href=\"tel:(+800) 1234 56781\" title=\"tel:(+800) 1234 56781\"><strong>(+800) 1234 56781</strong></a></p>",
+        "cl_text": "#333333"
+      }
+    }
+  },
+  "order": [
+    "top-bar",
+    "top-header",
+    "header"
+  ]
+}

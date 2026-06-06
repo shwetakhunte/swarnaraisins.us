@@ -1,0 +1,24 @@
+.type_link section {
+  border-top:1px solid var(--cl-border);
+  border-bottom:1px solid var(--cl-border);
+}
+.type_link .item-menu h3 {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 19px;
+  color: var(--cl-main);
+  margin-bottom: 20px;
+}
+.type_link .item-menu ul {
+}
+.type_link .item-menu ul li {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+.type_link .item-menu ul li a {
+  color: var(--cl-text-body);
+}
+.type_link .item-menu ul li a:hover {
+  color: var(--cl-link-h);
+}

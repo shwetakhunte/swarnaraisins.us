@@ -1,0 +1,417 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.overlay",
+  "name": "Overlay group",
+  "sections": {
+    "order-notification": {
+      "type": "order-notification",
+      "settings": {
+        "collection_id": "organix",
+        "limit": 8,
+        "index": true,
+        "product": true,
+        "collection": false,
+        "article": false,
+        "blog": false,
+        "cart": false,
+        "page": false,
+        "random": true,
+        "start_time": 4,
+        "start_time_unit": "1000",
+        "stay_time": 5,
+        "stay_time_unit": "1000",
+        "list_user": "Nathan (California) | Alex (Texas) | Henry (New York) | Kiti (Ohio) | Daniel (Washington) | Hau (California) | Van (Ohio) | Sara (Montana)  | Kate (Georgia)",
+        "show_time": true,
+        "list_time": "4 hours ago | 2 hours ago | 45 minutes ago | 1 day ago | 8 hours ago | 10 hours ago | 25 minutes ago | 2 day ago | 5 hours ago | 40 minutes ago",
+        "show_verify": true,
+        "des": "1",
+        "effect": "anislideInUp",
+        "txt1": "purchased",
+        "txt2": "Verified"
+      }
+    },
+    "sticky_add_to_cart": {
+      "type": "sticky_add_to_cart",
+      "settings": {
+        "product_footbar_show_title": true,
+        "product_footbar_show_price": true,
+        "product_footbar_show_reviews": true,
+        "product_footbar_show_options": true,
+        "product_footbar_show_quantity": true,
+        "product_footbar_show_button_add_to_cart": true
+      }
+    },
+    "product-promotions": {
+      "type": "product-promotions",
+      "disabled": true,
+      "settings": {
+        "use_promotion": true,
+        "title": "what are you looking for?",
+        "cl_title": "#2d2a6e",
+        "cl_underline": "rgba(0,0,0,0)",
+        "content": "<p><em>The liber tempor cum soluta nobis eleifend option congue doming quod mazim.</em></p>",
+        "text_size": "medium",
+        "text_transform": "none",
+        "h_position": "center",
+        "txt_align": "center",
+        "show_view_all": true,
+        "collection_id": "organix",
+        "limit": 10,
+        "use-slider": true,
+        "visible": 4,
+        "widescreen": 4,
+        "desktop": 4,
+        "laptop": 4,
+        "notebook": 4,
+        "tablet": 3,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "slides-Per-Group": 1,
+        "rows": 1,
+        "autoplay": true,
+        "speed": "300",
+        "autoplay_delay": "3000",
+        "navigation": true,
+        "effect": "slide",
+        "centered-Slides": false,
+        "auto-Height": false,
+        "pagination": false,
+        "loop": false,
+        "space-Between": 15,
+        "direction": "horizontal",
+        "index": true,
+        "product": false,
+        "collection": false,
+        "article": false,
+        "blog": false,
+        "cart": false,
+        "page": false,
+        "timeout": 5,
+        "day_next": 1,
+        "cl_bg": "#ffffff",
+        "pad": 30
+      }
+    },
+    "newsletter-popup": {
+      "type": "newsletter-popup",
+      "disabled": true,
+      "settings": {
+        "bg_newsletter": "shopify://shop_images/img_newsletter.jpg",
+        "bg_color": "#ffffff",
+        "title_newslette": "Subcribe To Our Newsletter",
+        "description": "<p>Sign up for our newsletter to be updated on the latest  designs, exclusive offers, inspiration and tip!</p>",
+        "placeholder_newsletter": "Your email address",
+        "button_newsletter": "Subscribe",
+        "no_show_popup_again": "Don't show this popup again",
+        "max_width": 800,
+        "border": 10,
+        "timeout": 3,
+        "day_next": 1
+      }
+    },
+    "mobile_menu": {
+      "type": "mobile_menu",
+      "blocks": {
+        "account_bjyJQQ": {
+          "type": "account",
+          "settings": {
+            "title": "Login / Register",
+            "show_icon": false,
+            "icon": "<i class=\"icon-user\"></i>",
+            "icon2": "<i class=\"icon-user-x\"></i>"
+          }
+        },
+        "menu_mb_tERH9p": {
+          "type": "menu_mb",
+          "settings": {
+            "title": "Home",
+            "url": "/",
+            "open_link": "_self",
+            "menu": "home-page",
+            "show_icon": false,
+            "icon": "",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "menu_mb_Q6xEkD": {
+          "type": "menu_mb",
+          "settings": {
+            "title": "Shops",
+            "url": "shopify://collections",
+            "open_link": "_self",
+            "menu": "shop-layouts",
+            "show_icon": false,
+            "icon": "",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "menu_mb_gVjPGF": {
+          "type": "menu_mb",
+          "settings": {
+            "title": "Products",
+            "url": "shopify://collections",
+            "open_link": "_self",
+            "menu": "product-details",
+            "show_icon": false,
+            "icon": "",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "menu_mb_Gq8FnY": {
+          "type": "menu_mb",
+          "settings": {
+            "title": "Pages",
+            "url": "#",
+            "open_link": "_self",
+            "menu": "pages",
+            "show_icon": false,
+            "icon": "",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "menu_mb_GjaWWL": {
+          "type": "menu_mb",
+          "settings": {
+            "title": "Blogs",
+            "url": "shopify://blogs/organix",
+            "open_link": "_self",
+            "menu": "blog",
+            "show_icon": false,
+            "icon": "",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "wishlist_3tJUTP": {
+          "type": "wishlist",
+          "settings": {
+            "title": "Wishlist",
+            "show_icon": false,
+            "icon": "<i class=\"icon-heart\"></i>"
+          }
+        },
+        "compare_WN8C9V": {
+          "type": "compare",
+          "settings": {
+            "title": "Compare",
+            "show_icon": false,
+            "icon": "<i class=\"icon-layers\"></i>"
+          }
+        },
+        "contact_tfeGQU": {
+          "type": "contact",
+          "settings": {
+            "title": "Contact Us?",
+            "show_phone": true,
+            "show_email": true
+          }
+        },
+        "language_currency_cpayQB": {
+          "type": "language_currency",
+          "disabled": true,
+          "settings": {
+            "show_flag": true
+          }
+        }
+      },
+      "block_order": [
+        "account_bjyJQQ",
+        "menu_mb_tERH9p",
+        "menu_mb_Q6xEkD",
+        "menu_mb_gVjPGF",
+        "menu_mb_Gq8FnY",
+        "menu_mb_GjaWWL",
+        "wishlist_3tJUTP",
+        "compare_WN8C9V",
+        "contact_tfeGQU",
+        "language_currency_cpayQB"
+      ],
+      "settings": {
+        "show_logo": true,
+        "logo": "shopify://shop_images/logo_footer_4.png",
+        "logo_max_width": 120,
+        "use_categories": true,
+        "use_thumb": true,
+        "show_prod_qty": true,
+        "categories": "categories",
+        "bg_header": "#2a7d2e",
+        "cl_header": "#ffffff",
+        "bg_menu": "#ffffff",
+        "color_text": "#7b6d58",
+        "color_text_hover": "#7fba00",
+        "bd_color": "#ececec"
+      }
+    },
+    "custom-colors": {
+      "type": "custom-colors",
+      "blocks": {
+        "color_HXdM3q": {
+          "type": "color",
+          "settings": {
+            "title": "250g",
+            "color_code": ""
+          }
+        },
+        "color_CPemQb": {
+          "type": "color",
+          "settings": {
+            "title": "500g",
+            "color_code": ""
+          }
+        },
+        "color_dnyjq8": {
+          "type": "color",
+          "settings": {
+            "title": "1kg",
+            "color_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "color_HXdM3q",
+        "color_CPemQb",
+        "color_dnyjq8"
+      ],
+      "settings": {}
+    },
+    "text-runs-popup": {
+      "type": "text-runs-popup",
+      "blocks": {
+        "text_zK9JxM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍   Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_McpFnR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_yYxMzD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_AXMLwh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_kCtKYe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_tV9jwm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_Thb4XH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_DWVa4d": {
+          "type": "text",
+          "settings": {
+            "text": "<p>😍   Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_zK9JxM",
+        "text_McpFnR",
+        "text_yYxMzD",
+        "text_AXMLwh",
+        "text_kCtKYe",
+        "text_tV9jwm",
+        "text_Thb4XH",
+        "text_DWVa4d"
+      ],
+      "settings": {
+        "location": "bottom",
+        "hidden": false,
+        "hidden_mobile": true,
+        "width": 630,
+        "border": 50,
+        "slider_direction": "slide-left",
+        "healing_speed": 10,
+        "cl_bg": "#ffffff",
+        "cl_text": "#333333"
+      }
+    },
+    "menu-mobile-bottom": {
+      "type": "menu-mobile-bottom",
+      "blocks": {
+        "a7cf5703-f58d-4304-9260-a31926b7759d": {
+          "type": "home",
+          "settings": {}
+        },
+        "746102d6-51b9-4e1a-bf0a-e7a380a34b6f": {
+          "type": "collections",
+          "settings": {
+            "url": "shopify://collections"
+          }
+        },
+        "b8c292b1-c78e-4394-bedd-9e1fa69e8a2c": {
+          "type": "cart",
+          "settings": {}
+        },
+        "f0f66887-2b9f-480f-ad4c-623933307c76": {
+          "type": "search",
+          "settings": {}
+        },
+        "c77b59fb-85b6-4b30-9f5c-bb13dc2ce1fc": {
+          "type": "account",
+          "settings": {}
+        },
+        "728b9c92-f684-4755-b78d-0376c5f14f66": {
+          "type": "wishlist",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "a7cf5703-f58d-4304-9260-a31926b7759d",
+        "746102d6-51b9-4e1a-bf0a-e7a380a34b6f",
+        "b8c292b1-c78e-4394-bedd-9e1fa69e8a2c",
+        "f0f66887-2b9f-480f-ad4c-623933307c76",
+        "c77b59fb-85b6-4b30-9f5c-bb13dc2ce1fc",
+        "728b9c92-f684-4755-b78d-0376c5f14f66"
+      ],
+      "settings": {
+        "header_use_wishlist_home": true
+      }
+    }
+  },
+  "order": [
+    "order-notification",
+    "sticky_add_to_cart",
+    "product-promotions",
+    "newsletter-popup",
+    "mobile_menu",
+    "custom-colors",
+    "text-runs-popup",
+    "menu-mobile-bottom"
+  ]
+}

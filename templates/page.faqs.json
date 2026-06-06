@@ -1,0 +1,207 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": false,
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "left",
+        "txt_align": "left",
+        "b_height": 50,
+        "mg_bottom": 30,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 100,
+        "mobile_mg_bottom": 30
+      }
+    },
+    "main-faqs": {
+      "type": "main-faqs",
+      "blocks": {
+        "346bda0e-133f-4467-a5e1-13cf6c712d17": {
+          "type": "faq",
+          "settings": {
+            "title": "Shopping Information",
+            "faq_name": "How do I know if my order was successful?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_b8hxYX": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_hqredy": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_4cj9pj": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "8704d905-d8ec-4ed4-83cc-f23915e14fb4": {
+          "type": "faq",
+          "settings": {
+            "title": "Payment information",
+            "faq_name": "How do I know if my order was successful?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_nC3QW3": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_CYpkUY": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_njdLUP": {
+          "type": "faq",
+          "settings": {
+            "title": "Shopping information",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_K33VPd": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "1b09f917-f567-481b-aa4f-91902f5bca26": {
+          "type": "faq",
+          "settings": {
+            "title": "Order & Returns",
+            "faq_name": "How much is shipping and how long will it take?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_YUTRXX": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_7KWpYT": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_wxKFPG": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "2652379e-e839-4d0b-9ef9-1ca703d05067": {
+          "type": "faq",
+          "settings": {
+            "title": "Ordering from Gosto",
+            "faq_name": "How much is shipping and how long will it take?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_BxxACc": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_m9dnz7": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_wd4XHd": {
+          "type": "faq",
+          "settings": {
+            "title": "",
+            "faq_name": "How do I place an order?",
+            "faq_desc": "<p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography has been sharing it. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do \neiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \nesse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia \ndeserunt mollit anim id est laborum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "346bda0e-133f-4467-a5e1-13cf6c712d17",
+        "faq_b8hxYX",
+        "faq_hqredy",
+        "faq_4cj9pj",
+        "8704d905-d8ec-4ed4-83cc-f23915e14fb4",
+        "faq_nC3QW3",
+        "faq_CYpkUY",
+        "faq_njdLUP",
+        "faq_K33VPd",
+        "1b09f917-f567-481b-aa4f-91902f5bca26",
+        "faq_YUTRXX",
+        "faq_7KWpYT",
+        "faq_wxKFPG",
+        "2652379e-e839-4d0b-9ef9-1ca703d05067",
+        "faq_BxxACc",
+        "faq_m9dnz7",
+        "faq_wd4XHd"
+      ],
+      "settings": {
+        "faq_title_page": "Frequently Asked Questions",
+        "show_content": true,
+        "faq_title": "How can we help you?",
+        "faq_desc": "<p>Returns are free for orders shipped within the U.S. We include a UPS return label in every package which is at no cost to use.</p><p>Follow the steps below for a seamless returns process:</p><p>-   Please indicate a reason for return using one of the Return Codes listed on the order form included in your package. </p><p>-   Attach your UPS return label to the outside of the package. There is no cost to use this label.</p><p>-   Please make note of your tracking number so that you are able to track it on its way back to us.</p><p>You will receive an email once your return has been processed. Please allow 06 - 12 business days from the time your package arrives back to us for a refund to be issued.</p>",
+        "cl_bg": "#ffffff",
+        "layout": false,
+        "container": 1170,
+        "pd_c": "",
+        "mg": "",
+        "pd": ",0,80px,0",
+        "mg_mb": "",
+        "pd_mb": ",0,40px,0"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main-faqs"
+  ]
+}

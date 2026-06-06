@@ -1,0 +1,44 @@
+<mini-wishlist class="laber-wishlist hide-mobile">
+  <dialog-modal>
+    <a
+      dialog-trigger
+      href="{{ routes.root_url }}pages/wishlist"
+      class="push_side header-icon"
+      title="{{'general.wishlist.title' | t}}"
+      aria-label="link"
+    >
+      <svg width="28" height="23" viewBox="0 0 28 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.7442 2.10275C24.2909 0.752316 22.3676 0 20.3687 0C18.3697 0 16.4465 0.752316 14.9931 2.10275L14 3.0345L13.0069 2.10275C11.5572 0.743159 9.62821 -0.0103607 7.62554 0.000636744C5.62664 -0.00860296 3.7019 0.744876 2.25576 2.10275C1.54386 2.75756 0.976298 3.54931 0.588263 4.42889C0.200228 5.30847 0 6.25712 0 7.216C0 8.17488 0.200228 9.12353 0.588263 10.0031C0.976298 10.8827 1.54386 11.6744 2.25576 12.3293L13.2147 22.6921C13.3222 22.7846 13.4428 22.8612 13.5727 22.9194C13.8471 23.0269 14.1529 23.0269 14.4273 22.9194C14.5572 22.8612 14.6778 22.7846 14.7853 22.6921L25.7442 12.3293C26.4561 11.6744 27.0237 10.8827 27.4117 10.0031C27.7998 9.12353 28 8.17488 28 7.216C28 6.25712 27.7998 5.30847 27.4117 4.42889C27.0237 3.54931 26.4561 2.75756 25.7442 2.10275ZM25.7442 7.19327C25.7475 7.86547 25.6121 8.53132 25.3461 9.15048C25.0801 9.76963 24.6891 10.3292 24.1968 10.7953L14 20.4536L3.81473 10.7953C3.31485 10.3331 2.91647 9.77502 2.64415 9.15553C2.37183 8.53604 2.23134 7.86823 2.23134 7.19327C2.23134 6.51832 2.37183 5.85051 2.64415 5.23102C2.91647 4.61153 3.31485 4.05348 3.81473 3.59127C4.84037 2.62701 6.20703 2.09319 7.62554 2.10275C9.05112 2.09206 10.4254 2.62562 11.4595 3.59127L13.2147 5.2616C13.3222 5.3541 13.4428 5.43066 13.5727 5.48886C13.8471 5.59638 14.1529 5.59638 14.4273 5.48886C14.5572 5.43066 14.6778 5.3541 14.7853 5.2616L16.5521 3.59127C17.5777 2.62701 18.9444 2.09319 20.3629 2.10275C21.7885 2.09206 23.1628 2.62562 24.1968 3.59127C24.6933 4.0554 25.0886 4.6141 25.3586 5.23335C25.6286 5.8526 25.7676 6.51944 25.7673 7.19327H25.7442Z" fill="#212529"/>
+      </svg>
+
+      <span class="header__counter" wishlist-count="0">0</span>
+    </a>
+    <template>
+      <dialog class="right" modal-mode="sidebar">
+        <div class="sidebar-wishlist">
+          <div class="mini_cart_header">
+            <h3 class="title">{{ 'general.wishlist.title' | t }}</h3>
+          </div>
+          <div class="popup-wishlist_content popup_content js-popup-inner">
+            <div class="popup-wishlist_items list-item">
+              <div class="ajax-loading"></div>
+            </div>
+            <div class="popup-wishlist_buttons">
+              <a href="{{ routes.root_url }}pages/wishlist" class="btn btn--full">{{ 'general.wishlist.view' | t }}</a>
+            </div>
+          </div>
+          <div class="popup-wishlist_empty">
+            <div class="icon">
+              <svg width="119" height="119" viewBox="0 0 119 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26.0346 89.8707C13.6486 78.2693 3 61.7359 3 40.4386C3 23.1205 16.9553 9.10938 34.1613 9.10938C44.3615 9.10938 53.3849 14.0413 59.0455 21.6635C64.706 14.0413 73.7854 9.10938 83.9297 9.10938C90.3749 9.10938 96.3717 11.0707 101.36 14.4895" stroke="#D7DBE0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M113.633 31.0229C114.586 33.9934 115.091 37.188 115.091 40.4946C115.091 79.7265 78.7732 102.873 62.52 108.478C60.6144 109.15 57.4759 109.15 55.5704 108.478C51.9274 107.245 47.3318 105.115 42.3438 102.145" stroke="#D7DBE0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M115.091 3L3 115.091" stroke="#D7DBE0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p>{{ 'general.wishlist.empty' | t }}</p>
+          </div>
+        </div>
+      </dialog>
+    </template>
+  </dialog-modal>
+</mini-wishlist>

@@ -1,0 +1,795 @@
+{% if section.settings.home_page_only == false or template.name == 'index' %}
+  {{ 'top-bar.css' | asset_url | stylesheet_tag }}  
+  <top-bar
+    class="topbar {% if section.settings.hide_top_header_mobile %}hide-mobile{% endif %} {% if section.settings.show_close_btn %} show-close-button parent-close{% endif %}"
+    style="
+      {% if section.settings.bg_img != blank %}
+        background-image: url('{{ section.settings.bg_img | image_url: width: 1920 }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+      {% endif %}
+    "
+  >
+    {% if section.settings.show_close_btn %}
+      <span class="announcement-close btn-close close-x">
+        <i class="icon-btn-close icon-x"></i>
+      </span>
+    {% endif %}
+    <div
+      class="container {% if section.settings.layout %}full-width{% endif %}"
+      style="--alo-container-width:{{ section.settings.container }}px;"
+    >
+      <div class="row">
+          {%- for block in section.blocks -%}
+            {% assign text_align = block.settings.text_align %}
+            {% case block.settings.col %}
+                {% when '16%' %}
+                    {%- assign block_width = 'col-lg-2 col-md-2 col-12' -%}
+                {% when '25%' %}
+                    {%- assign block_width = 'col-lg-3 col-md-3 col-12' -%}
+                {% when '33%' %}
+                    {%- assign block_width = 'col-lg-4 col-md-4 col-12' -%}
+                {% when '42%' %}
+                    {%- assign block_width = 'col-lg-5 col-md-5 col-12' -%}
+                {% when '50%' %}
+                    {%- assign block_width = 'col-lg-6 col-md-6 col-12' -%}
+                {% when '58%' %}
+                    {%- assign block_width = 'col-lg-7 col-md-7 col-12' -%}
+                {% when '66%' %}
+                    {%- assign block_width = 'col-lg-8 col-md-8 col-12' -%}
+                {% when '75%' %}
+                    {%- assign block_width = 'col-lg-9 col-md-9 col-12' -%}
+                {% when '100%' %}
+                    {%- assign block_width = 'col-12' -%}
+            {% endcase %}
+            {%- case block.type -%}
+              {%- when 'message' -%}
+              <div id="b_{{ block.id }}" class="{{ block_width }}">
+                <div class="wrapper-bar-message h_{{text_align}} flex">
+                  <div class="announcement-bar__message"
+                      style="
+                          --cl-text:{{block.settings.color_link}}; 
+                          --cl-text-h:{{block.settings.color_link_hover}};
+                          --font-size:{{ block.settings.f-size }}px;
+                          --font-weight:{{ block.settings.f-weight }};
+                          --text-transform:{{ block.settings.text_transform }};
+                        "
+                    >
+                    {{ block.settings.message_text }}
+                  </div>
+                </div>
+              </div>
+              {%- when 'text_running' -%}
+                {% assign limit = block.settings.limit %}
+                <div id="b_{{ block.id }}" class="{{ block_width }}">
+                <div class="text-horizontal-running {{ block.settings.slider_direction }}">
+                  {%- if section.blocks.size > 0 -%}
+                    <div class="wrap-text" style=" --cl-text:{{ block.settings.cl_text }};--alo-healing-speed:{{ block.settings.healing_speed }}s;">
+                      {%- for i in (1..limit) -%}
+                          {% if block.settings.text != blank -%}
+                            <div class="flex">{{ block.settings.text }}</div>
+                          {%- endif %}
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+                </div>
+              {%- when 'text_slider' -%}
+              {% liquid
+                  assign space_between = block.settings.space-Between
+                  assign navigation = block.settings.navigation
+                  if block.settings['use-slider']
+                    assign use_slider = true
+                  else
+                    assign use_slider = false
+                  endif
+                %}
+              <div id="b_{{ block.id }}" class="{{ block_width }}">
+                <div class="text-slider" style="--cl-text:{{section.settings.cl_text}};--w-slide:{{ block.settings.w_slide }}px;">
+                  {%- if section.blocks.size > 0 -%}
+                    {% # theme-check-disable %}
+                     {% include 'grid-slider', settings: block.settings %}
+                      <grid-slider class="grid-slider" {{ gridSlider }}>
+                      <div class="swiper iSwiper" {%- render 'skeleton', settings: block.settings -%} style="--perload-gap: {{space_between}}px">
+                      <div class="swiper-wrapper {% if use_slider == false %}flex-wrap{% endif %}">
+                          {% if block.settings.text_1 != blank %}<div class="swiper-slide"><div class="text h_{{text_align}} flex">{{ block.settings.text_1 }}</div></div>{% endif %}
+                          {% if block.settings.text_2 != blank %}<div class="swiper-slide"><div class="text h_{{text_align}} flex">{{ block.settings.text_2 }}</div></div>{% endif %}
+                          {% if block.settings.text_3 != blank %}<div class="swiper-slide"><div class="text h_{{text_align}} flex">{{ block.settings.text_3 }}</div></div>{% endif %}
+                          {% if block.settings.text_4 != blank %}<div class="swiper-slide"><div class="text h_{{text_align}} flex">{{ block.settings.text_4 }}</div></div>{% endif %}
+                          {% if block.settings.text_5 != blank %}<div class="swiper-slide"><div class="text h_{{text_align}} flex">{{ block.settings.text_5 }}</div></div>{% endif %}
+                      </div>
+                      {% if use_slider == true %}
+                        {% if navigation %}
+                          <div class="swiper-button-next"></div>
+                          <div class="swiper-button-prev"></div>
+                        {% endif %}
+                      {% endif %}
+                      </div>
+                      </grid-slider>
+                    {% # theme-check-enable %}
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endcase -%}
+          {%- endfor -%}
+      </div>
+    </div>
+  </top-bar>
+{% style %}
+  :root {
+    --h-top-bar:{{ section.settings.h_topbar }}px;
+    --bg-top-bar:{{section.settings.bg_top_header}};
+    --cl-bd-top-bar:{{section.settings.cl_bd_top_bar}};
+    --cl-text-top-bar:{{section.settings.cl_text}};
+  }
+{% endstyle %}
+{% endif %}
+{% schema %}
+ {
+   "name": "Announcement",
+   "class":"cms-top-bar",
+   "settings": [
+	{
+         "type": "header",
+         "content": "General settings"
+       },
+       {
+         "type": "checkbox",
+         "id": "hide_top_header_mobile",
+         "label": "Hide header (mobile)",
+         "default": true
+       },
+       {
+         "type": "checkbox",
+         "id": "home_page_only",
+         "label": "Home page only",
+         "default": true
+       },
+       {
+           "type": "checkbox",
+           "id": "show_close_btn",
+           "label": "Show close button",
+           "default": false
+       },
+	{
+       "type": "checkbox",
+       "id": "layout",
+       "label": "Full width",
+       "default": false
+       },
+       {
+           "type": "range",
+           "id": "container",
+           "label": "Container width",
+           "min": 1170,
+           "max": 1920,
+           "step": 10,
+           "unit": "px",
+           "default": 1410
+       },
+       {
+           "type": "range",
+           "id": "h_topbar",
+           "label": "Height",
+           "min": 40,
+           "max": 100,
+           "step": 1,
+           "unit": "px",
+           "default": 40
+       },
+
+	{
+         "type": "header",
+         "content": "Design"
+       },
+       {
+         "type": "color",
+         "id": "bg_top_header",
+         "label": "Background color",
+         "default": "#f5f5f5"
+       },
+       {
+           "type": "image_picker",
+           "id": "bg_img",
+           "label": "Background Image"
+         },
+       {
+         "type": "color",
+         "id": "cl_bd_top_bar",
+         "label": "Color border",
+         "default": "#f5f5f5"
+       },
+	{
+         "type": "color",
+         "id": "cl_text",
+         "label": "Color text",
+         "default": "#777"
+       }
+],
+"blocks": [
+	{
+         "type": "message",
+         "name": "Announcement text",
+         "limit": 1,
+         "settings": [
+             {
+               "type": "richtext",
+               "id": "message_text",
+               "label": "Announcement text",
+               "default": "<p>Free Delivery over £40 to most of UK*</p>"
+             },
+           {
+                  "type": "range",  
+                  "id": "f-size",  
+                  "label": "Font size",
+                  "min": 12,
+                  "max": 20,
+                  "step": 0.5,
+                  "unit": "px",
+                  "default": 14 
+              },
+             {
+                  "type": "range",  
+                  "id": "f-weight",  
+                  "label": "Font Weight",
+                  "min": 300,
+                  "max": 900,
+                  "step": 100,
+                  "unit": "px",
+                  "default": 400 
+              },
+              {
+              "type": "select",
+              "id": "text_transform",
+              "default": "none",
+              "options": [
+               {
+                  "value": "none",
+                  "label": "None"
+               },
+               {
+                  "value": "capitalize",
+                  "label": "Capitalize"
+               },
+               {
+                  "value": "lowercase",
+                  "label": "Lowercase"
+               },
+               {
+                  "value": "uppercase",
+                  "label": "Uppercase"
+                }
+              ],
+              "label": "Text transform:"
+            },
+		  {
+               "type": "select",
+               "id": "text_align",
+               "default": "left",
+               "options": [
+               {
+                 "value": "left",
+                 "label": "Left"
+               },
+               {
+                 "value": "center",
+                 "label": "center"
+               },
+               {
+                 "value": "right",
+                 "label": "Right"
+               }
+               ],
+                 "label": "Text align:"
+             },
+             {
+             "type": "color",
+             "id": "color_link",
+             "label": "color",
+             "default": "#1a1a1a"
+             },
+            {
+             "type": "color",
+             "id": "color_link_hover",
+             "label": "color (Hover)",
+             "default": "#1a1a1a"
+             },
+             
+           {
+        "type": "select",
+        "id": "col",
+        "default": "100%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        }
+         ]
+       },
+     {
+         "type": "text_running",
+         "name": "Text running",
+         "limit": 1,
+         "settings": [
+             {
+               "type": "range",
+               "id": "limit",
+               "label": "limit",
+               "min": 10,
+               "max": 30,
+               "step": 1,
+               "default": 10
+             },
+             {
+               "type": "richtext",
+               "id": "text",
+               "label": "text",
+               "default": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+             },
+             
+           {
+       "type": "select",
+       "id": "slider_direction",
+       "label": "Slider Direction",
+       "default": "slide-left",
+       "options": [
+         {
+           "value": "slide-left",
+           "label": "Left"
+         },
+         {
+           "value": "slide-right",
+           "label": "Right"
+         }
+       ]
+     },
+     {
+       "type": "range",
+       "id": "healing_speed",
+       "label": "Healing speed",
+       "min": 10,
+       "max": 30,
+       "step": 1,
+       "unit": "s",
+       "default": 10
+     },
+     {
+       "type": "color",
+       "id": "cl_text",
+       "label": "Color text",
+       "default": "#fff"
+     },
+      {
+        "type": "select",
+        "id": "col",
+        "default": "100%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        }     
+         ]
+       },
+  {
+         "type": "text_slider",
+         "name": "Text slider",
+         "limit": 1,
+         "settings": [
+            {
+            "type": "richtext",
+            "id": "text_1",
+            "label": "text 1",
+            "default": "<p>Welcome to our store</p>"
+            },
+           {
+            "type": "richtext",
+            "id": "text_2",
+            "label": "text 2",
+            "default": "<p>Welcome to our store</p>"
+            },
+           {
+            "type": "richtext",
+            "id": "text_3",
+            "label": "text 3",
+            "default": "<p>Welcome to our store</p>"
+            },
+           {
+            "type": "richtext",
+            "id": "text_4",
+            "label": "text 4",
+            "default": "<p>Welcome to our store</p>"
+            },
+           {
+            "type": "richtext",
+            "id": "text_5",
+            "label": "text 5",
+            "default": "<p>Welcome to our store</p>"
+            },
+            {
+            "type": "color",
+            "id": "cl_text",
+            "label": "Color text",
+            "default": "#fff"
+            },
+           {
+               "type": "select",
+               "id": "text_align",
+               "default": "left",
+               "options": [
+               {
+                 "value": "left",
+                 "label": "Left"
+               },
+               {
+                 "value": "center",
+                 "label": "center"
+               },
+               {
+                 "value": "right",
+                 "label": "Right"
+               }
+               ],
+                 "label": "text align:"
+             },
+             {
+        "type": "select",
+        "id": "col",
+        "default": "100%",
+        "options": [
+        {
+        "value": "16%",
+        "label": "16%"
+        },  
+        {
+        "value": "25%",
+        "label": "25%"
+        },
+        {
+        "value": "33%",
+        "label": "33%"
+        },
+         {
+        "value": "42%",
+        "label": "42%"
+        }, 
+        {
+        "value": "50%",
+        "label": "50%"
+        },
+        {
+        "value": "58%",
+        "label": "58%"
+        }, 
+        {
+        "value": "66%",
+        "label": "66%"
+        },
+        {
+        "value": "75%",
+        "label": "75%"
+        },
+        {
+        "value": "100%",
+        "label": "100%"
+        }
+        ],
+        "label": "Container width:"
+        },
+            {
+            "type": "header",
+            "content": "---- Collection Product Slider ----",
+            "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+            },
+            {
+            "type": "range",
+            "id": "w_slide",
+            "label": "Width slide",
+            "min": 450,
+            "max": 1170,
+            "step": 10,
+            "unit": "px",
+            "default": 700
+            },
+            {
+            "type": "checkbox",
+            "id": "use-slider",
+            "label": "Use slider?",
+            "default": true
+            },
+            {
+            "type": "range",
+            "id": "visible",
+            "label": "Columns in Visible",
+            "info": "Item(s) in screen ( Size >= 1920 )",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "widescreen",
+            "label": "Columns in Widescreen",
+            "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "desktop",
+            "label": "Columns in Desktop",
+            "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "laptop",
+            "label": "Columns in Laptop",
+            "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "notebook",
+            "label": "Columns in Notebook",
+            "info": "Item(s) in screen ( 768 <= Size < 992 )",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "tablet",
+            "label": "Columns in Tablet",
+            "info": "Item(s) in screen ( 576 <= Size < 768 )",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "unit": "pds",
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "landscape",
+            "label": "Columns in Landscape",
+            "info": "Item(s) in screen ( 480 <= Size < 576 )",
+            "min": 1,
+            "max": 6,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "portrait",
+            "label": "Columns in Portrait",
+            "info": "Item(s) in screen ( 360 < Size < 480 )",
+            "min": 1,
+            "max": 6,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "mobile",
+            "label": "Columns in Mobile",
+            "info": "Item(s) in screen ( Size < = 360 )",
+            "min": 1,
+            "max": 4,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "slides-Per-Group",
+            "label": "Slide Per Group",
+            "info": "The number of items slide to scroll",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "range",
+            "id": "rows",
+            "label": "Rows Slider",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "default": 1
+            },
+            {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": true
+            },
+            {
+            "type": "text",
+            "id": "speed",
+            "label": "Speed",
+            "default": "300",
+            "info": "Duration of transition between slides (in ms)"
+            },
+            {
+            "type": "text",
+            "id": "autoplay_delay",
+            "label": "Auto Play delay",
+            "default": "3000",
+            "info": "Delay between transitions (in ms)"
+            },
+            {
+            "type": "checkbox",
+            "id": "navigation",
+            "label": "Navigation",
+            "info": "Arrows next,prev",
+            "default": true
+            },
+            {
+            "type": "select",
+            "id": "effect",
+            "label": "effect",
+            "options": [
+            {
+            "value": "coverflow",
+            "label": "Coverflow"
+            },
+            {
+            "value": "creative",
+            "label": "Creative"
+            },
+            {
+            "value": "cube",
+            "label": "Cube"
+            },
+            {
+            "value": "fade",
+            "label": "Fade"
+            },
+            {
+            "value": "flip",
+            "label": "Flip"
+            },
+            {
+            "value": "slide",
+            "label": "Slide"
+            }
+            ],
+            "default": "slide"
+            },
+            {
+            "type": "checkbox",
+            "id": "centered-Slides",
+            "label": "centered Slides",
+            "default": false
+            },
+            {
+            "type": "checkbox",
+            "id": "auto-Height",
+            "label": "Auto Height",
+            "default": false
+            },
+            {
+            "type": "checkbox",
+            "id": "pagination",
+            "label": "Pagination",
+            "default": false
+            },
+            {
+            "type": "checkbox",
+            "id": "loop",
+            "label": "Loop",
+            "default": false
+            },
+            {
+            "type": "range",
+            "id": "space-Between",
+            "label": "Space Between",
+            "info": "Distance between slides in px.",
+            "min": 0,
+            "max": 30,
+            "step": 0.5,
+            "unit": "px",
+            "default": 10
+            },
+            {
+            "type": "select",
+            "id": "direction",
+            "label": "Direction",
+            "options": [
+            {
+            "value": "horizontal",
+            "label": "Horizontal"
+            },
+            {
+            "value": "vertical",
+            "label": "Vertical"
+            }
+            ],
+            "default": "horizontal"
+            }
+             
+         ]
+       }
+]
+ }
+{% endschema %}

@@ -1,0 +1,86 @@
+<div class="laber-social-link socials clearfix">
+<ul class="list-socials ">
+  {% if settings.footer_social_twitter_enable %}
+  <li class="twitter">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.footer_social_twitter_link | default:"#"}}" title="{{settings.footer_social_twitter_text}}">
+      {%- render 'icon-twitter' -%}
+      <span class="alo_tooltip-content">Twitter</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_facebook_enable %}
+  <li class="facebook">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.footer_social_facebook_link | default:"#"}}" title="{{settings.footer_social_facebook_text}}">
+      {%- render 'icon-facebook' -%}
+      <span class="alo_tooltip-content">Facebook</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_google_enable %}
+  <li class="google">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.footer_social_google_link | default:"#" }}" title="{{settings.footer_social_google_text}}">
+      {%- render 'icon-google' -%}
+      <span class="alo_tooltip-content">Google</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_pinterest_enable %}
+  <li class="pinterest">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.footer_social_pinterest_link | default:"#"}}" title="{{settings.footer_social_pinterest_text}}">
+      {%- render 'icon-pinterest' -%}
+      <span class="alo_tooltip-content">Pinterest</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_instargram_enable %}
+  <li class="instagram">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.footer_social_instargram_link | default:"#"}}" title="{{settings.footer_social_instargram_text}}">
+      {%- render 'icon-instagram' -%}
+      <span class="alo_tooltip-content">Instagram</span>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.footer_social_tumblr_enable %}
+  <li class="tumblr">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.social_tumblr_link | default:"#"}}" title="{{settings.footer_social_tumblr_text}}">
+      {%- render 'icon-tumblr' -%}
+      <span class="alo_tooltip-content">Tumblr</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_snapchat_enable %}
+  <li class="snapcha">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.social_snapchat_link | default:"#"}}" title="{{settings.footer_social_snapchat_text}}">
+      {%- render 'icon-snapcha' -%}
+      <span class="alo_tooltip-content">Snapcha</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_youtube_enable %}
+  <li class="youtube">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.social_youtube_link | default:"#"}}" title="{{settings.footer_social_youtube_text}}">
+      {%- render 'icon-youtube' -%}
+      <span class="alo_tooltip-content">Youtube</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_vimeo_enable %}
+  <li class="vimeo">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.social_vimeo_link | default:"#"}}" title="{{settings.footer_social_vimeo_text}}">
+      {%- render 'icon-vimeo' -%}
+      <span class="alo_tooltip-content">Vimeo</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.footer_social_tiktok_enable %}
+  <li class="tiktok">
+    <a class="alo_tooltip {{ class }}" target="_blank" href="{{settings.social_tiktok_link | default:"#"}}" title="{{settings.footer_social_tiktok_text}}">
+      {%- render 'icon-tiktok' -%}
+      <span class="alo_tooltip-content">TikTok</span>
+    </a>
+  </li>
+  {% endif %}
+  
+</ul>
+</div>

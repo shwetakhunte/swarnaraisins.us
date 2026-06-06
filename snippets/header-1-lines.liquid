@@ -1,0 +1,115 @@
+{% assign style_search = settings.style_search | plus: 0 %}
+<div class="header-main-wrap">
+  <div class="header-top">
+    <div
+      class="container {% if section.settings.layout %}full-width{% endif %}"
+      style="--alo-container-width:{{ section.settings.container }}px;"
+    >
+      <div class="header-inner grid v_middle">
+        <div class="header-nav-mobile">
+          <div class="js-mobile-menu menu-bar mobile-navigation">
+            <span class="icon">
+              {% render 'icon-menu-mobile' %}
+            </span>
+          </div>
+          <div class="header_search">
+              <trigger-click class="header-icon" data-target="dialog-modal .header-search">
+                <span class="icon">
+                {% render 'icon-search' %}
+                </span>
+                {% if settings.show_text_header_right %}
+                  <span class="b">{{ 'general.search.title' | t }}</span>
+                {% endif %}  
+              </trigger-click>
+          </div>       
+        </div>
+        
+        
+        {% if settings.header_design == 'both-center' %}
+          <div class="header-left hide-mobile">
+          <ul class="header-control">
+            {% if settings.header_use_search_home %}
+              <li class="header_search">
+                {% if style_search == 1 %}
+                  <trigger-click class="header-icon" data-target="dialog-modal .header-search">
+                      <span class="icon">
+                      {% render 'icon-search' %}
+                      </span>
+                      {% if settings.show_text_header_right %}
+                        <span class="b">{{ 'general.search.title' | t }}</span>
+                      {% endif %}  
+                    </trigger-click>
+                {% else %}
+                  {%- render 'header-search' -%}
+                {% endif %}
+              </li>
+            {% endif %}
+          </ul>
+          </div>
+        {% else %}
+          <div class="header-logo">
+            {%- render 'logo' -%}
+          </div>
+        {% endif %}
+        <div class="hide-mobile ps-static header-menu"
+          style="
+          --font-size:{{ section.settings.f-size }}px;
+          --font-weight:{{ section.settings.f-weight }};
+          --text-transform:{{ section.settings.text_transform }};
+          "
+          >
+          {%- render 'menu', se_blocks: se_blocks, tp_blocks: tp_blocks -%}
+        </div>
+        <div class="header-right">
+          <ul class="header-control">
+             {% if settings.header_design == "logo-center-menu-left" %}
+              {% if section.settings.text != blank and section.settings.enable_text_right %}
+                <li class="item-phone hide-mobile" style="--cl-text:{{ section.settings.cl_text }}">
+                  {% render 'icon-phone' %}
+                  <div>
+                  {{ section.settings.text }}
+                  </div>
+                </li>  
+              {% endif %}{% endif %}
+            {% if settings.header_design != 'both-center' %}
+              {% if settings.header_use_search_home %}
+                  <li class="header_search hide-mobile">
+                    {% if style_search != 1 %}
+                      {%- render 'header-search' -%}
+                      {% else %}
+                        <trigger-click class="header-icon" data-target="dialog-modal .header-search">
+                        <span class="icon">
+                        {% render 'icon-search' %}
+                        </span>
+                        {% if settings.show_text_header_right %}
+                          <span class="b">{{ 'general.search.title' | t }}</span>
+                        {% endif %}  
+                      </trigger-click>
+                     {% endif %}
+                  </li>
+              {% endif %}
+            {% endif %}
+            {% if settings.header_use_account %}
+              {% render 'signin-header' %}
+            {% else %}
+              {% render 'signin-header', class:'sm:d-block d-none' %}
+            {% endif %}
+            {% if settings.header_use_wishlist_home %}
+              <li class="hide-mobile">
+                {% render 'mini-wishlist' %}
+              </li>
+            {% endif %}
+            {% if settings.header_use_compare_home %}
+              <li class="hide-mobile">
+                {% render 'mini-compare' %}
+              </li>
+            {% endif %}
+            {% if settings.header_use_cart_home %}
+              {% render 'minicart-header' %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{% comment %}
+    Use in section: {%- render 'minify-code', html_content: html_content -%}
+{% endcomment %}
+{%- assign production_mode = settings.production_mode -%}
+{%- if production_mode and request.page_type != 'captcha' -%}
+    {%- assign paragraphs = html_content | newline_to_br | split: '<br />' -%}
+    {%- for paragraph in paragraphs -%}
+      {%- assign paragraph_clean = paragraph | strip -%}
+      {%- if paragraph_clean == paragraph -%}
+          {{- paragraph_clean -}}
+      {%- else -%}
+          {{- paragraph_clean | append: " " -}}
+      {%- endif -%}
+    {%- endfor -%}
+{%- else -%}
+    {{html_content}}
+{%- endif -%}

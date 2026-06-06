@@ -1,0 +1,311 @@
+{% liquid
+  assign sid = section.id 
+  assign layout = section.settings.layout
+  assign se_blocks = section.blocks
+  assign se_size = se_blocks.size
+  assign num_p_qty =  section.settings.num_p_qty
+  assign border = section.settings.border
+%}
+{{ 'media-grid.css' | asset_url | stylesheet_tag }}
+{{ 'collection-featured.css' | asset_url | stylesheet_tag }}
+<section id="laber_{{sid}}" class="wow animate--slide-in cat_size_{{se_size}} pad-{{ section.settings.pad }}">
+  <div class="container {% if layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+    {% if section.settings.title != blank %}
+      <div class="wrap_title mb-30 sm:mb-20 {{ section.settings.text_size }} w_{{ section.settings.d_position }}">
+        <div class="section-title alo-text-transform" style="--alo-text-transform:{{ section.settings.text_transform }}">{{section.settings.title}}</div>  
+        {% if section.settings.content!= blank %}
+          <div class="content">{{section.settings.content}}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <media-grid class="media-grid {{ section.settings.style }}" style="--media-grid-column:{{ section.settings.column }}">
+        {%- for block in section.blocks -%}
+            <article id="media-grid-{{ block.id }}" class="media-item w-full h-full" style="--media-grid-column-span: {{ block.settings.media-grid-column-span }}; --media-grid-row-span: {{ block.settings.media-grid-row-span }};"> 
+              {%- render 'collection-featured-grid',block:block,num_p_qty:num_p_qty,border:border,for_i:se_size -%}
+            </article>
+          {%- endfor -%}
+    </media-grid>
+  </div>
+</section>
+{%- render 'section_style' -%}
+<style>
+  #laber_{{ section.id }} {
+    --media-grid-row-height: {{ section.settings.mobile_row_height }}px;
+  }
+  @media screen and (min-width: 700px) {
+    #laber_{{ section.id }} {
+      --media-grid-row-height: {{ section.settings.desktop_row_height }}px;
+    }
+  }
+</style>
+
+{%- schema -%}
+  {
+    "name": "Collection grid",
+    "class": "collection_grid cms_section type_collection_grid zoom_img",
+    "settings": [
+      {
+        "type": "header",
+        "content": "== Title Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas."
+    },
+      {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+    {
+            "type": "select",
+            "id": "text_transform",
+            "default": "none",
+            "options": [
+             {
+                "value": "none",
+                "label": "None"
+             },
+             {
+                "value": "capitalize",
+                "label": "Capitalize"
+             },
+             {
+                "value": "lowercase",
+                "label": "Lowercase"
+             },
+             {
+                "value": "uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "label": "Text transform:"
+          },
+      {
+        "type": "select",
+        "id": "d_position",
+        "label": "Display position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {	
+        "type": "range",
+        "id": "column",
+        "label": "Column",
+        "min": 4,
+        "max": 12,
+        "step": 1,
+        "unit": "col",
+        "default": 4
+        },
+      {
+          "type": "range",
+          "id": "border",
+          "label": "Border",
+          "default": 0,
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px"
+          },
+      {
+      "type": "header",
+      "content": "Row height",
+      "info": "Define the height of a single row, from which the grid is dynamically created."
+    },
+    {
+      "type": "range",
+      "id": "desktop_row_height",
+      "label": "Desktop row height",
+      "min": 150,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 290
+    },
+    {
+      "type": "range",
+      "id": "mobile_row_height",
+      "label": "Mobile row height",
+      "min": 120,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },      
+      {
+    "type": "checkbox",
+    "id": "layout",
+    "label": "Full width",
+    "default": false
+    },
+    {
+        "type": "range",  
+        "id": "container",  
+        "label": "Container width",
+        "min": 1170,
+        "max": 1920,
+        "step": 10,
+        "unit": "px",
+        "default": 1410 
+    },
+    
+      {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },
+	  {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+      {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding"
+      }
+	
+    ],
+    "blocks": [
+      
+	{
+    "type": "collection",
+    "name": "Collection",
+    "settings": [
+      
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image"
+       },     
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title block (optional)",
+        "info": "Leave empty to use 'collection title' title."
+      },
+      {
+          "type": "header",
+          "content": "Desktop",
+          "info": "When using a 1x1 tile, we recommend not using text on top of media."
+        },
+        {
+          "type": "range",
+          "id": "media-grid-column-span",
+          "label": "Column",
+          "min": 1,
+          "max": 6,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "media-grid-row-span",
+          "label": "Row",
+          "min": 1,
+          "max": 3,
+          "default": 2
+        }
+      ]
+    }
+],
+    "presets": [
+      {
+        "name": "Collection grid",
+        "category": "Collections",
+        "blocks": [
+          { 
+            "type": "collection" ,
+            "settings": {
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 2
+            }
+          },
+          { 
+            "type": "collection",
+            "settings": {
+            "media-grid-column-span": 1,
+            "media-grid-row-span": 1
+            } 
+          },
+          { 
+            "type": "collection" ,
+            "settings": {
+            "media-grid-column-span": 1,
+            "media-grid-row-span": 1
+            }
+          }, 
+          { 
+            "type": "collection" ,
+            "settings": {
+            "media-grid-column-span": 2,
+            "media-grid-row-span": 1
+            }
+          }
+          
+        ]
+      }
+    ]
+  }
+{% endschema %}

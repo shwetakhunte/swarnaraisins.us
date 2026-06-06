@@ -1,0 +1,67 @@
+.products_collection_countdown .section-title {
+  gap:20px;
+}
+.countdown-header {
+  display: flex;
+  gap: 5px;
+  background: var(--bg-countdown);
+  padding: 0 20px;
+  border-radius: var(--rounded);
+  align-items: center;
+  min-height: 35px;
+  min-width: 270px;
+}
+.countdown-header h3 {
+    color: var(--cl-number-countdown);
+    font-size: var(--font-size);
+    font-weight: 500;
+}
+.countdown-header count-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.countdown-header count-down .box-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+  position: relative;
+  width: 35px;
+  height: 35px;
+}
+.countdown-header count-down .box-count:not(:first-child):before {
+  content: ":";
+  position: absolute;
+  left: -5px;
+  top: 0;
+  color: var(--cl-number-countdown);
+  font-size: 14px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.rtl .countdown-header count-down .box-count:not(:first-child):before {
+  left:initial;
+  right: -5px;
+}
+.countdown-header count-down .box-count .number {
+  color: var(--cl-number-countdown);
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.countdown-header count-down .box-count .number b {
+  font-weight: 500;
+}
+.countdown-header count-down .box-count .text {
+  color: var(--cl-number-countdown);
+  font-size: 12px;
+  display:none;
+}

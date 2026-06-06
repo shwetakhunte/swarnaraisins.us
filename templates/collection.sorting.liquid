@@ -1,0 +1,81 @@
+{% # theme-check-disable %}
+{% layout none %}
+{% include 'product-res-variables' %}
+{%- assign show_label_in_stock = settings.product_collection_show_label_in_stock -%}
+{%- assign show_label_out_stock = settings.product_collection_show_label_out_stock -%}
+{%- assign show_label_sale = settings.product_collection_show_label_sale -%}
+{%- assign show_label_new = settings.product_collection_show_label_new -%}
+{%- assign show_label_hot = settings.product_collection_show_label_hot -%}
+{%- assign show_countdown = false | default: settings.product_collection_show_countdown -%}
+{%- assign show_images_navigation = true | default: settings.product_collection_show_images_navigation -%}
+{%- assign show_title = settings.product_collection_show_title -%}
+{%- assign show_sku = settings.product_collection_show_sku -%}
+{%- assign show_barcode = settings.product_collection_show_barcode -%}
+{%- assign show_availability = settings.product_collection_show_availability -%}
+{%- assign show_type = settings.product_collection_show_type -%}
+{%- assign show_vendor = settings.product_collection_show_vendor -%}
+{%- assign show_description = settings.product_collection_show_description -%}
+{%- assign show_price = settings.product_collection_show_price -%}
+{%- assign show_options = settings.product_collection_show_options -%}
+{%- assign show_custom_options = settings.product_show_custom_options -%}
+{%- assign show_quantity = false | default: settings.product_collection_show_quantity -%}
+{%- assign show_button_add_to_cart = settings.product_collection_show_button_add_to_cart -%}
+{%- assign show_button_add_to_wishlist = settings.product_collection_show_button_add_to_wishlist -%}
+{%- assign show_button_add_to_compare = settings.product_collection_show_button_add_to_compare -%}
+{%- assign show_button_quick_view = settings.product_collection_show_button_quick_view -%}
+{%- assign show_reviews = settings.product_collection_show_reviews -%}
+{%- assign hide_reviews_counter = settings.product_collection_hide_reviews_counter -%}
+{% assign enable_hover_image = settings.product_collection_enable_hover_image %}
+{% assign build_variant = 'all' %}
+{%- assign pageUrl = content_for_header
+  | split: '"pageurl":"'
+  | last
+  | split: '"'
+  | first
+  | replace: '\/', '/'
+  | prepend: 'https://'
+  | remove: canonical_url
+  | url_decode
+  | replace: '\u0026', '&#38;'
+  | replace: '%20', ' '
+-%}
+{%- if pageUrl contains '?' -%}
+  {%- assign params = pageUrl | remove: '?' | split: '&#38;' -%}
+  {%- for param in params -%}
+    {%- assign prop_n_value = param | split: '=' -%}
+    {%- if prop_n_value[0] == 'count_limit' -%}
+      {%- assign count_limit = prop_n_value[1] -%}
+    {%- elsif prop_n_value[0] == 'grid_classes' -%}
+      {%- assign grid_classes = prop_n_value[1] -%}
+    {%- elsif prop_n_value[0] == 'slider' -%}
+      {%- assign slider = prop_n_value[1] -%}
+    {%- elsif prop_n_value[0] == 'first_col_50' -%}
+      {%- assign first_col_50 = prop_n_value[1] -%}
+    {%- elsif prop_n_value[0] == 'column' -%}
+      {%- assign column = prop_n_value[1] -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- unless count_limit -%}
+  {%- assign count_limit = 10 -%}
+{%- endunless -%}
+{% capture first_grid %}col-xs-12 col-sm-6 col-md-6 col-lg-6 first-product{% endcapture %}
+{%- capture url_cat -%}{%- if routes.root_url != '/' -%}{{routes.root_url}}{%- endif -%}{% if collection %}/collections/{{collection.handle}}{% endif %}{%- endcapture -%}
+{% assign index = 1 %}
+{%- for product in collections[collection.handle].products limit: count_limit -%}
+  {%- if settings.productlazyload == true -%}
+    <div
+      class="swiper-slide lazyload scroll-trigger"
+      style="--animation-order:{{ index }};"
+      data-include="{{url_cat}}/products/{{product.handle}}/?view=pr_lazy_load"
+    ></div>
+  {% else %}
+    <div
+      class="swiper-slide scroll-trigger "
+      style="--animation-order:{{ index }};"
+    >
+      {% include 'product_style' %}
+    </div>
+  {%- endif -%}
+{%- endfor -%}
+{% # theme-check-enable %}

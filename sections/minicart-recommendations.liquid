@@ -1,0 +1,493 @@
+{% assign handle = product.collections[0].handle %}
+{% if handle == '' or handle == blank %}
+  {% assign handle = 'frontpage' %}
+{% endif %}
+{% assign max_count = settings.recommendations_max_count | plus: 0 %}
+{% liquid
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+  assign space_between = section.settings['space-Between']
+  if section.settings['use-slider']
+    assign use_slider = true
+  else
+    assign use_slider = false
+  endif
+%}
+<minicart-recommendations
+  data-url="{{ routes.product_recommendations_url }}?limit={{ max_count }}"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  style="--rounded:{{ settings.image_border_product}}px;"
+>
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <div class="full-width">
+      <div class="products-arrivals">
+        {% if settings.recommendations_title != blank %}
+          <div class="title">
+            <h3>{{ settings.recommendations_title }}</h3>
+          </div>
+        {% endif %}
+        <div class="section-content">
+          {% # theme-check-disable %}
+
+          {% include 'grid-slider', settings: section.settings %}
+          {%- assign products = recommendations.products -%}
+          <grid-slider
+            class="grid-slider collection-slider"
+            {{ gridSlider }}
+            style="--perload-gap: {{ space_between}}px"
+          >
+            <div
+              class="swiper iSwiper"
+              {%- render 'skeleton', settings: section.settings -%}
+            >
+              <div class="swiper-wrapper">
+                {% for product in products limit: max_count %}
+                  <div class="swiper-slide">
+                    {%- layout none -%}
+                    {% include 'product-res-variables' %}
+                    {%- assign show_collection = settings.collection_info_show_collections -%}
+                    {%- assign show_title = settings.product_collection_show_title -%}
+                    {%- assign text_transform = settings.product_text_transform_title -%}
+                    {%- assign show_price = settings.product_collection_show_price -%}
+                    {%- assign show_custom_options = true | default: settings.product_show_custom_options -%}
+                    {%- assign show_options = settings.product_collection_show_options -%}
+                    {%- assign show_button_add_to_cart = settings.product_collection_show_button_add_to_cart -%}
+                    {% assign show_quantity_box = settings.product_collection_show_quantity_box %}
+                    {%- assign show_button_add_to_wishlist = settings.product_collection_show_button_add_to_wishlist -%}
+                    {%- assign show_reviews = settings.product_collection_show_reviews -%}
+                    {% assign show_secondary_image = settings.product_collection_show_secondary_image %}
+                    {%- assign external_affiliate_product = product.metafields.custom.external_affiliate_product.value -%}
+                    {%- assign variants_size = product.variants | size -%}
+                    {%- liquid
+                      assign sett_equal = settings.use_eq_height_product
+                      assign image_ratio = settings.image_ratio_product
+                      if sett_equal
+                        case image_ratio
+                          when 'ratio2_1'
+                            assign aspect_ratio = 2.0
+                          when 'ratio3_2'
+                            assign aspect_ratio = 1.5
+                          when 'ratio4_3'
+                            assign aspect_ratio = 1.333
+                          when 'ratio5_6'
+                            assign aspect_ratio = 0.8333
+                          when 'ratio1_1'
+                            assign aspect_ratio = 1.0
+                          when 'ratio6_5'
+                            assign aspect_ratio = 1.2
+                          when 'ratio3_4'
+                            assign aspect_ratio = 0.75
+                          when 'ratio2_3'
+                            assign aspect_ratio = 0.66667
+                          when 'ratio1_2'
+                            assign aspect_ratio = 0.5
+                          when 'custom'
+                            assign custom_ratio = settings.custom_ratio | split: '/'
+                            assign width = custom_ratio[0]
+                            assign height = custom_ratio[1] | times: 1.0
+                            assign aspect_ratio = width | divided_by: height
+                        endcase
+                      endif
+                    -%}
+                    {%- capture style -%}
+  {% assign ratio = aspect_ratio | default:product.featured_media.aspect_ratio %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+
+                    <product-item class="product-item">
+                      <div class="product-collection" data-js-product>
+                        <script class="data-json-product" type="application/json">
+                          {% render 'product-get-attributes', product:product, build_variant: 'json' %}
+                        </script>
+                        {% form 'product',
+                          product,
+                          id: null,
+                          class: 'frm_product_collection',
+                          data-js-product-form: ''
+                        %}
+                          <input type="hidden" name="id" value="{{ current_variant.id }}" data-js-product-variant-input>
+                          <div class="product-box">
+                            <div
+                              class="product-collection__image product-image js-product-images-navigation alo-border-radius"
+                            >
+                              <div class="card__media">
+                                <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
+                                  <a
+                                    href="{{ product.url | within: collection }}"
+                                    class="d-block image_product cursor-default {% if product.featured_media %} ratio{% endif %}"
+                                    style="{{ style }}"
+                                    data-js-product-image
+                                  >
+                                    {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+                                  </a>
+                                </div>
+                              </div>
+                              {%- if show_button_add_to_wishlist -%}
+                                <div class="product-image__overlay-bottom">
+                                  <div class="group-button">
+                                    <div class="inner"></div>
+                                  </div>
+                                </div>
+                              {%- endif -%}
+                            </div>
+                            <div class="product-collection__content">
+                              {% if show_collection %}
+                                <div class="product-collection__info">
+                                  <div class="product-collection__more-info">
+                                    {%- if product.collections.size > 0 -%}
+                                      {% render 'product-get-collections' with product: product %}
+                                    {%- endif -%}
+                                  </div>
+                                </div>
+                              {% endif %}
+                              {%- if show_title -%}
+                                <div class="product-collection__title">
+                                  <h2>
+                                    <a
+                                      href="{{ product.url | within: collection }}"
+                                      class="alo-text-transform"
+                                      style="--alo-text-transform:{{ text_transform }}"
+                                    >
+                                      {{- product.title -}}
+                                    </a>
+                                  </h2>
+                                </div>
+                              {%- endif -%}
+                              {%- if show_reviews -%}
+                                <!-- Start of Judge.me code -->
+                                <div
+                                  style="{{ jm_style }}"
+                                  class="jdgm-widget jdgm-preview-badge"
+                                  data-id="{{ product.id }}"
+                                >
+                                  {{- product.metafields.judgeme.badge -}}
+                                </div>
+                                <!-- End of Judge.me code -->
+                              {%- endif -%}
+                              <div class="frm-price-color">
+                                {%- if show_price -%}
+                                  <div class="product-collection__price ">
+                                    {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+                                  </div>
+                                {%- endif -%}
+                              </div>
+
+                              {%- if show_options and show_custom_options and variants_size > 1 -%}
+                                <div class="product-collection__options">
+                                  {% include 'product-get-options' %}
+                                </div>
+                              {%- endif -%}
+                              {% if show_button_add_to_cart %}
+                                <div class="button-cart-bottom">
+                                  {% if external_affiliate_product %}
+                                    <a
+                                      href="{{ external_affiliate_product.external_link }}"
+                                      rel="nofollow"
+                                      target="_blank"
+                                      class="btn product-affiliate relative add-to-cart"
+                                    >
+                                      {{ external_affiliate_product.button_name }}
+                                    </a>
+                                  {% else %}
+                                    <div class="flex alo-gap" style="--alo-gap:10px;">
+                                      {% if product.available %}
+                                        {% if show_quantity_box %}
+                                          {% render 'product-quantity', product: product %}
+                                        {% endif %}
+                                        <button
+                                          type="submit"
+                                          class="add-to-cart {%if settings.disable_ajax_cart %}page_{{settings.custom_page_cart}}{%endif%} alo-border-radius"
+                                          style="--alo-border-radius:40px;"
+                                          data-pid="{{ product.variants.first.id }}"
+                                        >
+                                          <span class="text">
+                                            {% if product.selected_or_first_available_variant.inventory_policy
+                                                == 'continue'
+                                            %}
+                                              {{ 'products.product.pre_order' | t }}
+                                            {% else %}
+                                              {{ 'products.product.add_to_cart' | t }}
+                                            {% endif %}
+                                          </span>
+                                        </button>
+                                      {% else %}
+                                        <a
+                                          class="add-to-cart js-btn-sold-out alo-border-radius"
+                                          style="--alo-border-radius:40px;"
+                                          href="{{ product.url | within: collection }}"
+                                        >
+                                          <span class="text">{{ 'products.product.sold_out' | t }}</span></a
+                                        >
+                                      {% endif %}
+                                      {% if show_button_add_to_wishlist %}
+                                        {% render 'product-get-button-wishlist', product: product, class: 'item-btn' %}
+                                      {% endif %}
+                                    </div>
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endform %}
+                      </div>
+                    </product-item>
+                  </div>
+                {% endfor %}
+              </div>
+              {% if use_slider == true %}
+                {% if navigation %}
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                {% endif %}
+                {% if pagination %}
+                  <div class="swiper-pagination"></div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </grid-slider>
+          {% # theme-check-enable %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</minicart-recommendations>
+{% schema %}
+ {
+   "name": "Ajax Recommendations",
+"class": "cms_section  product_section laber_section",
+   "settings": [
+  {
+      "type": "header",
+      "content": "---- Related Slider ----",
+      "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+  },
+  {
+      "type": "checkbox",
+      "id": "use-slider",
+      "label": "Use slider?",
+      "default": true
+  },
+  {
+      "type": "range",
+      "id": "visible",
+      "label": "Columns in Visible",
+      "info": "Item(s) in screen ( Size >= 1920 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "widescreen",
+      "label": "Columns in Widescreen",
+      "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "desktop",
+      "label": "Columns in Desktop",
+      "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "laptop",
+      "label": "Columns in Laptop",
+      "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "notebook",
+      "label": "Columns in Notebook",
+      "info": "Item(s) in screen ( 768 <= Size < 992 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "tablet",
+      "label": "Columns in Tablet",
+      "info": "Item(s) in screen ( 576 <= Size < 768 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "pds",
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "landscape",
+      "label": "Columns in Landscape",
+      "info": "Item(s) in screen ( 480 <= Size < 576 )",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "portrait",
+      "label": "Columns in Portrait",
+      "info": "Item(s) in screen ( 360 < Size < 480 )",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "mobile",
+      "label": "Columns in Mobile",
+      "info": "Item(s) in screen ( Size < = 360 )",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+  },
+  {
+     "type": "range",
+     "id": "slides-Per-Group",
+     "label": "Slide Per Group",
+     "info": "The number of items slide to scroll",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 1
+  },
+  {
+     "type": "range",
+     "id": "rows",
+     "label": "Rows Slider",
+     "min": 1,
+     "max": 4,
+     "step": 1,
+     "default": 1
+  },
+  {
+     "type": "checkbox",
+     "id": "autoplay",
+     "label": "Autoplay",
+     "default": false
+  },
+  {
+     "type": "text",
+     "id": "speed",
+     "label": "Speed",
+     "default": "300",
+     "info": "Duration of transition between slides (in ms)"
+  },
+  {
+     "type": "text",
+     "id": "autoplay_delay",
+     "label": "Auto Play delay",
+     "default": "3000",
+     "info": "Delay between transitions (in ms)"
+  },
+  {
+     "type": "checkbox",
+     "id": "navigation",
+     "label": "Navigation",
+     "info": "Arrows next,prev",
+     "default": false
+  },
+  {
+     "type": "select",
+     "id": "effect",
+     "label": "effect",
+     "options": [
+      {
+         "value": "coverflow",
+         "label": "Coverflow"
+      },
+      {
+         "value": "creative",
+         "label": "Creative"
+      },
+      {
+         "value": "cube",
+         "label": "Cube"
+       },
+      {
+         "value": "fade",
+         "label": "Fade"
+      },
+      {
+         "value": "flip",
+         "label": "Flip"
+      },
+      {
+         "value": "slide",
+         "label": "Slide"
+      }
+     ],
+     "default": "slide"
+  },
+  {
+     "type": "checkbox",
+     "id": "centered-Slides",
+     "label": "centered Slides",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "auto-Height",
+     "label": "Auto Height",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "pagination",
+     "label": "Pagination",
+     "default": true
+  },
+  {
+     "type": "checkbox",
+     "id": "loop",
+     "label": "Loop",
+     "default": false
+  },
+  {
+     "type": "range",
+     "id": "space-Between",
+     "label": "Space Between",
+     "info": "Distance between slides in px.",
+     "min": 0,
+     "max": 30,
+     "step":5,
+     "unit": "px",
+     "default": 20
+  },
+  {
+     "type": "select",
+     "id": "direction",
+     "label": "Direction",
+     "options": [
+      {
+         "value": "horizontal",
+         "label": "Horizontal"
+       },
+      {
+         "value": "vertical",
+         "label": "Vertical"
+       }
+     ],
+     "default": "horizontal"
+  }
+]
+ }
+{% endschema %}

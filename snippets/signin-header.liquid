@@ -1,0 +1,65 @@
+<li class="signin item-list {{ class }}">
+  {% unless customer %}
+    {%- assign page_type = request.page_type | handle -%}
+    {% if page_type == 'customers-login' or page_type == 'customers-register' %}
+      {%- assign popup_login = false -%}
+    {% else %}
+      {%- assign popup_login = true -%}
+    {% endif %}
+    {% if popup_login and settings.use_popup_login %}
+      <dialog-modal>
+        <a
+          dialog-trigger
+          class="popup-login header-icon"
+          title="popup-{{'customer.login.log_in' | t}}"
+          aria-label="link"
+        >
+          <span class="icon">
+            {% render 'icon-login' %}
+          </span>
+          {% if settings.show_text_header_right %}
+          <span>
+            <span class="text">{{ 'customer.login.log_in' | t }}</span>
+            <span class="b ">{{ 'customer.login.account' | t }}</span>
+          </span>
+          {% endif %}
+        </a>
+        {% render 'popup-login' %}
+      </dialog-modal>
+    {% else %}
+      <a
+        href="{{ routes.account_login_url }}"
+        class="header-icon"
+        title="popup-{{'customer.login.log_in' | t}}"
+        aria-label="link"
+      >
+        <span class="icon">
+          {% render 'icon-login' %}
+        </span>
+        {% if settings.show_text_header_right %}
+        <span>
+          <span class="text">{{ 'customer.login.log_in' | t }}</span>
+          <span class="b">{{ 'customer.login.account' | t }}</span>
+        </span>
+        {% endif %}  
+      </a>
+    {% endif %}
+  {% else %}
+    <a
+      href="{{ routes.account_url }}"
+      class="header-icon"
+      title="{{'customer.login.account' | t}}"
+      aria-label="link"
+    >
+      <span class="icon">
+        {% render 'icon-login' %}
+      </span>
+      {% if settings.show_text_header_right %}
+      <span>
+        <span class="text">{{ customer.name }}</span>
+        <span class="b">{{ 'customer.login.account' | t }}</span>
+      </span>
+      {% endif %}  
+    </a>
+  {% endunless %}
+</li>

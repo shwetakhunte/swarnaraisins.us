@@ -1,0 +1,145 @@
+{%- unless template == 'index' -%}
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+      <div class="outline-breadcrum col">
+        <div class="wrap-breadcrum h_{{ section.settings.h_position }} text_{{ section.settings.txt_align }}">
+          <div class="breadcrum">
+          {% if section.settings.show_title_page%}	
+          {%- if template contains 'collections' -%}
+          		{% assign name = 'layout.breadcrumbs.shop' | t %}
+          {%- elsif template contains 'cart' -%}
+          		{% assign name = 'layout.breadcrumbs.cart' | t %}    
+          {%- elsif template contains 'page' -%}
+          		{% assign name = page.title%}
+          {%- elsif template contains 'product' -%}
+          		{% assign name = collection.title | default: product.title %}              		          
+          {%- elsif template contains 'collection' and collection.handle -%}
+              {% assign name = collection.title%} 
+          {%- elsif template == 'blog' -%}
+          		{% assign name = blog.title%}               
+          {%- elsif template == 'article' -%}              
+          	  {% assign name = article.title%}       
+          {%- else -%}
+          		{% assign name = template%}  
+          		{% if name contains '/' %}
+          			{% assign arr = name | split: '/' | last %}
+          		    {% assign name =  arr %}
+          		{% endif %}
+          {%- endif -%}
+          <h2 class="heading-title mb-10"> {{ name }} </h2>
+		  {%endif%}	
+            <ul class="list-unstyled ">
+              <li>
+                <a href="{{ routes.root_url }}">{{ 'layout.breadcrumbs.home' | t }}</a>
+              </li>
+              {%- if template contains 'page' -%}
+                <li>
+                  <span>{{ page.title }}</span>
+                </li>
+              {%- elsif template contains 'collections' -%}
+                <li>
+                  <span>{{ 'layout.breadcrumbs.shop' | t }}</span>
+                </li>
+              {%- elsif template contains 'cart' -%}
+                <li>
+                  <span>{{ 'layout.breadcrumbs.cart' | t }}</span>
+                </li>
+              {%- elsif template contains 'product' -%}
+                {%- if collection.url -%}
+                  <li>
+                    <a href="{{ collection.url }}">{{ collection.title }}</a>
+                  </li>
+                {%- endif -%}
+                <li>
+                  <span>{{ product.title }}</span>
+                </li>
+              {%- elsif template contains 'collection' and collection.handle -%}
+                {%- if current_tags -%}
+                  {%- assign exceptions_filters = 'custom-filter|only_available=|page=' | split: '|' -%}
+                  {%- assign correct_filters = 'page=|tag=|vendor=|type=|title=|price=' | split: '|' -%}
+                  {%- assign filtered_current_tags = '' -%}
+                  {%- for tag in current_tags -%}
+                    {%- assign changed_tag = tag -%}
+                    {%- for filter in exceptions_filters -%}
+                      {%- if changed_tag contains filter -%}
+                        {%- assign changed_tag = null -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                    {%- for filter in correct_filters -%}
+                      {%- if changed_tag contains filter -%}
+                        {%- assign changed_tag = changed_tag | remove: filter -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                    {%- if changed_tag != null -%}
+                      {% capture filtered_current_tags %}{{ filtered_current_tags }}{% if filtered_current_tags != '' %}|{% endif %}{{ changed_tag }}{% endcapture %}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                  <li>{{ collection.title | link_to: url }}</li>
+                  {%- if filtered_current_tags != '' -%}
+                    {%- assign filtered_current_tags = filtered_current_tags | split: '|' -%}
+                    <li>
+                      <span>{{ filtered_current_tags | join: ' + ' }}</span>
+                    </li>
+                  {%- endif -%}
+                {%- else -%}
+                  <li>
+                    <span>{{ collection.title }}</span>
+                  </li>
+                {%- endif -%}
+              {%- elsif template == 'blog' -%}
+                {%- if current_tags -%}
+                  <li>{{ template | link_to: '/blogs/news' }}</li>
+                  <li>
+                    <span>{{ current_tags | join: ' + ' }}</span>
+                  </li>
+                {%- else -%}
+                  <li>{{ 'layout.breadcrumbs.blog' | t | link_to: '/blogs/news' }}</li>
+                  <li>
+                    <span>{{ blog.title }}</span>
+                  </li>
+                {%- endif -%}
+              {%- elsif template == 'customers/account' -%}
+                <li>
+                  <span>{{ 'layout.breadcrumbs.account' | t }}</span>
+                </li>
+              {%- elsif template == 'customers/addresses' -%}
+                <li>
+                  <span>{{ 'layout.breadcrumbs.addresses' | t }}</span>
+                </li>
+              {%- elsif template == 'article' -%}
+                <li>{{ blog.title | link_to: blog.url }}</li>
+                <li>
+                  <span>{{ article.title }}</span>
+                </li>
+              {%- elsif template == 'customers/login' -%}
+                <li>
+                  <span>{{ 'layout.breadcrumbs.login' | t }}</span>
+                </li>
+              {%- elsif template == 'customers/register' -%}
+                <li>
+                  <span>{{ 'layout.breadcrumbs.register' | t }}</span>
+                </li>
+              {%- else -%}
+                {% if template contains '/' %}
+                  {% assign arr = name | split: '/' | last %}
+                  {% assign name = arr %}
+                {% else %}
+                  {% assign name = template %}
+                {% endif %}
+                <li>
+                  <span>{{ name }}</span>
+                </li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+{%- endunless -%}

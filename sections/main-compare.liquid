@@ -1,0 +1,78 @@
+{% assign sid = section.id %}
+{% assign layout = section.settings.layout %}
+<section id="laber_{{sid}}">
+  <div class="{%if layout%}full-width{% else %}container{%endif%}">
+    <collection-compare class="content_section collection-compare compare" data-url="ajax">
+      <div class="collection-empty collection-compare-empty" style="display:none">
+        <div class="shopify-info no-products">
+          <i class="flash icon-alert-triangle" aria-hidden="true"></i> {{ 'compare_page.empty.paragraph' | t }}
+        </div>
+        <a class="compare-no-product-url btn no-underline inline-block" href="/collections/all">
+          {{ 'compare_page.empty.back_to_shopping' | t }}
+        </a>
+      </div>
+    </collection-compare>
+  </div>
+</section>
+{%- render 'section_style' -%}
+{% schema %}
+ {
+   "name": "Main compare",
+"class": "page-compare product_section",
+   "settings": [
+       {
+       "type": "header",
+       "content": "== setting content"
+       },
+	{
+         "type": "checkbox",
+         "id": "layout",
+         "label": "Full Width",
+         "default": false
+         },
+       {
+       "type": "color",
+       "id": "cl_bg",
+       "label": "Background color",
+       "default": "#fff"
+       },
+       {
+       "type": "header",
+       "content": "== Setting PC",
+       "info":"Margin"
+       },
+       {
+       "type": "text",
+       "id": "mg",
+       "label": "Margin",
+       "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+       },
+       {
+       "type": "text",
+       "id": "pd",
+       "label": "Padding",
+       "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+       },
+       {
+       "type": "header",
+       "content": "== Design Mobile Options"
+       },
+       {
+       "type": "text",
+       "id": "mg_mb",
+       "label": "Margin"
+       },
+       {
+       "type": "text",
+       "id": "pd_mb",
+       "label": "Padding"
+       }
+]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

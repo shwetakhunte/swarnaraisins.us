@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "show_title_page": false,
+        "bg": "#f7f7f7",
+        "cl_title": "#333333",
+        "cl_breadcrum": "#333333",
+        "h_position": "left",
+        "txt_align": "left",
+        "b_height": 50,
+        "mg_bottom": 30,
+        "mobile_bg": "#f7f7f7",
+        "mobile_ht": 50,
+        "mobile_mg_bottom": 30
+      }
+    },
+    "main": {
+      "type": "main-our-team",
+      "blocks": {
+        "text_block_ng7WCJ": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/VC_Group_Lifestyle_1-1024x640.png",
+            "title": "GEORGE S.",
+            "text": "<p>Founder / Ceo</p>",
+            "button_label": "",
+            "btn_link": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "button_size": ""
+          }
+        },
+        "text_block_Arfjtz": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "title": "GEORGE S.",
+            "text": "<p>Founder / Sales Manager</p>",
+            "button_label": "",
+            "btn_link": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "button_size": ""
+          }
+        },
+        "text_block_VxcHYG": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "title": "GEORGE S.",
+            "text": "<p>Fashion Designer</p>",
+            "button_label": "",
+            "btn_link": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "button_size": ""
+          }
+        },
+        "text_block_A6DEN4": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "title": "GEORGE S.",
+            "text": "<p>Founder / Ceo</p>",
+            "button_label": "",
+            "btn_link": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "button_size": ""
+          }
+        },
+        "text_block_k6YMfH": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "title": "GEORGE S.",
+            "text": "<p>Founder / Ceo</p>",
+            "button_label": "",
+            "btn_link": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "button_size": ""
+          }
+        },
+        "text_block_wEk4tj": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "title": "GEORGE S.",
+            "text": "<p>Founder / Ceo</p>",
+            "button_label": "",
+            "btn_link": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_ng7WCJ",
+        "text_block_Arfjtz",
+        "text_block_VxcHYG",
+        "text_block_A6DEN4",
+        "text_block_k6YMfH",
+        "text_block_wEk4tj"
+      ],
+      "settings": {
+        "column": "3",
+        "border": 0,
+        "use_eq_height": true,
+        "image_ratio": "ratio3_4",
+        "custom_ratio": "3/4",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "mg": "",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

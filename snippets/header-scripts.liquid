@@ -1,0 +1,30 @@
+<script src="{{ 'js.cookie.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'shopify_common.js' | shopify_asset_url  }}" defer="defer"></script>
+<script src="{{ 'shopify.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lazysizes.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'elements.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-options.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+<script
+  src="{{ 'vendor.js' | asset_url }}"
+  id="jsvendor"
+  defer="defer"
+  data-polyfill="{{"polyfill.js" | asset_url  }}"
+  data-nouislider="{{"nouislider.min.js" | asset_url  }}"
+  data-nouislider-style="{{"nouislider.min.css" | asset_url  }}"
+  data-product-model="{{"product-model.js" | asset_url  }}"
+  data-collection="{{"collection.js" | asset_url  }}"
+  data-product="{{"product.js" | asset_url  }}"
+  data-zoom="{{"drift.min.js" | asset_url  }}"
+  data-zoom-style="{{"drift-basic.css" | asset_url  }}"
+  data-custom="{{"theme.custom.js" | asset_url  }}"
+></script>
+<script src="{{ 'grid-slider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+{%- if request.design_mode %}<script src="{{ 'admin_setting.js' | asset_url }}" defer="defer"></script>{% endif -%}

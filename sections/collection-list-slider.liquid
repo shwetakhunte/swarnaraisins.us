@@ -1,0 +1,643 @@
+{% liquid
+  assign sid = section.id 
+  assign layout = section.settings.layout
+  assign num_p_qty =  section.settings.num_p_qty
+  assign se_blocks = section.blocks
+  assign se_size = se_blocks.size
+  assign space_between = section.settings.space-Between
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+  assign sett_equal = section.settings.use_eq_height
+  assign image_ratio = section.settings.image_ratio
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = section.settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+
+  if section.settings['use-slider']
+    assign use_slider = true
+  else
+    assign use_slider = false
+  endif
+%}
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+<section id="laber_{{sid}}" class="wow animate--slide-in" style="--cl-border:{{ section.settings.cl_border }};">
+  <div class="{% if layout %}full-width{% else %}container{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+    <div class="collection_featured  {% if section.settings.cl_bg_content != 'rgba(0,0,0,0)' %}alo-background-color alo-border-radius pd-20 py-20 sm:pd-10 sm:py-10 {% endif %}" style="{% if section.settings.cl_bg_content != 'rgba(0,0,0,0)' %}--bg-color:{{ section.settings.cl_bg_content  }}; {% endif %}">
+      {% if section.settings.title != blank %}
+        <div class="wrap_title sm:mb-10 w_{{ section.settings.h_position }} text_{{section.settings.txt_align}} mb-30 {{ section.settings.text_size }} ">
+          {% if section.settings.subtitle != blank %}
+            <div class="section-subtitle" style="--cl-text:{{ section.settings.cl_subtitle }};" bis_skin_checked="1">{{ section.settings.subtitle }}</div>
+          {% endif %}
+          <div class="h3 section-title " style="--cl-text:{{ section.settings.cl_title }};">{{section.settings.title}}</div>  
+          {% if section.settings.content != blank %}
+            <div class="content">{{section.settings.content}}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+    <div class="collection_list_slider">
+      {% # theme-check-disable %}
+    {% include 'grid-slider', settings:section.settings %} 
+    <grid-slider class="grid-slider {%if sett_equal%}{{image_ratio}} {%endif%}" {{gridSlider}} >
+        <div class="swiper iSwiper" 
+            {%- render 'skeleton', settings: section.settings -%} 
+          style="--perload-gap: {{ space_between}}px" >
+          <div class="swiper-wrapper {% if use_slider == false %}flex-wrap{% endif %}">
+            {% assign index = 1 %} 
+            {%- for block in section.blocks -%}
+            <div class="swiper-slide" style="--animation-order:{{ index }}; --cl-border:{{ block.settings.cl_b }};--cl-bg:{{ block.settings.cl_bg }};--cl-border-h:{{ block.settings.cl_b_h }};--cl-bg-h:{{ block.settings.cl_bg_h }};"> 	
+              {%- render 'cat-grid-item',block:block,num_p_qty:num_p_qty,aspect_ratio:aspect_ratio,for_i:se_size -%}
+            </div> 
+            {% assign index = index | plus: 1 %}
+            {%- endfor -%}
+          </div>
+            {% if use_slider == true %}
+            {% if navigation %}
+              <div class="swiper-button">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+            {% endif %}
+            {% if pagination %}
+              <div class="swiper-pagination"></div>
+            {% endif %}
+          {% endif %}
+          
+        </div>
+    </grid-slider>
+      {% # theme-check-enable %}
+    </div>     
+  </div>
+  </div>
+</section>
+{%- render 'section_style' -%} 
+{% if use_slider == false %}
+  {% style %}#laber_{{sid}} .swiper-slide{padding-bottom:{{space_between}}px; }{% endstyle %}
+{% endif %}
+
+
+{%- schema -%}
+  {
+    "name": "Collection slider",
+    "class": "collection_list cms_section type_collection_list_slider",
+    "enabled_on": {
+    "templates": ["index"],
+    "groups": ["custom.content"]
+    },
+    "settings": [
+      {
+       "type": "header",
+       "content": "== header title"
+     },
+       {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+     {
+       "type": "color",
+       "id": "bg_header",
+       "label": "Background header",
+       "default":"rgba(0,0,0,0)"
+     },
+     {
+       "type": "color",
+       "id": "cl_title",
+       "label": "color Title",
+       "default": "#333"
+     },
+    {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+     {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Sub Title"
+       
+    },
+     {
+       "type": "color",
+       "id": "cl_subtitle",
+       "label": "color Sub title",
+       "default": "#333"
+     },
+     {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content"
+      },
+     {
+        "type": "select",
+        "id": "h_position",
+        "label": "Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "txt_align",
+            "label": "Text Align",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          }, 
+      {
+        "type": "checkbox",
+        "id": "num_p_qty",
+        "label": "Show product quantity",
+        "default": true
+      }, 
+    {
+        "type": "checkbox",
+        "id": "use_eq_height",
+        "label": "Use equal height images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio3_2",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          },
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio3_4",
+            "label": "3:4"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          },
+          {
+            "group": "Custom",
+            "value": "custom",
+            "label": "Custom ratio"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_ratio",
+        "label": "Custom ratio",
+        "default": "3/4",
+        "info": "you can set the image ratio you want to use for example 3/4"
+      },
+
+	{
+        "type": "header",
+        "content": "---- Collection Slider ----",
+        "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+    },  
+    {
+        "type": "checkbox",
+        "id": "use-slider",
+        "label": "Use slider?",
+        "default": true
+    },
+    {
+       "type": "range",
+       "id": "visible",
+       "label": "Columns in Visible",
+    "info": "Item(s) in screen ( Size >= 1920 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 5
+    },
+    {
+       "type": "range",
+       "id": "widescreen",
+       "label": "Columns in Widescreen",
+    "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 4
+    },
+    {
+       "type": "range",
+       "id": "desktop",
+       "label": "Columns in Desktop",
+    "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 4
+    },
+    {
+       "type": "range",
+       "id": "laptop",
+       "label": "Columns in Laptop",
+    "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 4
+    },
+    {
+       "type": "range",
+       "id": "notebook",
+       "label": "Columns in Notebook",
+    "info": "Item(s) in screen ( 768 <= Size < 992 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 3
+    },
+    {
+       "type": "range",
+       "id": "tablet",
+       "label": "Columns in Tablet",
+    "info": "Item(s) in screen ( 576 <= Size < 768 )",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "unit": "pds",
+       "default": 3
+    },
+    {
+       "type": "range",
+       "id": "landscape",
+       "label": "Columns in Landscape",
+    "info": "Item(s) in screen ( 480 <= Size < 576 )",
+       "min": 1,
+       "max": 6,
+       "step": 1,
+       "default": 2
+    },
+    {
+       "type": "range",
+       "id": "portrait",
+       "label": "Columns in Portrait",
+    "info": "Item(s) in screen ( 360 < Size < 480 )",
+       "min": 1,
+       "max": 6,
+       "step": 1,
+       "default": 2
+    },
+    {
+       "type": "range",
+       "id": "mobile",
+       "label": "Columns in Mobile",
+    "info": "Item(s) in screen ( Size < = 360 )",
+       "min": 1,
+       "max": 4,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "slides-Per-Group",
+       "label": "Slide Per Group",
+       "info": "The number of items slide to scroll",
+       "min": 1,
+       "max": 8,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "range",
+       "id": "rows",
+       "label": "Rows Slider",
+       "min": 1,
+       "max": 3,
+       "step": 1,
+       "default": 1
+    },
+    {
+       "type": "checkbox",
+       "id": "autoplay",
+       "label": "Autoplay",
+       "default": true
+    },
+    {
+       "type": "text",
+       "id": "speed",
+       "label": "Speed",
+       "default": "300",
+       "info": "Duration of transition between slides (in ms)"
+    },
+    {
+       "type": "text",
+       "id": "autoplay_delay",
+       "label": "Auto Play delay",
+       "default": "3000",
+       "info": "Delay between transitions (in ms)"
+    },
+    {
+       "type": "checkbox",
+       "id": "navigation",
+       "label": "Navigation",
+       "info": "Arrows next,prev",
+       "default": true
+    },
+    {
+       "type": "select",
+       "id": "effect",
+       "label": "effect",
+       "options": [
+        {
+           "value": "coverflow",
+           "label": "Coverflow"
+         },
+        {
+           "value": "creative",
+           "label": "Creative"
+         },
+        {
+           "value": "cube",
+           "label": "Cube"
+         },
+        {
+           "value": "fade",
+           "label": "Fade"
+         },
+        {
+           "value": "flip",
+           "label": "Flip"
+         },
+        {
+           "value": "slide",
+           "label": "Slide"
+        }
+       ],
+       "default": "slide"
+    },
+    {
+       "type": "checkbox",
+       "id": "centered-Slides",
+       "label": "centered Slides",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "auto-Height",
+       "label": "Auto Height",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "pagination",
+       "label": "Pagination",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "loop",
+       "label": "Loop",
+       "default": false
+    },
+    {
+       "type": "range",
+       "id": "space-Between",
+       "label": "Space Between",
+       "info": "Distance between slides in px.",
+       "min": 0,
+       "max": 30,
+       "step": 0.5,
+       "unit": "px",
+       "default": 10
+    },
+    {
+       "type": "select",
+       "id": "direction",
+       "label": "Direction",
+       "options": [
+        {
+           "value": "horizontal",
+           "label": "Horizontal"
+         },
+        {
+           "value": "vertical",
+           "label": "Vertical"
+         }
+       ],
+       "default": "horizontal"
+    },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "layout",
+        "label": "Full width",
+        "default": false
+        },
+        {
+            "type": "range",  
+            "id": "container",  
+            "label": "Container width",
+            "min": 1170,
+            "max": 1920,
+            "step": 10,
+            "unit": "px",
+            "default": 1410 
+        },
+      {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background images"
+      },
+      {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },  
+     {
+        "type": "color",
+        "id": "cl_border",
+        "label": "Border color",
+        "default": "#fff"
+      },     
+      {
+        "type": "color",
+        "id": "cl_bg_content",
+        "label": "Background color (content)",
+        "default":"rgba(0,0,0,0)",
+        "info": "If not used you can leave blank"
+      },  
+	{
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding"
+      } 
+	
+    ],
+    "blocks": [{
+    "type": "collection",
+    "name": "Collection",
+    "settings": [
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image"
+       }, 
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title block (optional)",
+        "info": "Leave empty to use 'collection title' title."
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      },
+      {
+        "type": "color",
+        "id": "cl_b",
+        "label": "Border color",
+        "default": "#eaeaea"
+      }, 
+      {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "cl_b_h",
+        "label": "Border color (Hover)",
+        "default": "#28b2a9"
+      }, 
+      {
+        "type": "color",
+        "id": "cl_bg_h",
+        "label": "Background color (Hover)",
+        "default": "#f4fbfb"
+      }
+      ]
+    }],
+    "presets": [
+      {
+        "name": "Collection slider",
+        "category": "Collections",
+        "blocks": [
+          { "type": "collection" },
+          { "type": "collection" },
+          { "type": "collection" },
+          { "type": "collection" },
+          { "type": "collection" },
+          { "type": "collection" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

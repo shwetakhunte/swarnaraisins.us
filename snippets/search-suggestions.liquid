@@ -1,0 +1,109 @@
+{% liquid
+  assign key_word = settings.key_word
+  assign products = settings.popular_product_list_search
+  assign sett_equal = settings.use_eq_height_product
+  assign image_ratio = settings.image_ratio_product
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio5_6'
+        assign aspect_ratio = 0.8333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio6_5'
+        assign aspect_ratio = 1.2
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+  
+%}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default:product.featured_media.aspect_ratio %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+<search-suggestions class="{{ class }}">
+  <div class="container">
+    <div class="predictive-search__results-groups-wrapper">
+  {% if key_word %}
+    <popular-keywords>
+      <div>
+      	{% assign arr_key_word = key_word | split:',' -%}
+        {% assign size_key_word = arr_key_word.size |plus:0 -%}
+        {% assign limit_k = size_key_word | minus: 1 -%}
+        {% if settings.title_key_word %}<h2  class="predictive-search__heading">{{ settings.title_key_word }}</h2>{% endif %}
+        <ul>
+        {%- for i in (0..limit_k) -%}
+        	<li><a href="{{shop.url}}/search?q={{arr_key_word[i]| replace: ' ', '+'}}&options%5Bprefix%5D=last">{{arr_key_word[i]}}</a></li>
+        {%- endfor -%} 
+        </ul>
+      </div>
+    </popular-keywords>
+  {% endif %}
+
+  {% if products %}
+  <popular-products>
+    <div>
+    {% if settings.title_popular_product_list_search %}<h2  class="predictive-search__heading">{{ settings.title_popular_product_list_search }}</h2>{% endif %}
+        <ul style="--p-rounded:{{ settings.image_border_product }}px;">
+              {%- for product in products -%}
+                <li
+                  id="predictive-search-option-product-{{ forloop.index }}"
+                  class="predictive-search__list-item"
+                  role="option"
+                  aria-selected="false"
+                  
+                >
+                <div class="card__media">
+                    <div class="media">
+                      <a
+                        href="{{ product.url }}"
+                        class="predictive-search__item predictive-search__item--link-with-thumbnail link link--text {% if product.featured_media %} ratio{% endif %}"
+                        title="{{ product.title | escape }}"
+                        style="{{ style }}"
+                        data-js-product-image
+                      >
+                        {% render 'product-image' with card_product: product %}
+                      </a>
+                    </div>
+                  </div>
+                    <div class="predictive-search__item-content{% unless settings.predictive_search_show_vendor or settings.predictive_search_show_price %} predictive-search__item-content--centered{% endunless %}">
+                      {%- if settings.predictive_search_show_vendor -%}
+                        <div class="predictive-search__item-vendor caption-with-letter-spacing">
+                          {{ product.vendor | link_to_vendor }}
+                        </div>
+                      {%- endif -%}
+                      <p class="predictive-search__item-heading h5"> <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title | escape }}</a></p>
+                      <!-- Start of Judge.me code -->
+                      <div style="{{ jm_style }}" class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                        {{- product.metafields.judgeme.badge -}}
+                      </div>
+                      <!-- End of Judge.me code -->
+                      {%- if settings.predictive_search_show_price -%}
+                        {% render 'price', product: product, use_variant: true, show_badges: false %}
+                      {%- endif -%}
+                    </div>
+ 
+                </li>
+              {%- endfor -%}
+            </ul> 
+    </div>
+  </popular-products>
+    {% endif %}
+    </div>
+  </div>
+</search-suggestions>

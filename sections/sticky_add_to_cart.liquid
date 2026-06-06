@@ -1,0 +1,200 @@
+{% # theme-check-disable %}
+{%- liquid
+  assign currently = product.selected_or_first_available_variant
+  assign cu_pr = currently.price
+  assign cp_pr = currently.compare_at_price | default: cu_pr
+  assign image = currently.featured_image | default: product.featured_image
+  assign pr_variants = product.variants
+  assign available_v = pr_variants | where: 'available'
+  assign available_v_1 = available_v.first
+  assign cur_var_id = currently.id
+  assign default = product.has_only_default_variant
+  assign pid = product.id
+  assign hd_up = 'group-' | append: pid
+  assign nav_up = linklists[hd_up].links | where: 'type', 'product_link'
+  assign nav_up_size = nav_up.size
+  assign variants_size = pr_variants.size
+  assign selected_variant = product.selected_variant
+-%}
+{% include 'product-res-variables' %}
+{%- assign show_title = section.settings.product_footbar_show_title -%}
+{%- assign show_price = section.settings.product_footbar_show_price -%}
+{%- assign show_options = section.settings.product_footbar_show_options -%}
+{%- assign show_button_add_to_cart = section.settings.product_footbar_show_button_add_to_cart -%}
+{%- assign show_quantity =  section.settings.product_footbar_show_quantity -%}
+{%- assign show_reviews = section.settings.product_footbar_show_reviews    -%}
+{% assign build_variant = 'all' %}
+{%- assign type_name = request.page_type -%}
+{% # theme-check-enable %}
+{% if type_name == 'product' and settings.sticky_atc and product.available %}
+  <sticky-addtocart class="js_sticky_atc_wrapper sticky_atc_wrapper" data-js-product>
+    <script class="data-json-product" type="application/json">
+      {% render 'product-get-attributes', product:product, build_variant: 'json' %}
+    </script>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-4 sticky_atc_content">
+          <div class="col-auto sticky_atc_thumb" data-js-product-image>
+            {% render 'image',image:image, width:120, class:'lazyload motion-reduce default_media',alt:product.title %}
+          </div>
+          <div class="col sticky_atc_info">
+            {% if show_title %}
+              <h2>{{ product.title }}</h2>
+            {% endif %}
+            {% if show_reviews %}
+              <!-- Start of Judge.me code -->
+              {% # theme-check-disable %}
+              <div style="{{ jm_style }}" class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                {{- product.metafields.judgeme.badge -}}
+              </div>
+              {% # theme-check-enable %}
+              <!-- End of Judge.me code -->
+            {% endif %}
+            {% if show_price %}
+              <div class="sticky_atc_price" data-js-product-price>
+                {%- if nav_up_size == 0 -%}
+                  {% if cp_pr > cu_pr -%}
+                    <span class="current">{{ cu_pr | money }}</span> <span class="compare">{{ cp_pr | money }}</span>
+                  {% else -%}
+                    {{- cu_pr | money -}}
+                  {%- endif %}
+                {%- else -%}
+                  {% if cp_pr > cu_pr %}{{ cu_pr | money }}-{{ cp_pr | money }}{% else %}{{ cu_pr | money }}{% endif %}
+                {%- endif -%}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-7 col-lg-8 sticky_variant_content sticky_atc_btn variations_form">
+          {%- if available_v.size < 2 -%}
+            <input class="js_sticky_sl" name="id" value="{{ available_v_1.id }}" type="hidden">
+          {%- else -%}
+            {% if show_options %}
+              <div class="wrap_variant">
+                <span class="popup_variant"><i class="icon-tune"></i></span>
+                {% # theme-check-disable %}
+                {% include 'product-get-options' with options_type: 3, select_dropdown_position: 'top', show_title_variant: show_title_variant, trigger: 'footbar' %}
+                {% # theme-check-enable %}
+              </div>
+              <div class="select-sticky">
+                <select name="id" class="js_sticky_sl" data-select-sticky_atc>
+                  {%- for variant in available_v -%}
+                    <option
+                      data-img="{{variant.image | default:product.featured_image | image_url: width: 50 }}"
+                      data-ogprice="{{variant.compare_at_price |default:variant.price}}"
+                      data-price="{{variant.price}}"
+                      value="{{ variant.id }}"
+                      {% if variant.id == cur_var_id %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ variant.title | escape }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {% endif %}
+          {% endif %}
+          {%- if nav_up_size == 0 and show_quantity -%}
+            <quantity-input
+              class="quantity"
+              data-url="{{ product.url }}"
+              data-section="{{ section.id }}"
+            >
+              <button class="quantity__button" name="minus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-minus' %}
+              </button>
+              {% # theme-check-disable %}
+              <input
+                class="quantity__input"
+                type="number"
+                name="quantity"
+                id="Quantity-{{ section.id }}"
+                data-cart-quantity="{{ cart_qty }}"
+                data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                  data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                {% endif %}
+                step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                form="{{ product_form_id }}"
+              >{% # theme-check-enable %}
+              <button class="quantity__button" name="plus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-plus' %}
+              </button>
+            </quantity-input>
+          {%- endif -%}
+          {% if show_button_add_to_cart %}
+            <button
+              class="single_add_to_cart_button btn  {% if nav_up_size > 0 %} sticky_atc_a {% else %} sticky_atc_js{% endif %}{% if settings.pr_curent == '1' and variants_size > 1 and selected_variant == blank %} disabled{% endif %}"
+              data-pid="{{ product.variants.first.id }}"
+            >
+              <div class="laber-loading">
+                <div class="circle-loadding"><span></span></div>
+              </div>
+              <span class="txt_add_to_cart">{{ 'products.product.add_to_cart' | t }}</span>
+              <span class="txt_out_stock d-none">{{ 'products.product.out_stock' | t }}</span>
+            </button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </sticky-addtocart>
+{% endif %}
+{%- schema -%}
+{
+  "name": "Footbar on product page",
+  "settings": [
+     {
+       "type": "paragraph",
+       "content": "Display a footbar when scrolling passed the add-to-cart button."
+     },
+    {
+      "type": "checkbox",
+      "id": "product_footbar_show_title",
+      "label": "Show the product title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_footbar_show_price",
+      "label": "Show the product price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_footbar_show_reviews",
+      "label": "Show product reviews",
+      "info": "You have to install product reviews app. At our demo, we use a free [Product Reviews](https:\/\/apps.shopify.com\/product-reviews) app",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_footbar_show_options",
+      "label": "Show options (variants)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_footbar_show_quantity",
+      "label": "Show quantity",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_footbar_show_button_add_to_cart",
+      "label": "Show button 'Add to cart'",
+      "default": true
+    }
+  ]
+}
+{%- endschema -%}

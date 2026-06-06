@@ -1,0 +1,307 @@
+{% assign handle = product.collections[0].handle %}
+{% if handle == '' or handle == blank %}
+  {% assign handle = 'frontpage' %}
+{% endif %}
+{% assign max_count = settings.recommendations_max_count | plus: 0 %}
+{% liquid
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+  assign space_between = section.settings['space-Between']
+  if section.settings['use-slider']
+    assign use_slider = true
+  else
+    assign use_slider = false
+  endif
+%}
+<ajax-recommendations
+  data-url="{{ routes.product_recommendations_url }}?limit={{ max_count }}"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  style="--alo-border-radius:{{ settings.image_border_product}}px;"
+>
+  <span class="close-x"><i class="icon-x"></i></span>
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <div class="full-width">
+      <div class="products-arrivals">
+        {% if settings.recommendations_title != blank %}
+          <div class="title">
+            <h3>{{ settings.recommendations_title }}</h3>
+          </div>
+        {% endif %}
+        <div class="section-content">
+          {% # theme-check-disable %}
+          {% include 'grid-slider', settings: section.settings %}
+          {%- assign products = recommendations.products -%}
+          <grid-slider
+            class="grid-slider collection-slider"
+            {{ gridSlider }}
+            style="--perload-gap: {{ space_between}}px"
+          >
+            {% assign index = 1 %}
+            <div
+              class="swiper iSwiper"
+              {%- render 'skeleton', settings: section.settings -%}
+            >
+              <div class="swiper-wrapper">
+                {% for product in products limit: max_count %}
+                  <div class="swiper-slide">
+                    {% include 'ajax-recommendations' %}
+                  </div>
+                {% endfor %}
+              </div>
+              {% if use_slider == true %}
+                {% if navigation %}
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                {% endif %}
+                {% if pagination %}
+                  <div class="swiper-pagination"></div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </grid-slider>
+          {% # theme-check-enable %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</ajax-recommendations>
+{% schema %}
+ {
+   "name": "Ajax Recommendations",
+"class": "cms_section  product_section laber_section",
+   "settings": [
+  {
+      "type": "header",
+      "content": "---- Related Slider ----",
+      "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+  },
+  {
+      "type": "checkbox",
+      "id": "use-slider",
+      "label": "Use slider?",
+      "default": true
+  },
+  {
+      "type": "range",
+      "id": "visible",
+      "label": "Columns in Visible",
+      "info": "Item(s) in screen ( Size >= 1920 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "widescreen",
+      "label": "Columns in Widescreen",
+      "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "desktop",
+      "label": "Columns in Desktop",
+      "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "laptop",
+      "label": "Columns in Laptop",
+      "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "notebook",
+      "label": "Columns in Notebook",
+      "info": "Item(s) in screen ( 768 <= Size < 992 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 3
+  },
+  {
+      "type": "range",
+      "id": "tablet",
+      "label": "Columns in Tablet",
+      "info": "Item(s) in screen ( 576 <= Size < 768 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "pds",
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "landscape",
+      "label": "Columns in Landscape",
+      "info": "Item(s) in screen ( 480 <= Size < 576 )",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "portrait",
+      "label": "Columns in Portrait",
+      "info": "Item(s) in screen ( 360 < Size < 480 )",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+  },
+  {
+      "type": "range",
+      "id": "mobile",
+      "label": "Columns in Mobile",
+      "info": "Item(s) in screen ( Size < = 360 )",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+  },
+  {
+     "type": "range",
+     "id": "slides-Per-Group",
+     "label": "Slide Per Group",
+     "info": "The number of items slide to scroll",
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "default": 1
+  },
+  {
+     "type": "range",
+     "id": "rows",
+     "label": "Rows Slider",
+     "min": 1,
+     "max": 4,
+     "step": 1,
+     "default": 4
+  },
+  {
+     "type": "checkbox",
+     "id": "autoplay",
+     "label": "Autoplay",
+     "default": false
+  },
+  {
+     "type": "text",
+     "id": "speed",
+     "label": "Speed",
+     "default": "300",
+     "info": "Duration of transition between slides (in ms)"
+  },
+  {
+     "type": "text",
+     "id": "autoplay_delay",
+     "label": "Auto Play delay",
+     "default": "3000",
+     "info": "Delay between transitions (in ms)"
+  },
+  {
+     "type": "checkbox",
+     "id": "navigation",
+     "label": "Navigation",
+     "info": "Arrows next,prev",
+     "default": false
+  },
+  {
+     "type": "select",
+     "id": "effect",
+     "label": "effect",
+     "options": [
+      {
+         "value": "coverflow",
+         "label": "Coverflow"
+      },
+      {
+         "value": "creative",
+         "label": "Creative"
+      },
+      {
+         "value": "cube",
+         "label": "Cube"
+       },
+      {
+         "value": "fade",
+         "label": "Fade"
+      },
+      {
+         "value": "flip",
+         "label": "Flip"
+      },
+      {
+         "value": "slide",
+         "label": "Slide"
+      }
+     ],
+     "default": "slide"
+  },
+  {
+     "type": "checkbox",
+     "id": "centered-Slides",
+     "label": "centered Slides",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "auto-Height",
+     "label": "Auto Height",
+     "default": false
+  },
+  {
+     "type": "checkbox",
+     "id": "pagination",
+     "label": "Pagination",
+     "default": true
+  },
+  {
+     "type": "checkbox",
+     "id": "loop",
+     "label": "Loop",
+     "default": false
+  },
+  {
+     "type": "range",
+     "id": "space-Between",
+     "label": "Space Between",
+     "info": "Distance between slides in px.",
+     "min": 0,
+     "max": 30,
+     "step":5,
+     "unit": "px",
+     "default": 20
+  },
+  {
+     "type": "select",
+     "id": "direction",
+     "label": "Direction",
+     "options": [
+      {
+         "value": "horizontal",
+         "label": "Horizontal"
+       },
+      {
+         "value": "vertical",
+         "label": "Vertical"
+       }
+     ],
+     "default": "horizontal"
+  }
+]
+ }
+{% endschema %}

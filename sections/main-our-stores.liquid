@@ -1,0 +1,366 @@
+{% liquid
+  assign sid = section.id 
+  assign layout = section.settings.layout
+  assign border = section.settings.border
+  assign sett_equal = section.settings.use_eq_height
+  assign image_ratio = section.settings.image_ratio
+  if sett_equal
+    case image_ratio
+      when 'ratio2_1'
+        assign aspect_ratio = 2.0
+      when 'ratio3_2'
+        assign aspect_ratio = 1.5
+      when 'ratio4_3'
+        assign aspect_ratio = 1.333
+      when 'ratio1_1'
+        assign aspect_ratio = 1.0
+      when 'ratio3_4'
+        assign aspect_ratio = 0.75
+      when 'ratio2_3'
+        assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+        assign aspect_ratio = 0.5
+      when 'custom'
+        assign custom_ratio = section.settings.custom_ratio | split: '/'
+        assign width = custom_ratio[0]
+        assign height = custom_ratio[1] | times: 1.0
+        assign aspect_ratio = width | divided_by: height
+    endcase
+  endif
+  
+  assign column = section.settings.column
+  case column 
+    when '2'
+            assign alo_column = 'col-lg-6 col-md-6 col-12'
+        when '3'
+            assign alo_column = 'col-lg-4 col-md-6 col-12'
+        when '4'
+            assign alo_column = 'col-lg-3 col-md-6 col-12'
+        when '5'
+            assign alo_column = 'col-lg-15 col-md-6 col-12'
+  endcase
+%}
+{%- if section.settings.hidden %}{% break %}{% endif -%}	
+{{ 'our-stores.css' | asset_url | stylesheet_tag }}
+<section id="laber_{{sid}}">
+  <div class="container {% if layout %}full-width{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;">
+    <div class="row">
+      	{%- for block in section.blocks -%}
+          {%- assign image = block.settings.image -%}
+      	  {%- assign url = block.settings.url -%}
+            <div class="{{ alo_column }}" style="padding-bottom:calc(var(--alo-gap) + var(--alo-gap));">
+            <div class="wrap-our-stores">
+         
+            	<div class="our-stores-image">
+                  {%- if image != blank -%}
+                    {% render 'responsive-image', image: image, url:url, aspect_ratio:aspect_ratio,border:border, image_class: 'w-full h-full' %}
+                  {%- else -%}
+                    {% if aspect_ratio != blank %}
+                         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+                      {% else %}
+                          {%- assign ratio = 100 -%}
+                      {% endif %}
+                      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+                      </div>
+                  {%- endif -%}
+            	</div>
+              
+            <div class="our-stores-content">	
+              {% if block.settings.title != blank %}
+                <h3 class="title">{{ block.settings.title | escape }}</h3>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <div class="content">{{ block.settings.text }}</div>
+              {% endif %}
+              {% if block.settings.button_label != blank %}
+              <div class="our-stores-btn">
+                <a
+                  class="btn {{ block.settings.button_style }} {{ block.settings.button_size }}"
+                  href="{{ block.settings.btn_link | default:'#' }}"
+                  title="{{ block.settings.button_label }}"
+                  target="{{block.settings.open_link}}"
+                >
+                  {{ block.settings.button_label }}
+                </a>
+              </div>
+            {% endif %}
+            </div>	
+            </div>
+            </div>
+        {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- render 'section_style' -%} 
+{%- schema -%}
+  {
+    "name": "Main Our Stores",
+    "class": "cms_section alo-our-stores",
+    "settings": [
+    {
+       "type": "select",
+       "id": "column",
+       "label": "Column",
+       "options": [
+        {
+           "value": "2",
+           "label": "2"
+         },
+        {
+           "value": "3",
+           "label": "3"
+         },
+        {
+           "value": "4",
+           "label": "4"
+         },
+        {
+           "value": "5",
+           "label": "5"
+         }
+       ],
+       "default": "4"
+    },
+      {
+          "type": "range",  
+          "id": "border",  
+          "label": "Border",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 5 
+      },
+      {
+        "type": "checkbox",
+        "id": "use_eq_height",
+        "label": "Use equal height images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio3_2",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          },
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio3_4",
+            "label": "3:4"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          },
+          {
+            "group": "Custom",
+            "value": "custom",
+            "label": "Custom ratio"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_ratio",
+        "label": "Custom ratio",
+        "default": "3/4",
+        "info": "you can set the image ratio you want to use for example 3/4"
+      },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+      {
+      "type": "checkbox",
+      "id": "layout",
+      "label": "Full width",
+      "default": false
+      },
+      {
+          "type": "range",  
+          "id": "container",  
+          "label": "Container width",
+          "min": 1200,
+          "max": 1900,
+          "step": 10,
+          "unit": "px",
+          "default": 1410 
+      },
+      {
+      "type": "color",
+      "id": "cl_bg",
+      "label": "Background color",
+      "default": "#fff"
+      },
+      {
+      "type": "text",
+      "id": "mg",
+      "label": "Margin",
+      "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+      },
+      {
+      "type": "text",
+      "id": "pd",
+      "label": "Padding",
+      "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+      },
+      {
+      "type": "header",
+      "content": "== Design Mobile Options"
+      },
+      {
+      "type": "text",
+      "id": "mg_mb",
+      "label": "Margin"
+      },
+      {
+      "type": "text",
+      "id": "pd_mb",
+      "label": "Padding"
+      }
+    ],
+	"blocks": [{
+    "type": "text_block",
+    "name": "Column",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_image",
+        "label": "Show image?",
+        "default": true
+      },
+      {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image"
+       },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Our Stores"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+      {
+           "type": "text",
+           "id": "button_label",
+           "label": "Button label",
+           "default":"Shop now"
+       },
+        {
+              "type": "url",
+              "id": "btn_link",
+              "label": "Button link",
+			  "info": "Note: if you want to display this button then you need to fill button link"
+            }, 
+         {
+            "type": "select",
+            "id": "open_link",
+            "options": [
+              {
+                "value": "_self",
+                "label": "Current window (_self)"
+              },
+             {
+                "value": "_blank",
+                "label": "New window (_blank)"
+              }
+            ],
+            "label": "Open link in",
+            "default": "_blank"
+          },
+       {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+            {
+                "value": "alo_btn-primary",
+                "label": "Primary button"
+            },
+            {
+                "value": "alo_btn-secondary",
+                "label": "Secondary button"
+            },
+            {
+                "value": "alo_btn-white",
+                "label": "White button"
+            },
+            {
+                "value": "alo_btn-link",
+                "label": "Underline button"
+            }
+            ],
+            "default": "alo_btn-link"
+        },
+        {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "options": [
+            {
+                "value": "alo_btn_small",
+                "label": "Button small"
+            },
+            {
+                "value": "",
+                "label": "Button medium"
+            },
+            {
+                "value": "alo_btn_large",
+                "label": "Button large"
+            }
+            ],
+            "default": ""
+        }
+      ]
+    }],
+    "presets": [
+      {
+        "name": "Main Our Stores",
+        "category": "Page",
+		"blocks": [
+          { "type": "text_block" },
+          { "type": "text_block" },
+          { "type": "text_block" },
+          { "type": "text_block" },
+          { "type": "text_block" },
+          { "type": "text_block" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

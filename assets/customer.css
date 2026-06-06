@@ -1,0 +1,183 @@
+/*shop-page-login*/
+.customer #login {
+  margin-bottom:30px;
+}
+/*shop-page-account*/
+  .shop-page-account h1.page-title{
+    color: var(--cl-main);
+    font-size: 38px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 30px 0;
+    line-height: 1;
+    padding-bottom: 15px;
+  }
+.wrapper_tabcontent.customer h3{
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: var(--cl-main);
+  margin-bottom: 10px;
+  font-size: 14px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid var(--cl-main);
+  padding: 0 15px;
+}
+.wrapper_tabcontent.customer .btn{
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-transform: uppercase;
+  color: var(--cl-main);
+  background-color: #f6f6f6;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  border-radius: var(--rounded);
+  border: 1px solid var(--cl-border);
+  padding: 0 15px;
+}
+.wrapper_tabcontent.customer .btn:hover {
+    border-color: var(--cl-btn-h);
+    background-color: var(--cl-btn-h);
+    color: var(--cl-btn-text_hover);
+}
+.wrapper_tabcontent.customer h3 i,
+.wrapper_tabcontent.customer .btn i{
+	font-size: 17px;
+    margin-right: 10px;
+}
+.account-content{
+  
+}
+.content-form .group-button {
+    margin-top: 15px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+.form-vertical form {
+  border: 1px solid var(--cl-border);
+  padding: 40px;
+  border-radius: var(--rounded);
+}
+.form-vertical form .group-button {
+  flex-direction: column;
+}
+.content-form h4{
+  color: var(--cl-main);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.order-information h2,
+.address.content-form h2,
+.account-content .add-title {
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--cl-main);
+  margin-bottom: 10px;
+  font-size: 24px;
+  width: 100%;
+}
+.account-content .address-add-toggle {
+  min-width: 170px;
+  height: 45px;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 30px;
+  width: auto;
+}
+.account-content p.title-customer{
+  line-height: 45px;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.account-content p.title-customer span{
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--cl-main);
+}
+.account-content p.title-customer a {color: var(--cl-link-h);text-decoration: underline;}
+
+.order-history{margin-bottom: 65px;}
+.order-history td.ColumnDate,
+.order-history th {
+  color: var(--cl-main);
+}
+.order-history td.ColumnOrder a{text-decoration: underline;}
+.order-history td.ColumnTotal {
+  color: var(--cl-current-product);
+  font-weight: 700;
+}
+.customer-information h3,
+.account_details h3,
+.order-history h3{
+  color: var(--cl-main);
+    margin: 0;
+    display: flex;
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 45px;
+    margin-bottom: 10px;
+}
+.order-history p.none{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+  background: #e3fadf;
+  border-radius: 10px;
+  padding: 0 15px;
+}
+.order-history p.none a{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  gap: 5px;
+}
+.order-history p.none a svg{
+	margin-right: 10px;
+}
+.table .h3{
+	color: var(--cl-main);
+}
+.section-header  a.btn{
+  min-width: 170px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+}
+.grid__item p{color: var(--cl-main);}
+.grid__item p span{color: var(--cl-secondary);}
+.grid__item .total {
+  color: var(--cl-current-product);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+.grid__item .subtotal,
+.grid__item .i-total {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--cl-price-product);
+}

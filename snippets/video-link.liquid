@@ -1,0 +1,61 @@
+<noscript>
+  <div
+    class="video-section__media alo-border-radius" 
+    {% if block.settings.cover_image != blank %}
+      style="--rounded:{{ section.settings.border }}px; padding-bottom: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%;"
+    {% endif %}
+  >
+    <a
+      href="{{ block.settings.external_video_url }}"
+      class="video-section__poster media media--transparent media--landscape{% if block.settings.cover_image == blank %} video-section__placeholder{% endif %}"
+    >
+      {%- if block.settings.cover_image != blank -%}
+        {% render 'image',image:block.settings.cover_image, width:1920, class:'lazyload', alt:block.settings.title %}
+      {%- else -%}
+        {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+      {%- endif -%}
+    </a>
+  </div>
+</noscript>
+<deferred-media
+  class="video-section__media deferred-media relative w-full h-full no-js-hidden"
+  data-media-id="{{ block.settings.external_video_url.id }}"
+  {% if block.settings.cover_image != blank %}
+    style="padding-bottom: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%;"
+  {% endif %}
+>
+  <button
+    id="Deferred-Poster-Modal-{{ block.settings.external_video_url.id }}"
+    class="alo-border-radius video-section__poster media deferred-media__poster media--landscape absolute h-full inset-0"
+    type="button"
+    style="--rounded:{{ section.settings.border }}px;"
+  >
+    {%- if block.settings.cover_image != blank -%}
+      {% render 'image',image:block.settings.cover_image, width:1920, class:'lazyload', alt:block.settings.title %}
+    {%- else -%}
+      {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+    {%- endif -%}
+    <span class="deferred-media__poster-button motion-reduce">
+      {%- render 'icon-play' -%}
+    </span>
+  </button>
+  <template>
+    {%- if block.settings.external_video_url.type == 'youtube' -%}
+      <iframe
+        src="https://www.youtube.com/embed/{{ block.settings.external_video_url.id }}?enablejsapi=1&autoplay=1{{ loop }}"
+        class="w-full  h-full js-youtube absolute inset-0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="{{ block.settings.title | escape }}"
+      ></iframe>
+    {%- else -%}
+      <iframe
+        src="https://player.vimeo.com/video/{{ block.settings.external_video_url.id }}?autoplay=1{{ loop }}"
+        class="w-full  h-full js-vimeo absolute inset-0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="{{ block.settings.title | escape }}"
+      ></iframe>
+    {%- endif -%}
+  </template>
+</deferred-media>

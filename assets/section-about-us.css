@@ -1,0 +1,40 @@
+.type_section_about .content-text {
+  background-color: var(--bg-color);
+  padding: calc(var(--alo-gap) + var(--alo-gap)) var(--alo-gap);
+  border-radius: var(--rounded);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.type_section_about .content-text .about-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cl-text);
+  line-height: 20px;
+}
+.type_section_about .content-text .content {
+  color: var(--cl-text);
+  font-size: var(--font-size);
+}
+.type_section_about .content-text .link a {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.type_section_about .content-text .iconfont {
+    border-radius: var(--rounded);
+    border: 1px solid var(--cl-border);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: var(--cl-icon);
+}
+.type_section_about .content-text .alo-icon-image img {
+  border-radius: var(--rounded);
+  border: 1px solid var(--cl-border);
+  overflow: hidden;
+}

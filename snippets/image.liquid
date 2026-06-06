@@ -1,0 +1,10 @@
+{%- assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' -%}
+{{ image | image_url: width: width | image_tag:
+  loading: 'lazy',
+  width: image.width,
+  height: image.height,
+  class: class,
+  sizes: sizes,
+  widths: widths,
+  alt: alt
+}}

@@ -1,0 +1,722 @@
+{% assign sid = section.id %}
+{% assign layout = section.settings.layout %}
+{% liquid
+  assign space_between = section.settings['space-Between']
+  assign navigation = section.settings.navigation
+  assign pagination = section.settings.pagination
+  if section.settings['use-slider']
+    assign use_slider = true
+  else
+    assign use_slider = false
+  endif
+%}
+{% case section.settings.col %}
+    {% when '16%' %}
+        {%- assign block_width = 'col-lg-2 col-md-2 col-12' -%}
+    {% when '25%' %}
+        {%- assign block_width = 'col-lg-3 col-md-3 col-12' -%}
+    {% when '33%' %}
+        {%- assign block_width = 'col-lg-4 col-md-4 col-12' -%}
+    {% when '42%' %}
+        {%- assign block_width = 'col-lg-5 col-md-5 col-12' -%}
+    {% when '50%' %}
+        {%- assign block_width = 'col-lg-6 col-md-6 col-12' -%}
+    {% when '58%' %}
+        {%- assign block_width = 'col-lg-7 col-md-7 col-12' -%}
+    {% when '66%' %}
+        {%- assign block_width = 'col-lg-8 col-md-8 col-12' -%}
+    {% when '75%' %}
+        {%- assign block_width = 'col-lg-9 col-md-9 col-12' -%}
+    {% when '100%' %}
+        {%- assign block_width = 'col-12' -%}
+{% endcase %}
+{% liquid
+  assign show_stock_bar = section.settings.show_stock_bar
+  assign show_countdown = false | default: section.settings.show_countdown
+  assign year_count_down = section.settings.year_count_down
+  assign month_count_down = section.settings.month_count_down
+  assign day_count_down = section.settings.day_count_down
+  
+-%}
+{%- capture countdown_ii -%}
+{%- if show_countdown -%}
+<div class="countdown-wrap countdown-header" style="--cl-number-countdown:{{section.settings.cl_number_countdown}};--bg-countdown:{{ section.settings.bg_countdown }};" >
+  {% if section.settings.title_countdown != blank %}<h3>{{ section.settings.title_countdown }}</h3>{% endif %}
+  <count-down class="cms-countdown" data-y="{{year_count_down}}" data-m="{{month_count_down}}" data-d="{{day_count_down}}" data-h="00" data-i="00" data-s="00">
+  </count-down>
+</div>	
+{%- endif -%}
+{%- endcapture -%}
+{{ 'countdown-header.css' | asset_url | stylesheet_tag }}
+{% if show_stock_bar %}{{ 'stock-bar.css' | asset_url | stylesheet_tag }}{% endif %}
+  <section id="laber_{{sid}}" >
+     <div class="{% if layout %}full-width{% else %}container{% endif %}" style="--alo-container-width:{{ section.settings.container }}px;" >
+       <div class="wrap-countdown  {% if section.settings.cl_bg_content != 'rgba(0,0,0,0)' %}alo-background-color alo-border-radius pd-20 py-20 sm:pd-10 sm:py-10 {% endif %}" style="{% if section.settings.cl_bg_content != 'rgba(0,0,0,0)' %}--bg-color:{{ section.settings.cl_bg_content  }}; {% endif %}">
+          {% if section.settings.title != blank %}
+          <div class="wrap_title w_{{ section.settings.h_position }} {{ section.settings.text_size }} mb-30 sm:mb-20">
+          <div
+             class="h3 section-title text-transform {% if section.settings.cl_underline != 'rgba(0,0,0,0)' %}title-hr{% endif %}"
+                style="
+                  --cl-text:{{ section.settings.cl_title |default:"#333333" }};
+                  --text-transform:{{ section.settings.text_transform }};
+                --cl-underline:{{ section.settings.cl_underline }};
+                "
+            >
+              <span>{{ section.settings.title }}</span>
+              {{ countdown_ii | strip_newlines | remove: '  ' }}
+            </div>
+            {% if section.settings.content %}
+              <div class="content">{{ section.settings.content }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div  class="laber-section row">
+
+        <div
+          class="content-section {{ block_width }}">
+          <div class="products-arrivals products-list-countdown {% if show_countdown %}d-none-countdown-product{% endif%}">
+            {% # theme-check-disable %}
+            {% include 'grid-slider', settings: section.settings %}
+            <grid-slider
+              class="grid-slider"
+              {{ gridSlider }}
+            >
+              <div
+                class="swiper iSwiper"
+                {%- render 'skeleton', settings: section.settings -%}
+                style="--perload-gap: {{ space_between}}px"
+              >
+                <div class="swiper-wrapper {% if use_slider == false %}flex-wrap{% endif %}">
+                  {%- if section.blocks.size > 0 -%}
+                    {%- for block in section.blocks -%}
+                      {% liquid
+                        assign show_stock_bar = section.settings.show_stock_bar
+                        assign total = block.settings.total
+                        assign available = block.settings.available
+                      -%}
+                  {%- capture stock_bar -%}	
+                  {%- if show_stock_bar -%}
+                  	{%- assign sold = total | minus: available | times: 100 | divided_by: total | ceil -%}
+                    <div class="loop-product-stock" style="--h-stock-bar:{{section.settings.h_stock_bar }}px;">
+                      <div class="product-stock">
+                      <div class="status-bar"  style="--bg-status:{{section.settings.status_bg}}; ">
+                        <div class="sold-bar" style="--bg-sold:{{section.settings.sold_bg}};  width: {{sold}}%;"></div>
+                      </div>	
+                      <div class="product-stock-status flex wrap">
+                        <div class="sold">
+                          <span>{{'products.grid_items.sold' | t  }} <b>{{total | minus: available}}</b></span> <span>{{'products.grid_items.available' | t  }} <b>{{available}}</b></span>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  {%- endif -%}	
+                  {%- endcapture -%}
+                      {%- case block.type -%}
+                        {%- when 'product' -%}
+                          {%- assign product = all_products[block.settings.product] %}
+                          {% if product != blank %}
+                            <div class="swiper-slide">
+                              {% include 'product_countdown', product: product, stock_bar: stock_bar %}
+                            </div>
+                          {%- else -%}
+                            <div class="pr_grid_item swiper-slide">
+                              {% render 'product_demo' %}
+                            </div>
+                          {%- endif -%}
+                      {%- endcase -%}
+                    {%- endfor -%}
+
+                  {%- else -%}
+                    {%- for i in (1..10) -%}
+                      <div class="pr_grid_item swiper-slide">
+                        {% render 'product_demo' %}
+                      </div>
+                    {%- endfor -%}
+                  {%- endif -%}
+                </div>
+                {% if use_slider == true %}
+                  {% if navigation %}
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  {% endif %}
+                  {% if pagination %}
+                    <div class="swiper-pagination"></div>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </grid-slider>
+            {% # theme-check-enable %}
+          </div>
+          {% if section.settings.show_view_all %}
+          <div class="view-all flex h_center pt-30">
+            <a class="btn" href="{{ section.settings.url_view_all | default:"#"  }}">{{ 'sections.products_countdown.view_all' | t }}</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+     </div>
+  </section>
+  {%- render 'section_style' -%}
+{%- schema -%}
+ {
+   "name": "Products countdown",
+   "class": "cms_section product_section products_collection_countdown type_carousel",
+   "settings": [
+     {
+      "type": "header",
+      "content": "== Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Daily Deals"
+    },
+     {
+     "type": "color",
+     "id": "cl_title",
+     "label": "Color title",
+     "default": "#fff"
+     },
+     {
+      "type": "color",
+      "id": "cl_underline",
+      "label": "Color underline",
+      "default": "#c60f14",
+      "info":"If you do not want to use it, you can leave it blank."
+    },  
+    {
+      "type": "select",
+      "id": "text_size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "small"
+       },
+       {
+          "value": "medium",
+          "label": "Medium"
+       },
+       {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "label": "Text size"
+    },
+    {
+            "type": "select",
+            "id": "text_transform",
+            "default": "none",
+            "options": [
+             {
+                "value": "none",
+                "label": "None"
+             },
+             {
+                "value": "capitalize",
+                "label": "Capitalize"
+             },
+             {
+                "value": "lowercase",
+                "label": "Lowercase"
+             },
+             {
+                "value": "uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "label": "Text transform:"
+          },
+            {
+        "type": "select",
+        "id": "h_position",
+        "label": "Position",
+        "default": "left",
+        "options": [
+            {
+            "value": "left",
+            "label": "Left"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            }
+          ]
+        },
+      {
+     "type": "checkbox",
+     "id": "show_view_all",
+     "label": "Show View All",
+     "default": true
+     }, 
+     {
+       "type": "url",
+       "id": "url_view_all",
+       "label": "Link View All"
+     },
+     {
+     "type": "checkbox",
+     "id": "show_stock_bar",
+     "label": "Show stock bar",
+     "default": true
+     },
+     {
+      "type": "range",
+      "id": "h_stock_bar",
+      "label": "Height stock bar",
+      "min": 5,
+      "max": 10,
+      "step": 1,
+      "default": 5
+   },
+     {
+     "type": "color",
+     "id": "status_bg",
+     "label": "Background color 1",
+     "default": "#f5f5f5",
+     "info":"Background color status bar"
+     },
+     {
+     "type": "color",
+     "id": "sold_bg",
+     "label": "Background color 2",
+     "default": "#777777",
+     "info":"Background color sold bar"
+     },
+
+     {
+     "type": "header",
+     "content": "== Settings countdown Time"
+     },
+     {
+     "type": "checkbox",
+     "id": "show_countdown",
+     "label": "Show Countdown",
+     "default": true
+     },
+     {
+      "type": "text",
+      "id": "title_countdown",
+      "label": "Heading",
+      "default": "Ends in:"
+    },
+     {
+     "type": "text",
+     "id": "year_count_down",
+     "label": "Year of countdown",
+     "default": "yyyy"
+     },
+     {
+     "type": "text",
+     "id": "month_count_down",
+     "label": "Month of countdown",
+     "default": "mm"
+     },
+     {
+     "type": "text",
+     "id": "day_count_down",
+     "label": "Day of countdown",
+     "default": "dd"
+     },
+     {
+     "type": "color",
+     "id": "bg_countdown",
+     "label": "Background Countdown",
+     "default": "#333"
+     },
+     {
+     "type": "color",
+     "id": "cl_number_countdown",
+     "label": "Color number Countdown",
+     "default": "#fff"
+     },
+  {
+       "type": "header",
+       "content": "---- Countdown Product Slider ----",
+       "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+   },
+   {
+       "type": "checkbox",
+       "id": "use-slider",
+       "label": "Use slider?",
+       "default": true
+   },
+   {
+      "type": "select",
+      "id": "col",
+      "default": "100%",
+      "options": [
+      {
+      "value": "16%",
+      "label": "16%"
+      },  
+      {
+      "value": "25%",
+      "label": "25%"
+      },
+      {
+      "value": "33%",
+      "label": "33%"
+      },
+       {
+      "value": "42%",
+      "label": "42%"
+      }, 
+      {
+      "value": "50%",
+      "label": "50%"
+      },
+      {
+      "value": "58%",
+      "label": "58%"
+      }, 
+      {
+      "value": "66%",
+      "label": "66%"
+      },
+      {
+      "value": "75%",
+      "label": "75%"
+      },
+      {
+      "value": "100%",
+      "label": "100%"
+      }
+      ],
+      "label": "width slider:"
+    },  
+   {
+      "type": "range",
+      "id": "visible",
+      "label": "Columns in Visible",
+   "info": "Item(s) in screen ( Size >= 1920 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 5
+   },
+   {
+      "type": "range",
+      "id": "widescreen",
+      "label": "Columns in Widescreen",
+   "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+   },
+   {
+      "type": "range",
+      "id": "desktop",
+      "label": "Columns in Desktop",
+   "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+   },
+   {
+      "type": "range",
+      "id": "laptop",
+      "label": "Columns in Laptop",
+   "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+   },
+   {
+      "type": "range",
+      "id": "notebook",
+      "label": "Columns in Notebook",
+   "info": "Item(s) in screen ( 768 <= Size < 992 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 3
+   },
+   {
+      "type": "range",
+      "id": "tablet",
+      "label": "Columns in Tablet",
+   "info": "Item(s) in screen ( 576 <= Size < 768 )",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "pds",
+      "default": 3
+   },
+   {
+      "type": "range",
+      "id": "landscape",
+      "label": "Columns in Landscape",
+   "info": "Item(s) in screen ( 480 <= Size < 576 )",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2
+   },
+   {
+      "type": "range",
+      "id": "portrait",
+      "label": "Columns in Portrait",
+   "info": "Item(s) in screen ( 360 < Size < 480 )",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2
+   },
+   {
+      "type": "range",
+      "id": "mobile",
+      "label": "Columns in Mobile",
+   "info": "Item(s) in screen ( Size < = 360 )",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+   },
+   {
+      "type": "range",
+      "id": "slides-Per-Group",
+      "label": "Slide Per Group",
+      "info": "The number of items slide to scroll",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 1
+   },
+   {
+      "type": "range",
+      "id": "rows",
+      "label": "Rows Slider",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+   },
+   {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+   },
+   {
+      "type": "text",
+      "id": "speed",
+      "label": "Speed",
+      "default": "300",
+      "info": "Duration of transition between slides (in ms)"
+   },
+   {
+      "type": "text",
+      "id": "autoplay_delay",
+      "label": "Auto Play delay",
+      "default": "3000",
+      "info": "Delay between transitions (in ms)"
+   },
+   {
+      "type": "checkbox",
+      "id": "navigation",
+      "label": "Navigation",
+      "info": "Arrows next,prev",
+      "default": true
+   },
+   {
+      "type": "select",
+      "id": "effect",
+      "label": "effect",
+      "options": [
+       {
+          "value": "coverflow",
+          "label": "Coverflow"
+        },
+       {
+          "value": "creative",
+          "label": "Creative"
+        },
+       {
+          "value": "cube",
+          "label": "Cube"
+        },
+       {
+          "value": "fade",
+          "label": "Fade"
+        },
+       {
+          "value": "flip",
+          "label": "Flip"
+        },
+       {
+          "value": "slide",
+          "label": "Slide"
+       }
+      ],
+      "default": "slide"
+   },
+   {
+      "type": "checkbox",
+      "id": "centered-Slides",
+      "label": "centered Slides",
+      "default": false
+   },
+   {
+      "type": "checkbox",
+      "id": "auto-Height",
+      "label": "Auto Height",
+      "default": false
+   },
+   {
+      "type": "checkbox",
+      "id": "pagination",
+      "label": "Pagination",
+      "default": false
+   },
+   {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+   },
+   {
+      "type": "range",
+      "id": "space-Between",
+      "label": "Space Between",
+      "info": "Distance between slides in px.",
+      "min": 0,
+      "max": 30,
+      "step": 0.5,
+      "unit": "px",
+      "default": 10
+   },
+   {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+       {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+       {
+          "value": "vertical",
+          "label": "Vertical"
+        }
+      ],
+      "default": "horizontal"
+   },
+     {
+       "type": "header",
+       "content": "== Design Options"
+     },
+     {
+    "type": "checkbox",
+    "id": "layout",
+    "label": "Full width",
+    "default": false
+    },
+    {
+        "type": "range",  
+        "id": "container",  
+        "label": "Container width",
+        "min": 1170,
+        "max": 1920,
+        "step": 10,
+        "unit": "px",
+        "default": 1410 
+    },
+     
+     {
+       "type": "image_picker",
+       "id": "bg_image",
+       "label": "Background image",
+     },
+     {
+       "type": "color",
+       "id": "cl_bg",
+       "label": "Background color",
+       "default": "#fff"
+     },
+     {
+        "type": "color",
+        "id": "cl_bg_content",
+        "default":"rgba(0,0,0,0)",
+        "label": "Background color (content)",
+        "info": "If not used you can leave blank"
+      },  
+       {
+       "type": "text",
+       "id": "mg",
+       "label": "Margin",
+       "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank"
+     },
+     {
+       "type": "text",
+       "id": "pd",
+       "label": "Padding",
+       "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank"
+     },
+    {
+       "type": "header",
+       "content": "== Design Mobile Options"
+     },
+     {
+       "type": "text",
+       "id": "mg_mb",
+       "label": "Margin"
+     },
+     {
+       "type": "text",
+       "id": "pd_mb",
+       "label": "Padding"
+     }
+   ],
+"blocks": [
+     {
+       "type": "product",
+       "name": "Product",
+       "settings": [
+         {
+           "type": "product",
+           "id": "product",
+           "label": "Product"
+         },
+         {
+           "type": "range",
+           "id": "total",
+           "min": 1,
+           "max": 100,
+           "step": 1,
+           "label": "Total Stock:",
+           "unit": "qty",
+           "default": 100
+         },
+         {
+           "type": "range",
+           "id": "available",
+           "min": 0,
+           "max": 100,
+           "step": 1,
+           "label": "Available Stock:",
+           "unit": "qty",
+           "default": 15
+         }
+       ]
+     }
+   ],
+   "presets": [
+     {
+       "name": "Products countdown",
+       "category": "Countdown"
+     }
+   ]
+ }
+{%- endschema -%}

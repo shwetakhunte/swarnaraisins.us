@@ -1,0 +1,64 @@
+{%- case block.type -%}
+  {%- when 'image' -%}
+    {%- liquid
+      assign image = block.settings.image
+      assign image_two = block.settings.image_2
+      assign url =  block.settings.btn_link |default:"#"
+      assign open_link =  block.settings.open_link
+       
+    -%}
+    <div class="image-item relative h-full">
+      <image-1 style="--alo-width:{{ block.settings.w_image_1 }}px;">
+        {%- if image != blank -%}
+          {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio, border:section.settings.border, image_class: 'w-full h-full' %}
+        {%- else -%}
+          {% if aspect_ratio != blank %}
+               {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+            {% else %}
+                {%- assign ratio = 100 -%}
+            {% endif %}
+            <div class="image-card__img overflow-hidden ratio alo-border-radius" style="--alo-border-radius:{{ section.settings.border }}px;--ratio-percent: {{ ratio }}%;">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg w-full h-full object-cover' }}
+            </div>
+        {%- endif -%}
+      </image-1>
+      {% if block.settings.show_img_2 %}
+        <image-2 class="sm:d-none" style="--alo-width:{{ block.settings.w_image_2 }}px;">
+          {%- if image_two != blank -%}
+            {% render 'responsive-image', image: image_two, aspect_ratio:aspect_ratio, border:section.settings.border, image_class: 'w-full h-full' %}
+          {%- else -%}
+            {% if aspect_ratio != blank %}
+                 {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+              {% else %}
+                  {%- assign ratio = 100 -%}
+              {% endif %}
+              <div class="image-card__img overflow-hidden ratio alo-border-radius" style="--alo-border-radius:{{ section.settings.border }}px;--ratio-percent: {{ ratio }}%;">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg w-full h-full object-cover' }}
+              </div>
+          {%- endif -%}
+        </image-2>
+      {% endif %}
+    </div>
+  {%- when 'text' -%}
+    <div class="wrap-text relative w-full h-full" style="--alo-bg:{{ block.settings.bg_content }};--alo-border-radius:{{ block.settings.border_radius }}px;--color-border:{{ block.settings.cl_border }};">
+        <div class="content-image events-none  w-full h-full flex h_{{block.settings.h_position}} v_{{block.settings.v_position}} text_{{block.settings.txt_align}}">
+          <div class="content">
+            {% if block.settings.sub_title != blank %}<div class="sub_title mb-10 sm:mb-10 md:mb-10" style="--color-text:{{ block.settings.cl_sub_title }};"><span>{{ block.settings.sub_title }}</span></div>{% endif %}
+            {% if block.settings.title != blank %}<h3 class="title mb-20 sm:mb-20 md:mb-10"  style="--color-text:{{ block.settings.cl_title }};">{{ block.settings.title }}</h3> {% endif %}
+            {% if block.settings.content != blank %}<div class="cnt mb-30 sm:mb-20 md:mb-10 sm:d-none" style="--color-text:{{ block.settings.cl_content }};">{{ block.settings.content }}</div> {% endif %}
+            {% if block.settings.link != blank %}
+                <div id="b_{{block.id}}" class="{{ block.settings.ct_color }}">
+                <a  class="btn events-auto alo-letter-spacing alo-text-transform {{ block.settings.button_style }} {{ block.settings.button_size }}" href="{{url}}" target="{{open_link}}"
+                style="--color-link:{{ block.settings.cl_link }};--color-link-hover:{{ block.settings.cl_link_hover }};"  
+                {{ block.shopify_attributes }}>
+                {{block.settings.link}} &nbsp; <i class="icon-arrow-right"></i>
+                </a> 
+                </div>
+              {% endif %}
+          </div> 
+        </div>
+    </div>
+{%- endcase -%} 
+
+
+

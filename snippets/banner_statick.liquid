@@ -1,0 +1,57 @@
+<div class="banner_statick">
+<div class="image_static ">
+    <div class="image_1 relative images-card  ">
+  {% assign image_1 = section.settings.image_1 %}
+  {% assign link_1 = section.settings.link_img_1 | default:'#' %}
+  {% if image_1 != blank %}
+    {% render 'responsive-image', image: image_1, image_class: 'w-full h-full', url: link_1 %}
+  {% else %}
+    <div class="image-card__img h-full">
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+  {% if section.settings.content_1 != blank %}
+    <div class="content-img h_right">
+      {{ section.settings.content_1 }}
+     {% if section.settings.n_btn_1 != blank %} <a class="alo_btn-secondary btn events-auto " href="{{ link_1 }}" title="{{ section.settings.n_btn_1 }}">{{ section.settings.n_btn_1 }}{%- render 'icon-arrow-right-2' -%}</a> {% endif %}
+    </div>
+  {% endif %}
+  </div>
+</div>
+<div class="image_static ">
+  <div class="image_2 relative images-card  ">
+  {% assign image_2 = section.settings.image_2 %}
+  {% assign link_2 = section.settings.link_img_2 | default:'#' %}
+  {% if image_2 != blank %}
+    {% render 'responsive-image', image: image_2, image_class: 'w-full h-full', url: link_1 %}
+  {% else %}
+    <div class="image-card__img h-full">
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+  {% if section.settings.content_2 != blank %}
+    <div class="content-img h_center">
+      {{ section.settings.content_2 }}
+     {% if section.settings.n_btn_2 != blank %} <a class="alo_btn-link events-auto " href="{{ link_2 }}" title="{{ section.settings.n_btn_2 }}">{{ section.settings.n_btn_2 }}{%- render 'icon-arrow-right-2' -%}</a> {% endif %}
+    </div>
+  {% endif %}
+  </div>
+<div class="image_3 relative images-card">
+  {% assign image_3 = section.settings.image_3 %}
+  {% assign link_3 = section.settings.link_img_3 | default:'#' %}
+  {% if image_3 != blank %}
+    {% render 'responsive-image', image: image_3, image_class: 'w-full h-full', url: link_2 %}
+  {% else %}
+    <div class="image-card__img h-full">
+      {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+  {% if section.settings.content_3 != blank %}
+    <div class="content-img h_center">
+      {{ section.settings.content_3 }}
+     {% if section.settings.n_btn_3 != blank %} <a class="btn events-auto " href="{{ link_3 }}" title="{{ section.settings.n_btn_3 }}">{{ section.settings.n_btn_3 }}{%- render 'icon-arrow-right-2' -%}</a> {% endif %}
+    </div>
+  {% endif %}
+  </div>
+  </div>
+</div>

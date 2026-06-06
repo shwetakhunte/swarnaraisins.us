@@ -1,0 +1,76 @@
+{%- liquid
+  assign collection = collections[block.settings.collection]
+  assign image = block.settings.image | default:collection.image |default:collection.products[0].featured_image
+  assign home_t = 'homepage.onboarding.collection_title' | t
+  assign url =  collection.url | default:'#' 
+-%}
+<div id="bk_{{block.id}}" class="laber_banner cat_grid_item cat_space_item cat_grid_item_{{for_i}} {{ccol}}" {{ block.shopify_attributes }} >
+  <div class="cat_grid_item__content">
+    <div class="cat_grid_item__link">
+        {%- if image != blank -%}
+          {% render 'responsive-image', image: image, url:url, aspect_ratio:aspect_ratio, image_class: 'w-full h-full' %}
+          {% if section.settings.show_btn %}
+            <span class="icon">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title></title><g data-name="Layer 2" id="Layer_2"><path d="M19,26a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42L26.59,16l-8.3-8.29a1,1,0,0,1,1.42-1.42l9,9a1,1,0,0,1,0,1.42l-9,9A1,1,0,0,1,19,26Z"></path><path d="M28,17H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"></path></g><g id="frame"><rect class="cls-1" height="32" width="32"></rect></g></svg>          
+            </span>
+          {% endif %}
+        {%- else -%}
+          {% if aspect_ratio != blank %}
+               {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+            {% else %}
+                {%- assign ratio = 100 -%}
+            {% endif %}
+            <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+              {{ 'collection-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            </div>
+        {%- endif -%}
+    </div>
+    <div class="cat_grid_item__wrapper">
+      <div class="cat_grid_item__title">
+        {% if block.settings.title %}
+          <a href="{{ url }}" title="{{ block.settings.title | default:collection.title | default:home_t }}" aria-label="link">
+              {{ block.settings.title | default:collection.title | default:home_t }}
+            {% if num_p_qty %}
+              {% if collection != blank %}
+                <span class="cat_grid_item__count ">
+                  {{collection.all_products_count}} 
+                  <span>
+                    {% if collection.all_products_count > 1 %} 
+                        {{'homepage.section.items' | t}} 
+                    {% else %}
+                        {{'homepage.section.item' | t}} 
+                    {% endif %}
+                  </span>
+                </span>
+              {% endif %}
+            {% endif %}
+         </a>
+        {%endif%}
+      </div>
+      {%- assign menu = block.settings.menu -%}
+      {%- if menu != blank -%}
+      <ul class="menu">
+        {%- for link in linklists[menu].links -%}
+         <li class="menu-item">
+           <a  href="{{ link.url }}" title="{{ link.title | split: '[' | first }}">
+               {{ link.title | split: '[' | first }}
+           </a>
+          </li>
+         {%- endfor -%}
+        <li class="menu-item shop_all">
+           <a href="{{ url }}" title="{{ block.settings.title | default:collection.title | default:home_t }}" aria-label="link">
+               {{'sections.collection-slider.shop_all' | t}} 
+             <svg fill="currentColor" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.669922 8.58008C0.669922 10.8344 1.56546 12.9964 3.15951 14.5905C4.75357 16.1845 6.91558 17.0801 9.16992 17.0801C11.4243 17.0801 13.5863 16.1845 15.1803 14.5905C16.7744 12.9964 17.6699 10.8344 17.6699 8.58008C17.6699 6.32574 16.7744 4.16373 15.1803 2.56967C13.5863 0.975611 11.4243 0.0800781 9.16992 0.0800781C6.91558 0.0800781 4.75357 0.975611 3.15951 2.56967C1.56546 4.16373 0.669922 6.32574 0.669922 8.58008ZM10 12.8633C9.68789 13.1754 9.1832 13.1754 8.87441 12.8633C8.56563 12.5512 8.5623 12.0465 8.87441 11.7377L11.2318 9.38027L5.18555 9.37695C4.74395 9.37695 4.38867 9.02168 4.38867 8.58008C4.38867 8.13848 4.74395 7.7832 5.18555 7.7832H11.2318L8.87441 5.42578C8.5623 5.11367 8.5623 4.60898 8.87441 4.3002C9.18652 3.99141 9.69121 3.98809 10 4.3002L13.7188 8.01562C14.0309 8.32773 14.0309 8.83242 13.7188 9.14121L10 12.8633Z" />
+              </svg>
+           </a>
+          </li>
+      </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+
+

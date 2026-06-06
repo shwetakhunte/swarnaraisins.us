@@ -1,0 +1,713 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   SupplySix UI Replica Overrides
+   ========================================================================== */
+
+:root {
+  /* Brand color palette */
+  --brand-green: #014344;         /* Primary deep teal green */
+  --brand-green-hover: #026c6d;   /* Lightened hover teal */
+  --brand-orange: #eb5624;        /* Accent orange */
+  --brand-yellow: #fbcd0a;        /* Accent yellow */
+  --brand-text: #1b1b1b;          /* Charcoal text */
+  --brand-dark-text: #000000;
+  --brand-bg-cream: #f6f4f1;      /* Light warm cream background */
+  --brand-white: #ffffff;
+  --brand-border: #ececec;
+  
+  /* Typography */
+  --font-family: 'Poppins', sans-serif !important;
+}
+
+/* Global Reset & Typography */
+body, 
+p, 
+span, 
+a, 
+li, 
+div, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6,
+button,
+input,
+select,
+textarea {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+  color: var(--brand-text) !important;
+  background-color: var(--brand-white) !important;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--brand-green) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--brand-green);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--brand-orange) !important;
+}
+
+/* Dynamic Logo Swap (CSS content replacement) */
+.header-logo img, 
+.header__logo-image,
+.logo-image,
+.site-header__logo img,
+.footer-logo img,
+.header__logo-image--primary,
+.header__logo-image--transparent {
+  content: url("https://supplysix.com/cdn/shop/files/Supply_6_logo_6_2.png?v=1717677528&width=200") !important;
+  max-height: 40px !important;
+  width: auto !important;
+}
+
+/* Header & Announcement Overrides */
+#header, 
+.header-main-wrap, 
+.header-top, 
+.header__wrapper {
+  background-color: var(--brand-white) !important;
+  border-bottom: 1px solid var(--brand-border) !important;
+}
+
+.header__icon-list a, 
+.header-control li a, 
+.header-menu ul.main-menu > li > a,
+.header__linklist-link {
+  color: var(--brand-text) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-transform: capitalize !important;
+}
+
+.header-menu ul.main-menu > li > a:hover,
+.header__linklist-link:hover {
+  color: var(--brand-orange) !important;
+}
+
+/* Dynamic Announcement Bar (Infinite scroll style) */
+.announcement-bar,
+.shopify-section--announcement-bar,
+.announcement-bar-infinite {
+  background-color: var(--brand-green) !important;
+  color: var(--brand-white) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.05em;
+  padding: 6px 0 !important;
+  text-align: center;
+}
+
+.announcement-bar a,
+.shopify-section--announcement-bar a {
+  color: var(--brand-yellow) !important;
+}
+
+/* Premium Buttons Styling */
+.btn,
+.button,
+button:not(.jdgm-submit-rev):not(.collapsible-toggle),
+input[type="submit"],
+.product-btn,
+.add-to-cart,
+.shopify-payment-button__button,
+.product-form__submit {
+  background-color: var(--brand-green) !important;
+  color: var(--brand-white) !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--brand-green) !important;
+  padding: 10px 24px !important;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  box-shadow: none !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn:hover,
+.button:hover,
+button:not(.jdgm-submit-rev):not(.collapsible-toggle):hover,
+input[type="submit"]:hover,
+.product-btn:hover,
+.add-to-cart:hover,
+.shopify-payment-button__button:hover,
+.product-form__submit:hover {
+  background-color: var(--brand-green-hover) !important;
+  border-color: var(--brand-green-hover) !important;
+  color: var(--brand-white) !important;
+}
+
+/* Secondary Button style */
+.button--secondary,
+.btn--secondary {
+  background-color: transparent !important;
+  color: var(--brand-green) !important;
+  border: 1px solid var(--brand-green) !important;
+}
+
+.button--secondary:hover,
+.btn--secondary:hover {
+  background-color: var(--brand-green) !important;
+  color: var(--brand-white) !important;
+}
+
+/* Product Cards Aesthetic */
+.card-product,
+.product-item,
+.product-card {
+  border: 1px solid var(--brand-border) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background-color: var(--brand-white) !important;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  padding: 16px !important;
+  text-align: left !important;
+}
+
+.card-product:hover,
+.product-item:hover,
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(1, 67, 68, 0.06) !important;
+  border-color: var(--brand-green) !important;
+}
+
+.product-name a,
+.product-card__title a {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  color: var(--brand-text) !important;
+}
+
+.product-price,
+.price {
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: var(--brand-green) !important;
+}
+
+.compare-at-price,
+.price--compare {
+  color: #888888 !important;
+  text-decoration: line-through;
+  font-size: 14px !important;
+  margin-left: 8px;
+}
+
+/* Product Badges (Replica Styles) */
+.product-label span,
+.badge {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+}
+
+.product-label .hot, .badge--hot { background-color: var(--brand-orange) !important; color: #fff !important; }
+.product-label .new, .badge--new { background-color: var(--brand-green) !important; color: #fff !important; }
+.product-label .sale, .badge--sale { background-color: var(--brand-yellow) !important; color: #000 !important; }
+
+/* Category Slider / Collections Lists */
+.collection-list-item,
+.collection-slider__item {
+  border: 1px solid var(--brand-border) !important;
+  border-radius: 12px !important;
+  background-color: var(--brand-white) !important;
+  padding: 16px !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.collection-list-item:hover {
+  border-color: var(--brand-green) !important;
+  box-shadow: 0 8px 20px rgba(1, 67, 68, 0.04) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Custom Replica Sections Styling
+   -------------------------------------------------------------------------- */
+
+/* 1. Why We Exist Section (Cards list) */
+.whyweexist {
+  background-color: var(--brand-white) !important;
+  padding: 80px 0 !important;
+}
+
+.whyweexist .section__header h2 {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: var(--brand-green) !important;
+  margin-bottom: 40px !important;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.whyweexist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.whyweexist-card {
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--brand-white);
+  transition: all 0.3s ease;
+}
+
+.whyweexist-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-green);
+  box-shadow: 0 10px 24px rgba(1, 67, 68, 0.05);
+}
+
+.whyweexist-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.whyweexist-card h3 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 16px;
+  margin: 0 !important;
+  color: var(--brand-text) !important;
+}
+
+.whyweexist-bottom-text {
+  text-align: center;
+  font-size: 16px !important;
+  color: #555;
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  line-height: 1.7;
+}
+
+/* 2. Take Quiz Section */
+.take-quiz {
+  background-color: var(--brand-bg-cream) !important;
+  padding: 60px 0 !important;
+  margin: 60px 0;
+}
+
+.take-quiz_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.take-quiz_img-wrap {
+  flex: 1;
+  max-width: 400px;
+  text-align: center;
+}
+
+.take-quiz_img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.take-quiz_content-col {
+  flex: 1.5;
+}
+
+.take-quiz_content-title {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--brand-green) !important;
+  margin-bottom: 12px !important;
+}
+
+.take-quiz_content-desc {
+  font-size: 18px !important;
+  color: #444 !important;
+  margin-bottom: 24px !important;
+}
+
+.take-quiz_link {
+  background-color: var(--brand-green) !important;
+  color: var(--brand-white) !important;
+  font-weight: 600 !important;
+  padding: 12px 36px !important;
+  border-radius: 4px !important;
+  font-size: 15px !important;
+  display: inline-block !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.take-quiz_link:hover {
+  background-color: var(--brand-green-hover) !important;
+  color: var(--brand-white) !important;
+}
+
+/* 3. Your Body is Paying the Price (USP Section) */
+.featured_usps_main {
+  background-color: var(--brand-bg-cream) !important;
+  padding: 80px 0 !important;
+  text-align: center;
+}
+
+.featured_usps_main .section__header h3 {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: var(--brand-green) !important;
+  margin-bottom: 50px !important;
+}
+
+.usps_flex {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.usp_strip {
+  flex: 1;
+  background-color: var(--brand-white);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.usp_strip:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-green);
+  box-shadow: 0 10px 25px rgba(1, 67, 68, 0.05);
+}
+
+.strip_icon {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.strip_icon img {
+  max-height: 50px;
+  width: auto;
+}
+
+.usp_strip span {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--brand-text) !important;
+  line-height: 1.5;
+}
+
+/* 4. FAQs Section (Accordion) */
+.custom-faqs {
+  padding: 80px 0 !important;
+  background-color: var(--brand-white) !important;
+}
+
+.custom-faqs .section__header h2 {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: var(--brand-green) !important;
+  margin-bottom: 40px !important;
+  text-align: center;
+}
+
+.faq__wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--brand-border);
+  padding: 16px 0;
+}
+
+.faq__item:first-child {
+  border-top: 1px solid var(--brand-border);
+}
+
+.collapsible-toggle {
+  width: 100%;
+  background: none !important;
+  border: none !important;
+  text-align: left !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: var(--brand-text) !important;
+  padding: 12px 0 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+
+.collapsible-toggle:hover {
+  color: var(--brand-orange) !important;
+}
+
+.icon-bg {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.animated-plus {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.animated-plus::before,
+.animated-plus::after {
+  content: '';
+  position: absolute;
+  background-color: var(--brand-green);
+  transition: transform 0.25s ease;
+}
+
+/* Horizontal line */
+.animated-plus::before {
+  top: 9px;
+  left: 0;
+  width: 20px;
+  height: 2px;
+}
+
+/* Vertical line */
+.animated-plus::after {
+  top: 0;
+  left: 9px;
+  width: 2px;
+  height: 20px;
+}
+
+.collapsible-toggle[aria-expanded="true"] .animated-plus::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.collapsible-toggle[aria-expanded="true"] .animated-plus::before {
+  transform: rotate(180deg);
+}
+
+.collapsible__content {
+  padding: 8px 0 20px 0;
+  font-size: 15px !important;
+  color: #555555 !important;
+  line-height: 1.6;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .whyweexist-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .usps_flex {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .whyweexist .section__header h2,
+  .featured_usps_main .section__header h3,
+  .custom-faqs .section__header h2 {
+    font-size: 28px !important;
+  }
+  
+  .whyweexist-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .take-quiz_wrap {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .usps_flex {
+    grid-template-columns: 1fr;
+  }
+  
+  .collapsible-toggle {
+    font-size: 16px !important;
+  }
+}
+
+/* ==========================================================================
+   SupplySix Specific Banner, Card, Icon Background Overrides
+   ========================================================================== */
+
+/* 1. Slideshow background image overrides */
+.swiper-slide .image-slideshow img,
+.swiper-slide .image-card__img svg {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.swiper-slide .image-slideshow,
+.swiper-slide .image-card__img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 480px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+#laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Payday_banner_jpg.webp?v=1780636954&width=1600") !important; }
+#laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Fibre_Web_Banner_Desktop_jpg.webp?v=1780636954&width=1600") !important; }
+#laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/banner_2.jpg-2.webp?v=1780636954&width=1600") !important; }
+#laber_bock_slide_4 .image-slideshow, #laber_bock_slide_4 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Salts_Banner_website__Desktop_jpg.webp?v=1780636954&width=1600") !important; }
+#laber_bock_slide_5 .image-slideshow, #laber_bock_slide_5 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Kriti_360__desktop_jpg.webp?v=1780636953&width=1600") !important; }
+#laber_bock_slide_6 .image-slideshow, #laber_bock_slide_6 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Wafer_Banner_website__Desktop.jpg-2.webp?v=1780636954&width=1600") !important; }
+
+@media (max-width: 767px) {
+  .swiper-slide .image-slideshow,
+  .swiper-slide .image-card__img {
+    min-height: 380px !important;
+  }
+  #laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Payday_banner_Phone_jpg.webp?v=1780636954&width=600") !important; }
+  #laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Fibre_Web_Banner_Mobile_1_jpg.webp?v=1780636954&width=600") !important; }
+  #laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/ABD_banner_web_jpg.webp?v=1780636954&width=600") !important; }
+  #laber_bock_slide_4 .image-slideshow, #laber_bock_slide_4 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Salts_Banner_website__mobile_jpg.webp?v=1780636954&width=600") !important; }
+  #laber_bock_slide_5 .image-slideshow, #laber_bock_slide_5 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Kriti_360__Mobile_jpg.webp?v=1780636954&width=600") !important; }
+  #laber_bock_slide_6 .image-slideshow, #laber_bock_slide_6 .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/Wafer_website__mobile.jpg-2.webp?v=1780636954&width=600") !important; }
+}
+
+/* 2. Why We Exist Section card image overrides */
+#bk_why_1 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/front-view-chicken-burgers-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_2 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/hand-holding-soil-grow-tree-soft-focus_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_3 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/thoughtful-young-businessman-looking-laptop-workplace_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_4 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/design-happy-maharishi-valmiki-jayanti-day-celebration_6.jpg?v=1740812356&width=568") !important; }
+
+#bk_why_1 .icon-svg,
+#bk_why_2 .icon-svg,
+#bk_why_3 .icon-svg,
+#bk_why_4 .icon-svg {
+  width: 100% !important;
+  height: 200px !important;
+  border-radius: 8px 8px 0 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  display: block !important;
+  margin: 0 0 16px 0 !important;
+}
+
+#bk_why_1 .icon-svg svg,
+#bk_why_2 .icon-svg svg,
+#bk_why_3 .icon-svg svg,
+#bk_why_4 .icon-svg svg,
+#bk_why_1 .icon-svg div,
+#bk_why_2 .icon-svg div,
+#bk_why_3 .icon-svg div,
+#bk_why_4 .icon-svg div {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+#why_we_exist .item,
+.whyweexist .item {
+  padding: 0 !important;
+  border: 1px solid var(--brand-border) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02) !important;
+}
+
+#why_we_exist .content-text,
+.whyweexist .content-text {
+  padding: 0 0 20px 0 !important;
+}
+
+#why_we_exist .about-title,
+.whyweexist .about-title {
+  padding: 0 16px !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+}
+
+#why_we_exist .alo-icon,
+.whyweexist .alo-icon {
+  margin-bottom: 0 !important;
+}
+
+/* 3. USP Section Icons */
+.bl_usp_1 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Tired.png?v=1768311326&width=40") !important; }
+.bl_usp_2 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Sick.png?v=1768311340&width=40") !important; }
+.bl_usp_3 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Gut.png?v=1768311340&width=40") !important; }
+.bl_usp_4 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Feeling_off.png?v=1768311340&width=40") !important; }
+
+.bl_usp_1 .icon_svg,
+.bl_usp_2 .icon_svg,
+.bl_usp_3 .icon_svg,
+.bl_usp_4 .icon_svg {
+  width: 40px !important;
+  height: 40px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  display: inline-block !important;
+}
+
+.bl_usp_1 .icon_svg svg,
+.bl_usp_2 .icon_svg svg,
+.bl_usp_3 .icon_svg svg,
+.bl_usp_4 .icon_svg svg {
+  display: none !important;
+}
+
+/* 4. Brand Press Logos */
+#shopify-section-as_seen_in .swiper-slide:nth-child(1) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_24_2.png?v=1717415793&width=150") !important; }
+#shopify-section-as_seen_in .swiper-slide:nth-child(2) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_25_2.png?v=1717415793&width=150") !important; }
+#shopify-section-as_seen_in .swiper-slide:nth-child(3) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_26_2.png?v=1717415793&width=150") !important; }
+#shopify-section-as_seen_in .swiper-slide:nth-child(4) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_27_2.png?v=1717415793&width=150") !important; }
+
+#shopify-section-as_seen_in .image-card__img {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  display: block !important;
+  width: 100% !important;
+  height: 60px !important;
+}
+
+#shopify-section-as_seen_in .image-card__img svg {
+  display: none !important;
+}
+

@@ -1,0 +1,343 @@
+{% capture config_screen %}
+    1921=>visible, 
+    1920=>widescreen, 
+    1480=>desktop, 
+    1200=>laptop, 
+    992=>notebook, 
+    768=>tablet, 
+    576=>landscape, 
+    481=>portrait, 
+    361=>mobile, 
+    1=>mobile-small
+{% endcapture %}
+
+{% capture config_swiper %}
+    auto-Height,
+    autoplay,
+    centered-Slides,
+    direction,
+    navigation,
+    pagination,
+    effect,
+    loop,
+    grid,
+    space-Between,
+    slides-Per-View,
+    slides-Per-Group,
+    speed,
+{% endcapture %}
+{% # theme-check-disable %}
+{% assign gridSlider = '' %}
+{% if settings['use-slider'] == true %}
+  {% assign gridSlider = 'data-watch-Slides-Progress="true" data-watch-Slides-Visibility="true"' %}
+  {% assign config_swiper = config_swiper | strip_newlines | replace: ' ', '' | split: ',' %}
+  {% for opt in config_swiper %}
+    {% assign value = settings[opt] %}
+    {% if opt == 'navigation' and value == true %}
+      {% assign value = '{"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}' %}
+    {% endif %}
+    {% if opt == 'pagination' and value == true %}
+      {% assign value = '{"el": ".swiper-pagination", "clickable": "true"}' %}
+    {% endif %}
+    {% if opt == 'grid' and settings.rows > 1 %}
+      {% assign value = settings.rows | prepend: '{"fill": "row", "rows": ' | append: '}' %}
+    {% endif %}
+    {% if opt == 'slides-Per-View' %}
+      {% assign value = settings.mobile %}
+    {% endif %}
+    {% if value != blank or value == true or value == false %}
+      {% capture gridSlider %}{{gridSlider}} data-{{opt}}='{{value}}'{% endcapture %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% capture gridSlider %}data-space-Between="{{settings['space-Between']}}"{% endcapture %}
+{% endif %}
+
+{% assign config_screen = config_screen | strip_newlines | replace: ' ', '' | split: ',' %}
+{% assign breakpoints = '{' %}
+{% assign col = '1' %}
+{% for cfg in config_screen %}
+  {% assign size = cfg | split: '=>' | first | strip %}
+  {% assign name = cfg | split: '=>' | last | strip %}
+  {% if forloop.last == true %}
+    {% capture breakpoints %}{{breakpoints}} "1":{"slidesPerView":{{ col }} } }{% endcapture %}
+  {% else %}
+    {% if settings[name] != blank %}
+      {% assign col = settings[name] %}
+      {% capture breakpoints %}{{breakpoints}} "{{size}}":{"slidesPerView":{{col}} },{% endcapture %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% capture gridSlider %} {{gridSlider}} data-breakpoints='{{breakpoints}}' data-mousewheel='{"forceToAxis": true}' {% endcapture %}
+{% assign grid-slider = gridSlider %}
+{% # theme-check-enable %}
+{% comment %}
+  Use in section:
+      {% include 'grid-slider', settings:section.settings %}
+
+  Use in block in section:
+      {% include 'grid-slider', settings:block.settings %}
+
+  Use in html:
+      <grid-slider {{gridSlider}}>
+          <div class="swiper iSwiper">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image1.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image2.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image3.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image4.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image5.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image6.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image7.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image8.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image9.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image10.jpg"/></div>
+                  <div class="swiper-slide"><img src="https://www.starplugins.com/sites/starplugins/images/jetzoom/large/image11.jpg"/></div>
+              </div>
+          </div>
+      </grid-slider>
+{% endcomment %}
+
+{% comment %}
+  Add to settings_schema:
+
+    {
+        "type": "header",
+        "content": "---- Collection GridSlider ----",
+        "info": "Refer to the attribute values [here](https://swiperjs.com/swiper-api)"
+    },
+    {
+        "type": "checkbox",
+        "id": "use-slider",
+        "label": "Use slider?",
+        "default": true
+    },
+    {
+         "type": "range",
+         "id": "visible",
+         "label": "Columns in Visible",
+      "info": "Item(s) in screen ( Size >= 1920 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 5
+     },
+     {
+         "type": "range",
+         "id": "widescreen",
+         "label": "Columns in Widescreen",
+      "info": "Item(s) in screen ( 1366 <= Size < 1920 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 4
+     },
+     {
+         "type": "range",
+         "id": "desktop",
+         "label": "Columns in Desktop",
+      "info":  "Item(s) in screen ( 1200 <= Size < 1480 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 4
+     },
+     {
+         "type": "range",
+         "id": "laptop",
+         "label": "Columns in Laptop",
+      "info": "Item(s) in screen ( 992 <= Size < 1200 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 4
+     },
+     {
+         "type": "range",
+         "id": "notebook",
+         "label": "Columns in Notebook",
+      "info": "Item(s) in screen ( 768 <= Size < 992 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 3
+     },
+     {
+         "type": "range",
+         "id": "tablet",
+         "label": "Columns in Tablet",
+      "info": "Item(s) in screen ( 576 <= Size < 768 )",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "unit": "pds",
+         "default": 3
+     },
+     {
+         "type": "range",
+         "id": "landscape",
+         "label": "Columns in Landscape",
+      "info": "Item(s) in screen ( 480 <= Size < 576 )",
+         "min": 1,
+         "max": 6,
+         "step": 1,
+         "default": 2
+     },
+     {
+         "type": "range",
+         "id": "portrait",
+         "label": "Columns in Portrait",
+      "info": "Item(s) in screen ( 360 < Size < 480 )",
+         "min": 1,
+         "max": 6,
+         "step": 1,
+         "default": 2
+     },
+     {
+         "type": "range",
+         "id": "mobile",
+         "label": "Columns in Mobile",
+      "info": "Item(s) in screen ( Size < = 360 )",
+         "min": 1,
+         "max": 4,
+         "step": 1,
+         "default": 1
+     },
+     {
+         "type": "range",
+         "id": "slides-Per-Group",
+         "label": "Slide Per Group",
+         "info": "The number of items slide to scroll",
+         "min": 1,
+         "max": 8,
+         "step": 1,
+         "default": 1
+     },
+     {
+         "type": "range",
+         "id": "rows",
+         "label": "Rows Slider",
+         "min": 1,
+         "max": 3,
+         "step": 1,
+         "default": 1
+     },
+     {
+         "type": "checkbox",
+         "id": "autoplay",
+         "label": "Autoplay",
+         "default": true
+     },
+     {
+         "type": "text",
+         "id": "speed",
+         "label": "Speed",
+         "default": "300",
+         "info": "Duration of transition between slides (in ms)"
+     },
+     {
+         "type": "text",
+         "id": "autoplay_delay",
+         "label": "Auto Play delay",
+         "default": "3000",
+         "info": "Delay between transitions (in ms)"
+     },
+     {
+         "type": "checkbox",
+         "id": "mousewheel",
+         "label": "Mousewheel",
+         "info": "Mousewheel next,prev",
+         "default": true
+     },
+     {
+         "type": "checkbox",
+         "id": "navigation",
+         "label": "Navigation",
+         "info": "Arrows next,prev",
+         "default": true
+     },
+     {
+         "type": "select",
+         "id": "effect",
+         "label": "effect",
+         "options": [
+          {
+             "value": "coverflow",
+             "label": "Coverflow"
+           },
+          {
+             "value": "creative",
+             "label": "Creative"
+           },
+          {
+             "value": "cube",
+             "label": "Cube"
+           },
+          {
+             "value": "fade",
+             "label": "Fade"
+           },
+          {
+             "value": "flip",
+             "label": "Flip"
+           },
+          {
+             "value": "slide",
+             "label": "Slide"
+          }
+         ],
+         "default": "slide"
+     },
+     {
+         "type": "checkbox",
+         "id": "centered-Slides",
+         "label": "centered Slides",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "auto-Height",
+         "label": "Auto Height",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "pagination",
+         "label": "Pagination",
+         "default": false
+     },
+     {
+         "type": "checkbox",
+         "id": "loop",
+         "label": "Loop",
+         "default": false
+     },
+     {
+         "type": "range",
+         "id": "space-Between",
+         "label": "Space Between",
+         "info": "Distance between slides in px.",
+         "min": 0,
+         "max": 15,
+         "step": 0.5,
+         "unit": "px",
+         "default": 10
+     },
+     {
+         "type": "select",
+         "id": "direction",
+         "label": "Direction",
+         "options": [
+          {
+             "value": "horizontal",
+             "label": "Horizontal"
+           },
+          {
+             "value": "vertical",
+             "label": "Vertical"
+           }
+         ],
+         "default": "horizontal"
+     },
+{% endcomment %}

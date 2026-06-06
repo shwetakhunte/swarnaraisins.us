@@ -1,0 +1,98 @@
+top-header {
+  height: var(--h-topheader);
+  background-color: var(--bg-top-header);
+  border-bottom: 1px solid var(--cl-b-top-header);
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+top-header .top_contact {}
+top-header ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+top-header ul li {
+    display: inline-flex;
+    font-size: 14px;
+    color: var(--cl-t-top-header);
+    align-items: center;
+}
+top-header ul li a {
+  color: var(--cl-t-top-header);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  text-transform: var(--text-transform);
+}
+
+top-header ul li a:hover,
+top-header a:hover {
+  color: var(--cl-t-top-header-h);
+}
+top-header ul li a span.b {
+  display:none;
+}
+top-header ul li .header-icon .icon {
+  display: flex;
+  position:relative;
+}
+top-header ul li .header-icon svg {
+  height: 22px;
+  width: 22px;
+  color: var(--cl-t-top-header);
+}
+top-header ul li.signin a {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+top-header ul li.signin a .icon {
+  display: flex;
+  align-items: center;
+}
+top-header ul li.signin a .b {
+  display: inline-flex;
+  gap: 5px;
+}
+top-header ul li.signin a .b:before {
+  content:'/'
+}
+top-header .announcement-text {
+  line-height: 40px;
+  font-size: var(--font-size);
+  color: var(--cl-t-top-header);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: var(--text-transform);
+}
+top-header .announcement-text svg {
+  fill: var(--cl-t-top-header);
+}
+top-header .announcement-text p {
+  margin:0;
+}
+top-header .announcement-text a {
+  color: var(--cl-t-top-header);
+  text-decoration: underline;
+}
+top-header .laber-social-link , 
+top-header .laber-social-sharing {
+  margin:0;
+}
+top-header .laber-social-link .list-socials, 
+top-header .laber-social-sharing ul {
+  gap: 0;
+}
+top-header .laber-social-link .list-socials li a,
+top-header .laber-social-sharing ul li a {
+  background: none !important;
+  width: 40px;
+  height: 40px;
+}
+top-header .laber-social-link .list-socials li a svg,
+top-header .laber-social-sharing ul li a svg {
+  fill: var(--cl-t-top-header);
+  height: 16px;
+}

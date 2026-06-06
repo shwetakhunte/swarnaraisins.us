@@ -1,0 +1,129 @@
+{%- liquid
+assign sett_equal = block.use_eq_height
+assign image_ratio = block.image_ratio
+if sett_equal 
+   case image_ratio   
+      when 'ratio2_1'
+          assign aspect_ratio = 2.0
+      when 'ratio3_2'
+          assign aspect_ratio = 1.5
+      when 'ratio4_3'
+          assign aspect_ratio = 1.333
+      when 'ratio1_1'
+          assign aspect_ratio = 1.0
+      when 'ratio3_4'
+          assign aspect_ratio = 0.75
+      when 'ratio2_3'
+          assign aspect_ratio = 0.66667
+      when 'ratio1_2'
+          assign aspect_ratio = 0.5
+   endcase 
+endif
+%}
+<div class="instagram-item">
+{%- assign image = block.image1 -%}
+{% assign url = block.url1 -%}
+{%- if image != blank -%}
+    {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio image_class: 'w-full h-full' url:url %}
+{%- else -%}
+      {% if aspect_ratio != blank %}
+         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+      {% else %}
+          {%- assign ratio = 100 -%}
+      {% endif %}
+      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--ratio-percent: {{ ratio }}%;">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+      </div>
+{%- endif -%}
+</div>
+
+<div class="instagram-item">
+{%- assign image = block.image2 -%}
+{% assign url = block.url2 -%}
+{%- if image != blank -%}
+    {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio,border:border image_class: 'w-full h-full' url:url %}
+{%- else -%}
+      {% if aspect_ratio != blank %}
+         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+      {% else %}
+          {%- assign ratio = 100 -%}
+      {% endif %}
+      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+      </div>
+{%- endif -%}
+</div>
+
+<div class="instagram-item">
+{%- assign image = block.image3 -%}
+{% assign url = block.url3 -%}
+{%- if image != blank -%}
+    {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio,border:border image_class: 'w-full h-full' url:url %}
+{%- else -%}
+      {% if aspect_ratio != blank %}
+         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+      {% else %}
+          {%- assign ratio = 100 -%}
+      {% endif %}
+      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+      </div>
+{%- endif -%}
+</div>
+
+<div class="instagram-item">
+{%- assign image = block.image4 -%}
+{% assign url = block.url4 -%}
+{%- if image != blank -%}
+    {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio,border:border image_class: 'w-full h-full' url:url %}
+{%- else -%}
+      {% if aspect_ratio != blank %}
+         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+      {% else %}
+          {%- assign ratio = 100 -%}
+      {% endif %}
+      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+      </div>
+{%- endif -%}
+</div>
+
+<div class="instagram-item">
+{%- assign image = block.image5 -%}
+{% assign url = block.url5 -%}
+{%- if image != blank -%}
+    {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio,border:border image_class: 'w-full h-full' url:url %}
+{%- else -%}
+      {% if aspect_ratio != blank %}
+         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+      {% else %}
+          {%- assign ratio = 100 -%}
+      {% endif %}
+      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+      </div>
+{%- endif -%}
+</div>
+
+<div class="instagram-item">
+{%- assign image = block.image6 -%}
+{% assign url = block.url6 -%}
+{%- if image != blank -%}
+    {% render 'responsive-image', image: image, aspect_ratio:aspect_ratio,border:border image_class: 'w-full h-full' url:url %}
+{%- else -%}
+      {% if aspect_ratio != blank %}
+         {%- assign ratio =  1 | divided_by: aspect_ratio | times: 100 -%}
+      {% else %}
+          {%- assign ratio = 100 -%}
+      {% endif %}
+      <div class="image-card__img overflow-hidden alo-border-radius ratio" style="--alo-border-radius:{{ border }}px;--ratio-percent: {{ ratio }}%;">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+      </div>
+{%- endif -%}
+</div>
