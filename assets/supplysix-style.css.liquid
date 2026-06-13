@@ -716,22 +716,22 @@ section.slideshow .swiper-slide {
 /* 2. Why We Exist Section card image overrides */
 .type_section_about .item:nth-child(1) .icon-svg,
 #bk_why_1 .icon-svg {
-  background-image: url("vineyard_heritage_banner.png") !important;
+  background-image: url("{{ 'vineyard_heritage_banner.png' | asset_url }}") !important;
 }
 
 .type_section_about .item:nth-child(2) .icon-svg,
 #bk_why_2 .icon-svg {
-  background-image: url("family_raisins_banner.png") !important;
+  background-image: url("{{ 'family_raisins_banner.png' | asset_url }}") !important;
 }
 
 .type_section_about .item:nth-child(3) .icon-svg,
 #bk_why_3 .icon-svg {
-  background-image: url("gold_raisins_banner.png") !important;
+  background-image: url("{{ 'gold_raisins_banner.png' | asset_url }}") !important;
 }
 
 .type_section_about .item:nth-child(4) .icon-svg,
 #bk_why_4 .icon-svg {
-  background-image: url("black_raisins_banner.png") !important;
+  background-image: url("{{ 'black_raisins_banner.png' | asset_url }}") !important;
 }
 
 .type_section_about .item .icon-svg,
@@ -1175,11 +1175,19 @@ section.slideshow .swiper-slide {
 }
 
 .product-item .button-cart-bottom button.add-to-cart span.text,
-.product-item .button-cart-bottom a.add-to-cart span.text {
+.product-item .button-cart-bottom a.add-to-cart span.text,
+.product-item .button-cart-bottom button.add-to-cart .alo_tooltip-content,
+.product-item .button-cart-bottom a.add-to-cart .alo_tooltip-content {
   visibility: visible !important;
   display: inline-block !important;
   padding: 0 !important;
   color: #ffffff !important;
+  position: static !important;
+  opacity: 1 !important;
+  transform: none !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+  box-shadow: none !important;
 }
 
 .product-item .inner .item-btn:not(.add-to-cart) {
