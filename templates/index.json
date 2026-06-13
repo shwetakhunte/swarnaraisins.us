@@ -608,10 +608,11 @@
         "testimonial_QHCCYA": {
           "type": "testimonial",
           "settings": {
-            "theme": "purple",
-            "content": "Excellent Product and Packaging Quality. The quality is exceptional!",
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "I recently purchased a pack of raisins from Swarna Raisins on Amazon and I'm so impressed with the quality! The raisins are plump, juicy, and bursting with sweetness. They're perfect for snacking, baking, or adding to my favorite recipes",
             "rating": 5,
-            "author": "Prajakta Mangave",
+            "author": "Gagan Mehta",
             "location": "Pune, India"
           }
         },
@@ -619,10 +620,55 @@
           "type": "testimonial",
           "settings": {
             "theme": "purple",
-            "content": "Excellent Product and Packaging Quality. The quality is exceptional!",
+            "image": "shopify://shop_images/Swarna_Female.avif",
+            "content": "Exquisite Quality and Taste\tThe quality and taste of these raisins are exquisite. They make a great addition to my meals and snacks.",
             "rating": 5,
-            "author": "Prajakta Mangave",
-            "location": "Pune, India"
+            "author": "Aditi",
+            "location": "Chennai, India"
+          }
+        },
+        "testimonial_cqAkj8": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "I found these raisins to be very clean, there is no garbage in them and I really like their taste",
+            "rating": 5,
+            "author": "Sunil Kushwaha",
+            "location": "Gwalior, India"
+          }
+        },
+        "testimonial_FnDKdA": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "I recently purchased a pack of raisins from Swarna Raisins on Amazon and I'm so impressed with the quality! The raisins are plump, juicy, and bursting with sweetness. They're perfect for snacking, baking, or adding to my favorite recipes",
+            "rating": 5,
+            "author": "Gagan Mehta",
+            "location": "Noida, India"
+          }
+        },
+        "testimonial_LLkxxN": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "Nutritional swarna Raisins\tlove these raisins! They're naturally sweet and full of flavor. Plus, they're gluten-free and residue-free making them a healthy choice for everyone.",
+            "rating": 5,
+            "author": "SHASHANK H G",
+            "location": "Banglore, India"
+          }
+        },
+        "testimonial_qkke9t": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "Quality and package is super, softness, cleanliness,smell, size,value for money I liked it thanks lot for the product which is awesome.",
+            "rating": 5,
+            "author": "Goursih K M",
+            "location": "Banglore, India"
           }
         }
       },
@@ -631,7 +677,11 @@
         "testimonial_2",
         "testimonial_3",
         "testimonial_QHCCYA",
-        "testimonial_jUrCPq"
+        "testimonial_jUrCPq",
+        "testimonial_cqAkj8",
+        "testimonial_FnDKdA",
+        "testimonial_LLkxxN",
+        "testimonial_qkke9t"
       ],
       "settings": {
         "bg_color": "#ffffff",
