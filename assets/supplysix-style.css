@@ -716,22 +716,22 @@ section.slideshow .swiper-slide {
 /* 2. Why We Exist Section card image overrides */
 .type_section_about .item:nth-child(1) .icon-svg,
 #bk_why_1 .icon-svg {
-  background-image: url("https://supplysix.com/cdn/shop/files/front-view-chicken-burgers-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_6.jpg?v=1740812356&width=568") !important;
+  background-image: url("vineyard_heritage_banner.png") !important;
 }
 
 .type_section_about .item:nth-child(2) .icon-svg,
 #bk_why_2 .icon-svg {
-  background-image: url("https://supplysix.com/cdn/shop/files/hand-holding-soil-grow-tree-soft-focus_6.jpg?v=1740812356&width=568") !important;
+  background-image: url("family_raisins_banner.png") !important;
 }
 
 .type_section_about .item:nth-child(3) .icon-svg,
 #bk_why_3 .icon-svg {
-  background-image: url("https://supplysix.com/cdn/shop/files/thoughtful-young-businessman-looking-laptop-workplace_6.jpg?v=1740812356&width=568") !important;
+  background-image: url("gold_raisins_banner.png") !important;
 }
 
 .type_section_about .item:nth-child(4) .icon-svg,
 #bk_why_4 .icon-svg {
-  background-image: url("https://supplysix.com/cdn/shop/files/design-happy-maharishi-valmiki-jayanti-day-celebration_6.jpg?v=1740812356&width=568") !important;
+  background-image: url("black_raisins_banner.png") !important;
 }
 
 .type_section_about .item .icon-svg,
@@ -1095,8 +1095,7 @@ section.slideshow .swiper-slide {
   margin-bottom: 15px !important;
 }
 
-.collection_carousel_product .product-image__overlay-bottom {
-  position: relative !important;
+.product-item .product-image__overlay-bottom {
   opacity: 1 !important;
   visibility: visible !important;
   bottom: 0 !important;
@@ -1111,19 +1110,19 @@ section.slideshow .swiper-slide {
   top: auto !important;
 }
 
-.collection_carousel_product .product-item:hover .product-image__overlay-bottom {
+.product-item:hover .product-image__overlay-bottom {
   opacity: 1 !important;
   bottom: 0 !important;
   transform: none !important;
 }
 
-.collection_carousel_product .group-button {
+.product-item .group-button {
   position: relative !important;
   display: block !important;
   width: 100% !important;
 }
 
-.collection_carousel_product .group-button .inner {
+.product-item .group-button .inner {
   display: flex !important;
   flex-direction: row !important;
   gap: 10px !important;
@@ -1131,7 +1130,7 @@ section.slideshow .swiper-slide {
   padding: 0 !important;
 }
 
-.collection_carousel_product .button-cart-bottom {
+.product-item .button-cart-bottom {
   flex-grow: 1 !important;
   width: 100% !important;
   position: relative !important;
@@ -1141,8 +1140,8 @@ section.slideshow .swiper-slide {
   display: block !important;
 }
 
-.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart,
-.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart {
+.product-item .button-cart-bottom button.add-to-cart,
+.product-item .button-cart-bottom a.add-to-cart {
   width: 100% !important;
   height: 42px !important;
   padding: 0 15px !important;
@@ -1162,27 +1161,27 @@ section.slideshow .swiper-slide {
   transition: background-color 0.2s ease !important;
 }
 
-.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart:hover,
-.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart:hover {
+.product-item .button-cart-bottom button.add-to-cart:hover,
+.product-item .button-cart-bottom a.add-to-cart:hover {
   background-color: #eb5624 !important;
 }
 
-.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart svg,
-.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart svg {
+.product-item .button-cart-bottom button.add-to-cart svg,
+.product-item .button-cart-bottom a.add-to-cart svg {
   width: 18px !important;
   height: 18px !important;
   margin-right: 6px !important;
   fill: #ffffff !important;
 }
 
-.collection_carousel_product .product-item .button-cart-bottom button.add-to-cart span.text,
-.collection_carousel_product .product-item .button-cart-bottom a.add-to-cart span.text {
+.product-item .button-cart-bottom button.add-to-cart span.text,
+.product-item .button-cart-bottom a.add-to-cart span.text {
   visibility: visible !important;
   display: inline-block !important;
   padding: 0 !important;
   color: #ffffff !important;
 }
 
-.collection_carousel_product .product-item .inner .item-btn:not(.add-to-cart) {
+.product-item .inner .item-btn:not(.add-to-cart) {
   display: none !important;
 }
