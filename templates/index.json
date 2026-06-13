@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow_VRX4a3": {
@@ -243,14 +252,90 @@
         "padding_bottom": 40
       }
     },
+    "all_products_carousel": {
+      "type": "collection-carousel-product",
+      "blocks": {
+        "all_products_block": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "cl_title": "#333333",
+            "cl_underline": "#c60f14",
+            "text_size": "medium",
+            "text_transform": "none",
+            "subtitle": "",
+            "cl_subtitle": "#333333",
+            "content": "",
+            "h_position": "left",
+            "txt_align": "left",
+            "col": "100%",
+            "collection": "all",
+            "max_count": 8,
+            "show_view_all": false,
+            "use-slider": true,
+            "visible": 4,
+            "widescreen": 4,
+            "desktop": 4,
+            "laptop": 4,
+            "notebook": 3,
+            "tablet": 2,
+            "landscape": 2,
+            "portrait": 2,
+            "mobile": 1,
+            "slides-Per-Group": 1,
+            "rows": 1,
+            "autoplay": true,
+            "speed": "300",
+            "autoplay_delay": "3000",
+            "navigation": true,
+            "effect": "slide",
+            "centered-Slides": false,
+            "auto-Height": false,
+            "pagination": false,
+            "loop": false,
+            "space-Between": 20,
+            "direction": "horizontal",
+            "mb": 0,
+            "mb-mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "all_products_block"
+      ],
+      "settings": {
+        "title": "Shop Our Collection",
+        "cl_title": "#014344",
+        "cl_underline": "#c60f14",
+        "text_size": "medium",
+        "text_transform": "none",
+        "subtitle": "~ Premium Quality Raisins ~",
+        "cl_subtitle": "#eb5624",
+        "content": "",
+        "h_position": "center",
+        "txt_align": "center",
+        "full_banner": "default",
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#ffffff",
+        "cl_bg_content": "rgba(0,0,0,0)",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_mb": "40px,,40px,",
+        "pd_mb": ""
+      }
+    },
     "featured_product_countdown": {
       "type": "featured-product-countdown",
       "settings": {
+        "product": "swarna-commercial-select™-premium-black-raisins-22-lb-box",
         "launch_text": "Limited-Time Launch Offer",
-        "countdown_date": "2026-12-31T23:59:59",
+        "countdown_date": "2026-09-31T23:59:59",
         "initial_stock": 100,
         "primary_color": "#2e7d32",
-        "bg_color": "#fffaeb"
+        "bg_color": "#FFFFFF",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "our_story_section": {
@@ -258,16 +343,20 @@
       "settings": {
         "title": "Our Story - A Legacy Of Decades",
         "subtitle": "Born in the Vineyards. Perfected by Passion",
-        "content": "<p>We founded <b>Swarna Raisins</b> with a simple yet powerful vision — to bring <b>India's finest, naturally sweet raisins</b> directly from our farms to homes across the world.<br><br>For decades, our family has been growing raisins in the fertile lands of <b>Karnataka</b>, closely working with farmers across <b>Maharashtra</b> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.</p>",
+        "content": "<p>We founded <strong>Swarna Raisins</strong> with a simple yet powerful vision — to bring <strong>India's finest, naturally sweet raisins</strong> directly from our farms to homes across the world.<br/><br/>For decades, our family has been growing raisins in the fertile lands of <strong>Karnataka</strong>, closely working with farmers across <strong>Maharashtra</strong> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.</p>",
         "btn_text": "Read our Story",
         "btn_link": "/pages/about-us",
-        "bg_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "image": "shopify://shop_images/our_story.jpg",
+        "bg_color": "#FFFFFF",
+        "padding_top": 90,
+        "padding_bottom": 90
       }
     },
     "join_revolution": {
       "type": "join-revolution",
+      "custom_css": [
+        ".join-revolution-section {background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.webp?v=1781336671); background-size: cover;}"
+      ],
       "settings": {
         "bg_color": "#fdfaf0",
         "title": "Join the <strong>Satvik Snacking</strong> Revolution",
@@ -280,7 +369,6 @@
         "padding_bottom": 80
       }
     },
-
     "usp_grid": {
       "type": "benefit",
       "blocks": {
@@ -288,7 +376,7 @@
           "type": "shipping",
           "settings": {
             "icon": "",
-            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='7' width='16' height='10' rx='2' ry='2'/><line x1='22' y1='11' x2='22' y2='13'/></svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#014344\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"7\" width=\"16\" height=\"10\" rx=\"2\" ry=\"2\"></rect><line x1=\"22\" y1=\"11\" x2=\"22\" y2=\"13\"></line></svg>",
             "title": "Tired no matter how much you rest.",
             "text": "",
             "pt": 0
@@ -298,7 +386,7 @@
           "type": "shipping",
           "settings": {
             "icon": "",
-            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z'/><path d='M12 7v5'/></svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#014344\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z\"></path><path d=\"M12 7v5\"></path></svg>",
             "title": "More sick days than usual.",
             "text": "",
             "pt": 0
@@ -308,7 +396,7 @@
           "type": "shipping",
           "settings": {
             "icon": "",
-            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#014344\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 12h-4l-3 9L9 3l-3 9H2\"></path></svg>",
             "title": "Gut issues that won't settle.",
             "text": "",
             "pt": 0
@@ -318,7 +406,7 @@
           "type": "shipping",
           "settings": {
             "icon": "",
-            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='12' y1='8' x2='12' y2='12'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#014344\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"></line></svg>",
             "title": "Feeling off, but can't explain why.",
             "text": "",
             "pt": 0
@@ -343,27 +431,35 @@
         "col_pr_mb": "12",
         "layout": false,
         "container": 1410,
-        "cl_bg": "#f6f4f1",
+        "cl_bg": "#FFFFFF",
         "cl_bg_content": "rgba(0,0,0,0)",
         "cl_icon": "#014344",
         "cl_heading": "#014344",
         "cl_text": "#1b1b1b",
-        "mg": ",,80px,",
+        "mg": "80px,,80px,",
         "pd": "60px,,60px,",
-        "mg_mb": ",,40px,",
-        "pd_mb": "40px,,40px:"
+        "mg_mb": "0px",
+        "pd_mb": "40px,,0px:"
       }
     },
     "we_care_section": {
       "type": "we-care",
+      "custom_css": [
+        ".we-care-section{background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.webp?v=1781336671); background-size: cover;}"
+      ],
       "settings": {
         "bg_color": "#fdfaf0",
+        "image": "shopify://shop_images/Web_We_care_for_600x600_copy.webp",
         "title": "We Care For",
         "content": "<p>Other brands make raisins a commodity. We make them a promise — nourishment, purity and energy in every bite. In every batch we fuse ancient Ayurvedic wisdom with scientific safety checks, so your snack is both sacred and safe.</p>",
         "badge_1_text": "FSSAI Certified",
+        "badge_1_image": "shopify://shop_images/Swarna_We_Care_For.webp",
         "badge_2_text": "APEDA Certified",
+        "badge_2_image": "shopify://shop_images/Swarna_We_Care_For_copy_3.webp",
         "badge_3_text": "ISO 9001:2015 Certified",
+        "badge_3_image": "shopify://shop_images/Swarna_We_Care_For_copy_2.webp",
         "badge_4_text": "U.S. FDA Approved",
+        "badge_4_image": "shopify://shop_images/Swarna_We_Care_For_copy.webp",
         "padding_top": 80,
         "padding_bottom": 80
       }
@@ -375,6 +471,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#4a0080",
+            "icon_image": "shopify://shop_images/Web_Set_2_Our_Farmers2.png",
             "title": "Our Farmers",
             "intro": "<p>We honour the hands that grow your food.</p>",
             "list_items": "<ul><li>Fair pricing & guaranteed offtake</li><li>Support during difficult seasons</li><li>Skill training for better livelihoods</li><li>Education support for their children</li></ul>",
@@ -385,6 +482,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#2e7d32",
+            "icon_image": "shopify://shop_images/Web_Set_2_Consumers.png",
             "title": "You — Our Consumers",
             "intro": "<p>Your health and trust come first.</p>",
             "list_items": "<ul><li>Zero sulfur, zero shortcuts</li><li>Sun-dried purity</li><li>FSSAI & NABL certified</li><li>Transparent sourcing</li><li>Nutrition-focused processing</li></ul>",
@@ -395,6 +493,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#4a0080",
+            "icon_image": "shopify://shop_images/Web_Set_2_Environment.png",
             "title": "The Environment",
             "intro": "<p>We grow responsibly to protect tomorrow.</p>",
             "list_items": "<ul><li>Renewable energy</li><li>Plastic neutrality</li><li>Water-efficient farming</li><li>Soil-first practices</li><li>Reduced carbon footprint</li></ul>",
@@ -405,6 +504,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#2e7d32",
+            "icon_image": "shopify://shop_images/Web_Set_2_Consumers_1.png",
             "title": "Our Responsibility",
             "intro": "<p>Swarna Raisins is built on ethics, not trends.</p>",
             "list_items": "<ul><li>Better incomes for farmers</li><li>Educated families</li><li>Healthier consumers</li><li>Cleaner farming</li><li>A sustainable India</li></ul>",
@@ -419,15 +519,52 @@
         "card_4"
       ],
       "settings": {
-        "bg_color": "#fdfaf0",
+        "bg_color": "#FFFFFF",
         "title": "What We Stand For",
         "subtitle": "Values that connect our farmers, consumers, and the earth.",
         "padding_top": 80,
         "padding_bottom": 80
       }
     },
+    "image_with_text_overlay_CFCCVJ": {
+      "type": "Image-with-text-overlay",
+      "blocks": {
+        "banner_img_CARcTm": {
+          "type": "banner_img",
+          "settings": {
+            "image_sl": "shopify://shop_images/Web_4.2_Process_1920x800_435473c6-aa48-4d91-8348-5f2c61bb4369.webp",
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "bg_content": "",
+            "w_content": 100,
+            "h_position": "center",
+            "v_position": "middle",
+            "txt_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "banner_img_CARcTm"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "h_des": 500,
+        "h_tb": 500,
+        "h_mb": 500,
+        "b_image": 0,
+        "layout": true,
+        "container": 1920,
+        "cl_bg": "",
+        "mg": "",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    },
     "meticulous_processing": {
       "type": "meticulous-processing",
+      "disabled": true,
       "settings": {
         "bg_color": "#fdfaf0",
         "title": "Meticulous Processing",
@@ -445,6 +582,7 @@
           "type": "testimonial",
           "settings": {
             "theme": "purple",
+            "image": "shopify://shop_images/Swarna_Female.avif",
             "content": "Excellent Product and Packaging Quality. The quality is exceptional - no dry or shriveled raisins in sight! The packaging is also top-notch, with a sturdy box and a secure seal that keeps the raisins fresh.",
             "rating": 5,
             "author": "Prajakta Mangave",
@@ -455,6 +593,7 @@
           "type": "testimonial",
           "settings": {
             "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
             "content": "High-Quality Raisins You Can Trust. Swarna Raisins are a brand you can trust for quality and taste. They're perfect for snacking and adding to various dishes.",
             "rating": 5,
             "author": "Abhi",
@@ -465,9 +604,76 @@
           "type": "testimonial",
           "settings": {
             "theme": "purple",
+            "image": "shopify://shop_images/Swarna_Female.avif",
             "content": "Its Sweet, and Delicious Raisins. Very good quality. It's really Sweet and delicious raisins.",
             "rating": 5,
             "author": "Bhagyashree",
+            "location": "Banglore, India"
+          }
+        },
+        "testimonial_QHCCYA": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "I recently purchased a pack of raisins from Swarna Raisins on Amazon and I'm so impressed with the quality! The raisins are plump, juicy, and bursting with sweetness. They're perfect for snacking, baking, or adding to my favorite recipes",
+            "rating": 5,
+            "author": "Gagan Mehta",
+            "location": "Pune, India"
+          }
+        },
+        "testimonial_jUrCPq": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "image": "shopify://shop_images/Swarna_Female.avif",
+            "content": "Exquisite Quality and Taste\tThe quality and taste of these raisins are exquisite. They make a great addition to my meals and snacks.",
+            "rating": 5,
+            "author": "Aditi",
+            "location": "Chennai, India"
+          }
+        },
+        "testimonial_cqAkj8": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "I found these raisins to be very clean, there is no garbage in them and I really like their taste",
+            "rating": 5,
+            "author": "Sunil Kushwaha",
+            "location": "Gwalior, India"
+          }
+        },
+        "testimonial_FnDKdA": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "I recently purchased a pack of raisins from Swarna Raisins on Amazon and I'm so impressed with the quality! The raisins are plump, juicy, and bursting with sweetness. They're perfect for snacking, baking, or adding to my favorite recipes",
+            "rating": 5,
+            "author": "Gagan Mehta",
+            "location": "Noida, India"
+          }
+        },
+        "testimonial_LLkxxN": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "Nutritional swarna Raisins\tlove these raisins! They're naturally sweet and full of flavor. Plus, they're gluten-free and residue-free making them a healthy choice for everyone.",
+            "rating": 5,
+            "author": "SHASHANK H G",
+            "location": "Banglore, India"
+          }
+        },
+        "testimonial_qkke9t": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "image": "shopify://shop_images/Swarna_male.avif",
+            "content": "Quality and package is super, softness, cleanliness,smell, size,value for money I liked it thanks lot for the product which is awesome.",
+            "rating": 5,
+            "author": "Goursih K M",
             "location": "Banglore, India"
           }
         }
@@ -475,7 +681,13 @@
       "block_order": [
         "testimonial_1",
         "testimonial_2",
-        "testimonial_3"
+        "testimonial_3",
+        "testimonial_QHCCYA",
+        "testimonial_jUrCPq",
+        "testimonial_cqAkj8",
+        "testimonial_FnDKdA",
+        "testimonial_LLkxxN",
+        "testimonial_qkke9t"
       ],
       "settings": {
         "bg_color": "#ffffff",
@@ -497,114 +709,32 @@
         "padding_bottom": 80
       }
     },
-    "faq_block": {
-      "type": "faq-sections",
+    "newsletter_signup": {
+      "type": "newsletter",
       "blocks": {
-        "faq_1": {
-          "type": "faq",
+        "text_3RUMFd": {
+          "type": "text",
           "settings": {
-            "title": "We give you what’s missing",
-            "text": "<p>The vitamins, minerals, and nutrients your meals don’t provide.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "title": "We make it easy",
-            "text": "<p>Supplements designed to fit into your daily routine effortlessly.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "title": "We did our research",
-            "text": "<p>Our supplements are Bio-available & Effective.</p>"
+            "title": "Have a question?",
+            "content": "<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem ipsum dolor sit amet, consectetur Nulla fringilla purus </p>",
+            "cl_title": "#333333",
+            "cl_content": "#333333",
+            "btn_name": "Write a message",
+            "url_btn": "",
+            "open_link": "_blank",
+            "button_style": "alo_btn-link",
+            "ct_color": "default",
+            "button_size": "",
+            "col": "33%",
+            "mb": 0,
+            "mb-mobile": 0
           }
         }
       },
       "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3"
+        "text_3RUMFd"
       ],
-      "settings": {
-        "title": "But this ends today",
-        "cl_title": "#014344",
-        "text_size": "medium",
-        "text_transform": "none",
-        "show_contact": false,
-        "title_working_time": "Hour of Operation",
-        "working_time": "",
-        "title_text_contact": "Careers",
-        "text_contact": "",
-        "layout": false,
-        "container": 1410,
-        "cl_bg": "#ffffff",
-        "mg": ",,80px,",
-        "pd": "",
-        "mg_mb": ",,40px,",
-        "pd_mb": ""
-      }
-    },
-    "featured_blog": {
-      "type": "featured_blog",
-      "settings": {
-        "title": "Latest Blogs",
-        "cl_title": "#014344",
-        "subtitle": "",
-        "cl_subtitle": "#333333",
-        "content": "",
-        "text_size": "medium",
-        "text_transform": "none",
-        "h_position": "left",
-        "txt_align": "left",
-        "all_blogs": false,
-        "blog": "news",
-        "border": 0,
-        "show-cate-blog": false,
-        "show-name-blog": false,
-        "show-date": false,
-        "show-author": false,
-        "show-comments": false,
-        "show-description": false,
-        "show-read_more": false,
-        "use_eq_height": false,
-        "image_ratio": "ratio3_2",
-        "use-slider": true,
-        "visible": 5,
-        "widescreen": 4,
-        "desktop": 4,
-        "laptop": 4,
-        "notebook": 3,
-        "tablet": 3,
-        "landscape": 2,
-        "portrait": 2,
-        "mobile": 1,
-        "slides-Per-Group": 1,
-        "rows": 1,
-        "autoplay": true,
-        "speed": "300",
-        "autoplay_delay": "3000",
-        "navigation": true,
-        "effect": "slide",
-        "centered-Slides": false,
-        "auto-Height": false,
-        "pagination": false,
-        "loop": false,
-        "space-Between": 10,
-        "direction": "horizontal",
-        "layout": false,
-        "container": 1410,
-        "cl_bg": "#ffffff",
-        "cl_bg_content": "rgba(0,0,0,0)",
-        "mg": ",,80px,",
-        "pd": "",
-        "mg_mb": ",,40px,",
-        "pd_mb": ""
-      }
-    },
-    "newsletter_signup": {
-      "type": "newsletter",
+      "disabled": true,
       "settings": {
         "h_position": "left",
         "txt_align": "left",
@@ -618,49 +748,6 @@
         "mg_mb": ",,40px,",
         "pd_mb": "40px,,40px:"
       }
-    },
-    "all_products_carousel": {
-      "type": "collection-carousel-product",
-      "blocks": {
-        "all_products_block": {
-          "type": "collection",
-          "settings": {
-            "title": "",
-            "collection": "all",
-            "max_count": 8,
-            "show_view_all": false,
-            "use-slider": true,
-            "visible": 4,
-            "widescreen": 4,
-            "desktop": 4,
-            "laptop": 4,
-            "notebook": 3,
-            "tablet": 2,
-            "landscape": 2,
-            "portrait": 2,
-            "mobile": 1,
-            "space-Between": 20
-          }
-        }
-      },
-      "block_order": [
-        "all_products_block"
-      ],
-      "settings": {
-        "title": "Shop Our Collection",
-        "subtitle": "~ Premium Quality Raisins ~",
-        "cl_title": "#014344",
-        "cl_subtitle": "#eb5624",
-        "h_position": "center",
-        "txt_align": "center",
-        "layout": false,
-        "container": 1410,
-        "cl_bg": "#ffffff",
-        "mg": "60px,,60px,",
-        "pd": "",
-        "mg_mb": "40px,,40px,",
-        "pd_mb": ""
-      }
     }
   },
   "order": [
@@ -671,15 +758,13 @@
     "featured_product_countdown",
     "our_story_section",
     "join_revolution",
-
     "usp_grid",
     "we_care_section",
     "what_we_stand_for_section",
+    "image_with_text_overlay_CFCCVJ",
     "meticulous_processing",
     "custom_testimonials",
     "custom_blog_grid",
-    "faq_block",
-    "featured_blog",
     "newsletter_signup"
   ]
 }
