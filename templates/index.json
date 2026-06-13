@@ -355,7 +355,7 @@
     "join_revolution": {
       "type": "join-revolution",
       "custom_css": [
-        ".join-revolution-section {background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.webp?v=1781336671); background-size: cover;}"
+        ".join-revolution-section {background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.png?v=1781339330); background-size: cover;}"
       ],
       "settings": {
         "bg_color": "#fdfaf0",
@@ -445,7 +445,7 @@
     "we_care_section": {
       "type": "we-care",
       "custom_css": [
-        ".we-care-section {background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.webp?v=1781336671); background-size: cover; background-position: center center;}"
+        ".we-care-section {background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.png?v=1781339330); background-size: cover; background-position: center center;}"
       ],
       "settings": {
         "bg_color": "#fdfaf0",
