@@ -1,0 +1,162 @@
+<style>
+  .our-story-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+  }
+  .our-story-left {
+    width: 50%;
+    padding: 60px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .our-story-right {
+    width: 50%;
+  }
+  .our-story-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .our-story-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+  .our-story-subtitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1b5e20;
+    margin-bottom: 20px;
+  }
+  .our-story-content {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  .our-story-content b {
+    color: #333;
+  }
+  .our-story-btn {
+    background-color: #1b5e20;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+  .our-story-btn:hover {
+    background-color: #124016;
+  }
+
+  @media (max-width: 768px) {
+    .our-story-left, .our-story-right {
+      width: 100%;
+    }
+    .our-story-left {
+      padding: 40px 20px;
+    }
+  }
+</style>
+
+<div class="our-story-section">
+  <div class="our-story-left">
+    <h2 class="our-story-title">{{ section.settings.title }}</h2>
+    <div class="our-story-subtitle">{{ section.settings.subtitle }}</div>
+    <div class="our-story-content">
+      {{ section.settings.content }}
+    </div>
+    {% if section.settings.btn_link != blank and section.settings.btn_text != blank %}
+      <a href="{{ section.settings.btn_link }}" class="our-story-btn">{{ section.settings.btn_text }}</a>
+    {% endif %}
+  </div>
+  <div class="our-story-right">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.title | escape }}" loading="lazy">
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Story - A Legacy Of Decades"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Born in the Vineyards. Perfected by Passion"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>We founded <b>Swarna Raisins</b> with a simple yet powerful vision...</p>"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Read our Story"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Story",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

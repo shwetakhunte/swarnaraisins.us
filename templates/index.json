@@ -253,64 +253,17 @@
         "bg_color": "#fffaeb"
       }
     },
-    "images_and_text_our_story": {
-      "type": "images-and-text",
-      "blocks": {
-        "text_block": {
-          "type": "text",
-          "settings": {
-            "col": "50%",
-            "bg_content": "#ffffff",
-            "border_radius": 0,
-            "cl_border": "#ffffff",
-            "sub_title": "Born in the Vineyards. Perfected by Passion",
-            "cl_sub_title": "#005a3c",
-            "title": "Our Story - A Legacy Of Decades",
-            "cl_title": "#222222",
-            "content": "We founded <b>Swarna Raisins</b> with a simple yet powerful vision — to bring <b>India's finest, naturally sweet raisins</b> directly from our farms to homes across the world.<br><br>For decades, our family has been growing raisins in the fertile lands of <b>Karnataka</b>, closely working with farmers across <b>Maharashtra</b> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.",
-            "cl_content": "#666666",
-            "link": "Read our Story",
-            "btn_link": "/pages/about-us",
-            "open_link": "_self",
-            "button_style": "alo_btn-primary",
-            "ct_color": "text-white",
-            "button_size": "",
-            "h_position": "left",
-            "v_position": "middle",
-            "txt_align": "left"
-          }
-        },
-        "image_block": {
-          "type": "image",
-          "settings": {
-            "col": "50%",
-            "use_eq_height": false,
-            "image_ratio": "ratio3_2",
-            "custom_ratio": "3/4",
-            "w_image_1": 600,
-            "show_img_2": false,
-            "w_image_2": 360
-          }
-        }
-      },
-      "block_order": [
-        "text_block",
-        "image_block"
-      ],
+    "our_story_section": {
+      "type": "our-story",
       "settings": {
-        "hide_mobile": false,
-        "title": "",
-        "text_size": "medium",
-        "text_transform": "none",
-        "border": 0,
-        "layout": false,
-        "container": 1410,
-        "gap": 30,
-        "cl_bg": "#ffffff",
-        "mg": "60px,,60px,",
-        "pd": "",
-        "mg_mb": "40px,,40px,",
-        "pd_mb": ""
+        "title": "Our Story - A Legacy Of Decades",
+        "subtitle": "Born in the Vineyards. Perfected by Passion",
+        "content": "<p>We founded <b>Swarna Raisins</b> with a simple yet powerful vision — to bring <b>India's finest, naturally sweet raisins</b> directly from our farms to homes across the world.<br><br>For decades, our family has been growing raisins in the fertile lands of <b>Karnataka</b>, closely working with farmers across <b>Maharashtra</b> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.</p>",
+        "btn_text": "Read our Story",
+        "btn_link": "/pages/about-us",
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "quiz_banner": {
@@ -566,7 +519,7 @@
     "top_sellers",
     "all_products_carousel",
     "featured_product_countdown",
-    "images_and_text_our_story",
+    "our_story_section",
     "quiz_banner",
     "usp_grid",
     "faq_block",
