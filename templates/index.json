@@ -266,22 +266,29 @@
         "padding_bottom": 0
       }
     },
-    "quiz_banner": {
-      "type": "custom-liquid",
+    "join_revolution": {
+      "type": "join-revolution",
       "settings": {
-        "custom_liquid": "<div class=\"take-quiz\"><div class=\"container\"><div class=\"take-quiz_wrap\"><div class=\"take-quiz_img-wrap\"><img src=\"https://supplysix.com/cdn/shop/files/quize_copy_1.png?v=1717491307&width=400\" alt=\"supply6\" class=\"take-quiz_img\"></div><div class=\"take-quiz_content-col\"><div class=\"take-quiz_content-col_wrap\"><h4 class=\"take-quiz_content-title\">Not sure where to start?</h4><div class=\"take-quiz_content-desc\">Take the Quiz to find the right product for you.</div><a href=\"https://www.supplysix.com/tools/perfect-product-finder/find-your-perfect-match#/\" class=\"take-quiz_link\">Take Quiz</a></div></div></div></div></div>",
-        "padding_top": 40,
-        "padding_bottom": 40
+        "bg_color": "#fdfaf0",
+        "title": "Join the <strong>Satvik Snacking</strong> Revolution",
+        "content": "<p>Wellness begins with what you eat. Swarna Raisins isn't just a premium snack — it's a movement towards clean, mindful, Indian-origin nourishment. Choose purity, support 200+ farmers, and make wellness your daily ritual.</p>",
+        "btn1_text": "Join the Movement",
+        "btn1_link": "/collections/all",
+        "btn2_text": "Follow @SwarnaRaisins",
+        "btn2_link": "https://instagram.com/swarnaraisins",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
+
     "usp_grid": {
       "type": "benefit",
       "blocks": {
         "usp_1": {
           "type": "shipping",
           "settings": {
-            "icon": "fa fa-truck",
-            "icon_svg": "",
+            "icon": "",
+            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='7' width='16' height='10' rx='2' ry='2'/><line x1='22' y1='11' x2='22' y2='13'/></svg>",
             "title": "Tired no matter how much you rest.",
             "text": "",
             "pt": 0
@@ -290,8 +297,8 @@
         "usp_2": {
           "type": "shipping",
           "settings": {
-            "icon": "fa fa-truck",
-            "icon_svg": "",
+            "icon": "",
+            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z'/><path d='M12 7v5'/></svg>",
             "title": "More sick days than usual.",
             "text": "",
             "pt": 0
@@ -300,8 +307,8 @@
         "usp_3": {
           "type": "shipping",
           "settings": {
-            "icon": "fa fa-truck",
-            "icon_svg": "",
+            "icon": "",
+            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>",
             "title": "Gut issues that won't settle.",
             "text": "",
             "pt": 0
@@ -310,8 +317,8 @@
         "usp_4": {
           "type": "shipping",
           "settings": {
-            "icon": "fa fa-truck",
-            "icon_svg": "",
+            "icon": "",
+            "icon_svg": "<svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#014344' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='12' y1='8' x2='12' y2='12'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>",
             "title": "Feeling off, but can't explain why.",
             "text": "",
             "pt": 0
@@ -331,9 +338,9 @@
         "text_transform": "none",
         "source": "3",
         "style": "1",
-        "col_pr": "4",
-        "col_pr_tb": "2",
-        "col_pr_mb": "1",
+        "col_pr": "3",
+        "col_pr_tb": "6",
+        "col_pr_mb": "12",
         "layout": false,
         "container": 1410,
         "cl_bg": "#f6f4f1",
@@ -345,6 +352,149 @@
         "pd": "60px,,60px,",
         "mg_mb": ",,40px,",
         "pd_mb": "40px,,40px:"
+      }
+    },
+    "we_care_section": {
+      "type": "we-care",
+      "settings": {
+        "bg_color": "#fdfaf0",
+        "title": "We Care For",
+        "content": "<p>Other brands make raisins a commodity. We make them a promise — nourishment, purity and energy in every bite. In every batch we fuse ancient Ayurvedic wisdom with scientific safety checks, so your snack is both sacred and safe.</p>",
+        "badge_1_text": "FSSAI Certified",
+        "badge_2_text": "APEDA Certified",
+        "badge_3_text": "ISO 9001:2015 Certified",
+        "badge_4_text": "U.S. FDA Approved",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "what_we_stand_for_section": {
+      "type": "what-we-stand-for",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon_bg": "#4a0080",
+            "title": "Our Farmers",
+            "intro": "<p>We honour the hands that grow your food.</p>",
+            "list_items": "<ul><li>Fair pricing & guaranteed offtake</li><li>Support during difficult seasons</li><li>Skill training for better livelihoods</li><li>Education support for their children</li></ul>",
+            "footer_text": "<p>When farmers grow with dignity, you get food with integrity.</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon_bg": "#2e7d32",
+            "title": "You — Our Consumers",
+            "intro": "<p>Your health and trust come first.</p>",
+            "list_items": "<ul><li>Zero sulfur, zero shortcuts</li><li>Sun-dried purity</li><li>FSSAI & NABL certified</li><li>Transparent sourcing</li><li>Nutrition-focused processing</li></ul>",
+            "footer_text": "<p>Food that strengthens you — not concerns you.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon_bg": "#4a0080",
+            "title": "The Environment",
+            "intro": "<p>We grow responsibly to protect tomorrow.</p>",
+            "list_items": "<ul><li>Renewable energy</li><li>Plastic neutrality</li><li>Water-efficient farming</li><li>Soil-first practices</li><li>Reduced carbon footprint</li></ul>",
+            "footer_text": "<p>Because the land that feeds us deserves respect.</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon_bg": "#2e7d32",
+            "title": "Our Responsibility",
+            "intro": "<p>Swarna Raisins is built on ethics, not trends.</p>",
+            "list_items": "<ul><li>Better incomes for farmers</li><li>Educated families</li><li>Healthier consumers</li><li>Cleaner farming</li><li>A sustainable India</li></ul>",
+            "footer_text": "<p>When you choose us, you support impact that lasts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "bg_color": "#fdfaf0",
+        "title": "What We Stand For",
+        "subtitle": "Values that connect our farmers, consumers, and the earth.",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "meticulous_processing": {
+      "type": "meticulous-processing",
+      "settings": {
+        "bg_color": "#fdfaf0",
+        "title": "Meticulous Processing",
+        "subtitle": "At Swarna Raisins, we turn grapes into golden delights.",
+        "heading_2": "Real Raisins made by Real Farmers",
+        "content": "<p>From Our Farm, Straight to Your Soul – Natural Raisins, every raisin is a promise: <strong>natural, pure, and Ayurvedic-friendly.</strong></p>",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "custom_testimonials": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "content": "Excellent Product and Packaging Quality. The quality is exceptional - no dry or shriveled raisins in sight! The packaging is also top-notch, with a sturdy box and a secure seal that keeps the raisins fresh.",
+            "rating": 5,
+            "author": "Prajakta Mangave",
+            "location": "Pune, India"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "green",
+            "content": "High-Quality Raisins You Can Trust. Swarna Raisins are a brand you can trust for quality and taste. They're perfect for snacking and adding to various dishes.",
+            "rating": 5,
+            "author": "Abhi",
+            "location": "Hyderabad, Pune"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "content": "Its Sweet, and Delicious Raisins. Very good quality. It's really Sweet and delicious raisins.",
+            "rating": 5,
+            "author": "Bhagyashree",
+            "location": "Banglore, India"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "title": "Real people, real stories",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "custom_blog_grid": {
+      "type": "custom-blog-grid",
+      "settings": {
+        "bg_color": "#ffffff",
+        "subtitle": "From the Swarna Journal",
+        "title": "Insights From Our Farm & Beyond",
+        "description": "Your Guide to Smarter, Healthier Snacking.",
+        "blog": "news",
+        "limit": 3,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "faq_block": {
@@ -520,8 +670,14 @@
     "all_products_carousel",
     "featured_product_countdown",
     "our_story_section",
-    "quiz_banner",
+    "join_revolution",
+
     "usp_grid",
+    "we_care_section",
+    "what_we_stand_for_section",
+    "meticulous_processing",
+    "custom_testimonials",
+    "custom_blog_grid",
     "faq_block",
     "featured_blog",
     "newsletter_signup"

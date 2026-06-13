@@ -1,0 +1,204 @@
+<style>
+  .join-revolution-section {
+    position: relative;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %}
+      background-image: url('{{ section.settings.bg_image | img_url: 'master' }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {% endif %}
+    text-align: center;
+  }
+  .join-revolution-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .join-revolution-icon {
+    margin-bottom: 20px;
+  }
+  .join-revolution-icon img {
+    max-width: 50px;
+    height: auto;
+  }
+  .join-revolution-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .join-revolution-title em,
+  .join-revolution-title strong {
+    color: #cca43b; /* Golden color for emphasized text */
+    font-style: normal;
+  }
+  .join-revolution-content {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .join-revolution-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .join-rev-btn {
+    background-color: #416244; /* Dark green */
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 30px; /* Pill shape */
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+  .join-rev-btn:hover {
+    background-color: #2c472f;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .join-revolution-title {
+      font-size: 32px;
+    }
+    .join-revolution-content {
+      font-size: 16px;
+    }
+    .join-revolution-buttons {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .join-rev-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="join-revolution-section">
+  <div class="join-revolution-container">
+    {% if section.settings.icon_image != blank %}
+      <div class="join-revolution-icon">
+        <img src="{{ section.settings.icon_image | img_url: 'master' }}" alt="Icon">
+      </div>
+    {% else %}
+      <div class="join-revolution-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="#cca43b"/>
+        </svg>
+      </div>
+    {% endif %}
+
+    <h2 class="join-revolution-title">{{ section.settings.title }}</h2>
+    
+    <div class="join-revolution-content">
+      {{ section.settings.content }}
+    </div>
+
+    <div class="join-revolution-buttons">
+      {% if section.settings.btn1_text != blank %}
+        <a href="{{ section.settings.btn1_link }}" class="join-rev-btn">{{ section.settings.btn1_text }}</a>
+      {% endif %}
+      {% if section.settings.btn2_text != blank %}
+        <a href="{{ section.settings.btn2_link }}" class="join-rev-btn">{{ section.settings.btn2_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Join Revolution",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image (Texture)"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color Fallback",
+      "default": "#fdfaf0"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Top Icon Image"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Heading",
+      "default": "Join the <strong>Satvik Snacking</strong> Revolution",
+      "info": "Use <strong> tags around text to make it golden."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Wellness begins with what you eat. Swarna Raisins isn't just a premium snack — it's a movement towards clean, mindful, Indian-origin nourishment. Choose purity, support 200+ farmers, and make wellness your daily ritual.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button 1"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Button 1 Text",
+      "default": "Join the Movement"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "header",
+      "content": "Button 2"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Button 2 Text",
+      "default": "Follow @SwarnaRaisins"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Join Revolution",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

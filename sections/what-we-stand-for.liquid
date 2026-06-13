@@ -1,0 +1,266 @@
+<style>
+  .stand-for-section {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+    background-color: {{ section.settings.bg_color }};
+  }
+  .stand-for-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .stand-for-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .stand-for-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1b5e20; /* Dark green */
+    margin-bottom: 15px;
+  }
+  .stand-for-subtitle {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .stand-for-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+  
+  .stand-for-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .stand-for-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .stand-for-icon-wrapper img {
+    max-width: 60%;
+    max-height: 60%;
+  }
+  
+  .stand-for-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1b5e20;
+    margin-bottom: 15px;
+  }
+  
+  .stand-for-card-intro {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .stand-for-card-list {
+    flex-grow: 1;
+    margin-bottom: 25px;
+  }
+  .stand-for-card-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .stand-for-card-list li {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    padding-left: 15px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .stand-for-card-list li::before {
+    content: "•";
+    color: #ccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .stand-for-card-footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .stand-for-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .stand-for-grid {
+      grid-template-columns: 1fr;
+    }
+    .stand-for-title {
+      font-size: 28px;
+    }
+    .stand-for-subtitle {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="stand-for-section">
+  <div class="stand-for-container">
+    <div class="stand-for-header">
+      <h2 class="stand-for-title">{{ section.settings.title }}</h2>
+      <p class="stand-for-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    
+    <div class="stand-for-grid">
+      {% for block in section.blocks %}
+        <div class="stand-for-card" {{ block.shopify_attributes }}>
+          <div class="stand-for-icon-wrapper" style="background-color: {{ block.settings.icon_bg }};">
+            {% if block.settings.icon_image != blank %}
+              <img src="{{ block.settings.icon_image | img_url: '100x' }}" alt="{{ block.settings.title | escape }}">
+            {% else %}
+              <!-- Fallback -->
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            {% endif %}
+          </div>
+          
+          <h3 class="stand-for-card-title">{{ block.settings.title }}</h3>
+          
+          {% if block.settings.intro != blank %}
+            <div class="stand-for-card-intro">
+              {{ block.settings.intro }}
+            </div>
+          {% endif %}
+          
+          {% if block.settings.list_items != blank %}
+            <div class="stand-for-card-list">
+              {{ block.settings.list_items }}
+            </div>
+          {% endif %}
+          
+          {% if block.settings.footer_text != blank %}
+            <div class="stand-for-card-footer">
+              {{ block.settings.footer_text }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "What We Stand For",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdfaf0"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What We Stand For"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Values that connect our farmers, consumers, and the earth."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Value Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "color",
+          "id": "icon_bg",
+          "label": "Icon Background Color",
+          "default": "#4b0082"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Our Farmers"
+        },
+        {
+          "type": "richtext",
+          "id": "intro",
+          "label": "Intro Text",
+          "default": "<p>We honour the hands that grow your food.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "list_items",
+          "label": "List Items (Use bullet list format)",
+          "default": "<ul><li>Fair pricing</li><li>Support during seasons</li></ul>"
+        },
+        {
+          "type": "richtext",
+          "id": "footer_text",
+          "label": "Footer Text",
+          "default": "<p>When farmers grow with dignity, you get food with integrity.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What We Stand For",
+      "category": "Custom",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
