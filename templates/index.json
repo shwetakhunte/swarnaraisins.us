@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "slideshow_VRX4a3": {
@@ -570,6 +561,8 @@
         "subtitle": "~ Premium Quality Raisins ~",
         "cl_title": "#014344",
         "cl_subtitle": "#eb5624",
+        "h_position": "center",
+        "txt_align": "center",
         "layout": false,
         "container": 1410,
         "cl_bg": "#ffffff",
