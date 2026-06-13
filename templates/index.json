@@ -547,6 +547,11 @@
       "block_order": [
         "banner_img_CARcTm"
       ],
+      "custom_css": [
+        ".type_banner .banner-card .content-item .banner_content,.type_banner .banner-card .content-item .images-card {height: 100vh;}",
+        ".image-card__img svg,.alo-image a,.alo-image img {object-fit: contain !important;}",
+        "@media only screen and (max-width: 480px) {#laber_template--25116936798523__image_with_text_overlay_ytEhCY {display: none !important; } #laber_template--25116936798523__image_with_text_overlay_R89jz4 {padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; }}"
+      ],
       "name": "Image with text overlay",
       "settings": {
         "h_des": 500,
