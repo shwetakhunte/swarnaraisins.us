@@ -354,6 +354,9 @@
     },
     "join_revolution": {
       "type": "join-revolution",
+      "custom_css": [
+        ".join-revolution-section {background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.webp?v=1781336671); background-size: cover;}"
+      ],
       "settings": {
         "bg_color": "#fdfaf0",
         "title": "Join the <strong>Satvik Snacking</strong> Revolution",
