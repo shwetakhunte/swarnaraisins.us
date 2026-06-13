@@ -333,7 +333,7 @@
         "countdown_date": "2026-09-31T23:59:59",
         "initial_stock": 100,
         "primary_color": "#2e7d32",
-        "bg_color": "#fffaeb",
+        "bg_color": "#FFFFFF",
         "padding_top": 40,
         "padding_bottom": 40
       }
@@ -347,9 +347,9 @@
         "btn_text": "Read our Story",
         "btn_link": "/pages/about-us",
         "image": "shopify://shop_images/our_story.jpg",
-        "bg_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "bg_color": "#FFFFFF",
+        "padding_top": 90,
+        "padding_bottom": 90
       }
     },
     "join_revolution": {
