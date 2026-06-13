@@ -330,7 +330,7 @@
       "settings": {
         "product": "swarna-commercial-select™-premium-black-raisins-22-lb-box",
         "launch_text": "Limited-Time Launch Offer",
-        "countdown_date": "2026-12-31T23:59:59",
+        "countdown_date": "2026-09-31T23:59:59",
         "initial_stock": 100,
         "primary_color": "#2e7d32",
         "bg_color": "#fffaeb",
@@ -433,10 +433,10 @@
         "cl_icon": "#014344",
         "cl_heading": "#014344",
         "cl_text": "#1b1b1b",
-        "mg": ",,80px,",
+        "mg": "80px,,80px,",
         "pd": "60px,,60px,",
-        "mg_mb": ",,40px,",
-        "pd_mb": "40px,,40px:"
+        "mg_mb": "0px",
+        "pd_mb": "40px,,0px:"
       }
     },
     "we_care_section": {
@@ -531,7 +531,7 @@
             "open_link": "_blank",
             "hidden_content": false,
             "bg_content": "",
-            "w_content": 50,
+            "w_content": 100,
             "h_position": "center",
             "v_position": "middle",
             "txt_align": "center"
@@ -548,7 +548,7 @@
         "h_mb": 500,
         "b_image": 0,
         "layout": true,
-        "container": 1410,
+        "container": 1920,
         "cl_bg": "",
         "mg": "",
         "pd": "",
