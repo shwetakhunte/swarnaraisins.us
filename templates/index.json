@@ -444,6 +444,9 @@
     },
     "we_care_section": {
       "type": "we-care",
+      "custom_css": [
+        ".we-care-section{background-image: url(https://cdn.shopify.com/s/files/1/0786/6105/8660/files/Web_Footer_1920_x_1000_1.webp?v=1781336671); background-size: cover;}"
+      ],
       "settings": {
         "bg_color": "#fdfaf0",
         "image": "shopify://shop_images/Web_We_care_for_600x600_copy.webp",
