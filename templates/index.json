@@ -343,9 +343,10 @@
       "settings": {
         "title": "Our Story - A Legacy Of Decades",
         "subtitle": "Born in the Vineyards. Perfected by Passion",
-        "content": "<p>We founded <b>Swarna Raisins</b> with a simple yet powerful vision — to bring <b>India's finest, naturally sweet raisins</b> directly from our farms to homes across the world.<br><br>For decades, our family has been growing raisins in the fertile lands of <b>Karnataka</b>, closely working with farmers across <b>Maharashtra</b> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.</p>",
+        "content": "<p>We founded <strong>Swarna Raisins</strong> with a simple yet powerful vision — to bring <strong>India's finest, naturally sweet raisins</strong> directly from our farms to homes across the world.<br/><br/>For decades, our family has been growing raisins in the fertile lands of <strong>Karnataka</strong>, closely working with farmers across <strong>Maharashtra</strong> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.</p>",
         "btn_text": "Read our Story",
         "btn_link": "/pages/about-us",
+        "image": "shopify://shop_images/our_story.jpg",
         "bg_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0
@@ -442,12 +443,17 @@
       "type": "we-care",
       "settings": {
         "bg_color": "#fdfaf0",
+        "image": "shopify://shop_images/Web_We_care_for_600x600_copy.webp",
         "title": "We Care For",
         "content": "<p>Other brands make raisins a commodity. We make them a promise — nourishment, purity and energy in every bite. In every batch we fuse ancient Ayurvedic wisdom with scientific safety checks, so your snack is both sacred and safe.</p>",
         "badge_1_text": "FSSAI Certified",
+        "badge_1_image": "shopify://shop_images/Swarna_We_Care_For.webp",
         "badge_2_text": "APEDA Certified",
+        "badge_2_image": "shopify://shop_images/Swarna_We_Care_For_copy_3.webp",
         "badge_3_text": "ISO 9001:2015 Certified",
+        "badge_3_image": "shopify://shop_images/Swarna_We_Care_For_copy_2.webp",
         "badge_4_text": "U.S. FDA Approved",
+        "badge_4_image": "shopify://shop_images/Swarna_We_Care_For_copy.webp",
         "padding_top": 80,
         "padding_bottom": 80
       }
@@ -459,6 +465,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#4a0080",
+            "icon_image": "shopify://shop_images/Web_Set_2_Our_Farmers2.png",
             "title": "Our Farmers",
             "intro": "<p>We honour the hands that grow your food.</p>",
             "list_items": "<ul><li>Fair pricing & guaranteed offtake</li><li>Support during difficult seasons</li><li>Skill training for better livelihoods</li><li>Education support for their children</li></ul>",
@@ -469,6 +476,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#2e7d32",
+            "icon_image": "shopify://shop_images/Web_Set_2_Consumers.png",
             "title": "You — Our Consumers",
             "intro": "<p>Your health and trust come first.</p>",
             "list_items": "<ul><li>Zero sulfur, zero shortcuts</li><li>Sun-dried purity</li><li>FSSAI & NABL certified</li><li>Transparent sourcing</li><li>Nutrition-focused processing</li></ul>",
@@ -479,6 +487,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#4a0080",
+            "icon_image": "shopify://shop_images/Web_Set_2_Environment.png",
             "title": "The Environment",
             "intro": "<p>We grow responsibly to protect tomorrow.</p>",
             "list_items": "<ul><li>Renewable energy</li><li>Plastic neutrality</li><li>Water-efficient farming</li><li>Soil-first practices</li><li>Reduced carbon footprint</li></ul>",
@@ -489,6 +498,7 @@
           "type": "card",
           "settings": {
             "icon_bg": "#2e7d32",
+            "icon_image": "shopify://shop_images/Web_Set_2_Consumers_1.png",
             "title": "Our Responsibility",
             "intro": "<p>Swarna Raisins is built on ethics, not trends.</p>",
             "list_items": "<ul><li>Better incomes for farmers</li><li>Educated families</li><li>Healthier consumers</li><li>Cleaner farming</li><li>A sustainable India</li></ul>",
@@ -510,8 +520,45 @@
         "padding_bottom": 80
       }
     },
+    "image_with_text_overlay_CFCCVJ": {
+      "type": "Image-with-text-overlay",
+      "blocks": {
+        "banner_img_CARcTm": {
+          "type": "banner_img",
+          "settings": {
+            "image_sl": "shopify://shop_images/Web_4.2_Process_1920x800_435473c6-aa48-4d91-8348-5f2c61bb4369.webp",
+            "link_img": "",
+            "open_link": "_blank",
+            "hidden_content": false,
+            "bg_content": "",
+            "w_content": 50,
+            "h_position": "center",
+            "v_position": "middle",
+            "txt_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "banner_img_CARcTm"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "h_des": 500,
+        "h_tb": 500,
+        "h_mb": 500,
+        "b_image": 0,
+        "layout": true,
+        "container": 1410,
+        "cl_bg": "",
+        "mg": "",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    },
     "meticulous_processing": {
       "type": "meticulous-processing",
+      "disabled": true,
       "settings": {
         "bg_color": "#fdfaf0",
         "title": "Meticulous Processing",
@@ -529,6 +576,7 @@
           "type": "testimonial",
           "settings": {
             "theme": "purple",
+            "image": "shopify://shop_images/Swarna_Female.avif",
             "content": "Excellent Product and Packaging Quality. The quality is exceptional - no dry or shriveled raisins in sight! The packaging is also top-notch, with a sturdy box and a secure seal that keeps the raisins fresh.",
             "rating": 5,
             "author": "Prajakta Mangave",
@@ -539,6 +587,7 @@
           "type": "testimonial",
           "settings": {
             "theme": "green",
+            "image": "shopify://shop_images/Swarna_male.avif",
             "content": "High-Quality Raisins You Can Trust. Swarna Raisins are a brand you can trust for quality and taste. They're perfect for snacking and adding to various dishes.",
             "rating": 5,
             "author": "Abhi",
@@ -549,17 +598,40 @@
           "type": "testimonial",
           "settings": {
             "theme": "purple",
+            "image": "shopify://shop_images/Swarna_Female.avif",
             "content": "Its Sweet, and Delicious Raisins. Very good quality. It's really Sweet and delicious raisins.",
             "rating": 5,
             "author": "Bhagyashree",
             "location": "Banglore, India"
+          }
+        },
+        "testimonial_QHCCYA": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "content": "Excellent Product and Packaging Quality. The quality is exceptional!",
+            "rating": 5,
+            "author": "Prajakta Mangave",
+            "location": "Pune, India"
+          }
+        },
+        "testimonial_jUrCPq": {
+          "type": "testimonial",
+          "settings": {
+            "theme": "purple",
+            "content": "Excellent Product and Packaging Quality. The quality is exceptional!",
+            "rating": 5,
+            "author": "Prajakta Mangave",
+            "location": "Pune, India"
           }
         }
       },
       "block_order": [
         "testimonial_1",
         "testimonial_2",
-        "testimonial_3"
+        "testimonial_3",
+        "testimonial_QHCCYA",
+        "testimonial_jUrCPq"
       ],
       "settings": {
         "bg_color": "#ffffff",
@@ -633,6 +705,7 @@
     "usp_grid",
     "we_care_section",
     "what_we_stand_for_section",
+    "image_with_text_overlay_CFCCVJ",
     "meticulous_processing",
     "custom_testimonials",
     "custom_blog_grid",
