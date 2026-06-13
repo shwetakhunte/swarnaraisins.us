@@ -243,87 +243,14 @@
         "padding_bottom": 40
       }
     },
-    "as_seen_in": {
-      "type": "brand-list",
-      "blocks": {
-        "brand_1": {
-          "type": "brand",
-          "settings": {
-            "url": "#",
-            "open_link": "_self"
-          }
-        },
-        "brand_2": {
-          "type": "brand",
-          "settings": {
-            "url": "#",
-            "open_link": "_self"
-          }
-        },
-        "brand_3": {
-          "type": "brand",
-          "settings": {
-            "url": "#",
-            "open_link": "_self"
-          }
-        },
-        "brand_4": {
-          "type": "brand",
-          "settings": {
-            "url": "#",
-            "open_link": "_self"
-          }
-        }
-      },
-      "block_order": [
-        "brand_1",
-        "brand_2",
-        "brand_3",
-        "brand_4"
-      ],
+    "featured_product_countdown": {
+      "type": "featured-product-countdown",
       "settings": {
-        "title": "As seen in",
-        "sub_title": "",
-        "cl_title": "#014344",
-        "cl_title_sub": "#888888",
-        "text_size": "medium",
-        "text_transform": "uppercase",
-        "h_position": "center",
-        "txt_align": "center",
-        "border": 0,
-        "use_eq_height": true,
-        "image_ratio": "ratio3_2",
-        "use-slider": true,
-        "visible": 4,
-        "widescreen": 4,
-        "desktop": 4,
-        "laptop": 4,
-        "notebook": 4,
-        "tablet": 3,
-        "landscape": 3,
-        "portrait": 2,
-        "mobile": 2,
-        "slides-Per-Group": 1,
-        "rows": 1,
-        "autoplay": true,
-        "speed": "300",
-        "autoplay_delay": "3000",
-        "navigation": false,
-        "effect": "slide",
-        "centered-Slides": false,
-        "auto-Height": false,
-        "pagination": false,
-        "loop": true,
-        "space-Between": 30,
-        "direction": "horizontal",
-        "layout": false,
-        "container": 1410,
-        "cl_bg": "#ffffff",
-        "cl_bg_content": "rgba(0,0,0,0)",
-        "mg": ",,60px,",
-        "pd": "",
-        "mg_mb": ",,40px,",
-        "pd_mb": ""
+        "launch_text": "Limited-Time Launch Offer",
+        "countdown_date": "2026-12-31T23:59:59",
+        "initial_stock": 100,
+        "primary_color": "#2e7d32",
+        "bg_color": "#fffaeb"
       }
     },
     "quiz_banner": {
@@ -578,7 +505,7 @@
     "why_we_exist",
     "top_sellers",
     "all_products_carousel",
-    "as_seen_in",
+    "featured_product_countdown",
     "quiz_banner",
     "usp_grid",
     "faq_block",

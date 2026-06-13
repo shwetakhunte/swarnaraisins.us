@@ -1,0 +1,349 @@
+{%- assign product = all_products[section.settings.product] -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- assign available_stock = 0 -%}
+{%- if product != blank -%}
+  {%- for variant in product.variants -%}
+    {%- if variant.inventory_management == 'shopify' -%}
+      {%- if variant.inventory_quantity > 0 -%}
+        {%- assign available_stock = available_stock | plus: variant.inventory_quantity -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- assign available_stock = 30 -%}
+{%- endif -%}
+
+{%- assign initial_stock = section.settings.initial_stock -%}
+{%- assign sold_stock = initial_stock | minus: available_stock -%}
+{%- if sold_stock < 0 -%}{%- assign sold_stock = 0 -%}{%- endif -%}
+{%- assign stock_percent = sold_stock | times: 100.0 | divided_by: initial_stock -%}
+{%- if stock_percent > 100 -%}{%- assign stock_percent = 100 -%}{%- endif -%}
+
+<style>
+  .fpc-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+  .fpc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .fpc-left {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+  }
+  .fpc-right {
+    width: 50%;
+    padding: 20px;
+  }
+  .fpc-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .fpc-launch-offer-text {
+    color: #2e4d41;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
+    text-align: left;
+  }
+  .fpc-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a382e;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .fpc-price {
+    font-size: 24px;
+    color: #f39c12;
+    margin-bottom: 10px;
+  }
+  .fpc-reviews {
+    margin-bottom: 20px;
+  }
+  .fpc-stock-info {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .fpc-stock-status {
+    color: #e74c3c;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .fpc-stock-counts {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .fpc-stock-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+  .fpc-stock-bar-inner {
+    height: 100%;
+    background-color: #7f8c8d;
+    border-radius: 4px;
+  }
+  .fpc-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .fpc-btn-cart {
+    background-color: {{ section.settings.primary_color }};
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .fpc-btn-cart:hover {
+    opacity: 0.9;
+  }
+  .fpc-view-icon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.primary_color }};
+    background: #fff;
+  }
+  .fpc-countdown-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .fpc-countdown-item {
+    width: 60px;
+    height: 60px;
+    background-color: {{ section.settings.primary_color }};
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    line-height: 1.1;
+  }
+  .fpc-countdown-item .num {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .fpc-countdown-item .text {
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    .fpc-left, .fpc-right {
+      width: 100%;
+    }
+  }
+</style>
+
+<section class="fpc-section">
+  <div class="fpc-container">
+    <div class="fpc-left">
+      {%- if product != blank and product.featured_image != blank -%}
+        <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title | escape }}" class="fpc-image" loading="lazy">
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'fpc-image' }}
+      {%- endif -%}
+      <div class="fpc-launch-offer-text">{{ section.settings.launch_text }}</div>
+    </div>
+    
+    <div class="fpc-right">
+      <h2 class="fpc-title">{% if product != blank %}{{ product.title }}{% else %}Swarna Duo Trial Pack – Golden & Black Seedless Raisins{% endif %}</h2>
+      
+      <div class="fpc-price">
+        {% if product != blank %}
+          {{ product.price | money }}
+        {% else %}
+          ₹ 298.00
+        {% endif %}
+      </div>
+      
+      <div class="fpc-reviews">
+        {%- if product != blank -%}
+          {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+        {%- else -%}
+          <span style="color:#f39c12;">★★★★★</span> <span style="font-size:12px;color:#888;">(45 reviews)</span>
+        {%- endif -%}
+      </div>
+      
+      <div class="fpc-stock-status">Status: {% if available_stock > 0 %}In stock{% else %}Out of stock{% endif %}</div>
+      
+      <div class="fpc-stock-counts">
+        <span>Sold: {{ sold_stock }}</span>
+        <span>Available: {{ available_stock }}</span>
+      </div>
+      
+      <div class="fpc-stock-bar">
+        <div class="fpc-stock-bar-inner" style="width: {{ stock_percent }}%;"></div>
+      </div>
+      
+      <div class="fpc-actions">
+        <a href="{% if product != blank %}{{ product.url }}{% else %}#{% endif %}" class="fpc-btn-cart">Add to Cart</a>
+        <a href="{% if product != blank %}{{ product.url }}{% else %}#{% endif %}" class="fpc-view-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </a>
+      </div>
+      
+      <div class="fpc-launch-offer-text">{{ section.settings.launch_text }}</div>
+      
+      <div class="fpc-countdown-wrapper" id="fpc-countdown-{{ section.id }}" data-end-date="{{ section.settings.countdown_date }}">
+        <div class="fpc-countdown-item">
+          <span class="num" id="fpc-days-{{ section.id }}">00</span>
+          <span class="text">Days</span>
+        </div>
+        <div class="fpc-countdown-item">
+          <span class="num" id="fpc-hours-{{ section.id }}">00</span>
+          <span class="text">Hrs</span>
+        </div>
+        <div class="fpc-countdown-item">
+          <span class="num" id="fpc-mins-{{ section.id }}">00</span>
+          <span class="text">Mins</span>
+        </div>
+        <div class="fpc-countdown-item">
+          <span class="num" id="fpc-secs-{{ section.id }}">00</span>
+          <span class="text">Secs</span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var countdownEl = document.getElementById('fpc-countdown-{{ section.id }}');
+    if (!countdownEl) return;
+    
+    var targetDateStr = countdownEl.getAttribute('data-end-date');
+    if (!targetDateStr) return;
+    
+    var targetDate = new Date(targetDateStr).getTime();
+    
+    var daysEl = document.getElementById('fpc-days-{{ section.id }}');
+    var hoursEl = document.getElementById('fpc-hours-{{ section.id }}');
+    var minsEl = document.getElementById('fpc-mins-{{ section.id }}');
+    var secsEl = document.getElementById('fpc-secs-{{ section.id }}');
+    
+    var timer = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = targetDate - now;
+      
+      if (distance < 0) {
+        clearInterval(timer);
+        return;
+      }
+      
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      daysEl.innerText = days;
+      hoursEl.innerText = hours;
+      minsEl.innerText = minutes;
+      secsEl.innerText = seconds;
+    }, 1000);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Featured Product Timer",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    },
+    {
+      "type": "text",
+      "id": "launch_text",
+      "label": "Launch Offer Text",
+      "default": "Limited-Time Launch Offer"
+    },
+    {
+      "type": "text",
+      "id": "countdown_date",
+      "label": "Countdown End Date",
+      "info": "Format: YYYY-MM-DDTHH:MM:SS (e.g., 2026-12-31T23:59:59)"
+    },
+    {
+      "type": "number",
+      "id": "initial_stock",
+      "label": "Initial Stock Level",
+      "info": "Used to calculate 'Sold' items. Sold = Initial Stock - Available Stock.",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#2e7d32",
+      "info": "Used for button and countdown circles"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product Timer",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
