@@ -6,32 +6,38 @@
 
 :root {
   /* Brand color palette */
-  --brand-green: #014344;         /* Primary deep teal green */
-  --brand-green-hover: #026c6d;   /* Lightened hover teal */
-  --brand-orange: #eb5624;        /* Accent orange */
-  --brand-yellow: #fbcd0a;        /* Accent yellow */
-  --brand-text: #1b1b1b;          /* Charcoal text */
+  --brand-green: #014344;
+  /* Primary deep teal green */
+  --brand-green-hover: #026c6d;
+  /* Lightened hover teal */
+  --brand-orange: #eb5624;
+  /* Accent orange */
+  --brand-yellow: #fbcd0a;
+  /* Accent yellow */
+  --brand-text: #1b1b1b;
+  /* Charcoal text */
   --brand-dark-text: #000000;
-  --brand-bg-cream: #f6f4f1;      /* Light warm cream background */
+  --brand-bg-cream: #f6f4f1;
+  /* Light warm cream background */
   --brand-white: #ffffff;
   --brand-border: #ececec;
-  
+
   /* Typography */
   --font-family: 'Poppins', sans-serif !important;
 }
 
 /* Global Reset & Typography */
-body, 
-p, 
-span, 
-a, 
-li, 
-div, 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+body,
+p,
+span,
+a,
+li,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
 h6,
 button,
 input,
@@ -46,7 +52,12 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--brand-green) !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em;
@@ -63,7 +74,7 @@ a:hover {
 }
 
 /* Dynamic Logo Swap (CSS content replacement) */
-.header-logo img, 
+.header-logo img,
 .header__logo-image,
 .logo-image,
 .site-header__logo img,
@@ -76,17 +87,17 @@ a:hover {
 }
 
 /* Header & Announcement Overrides */
-#header, 
-.header-main-wrap, 
-.header-top, 
+#header,
+.header-main-wrap,
+.header-top,
 .header__wrapper {
   background-color: var(--brand-white) !important;
   border-bottom: 1px solid var(--brand-border) !important;
 }
 
-.header__icon-list a, 
-.header-control li a, 
-.header-menu ul.main-menu > li > a,
+.header__icon-list a,
+.header-control li a,
+.header-menu ul.main-menu>li>a,
 .header__linklist-link {
   color: var(--brand-text) !important;
   font-weight: 600 !important;
@@ -94,7 +105,7 @@ a:hover {
   text-transform: capitalize !important;
 }
 
-.header-menu ul.main-menu > li > a:hover,
+.header-menu ul.main-menu>li>a:hover,
 .header__linklist-link:hover {
   color: var(--brand-orange) !important;
 }
@@ -222,9 +233,23 @@ input[type="submit"]:hover,
   border-radius: 4px !important;
 }
 
-.product-label .hot, .badge--hot { background-color: var(--brand-orange) !important; color: #fff !important; }
-.product-label .new, .badge--new { background-color: var(--brand-green) !important; color: #fff !important; }
-.product-label .sale, .badge--sale { background-color: var(--brand-yellow) !important; color: #000 !important; }
+.product-label .hot,
+.badge--hot {
+  background-color: var(--brand-orange) !important;
+  color: #fff !important;
+}
+
+.product-label .new,
+.badge--new {
+  background-color: var(--brand-green) !important;
+  color: #fff !important;
+}
+
+.product-label .sale,
+.badge--sale {
+  background-color: var(--brand-yellow) !important;
+  color: #000 !important;
+}
 
 /* Category Slider / Collections Lists */
 .collection-list-item,
@@ -534,7 +559,7 @@ input[type="submit"]:hover,
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
-  
+
   .usps_flex {
     grid-template-columns: 1fr 1fr;
     display: grid;
@@ -543,26 +568,27 @@ input[type="submit"]:hover,
 }
 
 @media (max-width: 767px) {
+
   .whyweexist .section__header h2,
   .featured_usps_main .section__header h3,
   .custom-faqs .section__header h2 {
     font-size: 28px !important;
   }
-  
+
   .whyweexist-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .take-quiz_wrap {
     flex-direction: column;
     text-align: center;
     gap: 30px;
   }
-  
+
   .usps_flex {
     grid-template-columns: 1fr;
   }
-  
+
   .collapsible-toggle {
     font-size: 16px !important;
   }
@@ -611,41 +637,102 @@ section.slideshow .swiper-slide {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  min-height: 620px !important; /* Increased desktop height to prevent cropping of the square image banners */
+  min-height: 620px !important;
+  /* Increased desktop height to prevent cropping of the square image banners */
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
-#laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("raisin_hero_banner.png") !important; }
-#laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("gold_raisins_banner.png") !important; }
-#laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("black_raisins_banner.png") !important; }
-#laber_bock_slide_4 .image-slideshow, #laber_bock_slide_4 .image-card__img { background-image: url("vineyard_heritage_banner.png") !important; }
-#laber_bock_slide_5 .image-slideshow, #laber_bock_slide_5 .image-card__img { background-image: url("family_raisins_banner.png") !important; }
-#laber_bock_slide_6 .image-slideshow, #laber_bock_slide_6 .image-card__img { background-image: url("commercial_raisins_banner.png") !important; }
+#laber_bock_slide_1 .image-slideshow,
+#laber_bock_slide_1 .image-card__img {
+  background-image: url("raisin_hero_banner.png") !important;
+}
+
+#laber_bock_slide_2 .image-slideshow,
+#laber_bock_slide_2 .image-card__img {
+  background-image: url("gold_raisins_banner.png") !important;
+}
+
+#laber_bock_slide_3 .image-slideshow,
+#laber_bock_slide_3 .image-card__img {
+  background-image: url("black_raisins_banner.png") !important;
+}
+
+#laber_bock_slide_4 .image-slideshow,
+#laber_bock_slide_4 .image-card__img {
+  background-image: url("vineyard_heritage_banner.png") !important;
+}
+
+#laber_bock_slide_5 .image-slideshow,
+#laber_bock_slide_5 .image-card__img {
+  background-image: url("family_raisins_banner.png") !important;
+}
+
+#laber_bock_slide_6 .image-slideshow,
+#laber_bock_slide_6 .image-card__img {
+  background-image: url("commercial_raisins_banner.png") !important;
+}
 
 @media (max-width: 767px) {
+
   .swiper-slide .image-slideshow,
   .swiper-slide .image-card__img {
-    min-height: 420px !important; /* Taller height on mobile for perfect fit of overlay text & content */
+    min-height: 420px !important;
+    /* Taller height on mobile for perfect fit of overlay text & content */
   }
-  #laber_bock_slide_1 .image-slideshow, #laber_bock_slide_1 .image-card__img { background-image: url("raisin_hero_banner.png") !important; }
-  #laber_bock_slide_2 .image-slideshow, #laber_bock_slide_2 .image-card__img { background-image: url("gold_raisins_banner.png") !important; }
-  #laber_bock_slide_3 .image-slideshow, #laber_bock_slide_3 .image-card__img { background-image: url("black_raisins_banner.png") !important; }
-  #laber_bock_slide_4 .image-slideshow, #laber_bock_slide_4 .image-card__img { background-image: url("vineyard_heritage_banner.png") !important; }
-  #laber_bock_slide_5 .image-slideshow, #laber_bock_slide_5 .image-card__img { background-image: url("family_raisins_banner.png") !important; }
-  #laber_bock_slide_6 .image-slideshow, #laber_bock_slide_6 .image-card__img { background-image: url("commercial_raisins_banner.png") !important; }
+
+  #laber_bock_slide_1 .image-slideshow,
+  #laber_bock_slide_1 .image-card__img {
+    background-image: url("raisin_hero_banner.png") !important;
+  }
+
+  #laber_bock_slide_2 .image-slideshow,
+  #laber_bock_slide_2 .image-card__img {
+    background-image: url("gold_raisins_banner.png") !important;
+  }
+
+  #laber_bock_slide_3 .image-slideshow,
+  #laber_bock_slide_3 .image-card__img {
+    background-image: url("black_raisins_banner.png") !important;
+  }
+
+  #laber_bock_slide_4 .image-slideshow,
+  #laber_bock_slide_4 .image-card__img {
+    background-image: url("vineyard_heritage_banner.png") !important;
+  }
+
+  #laber_bock_slide_5 .image-slideshow,
+  #laber_bock_slide_5 .image-card__img {
+    background-image: url("family_raisins_banner.png") !important;
+  }
+
+  #laber_bock_slide_6 .image-slideshow,
+  #laber_bock_slide_6 .image-card__img {
+    background-image: url("commercial_raisins_banner.png") !important;
+  }
 }
 
 /* 2. Why We Exist Section card image overrides */
 .type_section_about .item:nth-child(1) .icon-svg,
-#bk_why_1 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/front-view-chicken-burgers-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_1 .icon-svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/front-view-chicken-burgers-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_6.jpg?v=1740812356&width=568") !important;
+}
+
 .type_section_about .item:nth-child(2) .icon-svg,
-#bk_why_2 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/hand-holding-soil-grow-tree-soft-focus_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_2 .icon-svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/hand-holding-soil-grow-tree-soft-focus_6.jpg?v=1740812356&width=568") !important;
+}
+
 .type_section_about .item:nth-child(3) .icon-svg,
-#bk_why_3 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/thoughtful-young-businessman-looking-laptop-workplace_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_3 .icon-svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/thoughtful-young-businessman-looking-laptop-workplace_6.jpg?v=1740812356&width=568") !important;
+}
+
 .type_section_about .item:nth-child(4) .icon-svg,
-#bk_why_4 .icon-svg { background-image: url("https://supplysix.com/cdn/shop/files/design-happy-maharishi-valmiki-jayanti-day-celebration_6.jpg?v=1740812356&width=568") !important; }
+#bk_why_4 .icon-svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/design-happy-maharishi-valmiki-jayanti-day-celebration_6.jpg?v=1740812356&width=568") !important;
+}
 
 .type_section_about .item .icon-svg,
 #bk_why_1 .icon-svg,
@@ -682,7 +769,7 @@ section.slideshow .swiper-slide {
   border: 1px solid var(--brand-border) !important;
   border-radius: 12px !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
 }
 
 .type_section_about .content-text,
@@ -706,17 +793,28 @@ section.slideshow .swiper-slide {
 }
 
 /* 3. USP Section Icons */
-.bl_usp_1 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Tired.png?v=1768311326&width=40") !important; }
-.bl_usp_2 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Sick.png?v=1768311340&width=40") !important; }
-.bl_usp_3 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Gut.png?v=1768311340&width=40") !important; }
-.bl_usp_4 .icon_svg { background-image: url("https://supplysix.com/cdn/shop/files/Feeling_off.png?v=1768311340&width=40") !important; }
+.bl_usp_1 .icon_svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/Tired.png?v=1768311326&width=40") !important;
+}
+
+.bl_usp_2 .icon_svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/Sick.png?v=1768311340&width=40") !important;
+}
+
+.bl_usp_3 .icon_svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/Gut.png?v=1768311340&width=40") !important;
+}
+
+.bl_usp_4 .icon_svg {
+  background-image: url("https://supplysix.com/cdn/shop/files/Feeling_off.png?v=1768311340&width=40") !important;
+}
 
 .bl_usp_1 .icon_svg,
 .bl_usp_2 .icon_svg,
 .bl_usp_3 .icon_svg,
 .bl_usp_4 .icon_svg {
-  width: 40px !important;
-  height: 40px !important;
+  width: 70px !important;
+  height: 70px !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -731,10 +829,21 @@ section.slideshow .swiper-slide {
 }
 
 /* 4. Brand Press Logos */
-#shopify-section-as_seen_in .swiper-slide:nth-child(1) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_24_2.png?v=1717415793&width=150") !important; }
-#shopify-section-as_seen_in .swiper-slide:nth-child(2) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_25_2.png?v=1717415793&width=150") !important; }
-#shopify-section-as_seen_in .swiper-slide:nth-child(3) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_26_2.png?v=1717415793&width=150") !important; }
-#shopify-section-as_seen_in .swiper-slide:nth-child(4) .image-card__img { background-image: url("https://supplysix.com/cdn/shop/files/element_27_2.png?v=1717415793&width=150") !important; }
+#shopify-section-as_seen_in .swiper-slide:nth-child(1) .image-card__img {
+  background-image: url("https://supplysix.com/cdn/shop/files/element_24_2.png?v=1717415793&width=150") !important;
+}
+
+#shopify-section-as_seen_in .swiper-slide:nth-child(2) .image-card__img {
+  background-image: url("https://supplysix.com/cdn/shop/files/element_25_2.png?v=1717415793&width=150") !important;
+}
+
+#shopify-section-as_seen_in .swiper-slide:nth-child(3) .image-card__img {
+  background-image: url("https://supplysix.com/cdn/shop/files/element_26_2.png?v=1717415793&width=150") !important;
+}
+
+#shopify-section-as_seen_in .swiper-slide:nth-child(4) .image-card__img {
+  background-image: url("https://supplysix.com/cdn/shop/files/element_27_2.png?v=1717415793&width=150") !important;
+}
 
 #shopify-section-as_seen_in .image-card__img {
   background-size: contain !important;
@@ -796,14 +905,14 @@ section.slideshow .swiper-slide {
   max-width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.02) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02) !important;
   box-sizing: border-box !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .top-seller-card:hover {
   transform: translateY(-5px) !important;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06) !important;
 }
 
 .top-seller-card .card-header {
@@ -937,15 +1046,19 @@ section.slideshow .swiper-slide {
     font-size: 28px !important;
     margin-bottom: 30px !important;
   }
+
   .top-sellers-grid {
     gap: 20px !important;
   }
+
   .top-seller-card {
     width: 100% !important;
   }
+
   .top-seller-card .product-image {
     max-height: 220px !important;
   }
+
   .top-sellers-section {
     padding: 40px 0 !important;
   }
@@ -1073,4 +1186,3 @@ section.slideshow .swiper-slide {
 .collection_carousel_product .product-item .inner .item-btn:not(.add-to-cart) {
   display: none !important;
 }
-
