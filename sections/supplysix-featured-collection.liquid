@@ -1,0 +1,88 @@
+{% schema %}
+{
+  "name": "SupplySix Featured Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 16,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "SupplySix Featured Grid",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'supplysix-style.css' | asset_url | stylesheet_tag }}
+
+<div class="supplysix-collection-section">
+  <div class="supplysix-container">
+    {% if section.settings.title != blank %}
+      <h2 class="supplysix-section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="supplysix-product-grid">
+      {% assign collection = collections[section.settings.collection] %}
+      
+      {% for product in collection.products limit: section.settings.products_to_show %}
+        <div class="supplysix-product-card">
+          <div class="ss-product-image">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
+            </a>
+          </div>
+          
+          <div class="ss-product-info">
+            <a href="{{ product.url }}" class="ss-product-title">{{ product.title }}</a>
+            
+            <div class="ss-product-price-wrapper">
+              {% if product.compare_at_price > product.price %}
+                <span class="ss-sale-price">{{ product.price | money }}</span>
+                <span class="ss-regular-price struck">{{ product.compare_at_price | money }}</span>
+              {% else %}
+                <span class="ss-regular-price">{{ product.price | money }}</span>
+              {% endif %}
+            </div>
+
+            <div class="ss-product-reviews">
+               <!-- Placeholder for Judge.me or other review app -->
+               <span class="ss-stars">★★★★★</span>
+            </div>
+
+            <div class="ss-product-action">
+              <form method="post" action="/cart/add">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                {% if product.available %}
+                  <button type="submit" class="ss-add-to-cart-btn">Add to cart</button>
+                {% else %}
+                  <button type="button" class="ss-add-to-cart-btn disabled" disabled>Sold out</button>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <p style="text-align: center; width: 100%;">Please select a collection with products.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
