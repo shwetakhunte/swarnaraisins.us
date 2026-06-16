@@ -1,258 +1,47 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "supplysix-main-product",
+      "settings": {
+        "subtitle": "Premium quality for your daily needs",
+        "loved_badge_text": "Loved by Customers"
+      },
       "blocks": {
-        "ed5dec54-d995-4f88-87d3-102460e07067": {
-          "type": "name_product",
+        "badge_1": {
+          "type": "trust_badge",
           "settings": {
-            "np_text_transform": "none",
-            "np_size": 24,
-            "np_weight": 500,
-            "np_size_mobile": 18,
-            "mb": 15,
-            "mb_mobile": 10
+            "title": "Zero Sugar",
+            "icon": "shopify:\/\/shop_images\/Zero_Sugar.png"
           }
         },
-        "6ff5677e-1d98-482d-bd86-4c67fe63a2af": {
-          "type": "show_reviews",
+        "badge_2": {
+          "type": "trust_badge",
           "settings": {
-            "use-reviewst": true,
-            "use-sold-product": true,
-            "min_sold": 5,
-            "max_sold": 25,
-            "time": "24 hours",
-            "mb": 20,
-            "mb_mobile": 15
+            "title": "No Preservatives",
+            "icon": "shopify:\/\/shop_images\/No_Preservatives.png"
           }
         },
-        "f1e09af0-0154-41e2-996f-755cdde44ea4": {
-          "type": "show_price",
+        "badge_3": {
+          "type": "trust_badge",
           "settings": {
-            "mb": 20,
-            "mb_mobile": 15
+            "title": "Plant Based",
+            "icon": "shopify:\/\/shop_images\/Plant_Based.png"
           }
         },
-        "c78dd46d-d065-4e43-aaa7-13423da0532f": {
-          "type": "show_description",
+        "badge_4": {
+          "type": "trust_badge",
           "settings": {
-            "custom_liquid": "{{product.metafields.custom.short_description | metafield_tag}}",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "579829e4-1aee-4727-9d91-41583b54bebd": {
-          "type": "countdown",
-          "settings": {
-            "text": "Hurry up! Sale ends in:",
-            "custom_liquid": "{{product.metafields.custom.countdown_timer}}",
-            "bg": "#ffffff",
-            "bd": "#ea0d42",
-            "cl_title": "#2d2a6e",
-            "bg_countdown": "#ea0d42",
-            "cl_text": "#ffffff",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "5c909704-7273-41b5-b5b9-38085bf8c176": {
-          "type": "product_variants",
-          "settings": {
-            "show_title": true,
-            "show_size_guide": true,
-            "size_guide_page": "",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "888fb817-16f3-467a-8d84-48f25bfcf851": {
-          "type": "text_countdown_html",
-          "settings": {
-            "show_text_countdown": false,
-            "minutes": 1,
-            "show_visitors_html": true,
-            "product_visitors_min": 10,
-            "product_visitors_max": 25,
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "7dd79963-0728-4ccb-85ae-a4ef29c6e44c": {
-          "type": "inventory_qty",
-          "settings": {
-            "total_items": 100,
-            "cl_qty": "#ea0d42",
-            "bg_1": "#ea0d42",
-            "bg_2": "#e6ecf0",
-            "h_stock": 5,
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "message_YJynHB": {
-          "type": "message",
-          "settings": {
-            "title": "Your message",
-            "content": "Add your name, note to personalise your item.",
-            "message": "message",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "file_Vw3X6k": {
-          "type": "file",
-          "settings": {
-            "title": "Upload image:",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "8681d35e-2735-4d23-98a5-4f3b5271e474": {
-          "type": "quantity_button",
-          "settings": {
-            "icon_button_cart": "",
-            "qt_show_quantity": true,
-            "qt_show_cart": true,
-            "qt_buy_it_now": true,
-            "qt_show_compare": true,
-            "qt_show_wishlist": true,
-            "show_custom_color_btn": true,
-            "color_text_cart": "#ffffff",
-            "bg_add_to_cart": "#2a7d2e",
-            "color_text_cart_hover": "#ffffff",
-            "bg_add_to_cart_hv": "#124a2f",
-            "color_text_buy_now": "#ffffff",
-            "bg_buy_it_now": "#7fba00",
-            "color_text_buy_now_hover": "#ffffff",
-            "bg_buy_it_now_hv": "#124a2f",
-            "btn_name": "",
-            "btn_link": "",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "d2caabfb-7c33-47ff-b309-cfca9d0d9b98": {
-          "type": "popup",
-          "settings": {
-            "show_size_chart": true,
-            "text_size_chart": "Size chart",
-            "size_guide_page": "size-chart",
-            "show_shipping_returns": true,
-            "text_shipping_returns": "Shipping and Returns",
-            "shipping_returns_page": "shipping-return",
-            "show_compare_color": true,
-            "text_compare_color": "Compare Color",
-            "show_contact_us": true,
-            "text_contact_us": "Contact us",
-            "show_social_sharing": true,
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "26205a69-31b8-41d3-83bf-2e25db4c4dfa": {
-          "type": "shipping",
-          "settings": {
-            "show_delivery_times": true,
-            "deliver_text": "Estimated Delivery:",
-            "deliver_days": "7",
-            "date_format": "%b %d",
-            "show_shipping_text": true,
-            "shipping_text": "<p>Return within <strong>30 days</strong> of purchase. Taxes are non-refundable.</p>",
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "993a628c-32eb-456f-9eb4-88c3a61fa8e0": {
-          "type": "product_infor",
-          "settings": {
-            "show_sku": true,
-            "show_barcode": false,
-            "show_vendor": true,
-            "show_type": false,
-            "show_availability": true,
-            "color_in_stock": "#008a00",
-            "color_out_stock": "#dd3842",
-            "show_category": true,
-            "limit_cate": 2,
-            "show_tags": true,
-            "limit_tags": 5,
-            "mb": 20,
-            "mb_mobile": 15
-          }
-        },
-        "f0b169ef-ed96-4dd1-9b76-7e2e8121cc42": {
-          "type": "custom_html",
-          "settings": {
-            "html_title": "Guaranteed Safe Checkout",
-            "html_custom": "",
-            "show_svg_custom": true,
-            "svg_custom": "amazon_payments,apple_pay,bitcoin,google_pay,jcb,klarna-pay-later,maestro,master,paypal,shopify_pay,visa",
-            "mb": 20,
-            "mb_mobile": 15
+            "title": "Non-GMO",
+            "icon": "shopify:\/\/shop_images\/Non-GMO.png"
           }
         }
       },
       "block_order": [
-        "ed5dec54-d995-4f88-87d3-102460e07067",
-        "6ff5677e-1d98-482d-bd86-4c67fe63a2af",
-        "f1e09af0-0154-41e2-996f-755cdde44ea4",
-        "c78dd46d-d065-4e43-aaa7-13423da0532f",
-        "579829e4-1aee-4727-9d91-41583b54bebd",
-        "5c909704-7273-41b5-b5b9-38085bf8c176",
-        "888fb817-16f3-467a-8d84-48f25bfcf851",
-        "7dd79963-0728-4ccb-85ae-a4ef29c6e44c",
-        "message_YJynHB",
-        "file_Vw3X6k",
-        "8681d35e-2735-4d23-98a5-4f3b5271e474",
-        "d2caabfb-7c33-47ff-b309-cfca9d0d9b98",
-        "26205a69-31b8-41d3-83bf-2e25db4c4dfa",
-        "993a628c-32eb-456f-9eb4-88c3a61fa8e0",
-        "f0b169ef-ed96-4dd1-9b76-7e2e8121cc42"
-      ],
-      "settings": {
-        "cl_bg": "#ffffff",
-        "cl_bg_content": "rgba(0,0,0,0)",
-        "product_page_design": "default",
-        "mg": "0,0,100px,0",
-        "pd": ",,,",
-        "mg_mb": "0,0,50px,0",
-        "pd_mb": ",,,",
-        "zoomEnabled": true,
-        "zoomType": "window",
-        "zoomTouch": "",
-        "zoomEffect": "",
-        "effectDuration": 600,
-        "touchDelay": 90,
-        "zoomFactor": 1,
-        "zIndex": 999,
-        "zoomWidth": 0,
-        "zoomHeight": 0,
-        "marginWindow": 10,
-        "pos_thumb": "right",
-        "use-slider": true,
-        "visible": 6,
-        "widescreen": 6,
-        "desktop": 6,
-        "laptop": 5,
-        "notebook": 5,
-        "tablet": 5,
-        "rows": 1,
-        "navigation": true,
-        "effect": "slide",
-        "centered-Slides": false,
-        "auto-Height": false,
-        "space-Between": 10,
-        "direction": "vertical"
-      }
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ]
     },
     "products_bought_together_Bg4gfU": {
       "type": "products-bought-together",
@@ -308,7 +97,7 @@
           "disabled": true,
           "settings": {
             "title": "Additional Information",
-            "custom_liquid": "{{product.metafields.custom.additional_information | metafield_tag}}"
+            "custom_liquid": "{{\product.metafields.custom.additional_information | metafield_tag}}"
           }
         },
         "d07132a9-cf30-4c47-a9f5-6b3bd410c124": {
@@ -322,7 +111,7 @@
           "type": "tab_custom_text",
           "settings": {
             "title": "Return Policies",
-            "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:</p><p>– Received the wrong item.<br/>– Item arrived not as expected (ie. damaged packaging).<br/>– Item had defects.<br/>– Over delivery time.<br/>– The shipper does not allow the goods to be inspected before payment.</p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.</p>"
+            "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:<\/p><p>– Received the wrong item.<br\/>– Item arrived not as expected (ie. damaged packaging).<br\/>– Item had defects.<br\/>– Over delivery time.<br\/>– The shipper does not allow the goods to be inspected before payment.<\/p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.<\/p>"
           }
         },
         "0e2c2c01-948c-43f1-ae77-e8dbabaf8f55": {
