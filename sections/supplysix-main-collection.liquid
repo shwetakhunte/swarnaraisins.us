@@ -1,0 +1,120 @@
+{% schema %}
+{
+  "name": "SupplySix Main Collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 16,
+      "label": "Products per page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SupplySix Main Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'supplysix-style.css' | asset_url | stylesheet_tag }}
+
+<div class="supplysix-collection-section">
+  <div class="supplysix-container">
+    <div class="collection-header" style="text-align: center; margin-bottom: 40px;">
+      <h1 class="supplysix-section-title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <div class="collection-description" style="max-width: 800px; margin: 0 auto; color: #555;">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size == 0 -%}
+        <p style="text-align: center; width: 100%;">No products found in this collection.</p>
+      {%- else -%}
+        <div class="supplysix-product-grid">
+          {%- for product in collection.products -%}
+            <div class="supplysix-product-card">
+              <div class="ss-product-image">
+                <a href="{{ product.url }}">
+                  <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
+                </a>
+              </div>
+              
+              <div class="ss-product-info">
+                <a href="{{ product.url }}" class="ss-product-title">{{ product.title }}</a>
+                
+                <div class="ss-product-price-wrapper">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="ss-sale-price">{{ product.price | money }}</span>
+                    <span class="ss-regular-price struck">{{ product.compare_at_price | money }}</span>
+                  {% else %}
+                    <span class="ss-regular-price">{{ product.price | money }}</span>
+                  {% endif %}
+                </div>
+
+                <div class="ss-product-reviews">
+                   <!-- Placeholder for Judge.me or other review app -->
+                   <span class="ss-stars">★★★★★</span>
+                </div>
+
+                <div class="ss-product-action">
+                  <form method="post" action="/cart/add">
+                    <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                    {% if product.available %}
+                      <button type="submit" class="ss-add-to-cart-btn">Add to cart</button>
+                    {% else %}
+                      <button type="button" class="ss-add-to-cart-btn disabled" disabled>Sold out</button>
+                    {% endif %}
+                  </form>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div class="pagination-wrapper" style="margin-top: 40px; text-align: center;">
+            {{ paginate | default_pagination: next: 'Next »', previous: '« Prev' }}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+<style>
+/* Basic pagination styling for SupplySix theme */
+.pagination-wrapper .page {
+  display: inline-block;
+  margin: 0 4px;
+}
+.pagination-wrapper .page a, .pagination-wrapper .next a, .pagination-wrapper .prev a {
+  padding: 8px 16px;
+  border: 1px solid var(--brand-border);
+  border-radius: 4px;
+  color: var(--brand-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.pagination-wrapper .page a:hover, .pagination-wrapper .next a:hover, .pagination-wrapper .prev a:hover {
+  background: var(--brand-green);
+  color: var(--brand-white);
+  border-color: var(--brand-green);
+}
+.pagination-wrapper .page.current {
+  padding: 8px 16px;
+  border: 1px solid var(--brand-green);
+  border-radius: 4px;
+  background: var(--brand-green);
+  color: var(--brand-white);
+  font-weight: 500;
+}
+</style>
