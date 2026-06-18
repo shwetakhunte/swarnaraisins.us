@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* ==========================================================================
-   SupplySix UI Replica Overrides 
+   SupplySix UI Replica Overrides  
    ========================================================================== */
 
 :root {
@@ -2348,5 +2348,169 @@ section.slideshow .swiper-slide {
   font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
+}
+
+
+
+/* SupplySix Top Sellers Premium Styles */
+.top-sellers-section {
+  padding: 60px 20px;
+  background-color: var(--s6-cream, #f6f4f1);
+  font-family: var(--s6-font, 'Poppins', sans-serif);
+}
+
+.top-sellers-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--s6-green, #014344);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.top-sellers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .top-sellers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+.top-seller-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid var(--s6-border, #e0e0e0);
+  transition: transform 0.3s ease;
+}
+
+.top-seller-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-tag-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--s6-green, #014344);
+  margin: 0 0 10px 0;
+}
+
+.ribbon-banner {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ribbon-banner.teal-ribbon {
+  background-color: var(--s6-green-light, #e8f3ef);
+  color: var(--s6-green, #014344);
+}
+
+.ribbon-banner.pink-ribbon {
+  background-color: #fdf0f2;
+  color: #d13d56;
+}
+
+.product-image-wrap {
+  background: var(--s6-cream, #f6f4f1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-image-wrap img {
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.card-footer {
+  text-align: center;
+  margin-top: auto;
+}
+
+.reviews-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.reviews-wrap .stars {
+  color: #f6a429;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.reviews-wrap .reviews-count {
+  font-size: 14px;
+  color: var(--s6-text-light, #666);
+  font-weight: 500;
+}
+
+.product-desc {
+  font-size: 15px;
+  color: var(--s6-text, #1b1b1b);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.add-to-cart-btn {
+  display: block;
+  width: 100%;
+  background: var(--s6-green, #014344);
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: var(--s6-green-hover, #026c6d);
+  color: #fff;
+}
+
+.shop-all-wrap {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.shop-all-link {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--s6-green, #014344);
+  text-decoration: none;
+  border-bottom: 2px solid var(--s6-green, #014344);
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.shop-all-link:hover {
+  color: var(--s6-orange, #eb5624);
+  border-color: var(--s6-orange, #eb5624);
 }
 
