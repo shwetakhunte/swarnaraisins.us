@@ -97,7 +97,7 @@
           "disabled": true,
           "settings": {
             "title": "Additional Information",
-            "custom_liquid": "{{\product.metafields.custom.additional_information | metafield_tag}}"
+            "custom_liquid": "{{product.metafields.custom.additional_information | metafield_tag}}"
           }
         },
         "d07132a9-cf30-4c47-a9f5-6b3bd410c124": {
