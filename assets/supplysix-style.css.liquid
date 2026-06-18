@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* ==========================================================================
-   SupplySix UI Replica Overrides  
+   SupplySix UI Replica Overrides
    ========================================================================== */
 
 :root {
@@ -2512,5 +2512,331 @@ section.slideshow .swiper-slide {
 .shop-all-link:hover {
   color: var(--s6-orange, #eb5624);
   border-color: var(--s6-orange, #eb5624);
+}
+
+
+
+/* ==========================================================================
+   SupplySix Exact 1:1 Replica Styles
+   ========================================================================== */
+
+.s6-pdp-wrapper-v2 {
+  background-color: #e8ecea; /* Light mint/teal background */
+  padding: 40px 20px;
+  font-family: 'Montserrat', sans-serif; /* Adjusted to theme font or 'Poppins' */
+}
+
+.s6-pdp-grid-v2 {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 992px) {
+  .s6-pdp-grid-v2 {
+    flex-direction: row; /* Info Left, Image Right */
+    align-items: stretch;
+  }
+}
+
+/* --- Info Column (Left) --- */
+.s6-info-col-v2 {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.s6-title-v2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #014344;
+  margin: 0 0 5px 0;
+  line-height: 1.1;
+}
+
+.s6-subtitle-v2 {
+  font-size: 16px;
+  color: #014344;
+  font-style: italic;
+  margin: 0 0 15px 0;
+}
+
+.s6-reviews-row-v2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.s6-stars-v2 {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.s6-review-text-v2 {
+  font-size: 14px;
+  color: #1b1b1b;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+.s6-loved-badge-v2 {
+  background-color: #ef4c45;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.s6-desc-v2 {
+  font-size: 15px;
+  color: #1b1b1b;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  max-width: 90%;
+}
+
+/* Feature Grid */
+.s6-feature-grid-v2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.s6-feature-item-v2 {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #014344;
+  gap: 10px;
+}
+
+.s6-feature-icon-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #014344;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Secondary Buttons */
+.s6-secondary-buttons-v2 {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.s6-sec-btn-v2 {
+  background: #fff;
+  border: 1px solid #014344;
+  color: #014344;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.s6-sec-btn-v2:hover {
+  background: #014344;
+  color: #fff;
+}
+
+/* Promo Banner */
+.s6-promo-banner-v2 {
+  background-color: #ee7265;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+/* Variant Boxes */
+.s6-variant-boxes-v2 {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.s6-vbox {
+  flex: 1;
+  background: #fff;
+  border: 2px solid #014344;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.s6-vbox.selected {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.s6-vbox-ribbon {
+  background-color: #ffd000;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 0;
+  border-bottom: 2px solid #014344;
+}
+
+.s6-vbox.highlighted {
+  border-color: #ffd000;
+}
+
+.s6-vbox-top {
+  padding: 15px 10px;
+}
+
+.s6-vbox-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #014344;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.s6-vbox-compare {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.s6-vbox-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #014344;
+}
+
+.s6-vbox-bottom {
+  background-color: #014344;
+  color: #fff;
+  padding: 10px 5px;
+  font-size: 12px;
+}
+
+.s6-vbox-serving {
+  font-weight: 700;
+}
+
+.s6-vbox-save {
+  font-size: 11px;
+}
+
+.s6-vbox-mrp {
+  font-size: 10px;
+  color: #ccc;
+  margin-top: 3px;
+}
+
+/* ATC Button */
+.s6-atc-btn-v2 {
+  width: 100%;
+  background-color: #014344;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.s6-atc-btn-v2:hover {
+  background-color: #026c6d;
+}
+
+/* --- Media Column (Right) --- */
+.s6-media-col-v2 {
+  flex: 1;
+}
+
+.s6-image-container-v2 {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s6-clinically-bar-v2 {
+  background-color: #014344;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 12px 0;
+}
+
+.s6-image-inner-v2 {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.s6-image-inner-v2 img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.s6-arrow-v2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #333;
+}
+
+.s6-arrow-left { left: 20px; }
+.s6-arrow-right { right: 20px; }
+
+.s6-zoom-icon-v2 {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
 }
 

@@ -6,33 +6,19 @@
       "type": "text",
       "id": "subtitle",
       "label": "Product Subtitle",
-      "default": "Fill everyday nutrient and gut-health needs."
+      "default": "Daily nutrition to support modern diets"
     },
     {
       "type": "text",
-      "id": "subscription_discount",
-      "label": "Subscription Discount %",
-      "default": "15"
-    }
-  ],
-  "blocks": [
+      "id": "description_text",
+      "label": "Description Text",
+      "default": "Fill everyday nutrient and gut-health needs with essential vitamins, minerals, probiotics, and prebiotics from whole foods."
+    },
     {
-      "type": "trust_badge",
-      "name": "Trust Badge",
-      "limit": 4,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Badge Icon"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Badge Title",
-          "default": "Zero Sugar"
-        }
-      ]
+      "type": "text",
+      "id": "promo_text",
+      "label": "Promo Banner Text",
+      "default": "Avail extra 15% off using code GLAD15"
     }
   ],
   "presets": [
@@ -46,223 +32,151 @@
 
 {{ 'supplysix-style.css' | asset_url | stylesheet_tag }}
 
-<div class="s6-pdp-wrapper">
-  
-  <!-- Mobile Header -->
-  <div class="s6-mobile-header">
-    <div class="s6-mobile-stars">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <span>4.73 (263)</span>
-    </div>
-    <h1 class="s6-mobile-title">{{ product.title }}</h1>
-    {% if section.settings.subtitle != blank %}
-      <p class="s6-mobile-subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
-  </div>
-
-  <div class="s6-pdp-grid">
+<div class="s6-pdp-wrapper-v2">
+  <div class="s6-pdp-grid-v2">
     
-    <!-- Image Gallery -->
-    <div class="s6-media-col">
-      <div class="s6-main-image">
-        <div class="s6-image-badge">Clinically Tested</div>
-        <img id="s6-featured-image" src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
-      </div>
-      {% if product.images.size > 1 %}
-        <div class="s6-thumbnails">
-          {% for image in product.images %}
-            <div class="s6-thumb {% if forloop.first %}active{% endif %}" onclick="s6ChangeImage('{{ image | img_url: '1000x' }}', this)">
-              <img src="{{ image | img_url: '150x' }}" alt="{{ product.title }}">
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    </div>
-
-    <!-- Product Info -->
-    <div class="s6-info-col">
+    <!-- INFO COLUMN (LEFT) -->
+    <div class="s6-info-col-v2">
+      <h1 class="s6-title-v2">{{ product.title }}</h1>
       
-      <!-- Desktop Header -->
-      <div class="s6-desktop-header">
-        <h1 class="s6-desktop-title">{{ product.title }}</h1>
-        {% if section.settings.subtitle != blank %}
-          <p class="s6-desktop-subtitle">{{ section.settings.subtitle }}</p>
-        {% endif %}
-        <div class="s6-mobile-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span style="font-size: 15px;">4.73 (263 reviews)</span>
+      {% if section.settings.subtitle != blank %}
+        <p class="s6-subtitle-v2">{{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      <div class="s6-reviews-row-v2">
+        <div class="s6-stars-v2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f6a429"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f6a429"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f6a429"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f6a429"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f6a429"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="s6-review-text-v2">263 reviews</span>
+        </div>
+        <div class="s6-loved-badge-v2">Loved by 2L+ Customers</div>
+      </div>
+
+      <p class="s6-desc-v2">{{ section.settings.description_text }}</p>
+
+      <div class="s6-feature-grid-v2">
+        <div class="s6-feature-item-v2">
+          <span class="s6-feature-icon-v2">🛡️</span> Improves Gut Health
+        </div>
+        <div class="s6-feature-item-v2">
+          <span class="s6-feature-icon-v2">⚡</span> Boosts Energy & Focus
+        </div>
+        <div class="s6-feature-item-v2">
+          <span class="s6-feature-icon-v2">🧘</span> Lowers Stress Levels
+        </div>
+        <div class="s6-feature-item-v2">
+          <span class="s6-feature-icon-v2">💪</span> Boosts Immunity
+        </div>
+        <div class="s6-feature-item-v2">
+          <span class="s6-feature-icon-v2">🦴</span> Improves Bone Health
+        </div>
+        <div class="s6-feature-item-v2">
+          <span class="s6-feature-icon-v2">👁️</span> Supports Eye Health
         </div>
       </div>
 
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="s6-add-to-cart-form">
-        
-        <!-- Variants -->
-        {% if product.has_only_default_variant == false %}
-          <span class="s6-section-label">Select Pack Size:</span>
-          <div class="s6-variants">
+      <div class="s6-secondary-buttons-v2">
+        <button class="s6-sec-btn-v2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Clinical Study Report
+        </button>
+        <button class="s6-sec-btn-v2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          Lab Test Reports >
+        </button>
+      </div>
+
+      {% if section.settings.promo_text != blank %}
+      <div class="s6-promo-banner-v2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="15" x2="15.01" y2="15"></line></svg>
+        {{ section.settings.promo_text }}
+      </div>
+      {% endif %}
+
+      <form action="/cart/add" method="post" id="s6-form-v2">
+        <div class="s6-variant-boxes-v2">
+          {% if product.has_only_default_variant == false %}
             {% for variant in product.variants %}
-              <label class="s6-variant-card {% if forloop.first %}selected{% endif %}" onclick="s6SelectVariant(this, '{{ variant.id }}', {{ variant.price }}, {{ variant.compare_at_price | default: variant.price }})">
-                <input type="radio" name="id" value="{{ variant.id }}" class="hidden-radio" {% if forloop.first %}checked{% endif %}>
-                {% if forloop.index == 2 %}
-                  <div class="s6-var-tag">Best Value</div>
+              
+              <!-- Map Index to Display Styles -->
+              {% assign is_highlighted = false %}
+              {% if forloop.index == 2 %}
+                {% assign is_highlighted = true %}
+              {% endif %}
+
+              <label class="s6-vbox {% if is_highlighted %}highlighted{% endif %} {% if forloop.first and is_highlighted == false %}selected{% elsif is_highlighted %}selected{% endif %}" onclick="s6SelectVarBox(this, '{{ variant.id }}')">
+                <input type="radio" name="id" value="{{ variant.id }}" class="hidden-radio" {% if is_highlighted %}checked{% endif %}>
+                
+                {% if is_highlighted %}
+                  <div class="s6-vbox-ribbon">Best Results</div>
                 {% endif %}
-                <div class="s6-var-title">{{ variant.title }}</div>
-                <div class="s6-var-price-wrapper">
+
+                <div class="s6-vbox-top">
+                  <div class="s6-vbox-title">
+                    {% if forloop.index == 1 %}15 Days{% elsif forloop.index == 2 %}30 Days{% else %}60 Days{% endif %}
+                  </div>
                   {% if variant.compare_at_price > variant.price %}
-                    <span class="s6-var-compare">{{ variant.compare_at_price | money }}</span>
+                    <div class="s6-vbox-compare">{{ variant.compare_at_price | money }}</div>
                   {% endif %}
-                  <span class="s6-var-price">{{ variant.price | money }}</span>
+                  <div class="s6-vbox-price">{{ variant.price | money }}</div>
+                </div>
+
+                <div class="s6-vbox-bottom">
+                  <div class="s6-vbox-serving">
+                    {% if forloop.index == 1 %}₹ 72/serving{% elsif forloop.index == 2 %}₹ 68/serving{% else %}₹ 65/serving{% endif %}
+                  </div>
+                  {% if variant.compare_at_price > variant.price %}
+                    {% assign savings = variant.compare_at_price | minus: variant.price %}
+                    <div class="s6-vbox-save">Save {{ savings | money }}</div>
+                  {% endif %}
+                  {% if is_highlighted %}
+                    <div class="s6-vbox-mrp">MRP (Incl. of all taxes)</div>
+                  {% endif %}
                 </div>
               </label>
             {% endfor %}
-          </div>
-        {% else %}
-          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-          <div style="display:none;" id="s6-base-price" data-price="{{ product.price }}"></div>
-        {% endif %}
-
-        <!-- Subscription Option -->
-        <div class="s6-sub-container">
-          <!-- Subscribe & Save -->
-          <label class="s6-sub-option selected" onclick="s6ToggleSub('subscribe')">
-            <input type="radio" name="purchase_type" value="subscribe" class="hidden-radio" checked>
-            <div class="s6-radio-outer"><div class="s6-radio-inner"></div></div>
-            <div class="s6-sub-content">
-              <div class="s6-sub-title-row">
-                <span class="s6-sub-title">Subscribe & Save</span>
-                <span class="s6-sub-discount">SAVE {{ section.settings.subscription_discount }}%</span>
-              </div>
-              <span class="s6-sub-desc">Delivered every 30 days. Cancel anytime.</span>
-            </div>
-            <div class="s6-sub-price" id="s6-price-sub"></div>
-          </label>
-          
-          <!-- One-time -->
-          <label class="s6-sub-option" onclick="s6ToggleSub('onetime')">
-            <input type="radio" name="purchase_type" value="onetime" class="hidden-radio">
-            <div class="s6-radio-outer"><div class="s6-radio-inner"></div></div>
-            <div class="s6-sub-content">
-              <span class="s6-sub-title">One-time purchase</span>
-            </div>
-            <div class="s6-sub-price" id="s6-price-onetime" style="color:var(--s6-text);"></div>
-          </label>
-        </div>
-
-        <input type="hidden" name="selling_plan" value="12345" id="s6-selling-plan">
-
-        <!-- ATC Button -->
-        <button type="submit" class="s6-atc-btn" id="s6-submit-btn">
-          ADD TO CART - <span id="s6-btn-price" style="margin-left: 5px;"></span>
-        </button>
-
-        <!-- Trust Badges -->
-        <div class="s6-trust-badges">
-          {% for block in section.blocks %}
-            <div class="s6-badge">
-              {% if block.settings.icon %}
-                <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.title }}">
-              {% else %}
-                <div class="s6-placeholder-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                </div>
-              {% endif %}
-              <span>{{ block.settings.title }}</span>
-            </div>
-          {% endfor %}
-          {% if section.blocks.size == 0 %}
-            <div class="s6-badge">
-              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-              <span>Zero Sugar</span>
-            </div>
-            <div class="s6-badge">
-              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-              <span>Plant Based</span>
-            </div>
-            <div class="s6-badge">
-              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-              <span>No Preservatives</span>
-            </div>
-            <div class="s6-badge">
-              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-              <span>Non-GMO</span>
-            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
           {% endif %}
         </div>
 
+        <button type="submit" class="s6-atc-btn-v2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          ADD TO CART
+        </button>
       </form>
+
     </div>
+
+    <!-- MEDIA COLUMN (RIGHT) -->
+    <div class="s6-media-col-v2">
+      <div class="s6-image-container-v2">
+        <div class="s6-clinically-bar-v2">Clinically Tested</div>
+        <div class="s6-image-inner-v2">
+          <div class="s6-arrow-v2 s6-arrow-left">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </div>
+          <div class="s6-arrow-v2 s6-arrow-right">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+          <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
+          <div class="s6-zoom-icon-v2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- Sticky Mobile CTA -->
-<div class="s6-sticky-atc">
-  <button type="button" class="s6-sticky-btn" onclick="document.getElementById('s6-submit-btn').click()">
-    ADD TO CART - <span id="s6-sticky-price"></span>
-  </button>
-</div>
-
 <script>
-  let s6CurrentPrice = {{ product.price | default: 0 }};
-  let s6IsSubscribed = true;
-  let s6DiscountFactor = (100 - {{ section.settings.subscription_discount | default: 15 }}) / 100;
-
-  function s6FormatMoney(cents) {
-    return '₹' + (cents / 100).toFixed(2);
-  }
-
-  function s6UpdatePrices() {
-    let subPrice = s6CurrentPrice * s6DiscountFactor;
-    let onetimePrice = s6CurrentPrice;
-    let finalPrice = s6IsSubscribed ? subPrice : onetimePrice;
-
-    document.getElementById('s6-price-sub').innerText = s6FormatMoney(subPrice);
-    document.getElementById('s6-price-onetime').innerText = s6FormatMoney(onetimePrice);
-    document.getElementById('s6-btn-price').innerText = s6FormatMoney(finalPrice);
-    document.getElementById('s6-sticky-price').innerText = s6FormatMoney(finalPrice);
-  }
-
-  function s6ChangeImage(url, el) {
-    document.getElementById('s6-featured-image').src = url;
-    document.querySelectorAll('.s6-thumb').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-  }
-
-  function s6SelectVariant(el, id, price, comparePrice) {
-    document.querySelectorAll('.s6-variant-card').forEach(c => c.classList.remove('selected'));
+  function s6SelectVarBox(el, variantId) {
+    document.querySelectorAll('.s6-vbox').forEach(b => b.classList.remove('selected'));
     el.classList.add('selected');
-    s6CurrentPrice = price;
-    s6UpdatePrices();
+    el.querySelector('input[type="radio"]').checked = true;
   }
-
-  function s6ToggleSub(type) {
-    document.querySelectorAll('.s6-sub-option').forEach(o => o.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
-    s6IsSubscribed = (type === 'subscribe');
-    document.getElementById('s6-selling-plan').value = s6IsSubscribed ? "12345" : "";
-    s6UpdatePrices();
-  }
-
-  // Init
-  document.addEventListener("DOMContentLoaded", () => {
-    s6UpdatePrices();
-  });
-
-  // Sticky scroll
-  window.addEventListener('scroll', () => {
-    let btn = document.getElementById('s6-submit-btn');
-    let sticky = document.querySelector('.s6-sticky-atc');
-    if (btn && window.scrollY > (btn.offsetTop + btn.offsetHeight) && window.innerWidth < 768) {
-      sticky.classList.add('visible');
-    } else {
-      sticky.classList.remove('visible');
-    }
-  });
 </script>
