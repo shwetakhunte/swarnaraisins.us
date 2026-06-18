@@ -1,0 +1,143 @@
+{% schema %}
+{
+  "name": "SupplySix How To Use",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to use"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Step 1"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Add 1 scoop to water."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SupplySix How To Use",
+      "category": "Instruction"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.ss-htu-section {
+  padding: 48px 16px;
+  background: var(--ss-green);
+  color: #fff;
+}
+.ss-htu-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.ss-htu-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #fff;
+}
+.ss-htu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+@media (min-width: 768px) {
+  .ss-htu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.ss-htu-step {
+  text-align: center;
+}
+.ss-htu-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ss-htu-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ss-htu-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.ss-htu-desc {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+</style>
+
+<div class="ss-htu-section">
+  <div class="ss-htu-container">
+    <h2 class="ss-htu-heading">{{ section.settings.heading }}</h2>
+    
+    <div class="ss-htu-grid">
+      {% for block in section.blocks %}
+        <div class="ss-htu-step">
+          <div class="ss-htu-image">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | img_url: '200x' }}" alt="{{ block.settings.title }}">
+            {% else %}
+              <span style="font-size: 40px; font-weight: bold;">{{ forloop.index }}</span>
+            {% endif %}
+          </div>
+          <h3 class="ss-htu-title">{{ block.settings.title }}</h3>
+          <p class="ss-htu-desc">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+
+      {% if section.blocks.size == 0 %}
+        <div class="ss-htu-step">
+          <div class="ss-htu-image"><span style="font-size: 40px; font-weight: bold;">1</span></div>
+          <h3 class="ss-htu-title">Pour</h3>
+          <p class="ss-htu-desc">Take 250ml of cold water in a shaker.</p>
+        </div>
+        <div class="ss-htu-step">
+          <div class="ss-htu-image"><span style="font-size: 40px; font-weight: bold;">2</span></div>
+          <h3 class="ss-htu-title">Mix</h3>
+          <p class="ss-htu-desc">Add 1 scoop of Supply6 360.</p>
+        </div>
+        <div class="ss-htu-step">
+          <div class="ss-htu-image"><span style="font-size: 40px; font-weight: bold;">3</span></div>
+          <h3 class="ss-htu-title">Drink</h3>
+          <p class="ss-htu-desc">Shake well and enjoy your daily nutrients.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

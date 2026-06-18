@@ -1,18 +1,24 @@
 {% schema %}
 {
-  "name": "SupplySix Product Page",
+  "name": "SupplySix Product Main",
   "settings": [
     {
       "type": "text",
       "id": "subtitle",
       "label": "Product Subtitle",
-      "default": "Daily nutrition to support modern diets"
+      "default": "Fill everyday nutrient and gut-health needs."
     },
     {
       "type": "text",
       "id": "loved_badge_text",
       "label": "Badge Text",
       "default": "Loved by Customers"
+    },
+    {
+      "type": "text",
+      "id": "subscription_discount",
+      "label": "Subscription Discount Text",
+      "default": "Save 15%"
     }
   ],
   "blocks": [
@@ -37,7 +43,7 @@
   ],
   "presets": [
     {
-      "name": "SupplySix Product Page",
+      "name": "SupplySix Product Main",
       "category": "Product"
     }
   ]
@@ -46,160 +52,176 @@
 
 {{ 'supplysix-style.css' | asset_url | stylesheet_tag }}
 
-<div class="ss-product-template">
-  <!-- Top Hero Section -->
-  <div class="ss-product-top-bg">
-    <div class="ss-product-container">
-      <div class="ss-product-columns">
-        
-        <!-- Left Column: Product Info -->
-        <div class="ss-product-info-col">
-          <h1 class="ss-prod-title">{{ product.title }}</h1>
-          
-          {% if section.settings.subtitle != blank %}
-            <p class="ss-prod-subtitle">{{ section.settings.subtitle }}</p>
-          {% endif %}
-          
-          <div class="ss-prod-reviews">
-            <span class="ss-stars">★★★★★</span> 
-            <span class="ss-review-count">263 reviews</span>
-            {% if section.settings.loved_badge_text != blank %}
-              <span class="ss-loved-badge">{{ section.settings.loved_badge_text }}</span>
-            {% endif %}
-          </div>
-
-          <div class="ss-prod-description">
-            {{ product.description }}
-          </div>
-
-          <!-- Add to Cart Form with Custom Variant Pack Selectors -->
-          <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm-{{ section.id }}">
-            
-            {% if product.has_only_default_variant == false %}
-              <div class="ss-variant-boxes">
-                {% for variant in product.variants %}
-                  <label class="ss-variant-box {% if forloop.first %}selected{% endif %}" for="variant-{{ variant.id }}">
-                    <input type="radio" name="id" value="{{ variant.id }}" id="variant-{{ variant.id }}" {% if forloop.first %}checked{% endif %} class="hidden-radio" onchange="updateVariantSelection(this)">
-                    
-                    {% if forloop.index == 2 %}
-                      <div class="ss-var-badge">Best Results</div>
-                    {% endif %}
-                    
-                    <div class="ss-var-title">{{ variant.title }}</div>
-                    
-                    <div class="ss-var-prices">
-                      {% if variant.compare_at_price > variant.price %}
-                         <div class="ss-var-compare struck">{{ variant.compare_at_price | money }}</div>
-                      {% endif %}
-                      <div class="ss-var-price">{{ variant.price | money }}</div>
-                    </div>
-                    
-                    <div class="ss-var-savings">
-                      {% if variant.compare_at_price > variant.price %}
-                        Save {{ variant.compare_at_price | minus: variant.price | money }}
-                      {% else %}
-                        Select
-                      {% endif %}
-                    </div>
-                  </label>
-                {% endfor %}
-              </div>
-            {% else %}
-              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-              <div class="ss-single-price-wrapper">
-                {% if product.compare_at_price > product.price %}
-                  <span class="ss-single-sale">{{ product.price | money }}</span>
-                  <span class="ss-single-regular struck">{{ product.compare_at_price | money }}</span>
-                {% else %}
-                  <span class="ss-single-price">{{ product.price | money }}</span>
-                {% endif %}
-              </div>
-            {% endif %}
-
-            <!-- Quantity (hidden or optional, SupplySix usually forces 1 for packs) -->
-            <input type="hidden" name="quantity" value="1" min="1">
-
-            <button type="submit" class="ss-prod-add-to-cart" id="AddToCart-{{ section.id }}" {% unless product.available %}disabled{% endunless %}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-              <span id="AddToCartText-{{ section.id }}">
-                {% if product.available %}ADD TO CART{% else %}SOLD OUT{% endif %}
-              </span>
-            </button>
-          </form>
-        </div>
-
-        <!-- Right Column: Product Images -->
-        <div class="ss-product-image-col">
-          <div class="ss-image-badge-wrapper">
-            <div class="ss-clinically-tested-bar">Clinically Tested</div>
-            <div class="ss-main-image">
-              <img id="ss-featured-image" src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
-            </div>
-          </div>
-          
-          {% if product.images.size > 1 %}
-            <div class="ss-thumbnails">
-              {% for image in product.images %}
-                <img src="{{ image | img_url: '150x' }}" class="ss-thumb {% if forloop.first %}active{% endif %}" alt="{{ product.title }}" onclick="changeMainImage('{{ image | img_url: '1000x' }}', this)">
-              {% endfor %}
-            </div>
-          {% endif %}
-        </div>
-
-      </div>
-    </div>
+<div class="ss-pdp-wrapper">
+  <!-- Mobile Title & Reviews (visible on mobile only) -->
+  <div class="ss-pdp-header-mobile">
+    <div class="ss-stars-mobile">★★★★★ <span class="ss-review-count">4.73 (263 reviews)</span></div>
+    <h1 class="ss-title-mobile">{{ product.title }}</h1>
+    {% if section.settings.subtitle != blank %}
+      <p class="ss-subtitle-mobile">{{ section.settings.subtitle }}</p>
+    {% endif %}
   </div>
-  
-  <!-- Trust Badges Strip -->
-  <div class="ss-trust-badges-strip">
-    <div class="ss-product-container">
-      <div class="ss-trust-badges-flex">
-        {% for block in section.blocks %}
-          {% if block.type == 'trust_badge' %}
-            <div class="ss-trust-badge">
-              {% if block.settings.icon != blank %}
+
+  <div class="ss-pdp-container">
+    <!-- Media Column -->
+    <div class="ss-pdp-media">
+      <div class="ss-media-main">
+        <img id="ss-main-image" src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
+      </div>
+      {% if product.images.size > 1 %}
+        <div class="ss-media-thumbnails">
+          {% for image in product.images %}
+            <div class="ss-thumb-item {% if forloop.first %}active{% endif %}" onclick="changeMainImage('{{ image | img_url: '1000x' }}', this)">
+              <img src="{{ image | img_url: '150x' }}" alt="{{ product.title }}">
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Info Column -->
+    <div class="ss-pdp-info">
+      <!-- Desktop Title & Reviews -->
+      <div class="ss-pdp-header-desktop">
+        <h1 class="ss-title">{{ product.title }}</h1>
+        {% if section.settings.subtitle != blank %}
+          <p class="ss-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        <div class="ss-reviews">
+          <span class="ss-stars">★★★★★</span> <span class="ss-review-count">4.73 (263)</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="ss-add-to-cart-form">
+        
+        <!-- Variant Selection -->
+        {% if product.has_only_default_variant == false %}
+          <div class="ss-variants-grid">
+            {% for variant in product.variants %}
+              <label class="ss-variant-card {% if forloop.first %}selected{% endif %}" onclick="selectVariant(this, '{{ variant.id }}', {{ variant.price }}, {{ variant.compare_at_price | default: variant.price }})">
+                <input type="radio" name="id" value="{{ variant.id }}" class="hidden-radio" {% if forloop.first %}checked{% endif %}>
+                <div class="ss-var-name">{{ variant.title }}</div>
+                <div class="ss-var-price-group">
+                  {% if variant.compare_at_price > variant.price %}
+                    <span class="ss-var-compare">{{ variant.compare_at_price | money }}</span>
+                  {% endif %}
+                  <span class="ss-var-price">{{ variant.price | money }}</span>
+                </div>
+              </label>
+            {% endfor %}
+          </div>
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          <div class="ss-price-single" data-price="{{ product.price }}">
+             {{ product.price | money }}
+          </div>
+        {% endif %}
+
+        <!-- Subscription Toggle -->
+        <div class="ss-subscription-box">
+          <label class="ss-sub-option selected" onclick="toggleSubscription('subscribe')">
+            <input type="radio" name="purchase_type" value="subscribe" class="hidden-radio" checked>
+            <div class="ss-sub-radio"><div class="ss-dot"></div></div>
+            <div class="ss-sub-content">
+              <span class="ss-sub-title">Subscribe & Save {{ section.settings.subscription_discount }}</span>
+              <span class="ss-sub-desc">Delivered every 30 days. Cancel anytime.</span>
+            </div>
+          </label>
+          
+          <label class="ss-sub-option" onclick="toggleSubscription('onetime')">
+            <input type="radio" name="purchase_type" value="onetime" class="hidden-radio">
+            <div class="ss-sub-radio"><div class="ss-dot"></div></div>
+            <div class="ss-sub-content">
+              <span class="ss-sub-title">One-time purchase</span>
+            </div>
+          </label>
+        </div>
+        
+        <!-- Hidden selling plan input if needed by app -->
+        <input type="hidden" name="selling_plan" value="12345" id="ss-selling-plan">
+
+        <!-- Add to Cart Button -->
+        <button type="submit" class="ss-btn-add-cart" id="ss-add-button">
+          <span class="ss-btn-text">Add to cart</span>
+          <span class="ss-btn-price" id="ss-btn-price-display">{{ product.price | money }}</span>
+        </button>
+
+        <!-- Trust Badges -->
+        <div class="ss-trust-badges">
+          {% for block in section.blocks %}
+            <div class="ss-badge-item">
+              {% if block.settings.icon %}
                 <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.title }}">
               {% else %}
-                <!-- Placeholder SVG if no image uploaded -->
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brand-green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <div class="ss-badge-placeholder"></div>
               {% endif %}
               <span>{{ block.settings.title }}</span>
             </div>
-          {% endif %}
-        {% endfor %}
-        <!-- Default badges if no blocks are added -->
-        {% if section.blocks.size == 0 %}
-            <div class="ss-trust-badge">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brand-green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>Zero Sugar</span>
-            </div>
-            <div class="ss-trust-badge">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brand-green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>No Preservatives</span>
-            </div>
-            <div class="ss-trust-badge">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brand-green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>Plant Based</span>
-            </div>
-            <div class="ss-trust-badge">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brand-green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>Non-GMO</span>
-            </div>
-        {% endif %}
-      </div>
+          {% endfor %}
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
+<!-- Sticky Add to Cart (Mobile) -->
+<div class="ss-sticky-cart">
+  <button type="button" class="ss-sticky-btn" onclick="document.getElementById('ss-add-button').click()">
+    Add to cart - <span id="ss-sticky-price">{{ product.price | money }}</span>
+  </button>
+</div>
+
 <script>
-  function changeMainImage(url, element) {
-    document.getElementById('ss-featured-image').src = url;
-    document.querySelectorAll('.ss-thumb').forEach(thumb => thumb.classList.remove('active'));
-    element.classList.add('active');
+  let currentPrice = {{ product.price }};
+  let isSubscribed = true;
+
+  function changeMainImage(url, el) {
+    document.getElementById('ss-main-image').src = url;
+    document.querySelectorAll('.ss-thumb-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
   }
 
-  function updateVariantSelection(radio) {
-    document.querySelectorAll('.ss-variant-box').forEach(box => box.classList.remove('selected'));
-    radio.parentElement.classList.add('selected');
+  function selectVariant(el, id, price, comparePrice) {
+    document.querySelectorAll('.ss-variant-card').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected');
+    currentPrice = price;
+    updatePrices();
   }
+
+  function toggleSubscription(type) {
+    document.querySelectorAll('.ss-sub-option').forEach(i => i.classList.remove('selected'));
+    isSubscribed = (type === 'subscribe');
+    
+    event.currentTarget.classList.add('selected');
+    if (isSubscribed) {
+      document.getElementById('ss-selling-plan').value = "12345";
+    } else {
+      document.getElementById('ss-selling-plan').value = "";
+    }
+    updatePrices();
+  }
+
+  function updatePrices() {
+    // Assuming 15% discount for subscribe
+    let finalPrice = isSubscribed ? (currentPrice * 0.85) : currentPrice;
+    
+    // Format money (basic formatter for demo)
+    let formattedPrice = '₹' + (finalPrice / 100).toFixed(2);
+    
+    document.getElementById('ss-btn-price-display').innerText = formattedPrice;
+    document.getElementById('ss-sticky-price').innerText = formattedPrice;
+  }
+
+  // Sticky header visibility on scroll
+  window.addEventListener('scroll', function() {
+    let addBtn = document.getElementById('ss-add-button');
+    let sticky = document.querySelector('.ss-sticky-cart');
+    
+    if (window.scrollY > (addBtn.offsetTop + addBtn.offsetHeight)) {
+      sticky.classList.add('visible');
+    } else {
+      sticky.classList.remove('visible');
+    }
+  });
 </script>

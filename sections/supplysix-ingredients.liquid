@@ -1,0 +1,126 @@
+{% schema %}
+{
+  "name": "SupplySix Ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "What's inside?"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Ingredients Image (Optional)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ingredient Name",
+          "default": "Vitamin C"
+        },
+        {
+          "type": "text",
+          "id": "amount",
+          "label": "Amount",
+          "default": "100mg"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SupplySix Ingredients",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.ss-ingredients-section {
+  padding: 48px 16px;
+  background: var(--ss-bg);
+}
+.ss-ing-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.ss-ing-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+.ss-ing-image {
+  margin-bottom: 32px;
+  border-radius: var(--ss-radius);
+  overflow: hidden;
+}
+.ss-ing-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.ss-ing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ss-ing-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--ss-gray);
+  border-radius: var(--ss-radius-sm);
+  font-size: 15px;
+}
+.ss-ing-name {
+  font-weight: 600;
+}
+.ss-ing-amount {
+  color: #666;
+}
+</style>
+
+<div class="ss-ingredients-section">
+  <div class="ss-ing-container">
+    <h2 class="ss-ing-heading">{{ section.settings.heading }}</h2>
+    
+    {% if section.settings.main_image %}
+      <div class="ss-ing-image">
+        <img src="{{ section.settings.main_image | img_url: '1000x' }}" alt="Ingredients">
+      </div>
+    {% endif %}
+
+    <div class="ss-ing-list">
+      {% for block in section.blocks %}
+        <div class="ss-ing-item">
+          <span class="ss-ing-name">{{ block.settings.title }}</span>
+          <span class="ss-ing-amount">{{ block.settings.amount }}</span>
+        </div>
+      {% endfor %}
+      
+      {% if section.blocks.size == 0 %}
+        <div class="ss-ing-item">
+          <span class="ss-ing-name">Probiotics</span>
+          <span class="ss-ing-amount">5 Billion CFU</span>
+        </div>
+        <div class="ss-ing-item">
+          <span class="ss-ing-name">Vitamin D3</span>
+          <span class="ss-ing-amount">400 IU</span>
+        </div>
+        <div class="ss-ing-item">
+          <span class="ss-ing-name">Ashwagandha</span>
+          <span class="ss-ing-amount">250mg</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

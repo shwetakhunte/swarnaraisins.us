@@ -147,10 +147,31 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "supplysix_benefits": {
+      "type": "supplysix-benefits",
+      "settings": {
+        "heading": "Why Supply6 360?"
+      }
+    },
+    "supplysix_ingredients": {
+      "type": "supplysix-ingredients",
+      "settings": {
+        "heading": "What's inside?"
+      }
+    },
+    "supplysix_how_to_use": {
+      "type": "supplysix-how-to-use",
+      "settings": {
+        "heading": "How to use"
+      }
     }
   },
   "order": [
     "main",
+    "supplysix_benefits",
+    "supplysix_ingredients",
+    "supplysix_how_to_use",
     "products_bought_together_Bg4gfU",
     "product-page-tab",
     "169708912018eb18f5"
