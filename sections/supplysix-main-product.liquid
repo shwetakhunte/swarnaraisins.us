@@ -1,6 +1,6 @@
 {% schema %}
 {
-  "name": "SupplySix Product Main",
+  "name": "S6 Premium Product",
   "settings": [
     {
       "type": "text",
@@ -10,22 +10,16 @@
     },
     {
       "type": "text",
-      "id": "loved_badge_text",
-      "label": "Badge Text",
-      "default": "Loved by Customers"
-    },
-    {
-      "type": "text",
       "id": "subscription_discount",
-      "label": "Subscription Discount Text",
-      "default": "Save 15%"
+      "label": "Subscription Discount %",
+      "default": "15"
     }
   ],
   "blocks": [
     {
       "type": "trust_badge",
       "name": "Trust Badge",
-      "limit": 5,
+      "limit": 4,
       "settings": [
         {
           "type": "image_picker",
@@ -43,7 +37,7 @@
   ],
   "presets": [
     {
-      "name": "SupplySix Product Main",
+      "name": "S6 Premium Product Main",
       "category": "Product"
     }
   ]
@@ -52,26 +46,36 @@
 
 {{ 'supplysix-style.css' | asset_url | stylesheet_tag }}
 
-<div class="ss-pdp-wrapper">
-  <!-- Mobile Title & Reviews (visible on mobile only) -->
-  <div class="ss-pdp-header-mobile">
-    <div class="ss-stars-mobile">★★★★★ <span class="ss-review-count">4.73 (263 reviews)</span></div>
-    <h1 class="ss-title-mobile">{{ product.title }}</h1>
+<div class="s6-pdp-wrapper">
+  
+  <!-- Mobile Header -->
+  <div class="s6-mobile-header">
+    <div class="s6-mobile-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>4.73 (263)</span>
+    </div>
+    <h1 class="s6-mobile-title">{{ product.title }}</h1>
     {% if section.settings.subtitle != blank %}
-      <p class="ss-subtitle-mobile">{{ section.settings.subtitle }}</p>
+      <p class="s6-mobile-subtitle">{{ section.settings.subtitle }}</p>
     {% endif %}
   </div>
 
-  <div class="ss-pdp-container">
-    <!-- Media Column -->
-    <div class="ss-pdp-media">
-      <div class="ss-media-main">
-        <img id="ss-main-image" src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
+  <div class="s6-pdp-grid">
+    
+    <!-- Image Gallery -->
+    <div class="s6-media-col">
+      <div class="s6-main-image">
+        <div class="s6-image-badge">Clinically Tested</div>
+        <img id="s6-featured-image" src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
       </div>
       {% if product.images.size > 1 %}
-        <div class="ss-media-thumbnails">
+        <div class="s6-thumbnails">
           {% for image in product.images %}
-            <div class="ss-thumb-item {% if forloop.first %}active{% endif %}" onclick="changeMainImage('{{ image | img_url: '1000x' }}', this)">
+            <div class="s6-thumb {% if forloop.first %}active{% endif %}" onclick="s6ChangeImage('{{ image | img_url: '1000x' }}', this)">
               <img src="{{ image | img_url: '150x' }}" alt="{{ product.title }}">
             </div>
           {% endfor %}
@@ -79,146 +83,183 @@
       {% endif %}
     </div>
 
-    <!-- Info Column -->
-    <div class="ss-pdp-info">
-      <!-- Desktop Title & Reviews -->
-      <div class="ss-pdp-header-desktop">
-        <h1 class="ss-title">{{ product.title }}</h1>
+    <!-- Product Info -->
+    <div class="s6-info-col">
+      
+      <!-- Desktop Header -->
+      <div class="s6-desktop-header">
+        <h1 class="s6-desktop-title">{{ product.title }}</h1>
         {% if section.settings.subtitle != blank %}
-          <p class="ss-subtitle">{{ section.settings.subtitle }}</p>
+          <p class="s6-desktop-subtitle">{{ section.settings.subtitle }}</p>
         {% endif %}
-        <div class="ss-reviews">
-          <span class="ss-stars">★★★★★</span> <span class="ss-review-count">4.73 (263)</span>
+        <div class="s6-mobile-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span style="font-size: 15px;">4.73 (263 reviews)</span>
         </div>
       </div>
 
-      <!-- Form -->
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="ss-add-to-cart-form">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="s6-add-to-cart-form">
         
-        <!-- Variant Selection -->
+        <!-- Variants -->
         {% if product.has_only_default_variant == false %}
-          <div class="ss-variants-grid">
+          <span class="s6-section-label">Select Pack Size:</span>
+          <div class="s6-variants">
             {% for variant in product.variants %}
-              <label class="ss-variant-card {% if forloop.first %}selected{% endif %}" onclick="selectVariant(this, '{{ variant.id }}', {{ variant.price }}, {{ variant.compare_at_price | default: variant.price }})">
+              <label class="s6-variant-card {% if forloop.first %}selected{% endif %}" onclick="s6SelectVariant(this, '{{ variant.id }}', {{ variant.price }}, {{ variant.compare_at_price | default: variant.price }})">
                 <input type="radio" name="id" value="{{ variant.id }}" class="hidden-radio" {% if forloop.first %}checked{% endif %}>
-                <div class="ss-var-name">{{ variant.title }}</div>
-                <div class="ss-var-price-group">
+                {% if forloop.index == 2 %}
+                  <div class="s6-var-tag">Best Value</div>
+                {% endif %}
+                <div class="s6-var-title">{{ variant.title }}</div>
+                <div class="s6-var-price-wrapper">
                   {% if variant.compare_at_price > variant.price %}
-                    <span class="ss-var-compare">{{ variant.compare_at_price | money }}</span>
+                    <span class="s6-var-compare">{{ variant.compare_at_price | money }}</span>
                   {% endif %}
-                  <span class="ss-var-price">{{ variant.price | money }}</span>
+                  <span class="s6-var-price">{{ variant.price | money }}</span>
                 </div>
               </label>
             {% endfor %}
           </div>
         {% else %}
           <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-          <div class="ss-price-single" data-price="{{ product.price }}">
-             {{ product.price | money }}
-          </div>
+          <div style="display:none;" id="s6-base-price" data-price="{{ product.price }}"></div>
         {% endif %}
 
-        <!-- Subscription Toggle -->
-        <div class="ss-subscription-box">
-          <label class="ss-sub-option selected" onclick="toggleSubscription('subscribe')">
+        <!-- Subscription Option -->
+        <div class="s6-sub-container">
+          <!-- Subscribe & Save -->
+          <label class="s6-sub-option selected" onclick="s6ToggleSub('subscribe')">
             <input type="radio" name="purchase_type" value="subscribe" class="hidden-radio" checked>
-            <div class="ss-sub-radio"><div class="ss-dot"></div></div>
-            <div class="ss-sub-content">
-              <span class="ss-sub-title">Subscribe & Save {{ section.settings.subscription_discount }}</span>
-              <span class="ss-sub-desc">Delivered every 30 days. Cancel anytime.</span>
+            <div class="s6-radio-outer"><div class="s6-radio-inner"></div></div>
+            <div class="s6-sub-content">
+              <div class="s6-sub-title-row">
+                <span class="s6-sub-title">Subscribe & Save</span>
+                <span class="s6-sub-discount">SAVE {{ section.settings.subscription_discount }}%</span>
+              </div>
+              <span class="s6-sub-desc">Delivered every 30 days. Cancel anytime.</span>
             </div>
+            <div class="s6-sub-price" id="s6-price-sub"></div>
           </label>
           
-          <label class="ss-sub-option" onclick="toggleSubscription('onetime')">
+          <!-- One-time -->
+          <label class="s6-sub-option" onclick="s6ToggleSub('onetime')">
             <input type="radio" name="purchase_type" value="onetime" class="hidden-radio">
-            <div class="ss-sub-radio"><div class="ss-dot"></div></div>
-            <div class="ss-sub-content">
-              <span class="ss-sub-title">One-time purchase</span>
+            <div class="s6-radio-outer"><div class="s6-radio-inner"></div></div>
+            <div class="s6-sub-content">
+              <span class="s6-sub-title">One-time purchase</span>
             </div>
+            <div class="s6-sub-price" id="s6-price-onetime" style="color:var(--s6-text);"></div>
           </label>
         </div>
-        
-        <!-- Hidden selling plan input if needed by app -->
-        <input type="hidden" name="selling_plan" value="12345" id="ss-selling-plan">
 
-        <!-- Add to Cart Button -->
-        <button type="submit" class="ss-btn-add-cart" id="ss-add-button">
-          <span class="ss-btn-text">Add to cart</span>
-          <span class="ss-btn-price" id="ss-btn-price-display">{{ product.price | money }}</span>
+        <input type="hidden" name="selling_plan" value="12345" id="s6-selling-plan">
+
+        <!-- ATC Button -->
+        <button type="submit" class="s6-atc-btn" id="s6-submit-btn">
+          ADD TO CART - <span id="s6-btn-price" style="margin-left: 5px;"></span>
         </button>
 
         <!-- Trust Badges -->
-        <div class="ss-trust-badges">
+        <div class="s6-trust-badges">
           {% for block in section.blocks %}
-            <div class="ss-badge-item">
+            <div class="s6-badge">
               {% if block.settings.icon %}
                 <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.title }}">
               {% else %}
-                <div class="ss-badge-placeholder"></div>
+                <div class="s6-placeholder-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
               {% endif %}
               <span>{{ block.settings.title }}</span>
             </div>
           {% endfor %}
+          {% if section.blocks.size == 0 %}
+            <div class="s6-badge">
+              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+              <span>Zero Sugar</span>
+            </div>
+            <div class="s6-badge">
+              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+              <span>Plant Based</span>
+            </div>
+            <div class="s6-badge">
+              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+              <span>No Preservatives</span>
+            </div>
+            <div class="s6-badge">
+              <div class="s6-placeholder-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+              <span>Non-GMO</span>
+            </div>
+          {% endif %}
         </div>
+
       </form>
     </div>
   </div>
 </div>
 
-<!-- Sticky Add to Cart (Mobile) -->
-<div class="ss-sticky-cart">
-  <button type="button" class="ss-sticky-btn" onclick="document.getElementById('ss-add-button').click()">
-    Add to cart - <span id="ss-sticky-price">{{ product.price | money }}</span>
+<!-- Sticky Mobile CTA -->
+<div class="s6-sticky-atc">
+  <button type="button" class="s6-sticky-btn" onclick="document.getElementById('s6-submit-btn').click()">
+    ADD TO CART - <span id="s6-sticky-price"></span>
   </button>
 </div>
 
 <script>
-  let currentPrice = {{ product.price }};
-  let isSubscribed = true;
+  let s6CurrentPrice = {{ product.price | default: 0 }};
+  let s6IsSubscribed = true;
+  let s6DiscountFactor = (100 - {{ section.settings.subscription_discount | default: 15 }}) / 100;
 
-  function changeMainImage(url, el) {
-    document.getElementById('ss-main-image').src = url;
-    document.querySelectorAll('.ss-thumb-item').forEach(i => i.classList.remove('active'));
+  function s6FormatMoney(cents) {
+    return '₹' + (cents / 100).toFixed(2);
+  }
+
+  function s6UpdatePrices() {
+    let subPrice = s6CurrentPrice * s6DiscountFactor;
+    let onetimePrice = s6CurrentPrice;
+    let finalPrice = s6IsSubscribed ? subPrice : onetimePrice;
+
+    document.getElementById('s6-price-sub').innerText = s6FormatMoney(subPrice);
+    document.getElementById('s6-price-onetime').innerText = s6FormatMoney(onetimePrice);
+    document.getElementById('s6-btn-price').innerText = s6FormatMoney(finalPrice);
+    document.getElementById('s6-sticky-price').innerText = s6FormatMoney(finalPrice);
+  }
+
+  function s6ChangeImage(url, el) {
+    document.getElementById('s6-featured-image').src = url;
+    document.querySelectorAll('.s6-thumb').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
   }
 
-  function selectVariant(el, id, price, comparePrice) {
-    document.querySelectorAll('.ss-variant-card').forEach(i => i.classList.remove('selected'));
+  function s6SelectVariant(el, id, price, comparePrice) {
+    document.querySelectorAll('.s6-variant-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
-    currentPrice = price;
-    updatePrices();
+    s6CurrentPrice = price;
+    s6UpdatePrices();
   }
 
-  function toggleSubscription(type) {
-    document.querySelectorAll('.ss-sub-option').forEach(i => i.classList.remove('selected'));
-    isSubscribed = (type === 'subscribe');
-    
+  function s6ToggleSub(type) {
+    document.querySelectorAll('.s6-sub-option').forEach(o => o.classList.remove('selected'));
     event.currentTarget.classList.add('selected');
-    if (isSubscribed) {
-      document.getElementById('ss-selling-plan').value = "12345";
-    } else {
-      document.getElementById('ss-selling-plan').value = "";
-    }
-    updatePrices();
+    s6IsSubscribed = (type === 'subscribe');
+    document.getElementById('s6-selling-plan').value = s6IsSubscribed ? "12345" : "";
+    s6UpdatePrices();
   }
 
-  function updatePrices() {
-    // Assuming 15% discount for subscribe
-    let finalPrice = isSubscribed ? (currentPrice * 0.85) : currentPrice;
-    
-    // Format money (basic formatter for demo)
-    let formattedPrice = '₹' + (finalPrice / 100).toFixed(2);
-    
-    document.getElementById('ss-btn-price-display').innerText = formattedPrice;
-    document.getElementById('ss-sticky-price').innerText = formattedPrice;
-  }
+  // Init
+  document.addEventListener("DOMContentLoaded", () => {
+    s6UpdatePrices();
+  });
 
-  // Sticky header visibility on scroll
-  window.addEventListener('scroll', function() {
-    let addBtn = document.getElementById('ss-add-button');
-    let sticky = document.querySelector('.ss-sticky-cart');
-    
-    if (window.scrollY > (addBtn.offsetTop + addBtn.offsetHeight)) {
+  // Sticky scroll
+  window.addEventListener('scroll', () => {
+    let btn = document.getElementById('s6-submit-btn');
+    let sticky = document.querySelector('.s6-sticky-atc');
+    if (btn && window.scrollY > (btn.offsetTop + btn.offsetHeight) && window.innerWidth < 768) {
       sticky.classList.add('visible');
     } else {
       sticky.classList.remove('visible');
