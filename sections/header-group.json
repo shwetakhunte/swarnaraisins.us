@@ -399,7 +399,7 @@
         "3965da57-f7d5-4271-97a2-a0a4b93bf9c4"
       ],
       "settings": {
-        "layout": true,
+        "layout": false,
         "container": 1410,
         "pad": 0,
         "pad-mobile": 0,
