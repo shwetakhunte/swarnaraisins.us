@@ -48,18 +48,50 @@
     flex-wrap: wrap;
   }
   .join-rev-btn {
-    background-color: #416244; /* Dark green */
+    background-color: #2e7d32;
     color: #fff;
-    padding: 15px 30px;
+    padding: 14px 32px;
     text-decoration: none;
     font-weight: 700;
-    border-radius: 30px; /* Pill shape */
-    transition: background-color 0.3s ease;
-    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: inline-block;
   }
   .join-rev-btn:hover {
-    background-color: #2c472f;
+    background-color: #1b5e20;
     color: #fff;
+  }
+  /* Stats row */
+  .join-rev-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .join-rev-stat {
+    text-align: center;
+  }
+  .join-rev-stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    color: #2e7d32;
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .join-rev-stat-label {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   @media (max-width: 768px) {
@@ -106,6 +138,25 @@
       {% if section.settings.btn2_text != blank %}
         <a href="{{ section.settings.btn2_link }}" class="join-rev-btn">{{ section.settings.btn2_text }}</a>
       {% endif %}
+    </div>
+
+    <div class="join-rev-stats">
+      <div class="join-rev-stat">
+        <span class="join-rev-stat-num">200+</span>
+        <span class="join-rev-stat-label">Farmers Supported</span>
+      </div>
+      <div class="join-rev-stat">
+        <span class="join-rev-stat-num">100%</span>
+        <span class="join-rev-stat-label">Natural & Chemical-Free</span>
+      </div>
+      <div class="join-rev-stat">
+        <span class="join-rev-stat-num">5★</span>
+        <span class="join-rev-stat-label">Customer Rating</span>
+      </div>
+      <div class="join-rev-stat">
+        <span class="join-rev-stat-num">FSSAI</span>
+        <span class="join-rev-stat-label">Certified & NABL Tested</span>
+      </div>
     </div>
   </div>
 </div>
