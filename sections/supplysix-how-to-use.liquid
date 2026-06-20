@@ -183,8 +183,10 @@
         {%- assign steps = "Soak Overnight|Soak a handful (20–30g) of Swarna Raisins in water before bedtime. Drink the water and eat the raisins first thing in the morning.|Snack On the Go|Toss a 40g snack pack into your bag, office desk or gym kit. A natural energy boost, no prep needed.|Add to Your Meals|Sprinkle Swarna Raisins on oatmeal, salads, rice dishes or desserts. Delicious and nutritious — every time." | split: "|" -%}
         {%- assign icons = "🌙|⚡|🍽️" | split: "|" -%}
         {% for i in (0..2) %}
-          {%- assign t = steps[forloop.index0 | times: 2] -%}
-          {%- assign d = steps[forloop.index0 | times: 2 | plus: 1] -%}
+          {%- assign t_idx = forloop.index0 | times: 2 -%}
+          {%- assign d_idx = t_idx | plus: 1 -%}
+          {%- assign t = steps[t_idx] -%}
+          {%- assign d = steps[d_idx] -%}
           {%- assign em = icons[forloop.index0] -%}
           <div class="sr-htu-step">
             <div class="sr-htu-number-wrap">

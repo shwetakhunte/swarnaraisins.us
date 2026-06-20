@@ -136,7 +136,7 @@
 <section class="sr-benefits-section">
   <div class="sr-benefits-inner">
     <span class="sr-benefits-eyebrow">
-      {{ section.settings.eyebrow | default: '— Nature\'s Best —' }}
+      {{ section.settings.eyebrow | default: "— Nature's Best —" }}
     </span>
     <h2 class="sr-benefits-heading">
       {{ section.settings.heading | default: 'Why Choose Swarna Raisins?' }}
@@ -175,8 +175,10 @@
         {%- assign default_benefits = "100% Natural & Chemical-Free|Zero sulphur, zero additives. Our raisins are sun-dried the natural way — pure as nature intended.|Naturally Dried & Nutrient-Rich|Packed with Iron, Fibre & Antioxidants that boost energy, support gut health and nourish your skin from within.|Ayurvedic Wisdom|Rooted in centuries of Ayurvedic tradition — raisins soaked overnight or eaten raw are a daily ritual for natural wellness.|FSSAI & NABL Certified|Every batch is lab-tested and certified. What you see on the label is exactly what's in the pack — no surprises.|Supports 200+ Farmers|Every purchase directly supports smallholder farmers across Maharashtra & Karnataka with fair pricing and guaranteed offtake.|Perfectly Portioned|Available in 40g snack packs, 100g–1kg family packs — fresh-sealed for every lifestyle, on the go or at home." | split: "|" -%}
         {%- assign default_icons = "shield|heart|leaf|badge|users|package" | split: "|" -%}
         {% for i in (0..5) %}
-          {%- assign t = default_benefits[forloop.index0 | times: 2] -%}
-          {%- assign d = default_benefits[forloop.index0 | times: 2 | plus: 1] -%}
+          {%- assign t_idx = forloop.index0 | times: 2 -%}
+          {%- assign d_idx = t_idx | plus: 1 -%}
+          {%- assign t = default_benefits[t_idx] -%}
+          {%- assign d = default_benefits[d_idx] -%}
           <div class="sr-benefit-card">
             <div class="sr-benefit-icon-wrap">
               {% case forloop.index %}
