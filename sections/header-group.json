@@ -96,6 +96,110 @@
         "cl_text": "#333333"
       }
     },
+    "text_horizontal_running_ahbWzF": {
+      "type": "text-horizontal-running",
+      "blocks": {
+        "text_Mchckq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_QaKhp8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_BppVBQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_Btj644": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_LpQWrK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_bQRNjc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_DeXLMq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_LG3HyJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_PPT9XH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_EFWHPh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_dpfD7B": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        },
+        "text_QUqVXf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_Mchckq",
+        "text_QaKhp8",
+        "text_BppVBQ",
+        "text_Btj644",
+        "text_LpQWrK",
+        "text_bQRNjc",
+        "text_DeXLMq",
+        "text_LG3HyJ",
+        "text_PPT9XH",
+        "text_EFWHPh",
+        "text_dpfD7B",
+        "text_QUqVXf"
+      ],
+      "name": "Text horizontal running",
+      "settings": {
+        "slider_direction": "slide-left",
+        "healing_speed": 10,
+        "layout": false,
+        "container": 1410,
+        "cl_bg": "#263c97",
+        "cl_text": "#fff",
+        "mg": "",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    },
     "top-header": {
       "type": "top-header",
       "blocks": {
@@ -133,6 +237,7 @@
         "message_UNyzVF",
         "my_activity_CNLiBe"
       ],
+      "disabled": true,
       "settings": {
         "hide_mobile": true,
         "home_page_only": false,
@@ -420,6 +525,7 @@
   },
   "order": [
     "top-bar",
+    "text_horizontal_running_ahbWzF",
     "top-header",
     "header"
   ]

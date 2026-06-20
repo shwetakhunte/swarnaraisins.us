@@ -131,7 +131,7 @@
         "cl_bg": "#ffffff",
         "mg": ",,60px,",
         "pd": "",
-        "mg_mb": ",,40px,",
+        "mg_mb": ",,0px,",
         "pd_mb": ""
       }
     },
@@ -333,7 +333,7 @@
         "countdown_date": "2026-09-31T23:59:59",
         "initial_stock": 100,
         "primary_color": "#2e7d32",
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "padding_top": 40,
         "padding_bottom": 40
       }
@@ -347,7 +347,7 @@
         "btn_text": "Read our Story",
         "btn_link": "/pages/about-us",
         "image": "shopify://shop_images/our_story.jpg",
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "padding_top": 90,
         "padding_bottom": 90
       }
@@ -431,7 +431,7 @@
         "col_pr_mb": "12",
         "layout": false,
         "container": 1410,
-        "cl_bg": "#FFFFFF",
+        "cl_bg": "#ffffff",
         "cl_bg_content": "rgba(0,0,0,0)",
         "cl_icon": "#014344",
         "cl_heading": "#014344",
@@ -519,7 +519,7 @@
         "card_4"
       ],
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "title": "What We Stand For",
         "subtitle": "Values that connect our farmers, consumers, and the earth.",
         "padding_top": 80,
