@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -76,7 +85,7 @@
         "layout": false,
         "container": 1410,
         "cl_bg": "#f7f5f3",
-        "cl_border": "#d7d7d7",
+        "cl_bg_content": "rgba(0,0,0,0)",
         "cl_icon": "#ffffff",
         "cl_heading": "#124a2f",
         "cl_text": "#7b6d58",
@@ -93,21 +102,21 @@
           "type": "link_list",
           "settings": {
             "heading": "ABOUT",
-            "menu": "about-us"
+            "menu": ""
           }
         },
         "menu_2": {
           "type": "link_list",
           "settings": {
             "heading": "POLICIES",
-            "menu": "policies"
+            "menu": ""
           }
         },
         "menu_3": {
           "type": "link_list",
           "settings": {
             "heading": "SHOP",
-            "menu": "shop"
+            "menu": ""
           }
         }
       },
@@ -117,7 +126,8 @@
         "menu_3"
       ],
       "settings": {
-        "logo_max_width": 180,
+        "logo": "shopify://shop_images/Swarna_Logo_1.avif",
+        "logo_max_width": 160,
         "copyright_text": "Copyright [year] © Swarna Raisins. All rights reserved",
         "show_social": true
       }
