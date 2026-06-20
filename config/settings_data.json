@@ -44,9 +44,9 @@
     "cl_btn_search": "#2d2a6e",
     "cl_btn_search_hover": "#333333",
     "logo_text": "Organix",
-    "logo": "shopify://shop_images/logo_footer_4.png",
+    "logo": "shopify://shop_images/Swarna_Logo_1.avif",
     "logo_page": "shopify://shop_images/logo_footer_4.png",
-    "logo_max_width": 150,
+    "logo_max_width": 250,
     "header_design": "logo-left-menu-center",
     "h-header": 80,
     "sticky_top": false,
@@ -1771,14 +1771,7 @@
         }
       }
     },
-    "content_for_index": [],
-    "blocks": {
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   },
   "presets": {
     "Default": {
