@@ -398,6 +398,9 @@
         "29ad91fc-8806-4b0f-88d0-8e863ef7fe8c",
         "3965da57-f7d5-4271-97a2-a0a4b93bf9c4"
       ],
+      "custom_css": [
+        ".header-logo img {max-height: 70px !important;}"
+      ],
       "settings": {
         "layout": false,
         "container": 1410,
