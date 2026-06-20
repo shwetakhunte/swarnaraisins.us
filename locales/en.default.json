@@ -733,7 +733,7 @@
       "default_variant_title": "Default variant",
       "option_for_you": "Option For You",
       "add_to_cart": "Add to cart",
-      "pre_order": "pre-order",
+      "pre_order": "Add to cart",
       "out_stock": "Out Stock",
       "text_countdown_html": "Please, hurry! Someone has placed an order on one of the items you have in the cart. Products are limited, checkout within  {{ minutes }}",
       "text_countdown_time_up": "You're out of time! Checkout now to avoid losing your order!",
@@ -783,7 +783,7 @@
         "title": "Add compare",
         "added": "Delete compare"
       },
-      "pre_orders": "Pre-order",
+      "pre_orders": "Add to cart",
       "back_to_collection": "Back to {{ title }}",
       "label": {
         "sale": "-{{ percent }}%",
