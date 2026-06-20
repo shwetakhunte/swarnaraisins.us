@@ -154,7 +154,7 @@
             "title": "Home",
             "url": "/",
             "open_link": "_self",
-            "menu": "home-page",
+            "menu": "",
             "icon": "",
             "cus_cl": false,
             "cl": "#ec0101",
@@ -186,7 +186,7 @@
             "tt_hd": "Shop Layouts",
             "url": "/",
             "open_link": "_self",
-            "menu": "shop-layouts",
+            "menu": "",
             "col": "3"
           }
         },
@@ -196,7 +196,7 @@
             "tt_hd": "Shop catalog",
             "url": "#",
             "open_link": "_self",
-            "menu": "shop-catalog",
+            "menu": "",
             "col": "3"
           }
         },
@@ -206,14 +206,13 @@
             "tt_hd": "Product Features",
             "url": "#",
             "open_link": "_self",
-            "menu": "product-features",
+            "menu": "",
             "col": "2"
           }
         },
         "d86acdc9-b2b3-4af6-9ae8-1ec6f2fbb036": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/estratto-di-limone-insal-arte-_1_690ab994-3022-425c-89ed-b06fbbeec21d.jpg",
             "title": "Fresh Milk",
             "url": "shopify://collections/fresh-milk",
             "open_link": "_blank",
@@ -243,7 +242,7 @@
             "tt_hd": "Product Details",
             "url": "#",
             "open_link": "_self",
-            "menu": "product-details",
+            "menu": "",
             "col": "2"
           }
         },
@@ -253,7 +252,7 @@
             "tt_hd": "Product type",
             "url": "/",
             "open_link": "_self",
-            "menu": "product-type",
+            "menu": "",
             "col": "2"
           }
         },
@@ -263,14 +262,13 @@
             "tt_hd": "Thumbnails and zoom",
             "url": "#",
             "open_link": "_self",
-            "menu": "thumbnails-and-zoom",
+            "menu": "",
             "col": "2"
           }
         },
         "banner_yUrcG3": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/img_newsletter.jpg",
             "title": "Organix",
             "url": "shopify://collections/organix",
             "open_link": "_self",
@@ -283,7 +281,7 @@
             "title": "Collections",
             "url": "/collections",
             "open_link": "_self",
-            "menu": "categories",
+            "menu": "",
             "icon": "",
             "cus_cl": false,
             "cl": "#ec0101",
@@ -305,7 +303,7 @@
             "title": "Pages",
             "url": "#",
             "open_link": "_self",
-            "menu": "pages",
+            "menu": "",
             "icon": "",
             "cus_cl": false,
             "cl": "#ec0101",
@@ -320,7 +318,7 @@
             "title": "Blog",
             "url": "shopify://blogs/organix",
             "open_link": "_self",
-            "menu": "blog",
+            "menu": "",
             "icon": "",
             "cus_cl": false,
             "cl": "#007aff",
@@ -377,8 +375,10 @@
         "3965da57-f7d5-4271-97a2-a0a4b93bf9c4"
       ],
       "settings": {
-        "layout": false,
+        "layout": true,
         "container": 1410,
+        "pad": 0,
+        "pad-mobile": 0,
         "h-menu": 50,
         "f-size": 15,
         "f-weight": 500,
