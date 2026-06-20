@@ -245,9 +245,39 @@
       }
     },
     "top_sellers": {
-      "type": "custom-liquid",
+      "type": "top-sellers",
+      "blocks": {
+        "card_swarna_gold": {
+          "type": "product_card",
+          "settings": {
+            "product": "swarna-gold",
+            "ribbon_text": "Clinically Tested",
+            "ribbon_color": "teal-ribbon",
+            "review_count": "262",
+            "product_desc": "One serving to strengthen the foundation of your daily health"
+          }
+        },
+        "card_swarna_black": {
+          "type": "product_card",
+          "settings": {
+            "product": "swarna-black",
+            "ribbon_text": "Pink Tiger Verified",
+            "ribbon_color": "pink-ribbon",
+            "review_count": "141",
+            "product_desc": "Provides you with natural daily energy with an ideal mix of antioxidants"
+          }
+        }
+      },
+      "block_order": [
+        "card_swarna_gold",
+        "card_swarna_black"
+      ],
       "settings": {
-        "custom_liquid": "<div class=\"top-sellers-section\"><div class=\"container\"><h2 class=\"top-sellers-title\">Meet our Top Sellers</h2><div class=\"top-sellers-grid\"><div class=\"top-seller-card\"><div class=\"card-header\"><h3 class=\"product-tag-title\">Swarna Gold</h3><div class=\"ribbon-banner teal-ribbon\">Clinically Tested</div></div><div class=\"product-image-wrap\"><img src=\"{{ 'golden_raisins_product.png' | asset_url }}\" alt=\"Swarna Gold\" class=\"product-image\"></div><div class=\"card-footer\"><div class=\"reviews-wrap\"><span class=\"stars\">★★★★★</span><span class=\"reviews-count\">262 reviews</span></div><p class=\"product-desc\">One serving to strengthen the foundation of your daily health</p><a href=\"/products/swarna-gold\" class=\"add-to-cart-btn\">Add to Cart</a></div></div><div class=\"top-seller-card\"><div class=\"card-header\"><h3 class=\"product-tag-title\">Swarna Black</h3><div class=\"ribbon-banner pink-ribbon\">Pink Tiger Verified</div></div><div class=\"product-image-wrap\"><img src=\"{{ 'black_raisins_product.png' | asset_url }}\" alt=\"Swarna Black\" class=\"product-image\"></div><div class=\"card-footer\"><div class=\"reviews-wrap\"><span class=\"stars\">★★★★★</span><span class=\"reviews-count\">141 reviews</span></div><p class=\"product-desc\">Provides you with natural daily energy with an ideal mix of antioxidants</p><a href=\"/products/swarna-black\" class=\"add-to-cart-btn\">Add to Cart</a></div></div></div><div class=\"shop-all-wrap\"><a href=\"/collections/all\" class=\"shop-all-link\">Shop All</a></div></div></div>",
+        "title": "Meet our Top Sellers",
+        "btn_label": "Add to Cart",
+        "show_shop_all": true,
+        "shop_all_url": "/collections/all",
+        "shop_all_label": "Shop All",
         "padding_top": 40,
         "padding_bottom": 40
       }

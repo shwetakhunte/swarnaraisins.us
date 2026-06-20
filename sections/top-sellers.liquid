@@ -1,0 +1,183 @@
+{% comment %}
+  Top Sellers Section — Dynamic version
+  Each product card is a block, letting merchants swap products in the Shopify Theme Editor.
+  UI is kept identical to the original hardcoded version.
+{% endcomment %}
+
+<div class="top-sellers-section">
+  <div class="container">
+    <h2 class="top-sellers-title">{{ section.settings.title }}</h2>
+
+    <div class="top-sellers-grid">
+      {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product] %}
+        {% if product != blank %}
+          <div class="top-seller-card" {{ block.shopify_attributes }}>
+            <div class="card-header">
+              <h3 class="product-tag-title">{{ product.title }}</h3>
+              {% if block.settings.ribbon_text != blank %}
+                <div class="ribbon-banner {{ block.settings.ribbon_color }}">
+                  {{ block.settings.ribbon_text }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="product-image-wrap">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  class="product-image"
+                  loading="lazy"
+                  width="600"
+                >
+              {% endif %}
+            </div>
+
+            <div class="card-footer">
+              <div class="reviews-wrap">
+                <span class="stars">★★★★★</span>
+                {% if block.settings.review_count != blank %}
+                  <span class="reviews-count">{{ block.settings.review_count }} reviews</span>
+                {% endif %}
+              </div>
+
+              {% if block.settings.product_desc != blank %}
+                <p class="product-desc">{{ block.settings.product_desc }}</p>
+              {% elsif product.metafields.custom.short_description != blank %}
+                <p class="product-desc">{{ product.metafields.custom.short_description }}</p>
+              {% else %}
+                <p class="product-desc">{{ product.description | strip_html | truncate: 100 }}</p>
+              {% endif %}
+
+              <a href="{{ product.url }}" class="add-to-cart-btn">
+                {{ section.settings.btn_label | default: 'Add to Cart' }}
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_shop_all %}
+      <div class="shop-all-wrap">
+        <a href="{{ section.settings.shop_all_url | default: '/collections/all' }}" class="shop-all-link">
+          {{ section.settings.shop_all_label | default: 'Shop All' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Top Sellers",
+  "tag": "section",
+  "class": "top-sellers-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Meet our Top Sellers"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shop_all",
+      "label": "Show Shop All link",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "shop_all_url",
+      "label": "Shop All URL"
+    },
+    {
+      "type": "text",
+      "id": "shop_all_label",
+      "label": "Shop All Label",
+      "default": "Shop All"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "ribbon_text",
+          "label": "Ribbon Label",
+          "info": "e.g. Clinically Tested, Best Seller"
+        },
+        {
+          "type": "select",
+          "id": "ribbon_color",
+          "label": "Ribbon Color",
+          "options": [
+            { "value": "teal-ribbon",  "label": "Teal (dark green)" },
+            { "value": "pink-ribbon",  "label": "Pink" }
+          ],
+          "default": "teal-ribbon"
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review Count",
+          "info": "e.g. 262"
+        },
+        {
+          "type": "textarea",
+          "id": "product_desc",
+          "label": "Short Description",
+          "info": "Leave blank to use the product description automatically."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Sellers",
+      "blocks": [
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
