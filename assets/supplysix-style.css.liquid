@@ -6,7 +6,7 @@
 
 :root {
   /* Brand color palette */
-  --brand-green: #014344;
+  --brand-green: #2e7d32;
   /* Primary deep teal green */
   --brand-green-hover: #026c6d;
   /* Lightened hover teal */
@@ -883,7 +883,7 @@ section.slideshow .swiper-slide {
   font-size: 38px !important;
   font-weight: 700 !important;
   text-align: center !important;
-  color: #014344 !important;
+  color: #2e7d32 !important;
   margin: 0 0 40px 0 !important;
 }
 
@@ -927,7 +927,7 @@ section.slideshow .swiper-slide {
   font-family: 'Poppins', sans-serif !important;
   font-size: 22px !important;
   font-weight: 700 !important;
-  color: #014344 !important;
+  color: #2e7d32 !important;
   margin: 0 0 12px 0 !important;
 }
 
@@ -942,7 +942,7 @@ section.slideshow .swiper-slide {
 }
 
 .top-seller-card .teal-ribbon {
-  background-color: #014344 !important;
+  background-color: #2e7d32 !important;
 }
 
 .top-seller-card .pink-ribbon {
@@ -1006,7 +1006,7 @@ section.slideshow .swiper-slide {
   display: block !important;
   width: 100% !important;
   padding: 14px 0 !important;
-  background-color: #014344 !important;
+  background-color: #2e7d32 !important;
   color: #ffffff !important;
   border-radius: 30px !important;
   font-family: 'Poppins', sans-serif !important;
@@ -1023,6 +1023,61 @@ section.slideshow .swiper-slide {
   background-color: #eb5624 !important;
 }
 
+/* ----- Price block (ts-price-wrap) ----- */
+.top-seller-card .ts-price-wrap {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  justify-content: center !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.top-seller-card .ts-sale-price {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #eb5624 !important;
+}
+
+.top-seller-card .ts-regular-price {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #2e7d32 !important;
+}
+
+.top-seller-card .ts-compare-price {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #888 !important;
+  text-decoration: line-through !important;
+}
+
+/* ----- Add to Cart button (ts-add-to-cart) — mirrors carousel style ----- */
+.top-seller-card .ts-btn-wrap {
+  width: 100% !important;
+}
+
+.top-seller-card .ts-add-to-cart {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  height: 46px !important;
+  padding: 0 20px !important;
+  background-color: #2e7d32 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 30px !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  text-align: center !important;
+}
+
 .shop-all-wrap {
   text-align: center !important;
   margin-top: 30px !important;
@@ -1032,13 +1087,47 @@ section.slideshow .swiper-slide {
   font-family: 'Poppins', sans-serif !important;
   font-size: 16px !important;
   font-weight: 600 !important;
-  color: #014344 !important;
+  color: #2e7d32 !important;
   text-decoration: underline !important;
   transition: color 0.2s ease !important;
 }
 
 .shop-all-link:hover {
-  color: #eb5624 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  box-shadow: none !important;
+}
+
+.top-seller-card .ts-add-to-cart svg {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0 !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+.top-seller-card .ts-add-to-cart .text,
+.top-seller-card .ts-add-to-cart .alo_tooltip-content {
+  color: #ffffff !important;
+  visibility: visible !important;
+  display: inline-block !important;
+  opacity: 1 !important;
+  position: static !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+.top-seller-card .ts-add-to-cart:hover {
+  background-color: #eb5624 !important;
+  color: #ffffff !important;
+}
+
+.top-seller-card .ts-add-to-cart.ts-sold-out {
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
 }
 
 @media (max-width: 767px) {
@@ -1062,6 +1151,24 @@ section.slideshow .swiper-slide {
   .top-sellers-section {
     padding: 40px 0 !important;
   }
+}
+
+.shop-all-wrap {
+  text-align: center !important;
+  margin-top: 30px !important;
+}
+
+.shop-all-link {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #2e7d32 !important;
+  text-decoration: underline !important;
+  transition: color 0.2s ease !important;
+}
+
+.shop-all-link:hover {
+  color: #eb5624 !important;
 }
 
 /* 6. Carousel Products Add to Cart Custom styling */
@@ -1146,7 +1253,7 @@ section.slideshow .swiper-slide {
   height: 42px !important;
   padding: 0 15px !important;
   border-radius: 30px !important;
-  background-color: #014344 !important;
+  background-color: #2e7d32 !important;
   color: #ffffff !important;
   font-family: 'Poppins', sans-serif !important;
   font-weight: 600 !important;
@@ -1748,7 +1855,7 @@ section.slideshow .swiper-slide {
   object-fit: cover;
 }
 .ss-thumb-item.active {
-  border-color: var(--brand-green, #014344);
+  border-color: var(--brand-green, #2e7d32);
 }
 
 /* Variants */
@@ -1769,7 +1876,7 @@ section.slideshow .swiper-slide {
   background: #fff;
 }
 .ss-variant-card.selected {
-  border-color: var(--brand-green, #014344);
+  border-color: var(--brand-green, #2e7d32);
   background: #e8f3ef; /* light green */
 }
 .hidden-radio {
@@ -1793,7 +1900,7 @@ section.slideshow .swiper-slide {
 .ss-var-price {
   font-weight: 700;
   font-size: 15px;
-  color: var(--brand-green, #014344);
+  color: var(--brand-green, #2e7d32);
 }
 
 /* Subscription UI */
@@ -1830,13 +1937,13 @@ section.slideshow .swiper-slide {
   margin-top: 2px;
 }
 .ss-sub-option.selected .ss-sub-radio {
-  border-color: var(--brand-green, #014344);
+  border-color: var(--brand-green, #2e7d32);
 }
 .ss-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--brand-green, #014344);
+  background: var(--brand-green, #2e7d32);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -1860,7 +1967,7 @@ section.slideshow .swiper-slide {
 /* Add to cart */
 .ss-btn-add-cart {
   width: 100%;
-  background: var(--brand-green, #014344);
+  background: var(--brand-green, #2e7d32);
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -1926,7 +2033,7 @@ section.slideshow .swiper-slide {
 }
 .ss-sticky-btn {
   width: 100%;
-  background: var(--brand-green, #014344);
+  background: var(--brand-green, #2e7d32);
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -1940,7 +2047,7 @@ section.slideshow .swiper-slide {
 
 /* Premium Supply6 360 Replica Styles */
 :root {
-  --s6-green: #014344;
+  --s6-green: #2e7d32;
   --s6-green-light: #e8f3ef;
   --s6-orange: #eb5624;
   --s6-cream: #f6f4f1;
@@ -2362,7 +2469,7 @@ section.slideshow .swiper-slide {
 .top-sellers-title {
   font-size: 36px;
   font-weight: 700;
-  color: var(--s6-green, #014344);
+  color: var(--s6-green, #2e7d32);
   text-align: center;
   margin-bottom: 40px;
 }
@@ -2405,7 +2512,7 @@ section.slideshow .swiper-slide {
 .product-tag-title {
   font-size: 28px;
   font-weight: 700;
-  color: var(--s6-green, #014344);
+  color: var(--s6-green, #2e7d32);
   margin: 0 0 10px 0;
 }
 
@@ -2421,7 +2528,7 @@ section.slideshow .swiper-slide {
 
 .ribbon-banner.teal-ribbon {
   background-color: var(--s6-green-light, #e8f3ef);
-  color: var(--s6-green, #014344);
+  color: var(--s6-green, #2e7d32);
 }
 
 .ribbon-banner.pink-ribbon {
@@ -2478,7 +2585,7 @@ section.slideshow .swiper-slide {
 .add-to-cart-btn {
   display: block;
   width: 100%;
-  background: var(--s6-green, #014344);
+  background: var(--s6-green, #2e7d32);
   color: #fff;
   text-decoration: none;
   font-size: 16px;
@@ -2502,9 +2609,9 @@ section.slideshow .swiper-slide {
   display: inline-block;
   font-size: 16px;
   font-weight: 600;
-  color: var(--s6-green, #014344);
+  color: var(--s6-green, #2e7d32);
   text-decoration: none;
-  border-bottom: 2px solid var(--s6-green, #014344);
+  border-bottom: 2px solid var(--s6-green, #2e7d32);
   padding-bottom: 4px;
   transition: color 0.3s ease;
 }
@@ -2550,14 +2657,14 @@ section.slideshow .swiper-slide {
 .s6-title-v2 {
   font-size: 38px;
   font-weight: 800;
-  color: #014344;
+  color: #2e7d32;
   margin: 0 0 5px 0;
   line-height: 1.1;
 }
 
 .s6-subtitle-v2 {
   font-size: 16px;
-  color: #014344;
+  color: #2e7d32;
   font-style: italic;
   margin: 0 0 15px 0;
 }
@@ -2613,7 +2720,7 @@ section.slideshow .swiper-slide {
   align-items: center;
   font-size: 13px;
   font-weight: 600;
-  color: #014344;
+  color: #2e7d32;
   gap: 10px;
 }
 
@@ -2623,7 +2730,7 @@ section.slideshow .swiper-slide {
   justify-content: center;
   width: 28px;
   height: 28px;
-  background-color: #014344;
+  background-color: #2e7d32;
   border-radius: 50%;
   color: #fff;
   font-size: 14px;
@@ -2638,8 +2745,8 @@ section.slideshow .swiper-slide {
 
 .s6-sec-btn-v2 {
   background: #fff;
-  border: 1px solid #014344;
-  color: #014344;
+  border: 1px solid #2e7d32;
+  color: #2e7d32;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 12px;
@@ -2652,7 +2759,7 @@ section.slideshow .swiper-slide {
 }
 
 .s6-sec-btn-v2:hover {
-  background: #014344;
+  background: #2e7d32;
   color: #fff;
 }
 
@@ -2682,7 +2789,7 @@ section.slideshow .swiper-slide {
 .s6-vbox {
   flex: 1;
   background: #fff;
-  border: 2px solid #014344;
+  border: 2px solid #2e7d32;
   border-radius: 8px;
   text-align: center;
   position: relative;
@@ -2702,7 +2809,7 @@ section.slideshow .swiper-slide {
   font-size: 12px;
   font-weight: 700;
   padding: 4px 0;
-  border-bottom: 2px solid #014344;
+  border-bottom: 2px solid #2e7d32;
 }
 
 .s6-vbox.highlighted {
@@ -2716,7 +2823,7 @@ section.slideshow .swiper-slide {
 .s6-vbox-title {
   font-size: 16px;
   font-weight: 800;
-  color: #014344;
+  color: #2e7d32;
   margin-bottom: 5px;
   line-height: 1.2;
 }
@@ -2730,11 +2837,11 @@ section.slideshow .swiper-slide {
 .s6-vbox-price {
   font-size: 18px;
   font-weight: 800;
-  color: #014344;
+  color: #2e7d32;
 }
 
 .s6-vbox-bottom {
-  background-color: #014344;
+  background-color: #2e7d32;
   color: #fff;
   padding: 10px 5px;
   font-size: 12px;
@@ -2757,7 +2864,7 @@ section.slideshow .swiper-slide {
 /* ATC Button */
 .s6-atc-btn-v2 {
   width: 100%;
-  background-color: #014344;
+  background-color: #2e7d32;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -2791,7 +2898,7 @@ section.slideshow .swiper-slide {
 }
 
 .s6-clinically-bar-v2 {
-  background-color: #014344;
+  background-color: #2e7d32;
   color: #fff;
   text-align: center;
   font-size: 24px;
