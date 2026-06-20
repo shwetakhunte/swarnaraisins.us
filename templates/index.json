@@ -250,7 +250,7 @@
         "card_swarna_gold": {
           "type": "product_card",
           "settings": {
-            "product": "swarna-gold",
+            "product": "premium-black-raisins-snack-packs-10-1-4-oz-packs",
             "ribbon_text": "Clinically Tested",
             "ribbon_color": "teal-ribbon",
             "review_count": "262",
@@ -260,7 +260,7 @@
         "card_swarna_black": {
           "type": "product_card",
           "settings": {
-            "product": "swarna-black",
+            "product": "premium-golden-raisins-40g-10-snack-packs",
             "ribbon_text": "Pink Tiger Verified",
             "ribbon_color": "pink-ribbon",
             "review_count": "141",
