@@ -163,8 +163,48 @@
             "bg": "#ffffff"
           }
         },
+        "simple_NhhFPT": {
+          "type": "simple",
+          "settings": {
+            "title": "Shop",
+            "url": "shopify://collections/all",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "simple_fwMdkk": {
+          "type": "simple",
+          "settings": {
+            "title": "Swarna Safety Shield",
+            "url": "/",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
+        "simple_tHKWh7": {
+          "type": "simple",
+          "settings": {
+            "title": "Behind the Process",
+            "url": "/",
+            "open_link": "_self",
+            "icon": "",
+            "cus_cl": false,
+            "cl": "#ec0101",
+            "lb": "",
+            "lb_cl": ""
+          }
+        },
         "f1985b73-73ae-40d4-a44d-6512fa2bed65": {
           "type": "mega",
+          "disabled": true,
           "settings": {
             "title": "Shop",
             "url": "shopify://collections/all",
@@ -182,6 +222,7 @@
         },
         "0dc3b769-8f81-4021-b808-27c4122df832": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "tt_hd": "Shop Layouts",
             "url": "/",
@@ -192,6 +233,7 @@
         },
         "556a4905-9d7f-4bca-9ebc-608af9796559": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "tt_hd": "Shop catalog",
             "url": "#",
@@ -202,6 +244,7 @@
         },
         "91997113-1e93-40ae-bf7d-3fedaa54aa17": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "tt_hd": "Product Features",
             "url": "#",
@@ -212,6 +255,7 @@
         },
         "d86acdc9-b2b3-4af6-9ae8-1ec6f2fbb036": {
           "type": "banner",
+          "disabled": true,
           "settings": {
             "title": "Fresh Milk",
             "url": "shopify://collections/fresh-milk",
@@ -221,6 +265,7 @@
         },
         "dfd71c66-4221-484e-8152-884510305448": {
           "type": "mega",
+          "disabled": true,
           "settings": {
             "title": "Product",
             "url": "shopify://collections/all",
@@ -238,6 +283,7 @@
         },
         "df961956-d87e-4b9a-a2bb-f09f92d4db0c": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "tt_hd": "Product Details",
             "url": "#",
@@ -248,6 +294,7 @@
         },
         "0dcb3f77-681c-42bb-8815-4e2aa1ae5a10": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "tt_hd": "Product type",
             "url": "/",
@@ -258,6 +305,7 @@
         },
         "a7a978cf-56f8-42a6-8baf-8cca23e4a73a": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "tt_hd": "Thumbnails and zoom",
             "url": "#",
@@ -268,6 +316,7 @@
         },
         "banner_yUrcG3": {
           "type": "banner",
+          "disabled": true,
           "settings": {
             "title": "Organix",
             "url": "shopify://collections/organix",
@@ -277,6 +326,7 @@
         },
         "dropdown_CYDyGE": {
           "type": "dropdown",
+          "disabled": true,
           "settings": {
             "title": "Collections",
             "url": "/collections",
@@ -299,6 +349,7 @@
         },
         "29ad91fc-8806-4b0f-88d0-8e863ef7fe8c": {
           "type": "dropdown",
+          "disabled": true,
           "settings": {
             "title": "Pages",
             "url": "#",
@@ -310,34 +361,6 @@
             "lb": "",
             "lb_cl": "",
             "bg": "#ffffff"
-          }
-        },
-        "4df142f1-d9c4-4ea6-83b7-ce00f3f734ce": {
-          "type": "dropdown",
-          "settings": {
-            "title": "Blog",
-            "url": "shopify://blogs/organix",
-            "open_link": "_self",
-            "menu": "",
-            "icon": "",
-            "cus_cl": false,
-            "cl": "#007aff",
-            "lb": "",
-            "lb_cl": "#007aff",
-            "bg": "#ffffff"
-          }
-        },
-        "header-1": {
-          "type": "simple",
-          "settings": {
-            "title": "Contact Us",
-            "url": "shopify://pages/contact",
-            "open_link": "_self",
-            "icon": "",
-            "cus_cl": false,
-            "cl": "#ec0101",
-            "lb": "",
-            "lb_cl": ""
           }
         },
         "3965da57-f7d5-4271-97a2-a0a4b93bf9c4": {
@@ -357,6 +380,9 @@
       },
       "block_order": [
         "dropdown_KYBURf",
+        "simple_NhhFPT",
+        "simple_fwMdkk",
+        "simple_tHKWh7",
         "f1985b73-73ae-40d4-a44d-6512fa2bed65",
         "0dc3b769-8f81-4021-b808-27c4122df832",
         "556a4905-9d7f-4bca-9ebc-608af9796559",
@@ -370,8 +396,6 @@
         "dropdown_CYDyGE",
         "daf2536b-aac6-4535-9831-6849a83dec8a",
         "29ad91fc-8806-4b0f-88d0-8e863ef7fe8c",
-        "4df142f1-d9c4-4ea6-83b7-ce00f3f734ce",
-        "header-1",
         "3965da57-f7d5-4271-97a2-a0a4b93bf9c4"
       ],
       "settings": {
