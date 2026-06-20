@@ -274,7 +274,6 @@
       ],
       "settings": {
         "title": "Meet our Top Sellers",
-        "btn_label": "Add to Cart",
         "show_shop_all": true,
         "shop_all_url": "/collections/all",
         "shop_all_label": "Shop All",
