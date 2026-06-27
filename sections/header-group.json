@@ -102,73 +102,31 @@
         "text_Mchckq": {
           "type": "text",
           "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🍇 Farm-Grown. Naturally Sweet.<br/></p>"
           }
         },
         "text_QaKhp8": {
           "type": "text",
           "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🌞 Naturally Sun-Dried. Premium by Nature.</p>"
           }
         },
         "text_BppVBQ": {
           "type": "text",
           "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🚚 Free Shipping on Orders Over $50</p>"
           }
         },
         "text_Btj644": {
           "type": "text",
           "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🎉 15% OFF Your First Order • WELCOME15</p>"
           }
         },
         "text_LpQWrK": {
           "type": "text",
           "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_bQRNjc": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_DeXLMq": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_LG3HyJ": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_PPT9XH": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_EFWHPh": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_dpfD7B": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_QUqVXf": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🚜 From Yakkanchi, Athani to Your Famil</p>"
           }
         }
       },
@@ -177,14 +135,7 @@
         "text_QaKhp8",
         "text_BppVBQ",
         "text_Btj644",
-        "text_LpQWrK",
-        "text_bQRNjc",
-        "text_DeXLMq",
-        "text_LG3HyJ",
-        "text_PPT9XH",
-        "text_EFWHPh",
-        "text_dpfD7B",
-        "text_QUqVXf"
+        "text_LpQWrK"
       ],
       "name": "Text horizontal running",
       "settings": {

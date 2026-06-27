@@ -105,7 +105,6 @@
       "type": "newsletter-popup",
       "disabled": true,
       "settings": {
-        "bg_newsletter": "shopify://shop_images/img_newsletter.jpg",
         "bg_color": "#ffffff",
         "title_newslette": "Subcribe To Our Newsletter",
         "description": "<p>Sign up for our newsletter to be updated on the latest  designs, exclusive offers, inspiration and tip!</p>",
@@ -136,7 +135,7 @@
             "title": "Home",
             "url": "/",
             "open_link": "_self",
-            "menu": "home-page",
+            "menu": "",
             "show_icon": false,
             "icon": "",
             "lb": "",
@@ -149,7 +148,7 @@
             "title": "Shops",
             "url": "shopify://collections",
             "open_link": "_self",
-            "menu": "shop-layouts",
+            "menu": "",
             "show_icon": false,
             "icon": "",
             "lb": "",
@@ -162,7 +161,7 @@
             "title": "Products",
             "url": "shopify://collections",
             "open_link": "_self",
-            "menu": "product-details",
+            "menu": "",
             "show_icon": false,
             "icon": "",
             "lb": "",
@@ -175,7 +174,7 @@
             "title": "Pages",
             "url": "#",
             "open_link": "_self",
-            "menu": "pages",
+            "menu": "",
             "show_icon": false,
             "icon": "",
             "lb": "",
@@ -188,7 +187,7 @@
             "title": "Blogs",
             "url": "shopify://blogs/organix",
             "open_link": "_self",
-            "menu": "blog",
+            "menu": "",
             "show_icon": false,
             "icon": "",
             "lb": "",
@@ -241,12 +240,11 @@
       ],
       "settings": {
         "show_logo": true,
-        "logo": "shopify://shop_images/logo_footer_4.png",
         "logo_max_width": 120,
         "use_categories": true,
         "use_thumb": true,
         "show_prod_qty": true,
-        "categories": "categories",
+        "categories": "",
         "bg_header": "#2a7d2e",
         "cl_header": "#ffffff",
         "bg_menu": "#ffffff",
@@ -293,49 +291,31 @@
         "text_zK9JxM": {
           "type": "text",
           "settings": {
-            "text": "<p>😍   Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🍇 Farm-Grown. Naturally Sweet.</p>"
           }
         },
         "text_McpFnR": {
           "type": "text",
           "settings": {
-            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🌞 Naturally Sun-Dried. Premium by Nature.</p>"
           }
         },
         "text_yYxMzD": {
           "type": "text",
           "settings": {
-            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🚚 Free Shipping on Orders Over $50</p>"
           }
         },
         "text_AXMLwh": {
           "type": "text",
           "settings": {
-            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🎉 15% OFF Your First Order • WELCOME15</p>"
           }
         },
         "text_kCtKYe": {
           "type": "text",
           "settings": {
-            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_tV9jwm": {
-          "type": "text",
-          "settings": {
-            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_Thb4XH": {
-          "type": "text",
-          "settings": {
-            "text": "<p>😍 &nbsp; Special offer: enjoy 3 months of shopify for $1/month</p>"
-          }
-        },
-        "text_DWVa4d": {
-          "type": "text",
-          "settings": {
-            "text": "<p>😍   Special offer: enjoy 3 months of shopify for $1/month</p>"
+            "text": "<p>🚜 From Yakkanchi, Athani to Your Famil</p>"
           }
         }
       },
@@ -344,10 +324,7 @@
         "text_McpFnR",
         "text_yYxMzD",
         "text_AXMLwh",
-        "text_kCtKYe",
-        "text_tV9jwm",
-        "text_Thb4XH",
-        "text_DWVa4d"
+        "text_kCtKYe"
       ],
       "settings": {
         "location": "bottom",
