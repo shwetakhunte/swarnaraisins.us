@@ -1,0 +1,240 @@
+{% liquid
+  assign sid = section.id
+  assign bg_image = section.settings.bg_image
+  assign button_link = section.settings.button_link
+%}
+{{ 'countdown-product-showcase.css' | asset_url | stylesheet_tag }}
+
+<section id="countdown-showcase-{{ sid }}" class="countdown-showcase-section" style="
+  {% if bg_image != blank %}
+    background-image: url('{{ bg_image | image_url: width: 1920 }}');
+  {% else %}
+    background-image: url('{{ 'countdown_showcase_bg.png' | asset_url }}');
+  {% endif %}
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  --text-color: {{ section.settings.text_color }};
+  --subheading-color: {{ section.settings.subheading_color }};
+  --button-bg: {{ section.settings.button_bg }};
+  --button-text-color: {{ section.settings.button_text_color }};
+  --button-bg-hover: {{ section.settings.button_bg_hover }};
+  --button-text-hover: {{ section.settings.button_text_hover }};
+">
+  <div class="container countdown-showcase-container">
+    <div class="row countdown-showcase-row">
+      <!-- Left Content Column -->
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 countdown-showcase-content">
+        {% if section.settings.subheading != blank %}
+          <div class="showcase-subheading">{{ section.settings.subheading }}</div>
+        {% endif %}
+        
+        {% if section.settings.heading != blank %}
+          <h2 class="showcase-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <div class="showcase-description">{{ section.settings.description }}</div>
+        {% endif %}
+        
+        <!-- Countdown Timer -->
+        {% if section.settings.year != blank and section.settings.month != blank and section.settings.day != blank %}
+          <div class="showcase-timer-wrapper">
+            <count-down
+              class="cms-countdown showcase-countdown"
+              data-y="{{ section.settings.year }}"
+              data-m="{{ section.settings.month }}"
+              data-d="{{ section.settings.day }}"
+              data-h="{{ section.settings.hour | default: '00' }}"
+              data-i="{{ section.settings.minute | default: '00' }}"
+              data-s="00"
+            ></count-down>
+          </div>
+        {% endif %}
+        
+        <!-- CTA Button -->
+        {% if section.settings.button_text != blank %}
+          <div class="showcase-btn-wrapper">
+            <a href="{{ button_link | default: '/collections/all' }}" class="showcase-btn btn">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- Right Image/Product Column -->
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 countdown-showcase-visual">
+        <!-- Curved light-green shape overlay background -->
+        <div class="visual-bg-overlay"></div>
+        
+        <div class="products-display-wrapper">
+          <!-- Stand/Pedestal -->
+          <div class="products-pedestal">
+            <div class="pedestal-top"></div>
+            <div class="pedestal-body"></div>
+          </div>
+          
+          <!-- Product Packs -->
+          <div class="product-packs-container">
+            <div class="product-pack pack-left">
+              {% if section.settings.image_left != blank %}
+                <img src="{{ section.settings.image_left | image_url: width: 400 }}" alt="Golden Raisins" loading="lazy">
+              {% else %}
+                <img src="{{ 'golden_raisins_product.png' | asset_url }}" alt="Golden Raisins" loading="lazy">
+              {% endif %}
+            </div>
+            
+            <div class="product-pack pack-right">
+              {% if section.settings.image_right != blank %}
+                <img src="{{ section.settings.image_right | image_url: width: 400 }}" alt="Black Raisins" loading="lazy">
+              {% else %}
+                <img src="{{ 'black_raisins_product.png' | asset_url }}" alt="Black Raisins" loading="lazy">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Countdown showcase banner",
+  "class": "countdown-showcase-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Let go of empty sweets."
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose sweetness that gives back. Fibre, Iron & Antioxidants in every bite."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>A handful of Swarna Raisins daily supports a calmer gut, steady energy, glowing skin & balanced hormones — rooted in Ayurveda, backed by modern nutrition.</p>"
+    },
+    {
+      "type": "header",
+      "content": "== Colors"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#e0f2f1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background color",
+      "default": "#134021"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "Button background color (hover)",
+      "default": "#eb5624"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover",
+      "label": "Button text color (hover)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "== Countdown Timer"
+    },
+    {
+      "type": "text",
+      "id": "year",
+      "label": "Year (YYYY)",
+      "default": "2026"
+    },
+    {
+      "type": "text",
+      "id": "month",
+      "label": "Month (MM)",
+      "default": "12"
+    },
+    {
+      "type": "text",
+      "id": "day",
+      "label": "Day (DD)",
+      "default": "31"
+    },
+    {
+      "type": "text",
+      "id": "hour",
+      "label": "Hour (HH)",
+      "default": "23"
+    },
+    {
+      "type": "text",
+      "id": "minute",
+      "label": "Minute (MM)",
+      "default": "59"
+    },
+    {
+      "type": "header",
+      "content": "== Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "== Products Display"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Left Product Image (Pack)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Right Product Image (Pack)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown showcase banner",
+      "category": "Countdown"
+    }
+  ]
+}
+{% endschema %}
