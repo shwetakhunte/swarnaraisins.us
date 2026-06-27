@@ -287,6 +287,9 @@
         "card_swarna_gold",
         "card_swarna_black"
       ],
+      "custom_css": [
+        ".top-sellers-title{color: #000;}"
+      ],
       "settings": {
         "title": "Meet our Top Sellers",
         "show_shop_all": true,
