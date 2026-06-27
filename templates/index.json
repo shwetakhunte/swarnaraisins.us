@@ -18,7 +18,7 @@
             "link_img": "/collections/all",
             "open_link": "_self",
             "class_animate": "fadeinleft",
-            "cusotm-width": 55,
+            "cusotm-width": 60,
             "h_position": "right",
             "v_position": "middle",
             "txt_align": "left"
@@ -51,7 +51,7 @@
           "settings": {
             "title": "<p>Premium raisins crafted from carefully selected vineyards and made for healthier everyday living.</p>",
             "color": "#333333",
-            "fs_text": 18,
+            "fs_text": 17,
             "fw_text": 500,
             "lh_text": 0,
             "ls_text": 0,
