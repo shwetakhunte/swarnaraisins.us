@@ -266,7 +266,7 @@
           "type": "product_card",
           "settings": {
             "product": "premium-black-raisins-7-oz-family-pouch",
-            "ribbon_text": "Clinically Tested",
+            "ribbon_text": "Lab Tested -  Naturally Sun-Dried",
             "ribbon_color": "teal-ribbon",
             "review_count": "262",
             "product_desc": "One serving to strengthen the foundation of your daily health"
@@ -276,8 +276,8 @@
           "type": "product_card",
           "settings": {
             "product": "premium-golden-raisins-40g-10-snack-packs",
-            "ribbon_text": "Pink Tiger Verified",
-            "ribbon_color": "pink-ribbon",
+            "ribbon_text": "Lab Tested -  Naturally Sun-Dried",
+            "ribbon_color": "teal-ribbon",
             "review_count": "141",
             "product_desc": "Provides you with natural daily energy with an ideal mix of antioxidants"
           }
