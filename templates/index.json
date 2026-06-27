@@ -18,80 +18,76 @@
             "link_img": "/collections/all",
             "open_link": "_self",
             "class_animate": "fadeinleft",
-            "cusotm-width": 50,
-            "h_position": "center",
+            "cusotm-width": 55,
+            "h_position": "right",
             "v_position": "middle",
-            "txt_align": "center"
+            "txt_align": "left"
           }
         },
-        "slide_2": {
-          "type": "img",
+        "hd_1": {
+          "type": "hd",
           "settings": {
-            "link_img": "/products/supply6-fibre-orangeburst",
-            "open_link": "_self",
-            "class_animate": "fadeinleft",
-            "cusotm-width": 50,
-            "h_position": "center",
-            "v_position": "middle",
-            "txt_align": "center"
+            "title": "Naturally Sweet.<br>Genuinely Better.",
+            "color": "#2e7d32",
+            "fs_text": 48,
+            "fw_text": 700,
+            "mb": 20,
+            "sm_mb": 15,
+            "mobile_font_text": 28,
+            "mobile_fw_text": 700
           }
         },
-        "slide_3": {
-          "type": "img",
+        "txt_1": {
+          "type": "txt",
           "settings": {
-            "link_img": "/products/supply6-360",
-            "open_link": "_self",
-            "class_animate": "fadeinleft",
-            "cusotm-width": 50,
-            "h_position": "center",
-            "v_position": "middle",
-            "txt_align": "center"
+            "title": "<p>Premium raisins crafted from carefully selected vineyards and made for healthier everyday living.<\/p>",
+            "color": "#333333",
+            "fs_text": 18,
+            "fw_text": 500,
+            "mb": 15,
+            "sm_mb": 10,
+            "mobile_font_text": 15,
+            "mobile_fw_text": 500
           }
         },
-        "slide_4": {
-          "type": "img",
+        "txt_2": {
+          "type": "txt",
           "settings": {
-            "link_img": "/products/supply6-salts-lime",
-            "open_link": "_self",
-            "class_animate": "fadeinleft",
-            "cusotm-width": 50,
-            "h_position": "center",
-            "v_position": "middle",
-            "txt_align": "center"
+            "title": "<p>Whether you're looking for a better snack, a smarter lunchbox choice, or a naturally sweet addition to your daily routine, Swarna Raisins delivers premium quality in every bite.<\/p>",
+            "color": "#666666",
+            "fs_text": 16,
+            "fw_text": 400,
+            "mb": 30,
+            "sm_mb": 20,
+            "mobile_font_text": 13,
+            "mobile_fw_text": 400
           }
         },
-        "slide_5": {
-          "type": "img",
+        "btn_1": {
+          "type": "btn",
           "settings": {
-            "link_img": "/products/supply6-360",
-            "open_link": "_self",
-            "class_animate": "fadeinleft",
-            "cusotm-width": 50,
-            "h_position": "center",
-            "v_position": "middle",
-            "txt_align": "center"
-          }
-        },
-        "slide_6": {
-          "type": "img",
-          "settings": {
-            "link_img": "/products/supply6-protein-wafer-strawberry",
-            "open_link": "_self",
-            "class_animate": "fadeinleft",
-            "cusotm-width": 50,
-            "h_position": "center",
-            "v_position": "middle",
-            "txt_align": "center"
+            "title": "Shop Premium Raisins",
+            "btn_link": "/collections/all",
+            "cl_txt": "#ffffff",
+            "cl_txt_hover": "#ffffff",
+            "cl_bg": "#2e7d32",
+            "cl_bg_hover": "#eb5624",
+            "fs_text": 15,
+            "fw_text": 600,
+            "br_button": 4,
+            "mb": 0,
+            "sm_mb": 0,
+            "mobile_font_text": 14,
+            "mobile_fw_text": 600
           }
         }
       },
       "block_order": [
         "slide_1",
-        "slide_2",
-        "slide_3",
-        "slide_4",
-        "slide_5",
-        "slide_6"
+        "hd_1",
+        "txt_1",
+        "txt_2",
+        "btn_1"
       ],
       "settings": {
         "full-screen": true,
@@ -111,16 +107,16 @@
         "mobile": 1,
         "slides-Per-Group": 1,
         "rows": 1,
-        "autoplay": true,
+        "autoplay": false,
         "speed": "600",
         "autoplay_delay": "5000",
-        "navigation": true,
+        "navigation": false,
         "effect": "slide",
         "fade_zoom": false,
         "centered-Slides": true,
         "auto-Height": true,
-        "pagination": true,
-        "loop": true,
+        "pagination": false,
+        "loop": false,
         "space-Between": 0,
         "direction": "horizontal",
         "position_dots": "center",
