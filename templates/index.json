@@ -352,7 +352,7 @@
       ],
       "settings": {
         "title": "Shop Our Collection",
-        "cl_title": "#2e7d32",
+        "cl_title": "#000000",
         "cl_underline": "#c60f14",
         "text_size": "medium",
         "text_transform": "none",
