@@ -418,6 +418,9 @@
     },
     "usp_grid": {
       "type": "countdown-product-showcase",
+      "custom_css": [
+        ".showcase-heading{color: #fff !important;}"
+      ],
       "settings": {
         "subheading": "Let go of empty sweets.",
         "heading": "Choose sweetness that gives back. Fibre, Iron & Antioxidants in every bite.",
