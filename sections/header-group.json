@@ -236,7 +236,7 @@
           "type": "simple",
           "settings": {
             "title": "Swarna Safety Shield",
-            "url": "/",
+            "url": "shopify://pages/swarna-safety-shield",
             "open_link": "_self",
             "icon": "",
             "cus_cl": false,
@@ -249,7 +249,7 @@
           "type": "simple",
           "settings": {
             "title": "Behind the Process",
-            "url": "/",
+            "url": "shopify://pages/behind-the-process",
             "open_link": "_self",
             "icon": "",
             "cus_cl": false,
