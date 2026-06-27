@@ -392,7 +392,7 @@
         "subtitle": "Born in the Vineyards. Perfected by Passion",
         "content": "<p>We founded <strong>Swarna Raisins</strong> with a simple yet powerful vision — to bring <strong>India's finest, naturally sweet raisins</strong> directly from our farms to homes across the world.<br/><br/>For decades, our family has been growing raisins in the fertile lands of <strong>Karnataka</strong>, closely working with farmers across <strong>Maharashtra</strong> — regions celebrated for producing some of the most flavourful grapes in India. Over the years, we witnessed a recurring challenge: while farmers worked tirelessly to grow premium-quality grapes, the real value of their effort was often lost in long supply chains and multiple intermediaries.</p>",
         "btn_text": "Read our Story",
-        "btn_link": "/pages/about-us",
+        "btn_link": "shopify://pages/about-us",
         "image": "shopify://shop_images/our_story.jpg",
         "bg_color": "#ffffff",
         "padding_top": 90,
