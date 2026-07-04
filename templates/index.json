@@ -15,6 +15,7 @@
         "slide_1": {
           "type": "img",
           "settings": {
+            "image_sl": "shopify://shop_images/Website_1_Homepage_Slider_2_4fa0b587-36e3-43d6-9bd3-e340fc576f60.jpg",
             "link_img": "/collections/all",
             "open_link": "_self",
             "class_animate": "fadeinleft",
