@@ -731,22 +731,27 @@ section.slideshow .swiper-slide {
 /* 2. Why We Exist Section card image overrides */
 .type_section_about .item:nth-child(1) .icon-svg,
 #bk_why_1 .icon-svg {
-  background-image: url("{{ 'vineyard_heritage_banner.png' | asset_url }}") !important;
+  background-image: var(--card-image, url("{{ 'vineyard_heritage_banner.png' | asset_url }}")) !important;
 }
 
 .type_section_about .item:nth-child(2) .icon-svg,
 #bk_why_2 .icon-svg {
-  background-image: url("{{ 'family_raisins_banner.png' | asset_url }}") !important;
+  background-image: var(--card-image, url("{{ 'family_raisins_banner.png' | asset_url }}")) !important;
 }
 
 .type_section_about .item:nth-child(3) .icon-svg,
 #bk_why_3 .icon-svg {
-  background-image: url("{{ 'gold_raisins_banner.png' | asset_url }}") !important;
+  background-image: var(--card-image, url("{{ 'gold_raisins_banner.png' | asset_url }}")) !important;
 }
 
 .type_section_about .item:nth-child(4) .icon-svg,
 #bk_why_4 .icon-svg {
-  background-image: url("{{ 'black_raisins_banner.png' | asset_url }}") !important;
+  background-image: var(--card-image, url("{{ 'black_raisins_banner.png' | asset_url }}")) !important;
+}
+
+/* Fallback for any newly added about us blocks */
+.type_section_about .item .icon-svg {
+  background-image: var(--card-image) !important;
 }
 
 .type_section_about .item .icon-svg,

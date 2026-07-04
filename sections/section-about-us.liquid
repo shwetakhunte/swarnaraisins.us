@@ -53,7 +53,7 @@
                                 <div class="alo-icon-image" style="--rounded: 100%;">
                                   {% assign image = block.settings.icon_img %}
                                   {%- assign image_alt = image.alt | default: block.settings.title | escape -%}
-                                  {%- assign image_height = block.settings.image_max_width | divided_by: block.settings.image.aspect_ratio -%}
+                                  {%- assign image_height = block.settings.image_max_width | divided_by: image.aspect_ratio -%}
                                   {% capture sizes %}(max-width: {{ block.settings.image_max_width | times: 2 }}px) 50vw, {{ block.settings.image_max_width }}px{% endcapture %}
                                   {% capture widths %}{{ block.settings.image_max_width }}, {{ block.settings.image_max_width | times: 1.5 | round }}, {{ block.settings.image_max_width | times: 2 }}{% endcapture %}
                                   {{ image | image_url: width: 600 | image_tag:
@@ -74,7 +74,7 @@
                               {% endif %}
                           {% else %}
                             
-                              <div class="icon-svg">
+                              <div class="icon-svg" {% if block.settings.icon_img != blank %}style="--card-image: url('{{ block.settings.icon_img | image_url: width: 600 }}');"{% endif %}>
                                {% if block.settings.icon_svg != blank %}
                                  {{ block.settings.icon_svg }}
                               {% else %}
