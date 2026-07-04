@@ -427,6 +427,7 @@
         ".showcase-heading {color: #fff !important;}"
       ],
       "settings": {
+        "bg_image": "shopify://shop_images/Website_1_Let_go_of_empty_sweets_e7acbe77-1d79-43f7-b221-58f1f7b62bb4.jpg",
         "subheading": "Let go of empty sweets.",
         "heading": "Choose sweetness that gives back. Fibre, Iron & Antioxidants in every bite.",
         "description": "<p>A handful of Swarna Raisins daily supports a calmer gut, steady energy, glowing skin & balanced hormones — rooted in Ayurveda, backed by modern nutrition.</p>",
@@ -443,8 +444,8 @@
         "minute": "59",
         "button_text": "SHOP NOW",
         "button_link": "shopify://collections/all",
-        "image_left": "shopify://shop_images/WhatsApp_Image_2026-06-27_at_12.21.33_PM.jpg",
-        "image_right": "shopify://shop_images/Swarna22lbbox02.jpg"
+        "image_left": "shopify://shop_images/Website_1_Why_we_exist_1_5bc724f5-381d-4903-bf6d-d88f86a8d3ea.jpg",
+        "image_right": "shopify://shop_images/Website_1_Why_we_exist_3_6f297851-96b6-4aa5-8d24-b3b8cbf77e94.jpg"
       }
     },
     "we_care_section": {
