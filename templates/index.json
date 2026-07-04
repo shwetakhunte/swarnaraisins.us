@@ -426,7 +426,7 @@
       "custom_css": [
         ".showcase-heading {color: #fff !important;}",
         ".countdown-showcase-section:before {background-color: #00000026;}",
-        ".countdown-showcase-visual{display: none;}"
+        ".countdown-showcase-visual {display: none;}"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/Website_1_Let_go_of_empty_sweets_e7acbe77-1d79-43f7-b221-58f1f7b62bb4.jpg",
