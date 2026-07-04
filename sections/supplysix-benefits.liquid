@@ -172,9 +172,8 @@
           </div>
         {% endfor %}
       {% else %}
-        {%- assign default_benefits = "100% Natural & Chemical-Free|Zero sulphur, zero additives. Our raisins are sun-dried the natural way — pure as nature intended.|Naturally Dried & Nutrient-Rich|Packed with Iron, Fibre & Antioxidants that boost energy, support gut health and nourish your skin from within.|Ayurvedic Wisdom|Rooted in centuries of Ayurvedic tradition — raisins soaked overnight or eaten raw are a daily ritual for natural wellness.|FSSAI & NABL Certified|Every batch is lab-tested and certified. What you see on the label is exactly what's in the pack — no surprises.|Supports 200+ Farmers|Every purchase directly supports smallholder farmers across Maharashtra & Karnataka with fair pricing and guaranteed offtake.|Perfectly Portioned|Available in 40g snack packs, 100g–1kg family packs — fresh-sealed for every lifestyle, on the go or at home." | split: "|" -%}
-        {%- assign default_icons = "shield|heart|leaf|badge|users|package" | split: "|" -%}
-        {% for i in (0..5) %}
+        {%- assign default_benefits = "Naturally Dried & Nutrient-Rich|Packed with Iron, Fibre & Antioxidants that boost energy, support gut health and nourish your skin from within.|Ayurvedic Wisdom|Rooted in centuries of Ayurvedic tradition — raisins soaked overnight or eaten raw are a daily ritual for natural wellness.|Supports 200+ Farmers|Every purchase directly supports smallholder farmers across Maharashtra & Karnataka with fair pricing and guaranteed offtake.|Perfectly Portioned|Available in 40g snack packs, 100g–1kg family packs — fresh-sealed for every lifestyle, on the go or at home." | split: "|" -%}
+        {% for i in (0..3) %}
           {%- assign t_idx = forloop.index0 | times: 2 -%}
           {%- assign d_idx = t_idx | plus: 1 -%}
           {%- assign t = default_benefits[t_idx] -%}
@@ -182,11 +181,9 @@
           <div class="sr-benefit-card">
             <div class="sr-benefit-icon-wrap">
               {% case forloop.index %}
-                {% when 1 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                {% when 2 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                {% when 3 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.99l1.86.01L7 16h10l2 4h2l-4-12z"/></svg>
-                {% when 4 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                {% when 5 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                {% when 1 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                {% when 2 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.99l1.86.01L7 16h10l2 4h2l-4-12z"/></svg>
+                {% when 3 %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 {% else %}<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
               {% endcase %}
             </div>
