@@ -108,8 +108,8 @@
         "menu_2": {
           "type": "link_list",
           "settings": {
-            "heading": "POLICIES",
-            "menu": ""
+            "heading": "Support",
+            "menu": "support"
           }
         },
         "menu_3": {
