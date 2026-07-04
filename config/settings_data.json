@@ -10,8 +10,9 @@
 {
   "current": {
     "purchased_code": "",
-    "home_keywords": "Organix theme, Fastest, Ajax Shop, Minimal, Lazyload",
-    "shop_author": "Organix theme",
+    "home_keywords": "golden and black raisins, raisins online,\ndried fruit raisins, kismis dry fruits",
+    "shop_author": "swarnaraisins - Filling the gaps in your nutrition.",
+    "dynamic_title1": "Best Indian Raisins Online – Natural Golden & Black Raisins",
     "rtl": false,
     "show_load_page": false,
     "cusotm_width": 1410,
@@ -25,7 +26,7 @@
     "title_vertical": "Browser All Categories",
     "predictive_search_show_vendor": true,
     "predictive_search_show_price": true,
-    "key_word": "Vegetables,kitchen,drill,Drink Juice",
+    "key_word": "Vegetables,kitchen,drill,Drink Juice, Filling the gaps in your nutrition, Raisins",
     "popular_product_list_search": [
       "chili-pepper",
       "crescione-aclla-cress",
@@ -223,8 +224,8 @@
     "footer_social_vimeo_text": "Vimeo",
     "footer_social_tiktok_enable": true,
     "social_tiktok_link": "#",
-    "favicon": "shopify://shop_images/favicon.png",
-    "favicon_apple": "shopify://shop_images/favicon.png",
+    "favicon": "shopify://shop_images/Swarna_Logo_1.avif",
+    "favicon_apple": "shopify://shop_images/Swarna_Logo_1.avif",
     "enable_crisp_chat": false,
     "code_crisp_chat": "<script type=\"text/javascript\">window.$crisp=[];window.CRISP_WEBSITE_ID=\"bcea498a-5b3c-48a9-93e3-bf9553284b22\";(function(){d=document;s=d.createElement(\"script\");s.src=\"https://client.crisp.chat/l.js\";s.async=1;d.getElementsByTagName(\"head\")[0].appendChild(s);})();</script>",
     "custom_css": true,
@@ -1777,6 +1778,22 @@
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
+      },
+      "16510219240223340300": {
+        "type": "shopify://apps/whatmore-shoppable-videos/blocks/app-embed/20db8a72-315a-4364-8885-64219ee48303",
+        "disabled": false,
+        "settings": {
+          "minimized_video_position": "right",
+          "horizontal-padding": 5,
+          "vertical-padding": 150,
+          "app-size": 50,
+          "minimized_video_position_landscape": "right",
+          "horizontal-padding-landscape": 5,
+          "vertical-padding-landscape": 150,
+          "app-size-landscape": 50,
+          "video-title": "",
+          "use-variant": "false"
+        }
       }
     }
   },
