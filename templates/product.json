@@ -49,6 +49,64 @@
         "promo_text": "A Little Extra for You — Enjoy 15% OFF"
       }
     },
+    "product-page-tab": {
+      "type": "product-page-tab",
+      "blocks": {
+        "f9332aee-ca1e-4993-ad5c-e3d5984789cc": {
+          "type": "tab_description",
+          "settings": {
+            "title_description": "Description"
+          }
+        },
+        "22f75249-e4ab-453e-84d5-0006118d5803": {
+          "type": "tab_metafields",
+          "disabled": true,
+          "settings": {
+            "title": "Additional Information",
+            "custom_liquid": "{{product.metafields.custom.additional_information | metafield_tag}}"
+          }
+        },
+        "d07132a9-cf30-4c47-a9f5-6b3bd410c124": {
+          "type": "tab_custom_html",
+          "settings": {
+            "title": "Shipping & Return",
+            "page_content": "shipping-return"
+          }
+        },
+        "tab_custom_text_zKYf3p": {
+          "type": "tab_custom_text",
+          "settings": {
+            "title": "Return Policies",
+            "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:</p><p>– Received the wrong item.<br/>– Item arrived not as expected (ie. damaged packaging).<br/>– Item had defects.<br/>– Over delivery time.<br/>– The shipper does not allow the goods to be inspected before payment.</p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.</p>"
+          }
+        },
+        "0e2c2c01-948c-43f1-ae77-e8dbabaf8f55": {
+          "type": "tab_reviews",
+          "settings": {
+            "title_reviews": "Customer Reviews"
+          }
+        }
+      },
+      "block_order": [
+        "f9332aee-ca1e-4993-ad5c-e3d5984789cc",
+        "22f75249-e4ab-453e-84d5-0006118d5803",
+        "d07132a9-cf30-4c47-a9f5-6b3bd410c124",
+        "tab_custom_text_zKYf3p",
+        "0e2c2c01-948c-43f1-ae77-e8dbabaf8f55"
+      ],
+      "settings": {
+        "hide_tabs": false,
+        "accordion_tabs": false,
+        "cl_bg": "#ffffff",
+        "cl_tab": "#124a2f",
+        "show_border": true,
+        "cl_line": "#ececec",
+        "mg": "0,0,60px,0",
+        "pd": "",
+        "mg_mb": "0,0,30px,0",
+        "pd_mb": ""
+      }
+    },
     "supplysix_benefits": {
       "type": "supplysix-benefits",
       "settings": {
@@ -116,64 +174,6 @@
         "pd_mb": ""
       }
     },
-    "product-page-tab": {
-      "type": "product-page-tab",
-      "blocks": {
-        "f9332aee-ca1e-4993-ad5c-e3d5984789cc": {
-          "type": "tab_description",
-          "settings": {
-            "title_description": "Description"
-          }
-        },
-        "22f75249-e4ab-453e-84d5-0006118d5803": {
-          "type": "tab_metafields",
-          "disabled": true,
-          "settings": {
-            "title": "Additional Information",
-            "custom_liquid": "{{product.metafields.custom.additional_information | metafield_tag}}"
-          }
-        },
-        "d07132a9-cf30-4c47-a9f5-6b3bd410c124": {
-          "type": "tab_custom_html",
-          "settings": {
-            "title": "Shipping & Return",
-            "page_content": "shipping-return"
-          }
-        },
-        "tab_custom_text_zKYf3p": {
-          "type": "tab_custom_text",
-          "settings": {
-            "title": "Return Policies",
-            "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:</p><p>– Received the wrong item.<br/>– Item arrived not as expected (ie. damaged packaging).<br/>– Item had defects.<br/>– Over delivery time.<br/>– The shipper does not allow the goods to be inspected before payment.</p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.</p>"
-          }
-        },
-        "0e2c2c01-948c-43f1-ae77-e8dbabaf8f55": {
-          "type": "tab_reviews",
-          "settings": {
-            "title_reviews": "Customer Reviews"
-          }
-        }
-      },
-      "block_order": [
-        "f9332aee-ca1e-4993-ad5c-e3d5984789cc",
-        "22f75249-e4ab-453e-84d5-0006118d5803",
-        "d07132a9-cf30-4c47-a9f5-6b3bd410c124",
-        "tab_custom_text_zKYf3p",
-        "0e2c2c01-948c-43f1-ae77-e8dbabaf8f55"
-      ],
-      "settings": {
-        "hide_tabs": false,
-        "accordion_tabs": false,
-        "cl_bg": "#ffffff",
-        "cl_tab": "#124a2f",
-        "show_border": true,
-        "cl_line": "#ececec",
-        "mg": "0,0,60px,0",
-        "pd": "",
-        "mg_mb": "0,0,30px,0",
-        "pd_mb": ""
-      }
-    },
     "169708912018eb18f5": {
       "type": "apps",
       "disabled": true,
@@ -184,11 +184,11 @@
   },
   "order": [
     "main",
+    "product-page-tab",
     "supplysix_benefits",
     "supplysix_ingredients",
     "supplysix_how_to_use",
     "products_bought_together_Bg4gfU",
-    "product-page-tab",
     "169708912018eb18f5"
   ]
 }
