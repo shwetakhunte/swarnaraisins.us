@@ -15,6 +15,7 @@
         "badge_1": {
           "type": "trust_badge",
           "settings": {
+            "icon": "shopify://shop_images/Swarna_Female.avif",
             "title": "Zero Sugar"
           }
         },
@@ -70,7 +71,7 @@
           "type": "tab_custom_html",
           "settings": {
             "title": "Shipping & Return",
-            "page_content": "shipping-return"
+            "page_content": "shipping-policy-for-raisins-1"
           }
         },
         "tab_custom_text_zKYf3p": {
