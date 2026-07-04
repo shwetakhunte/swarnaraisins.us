@@ -101,8 +101,8 @@
         "menu_1": {
           "type": "link_list",
           "settings": {
-            "heading": "ABOUT",
-            "menu": ""
+            "heading": "Discover",
+            "menu": "discover"
           }
         },
         "menu_2": {
