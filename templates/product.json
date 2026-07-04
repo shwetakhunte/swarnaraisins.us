@@ -1,38 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "supplysix-main-product",
-      "settings": {
-        "subtitle": "Premium quality for your daily needs",
-        "loved_badge_text": "Loved by Customers"
-      },
       "blocks": {
         "badge_1": {
           "type": "trust_badge",
           "settings": {
-            "title": "Zero Sugar",
-            "icon": "shopify:\/\/shop_images\/Zero_Sugar.png"
+            "title": "Zero Sugar"
           }
         },
         "badge_2": {
           "type": "trust_badge",
           "settings": {
-            "title": "No Preservatives",
-            "icon": "shopify:\/\/shop_images\/No_Preservatives.png"
+            "title": "No Preservatives"
           }
         },
         "badge_3": {
           "type": "trust_badge",
           "settings": {
-            "title": "Plant Based",
-            "icon": "shopify:\/\/shop_images\/Plant_Based.png"
+            "title": "Plant Based"
           }
         },
         "badge_4": {
           "type": "trust_badge",
           "settings": {
-            "title": "Non-GMO",
-            "icon": "shopify:\/\/shop_images\/Non-GMO.png"
+            "title": "Non-GMO"
           }
         }
       },
@@ -41,7 +42,39 @@
         "badge_2",
         "badge_3",
         "badge_4"
-      ]
+      ],
+      "settings": {
+        "subtitle": "Wholesome Nutrition for Every Day",
+        "description_text": "Naturally nourish your day with premium sun-dried raisins, rich in fiber, antioxidants, and essential minerals.",
+        "promo_text": "A Little Extra for You — Enjoy 15% OFF"
+      }
+    },
+    "supplysix_benefits": {
+      "type": "supplysix-benefits",
+      "settings": {
+        "eyebrow": "— Nature's Best —",
+        "heading": "Why Swarna Raisins?",
+        "subheading": "A handful of Swarna Raisins daily supports a calmer gut, steady energy, glowing skin & balanced hormones — rooted in Ayurveda, backed by modern nutrition.",
+        "promise_title": "Let Go of Empty Sweets. Choose Sweetness That Gives Back.",
+        "promise_text": "Fibre, Iron & Antioxidants in every bite. Swarna Raisins — the only snack that loves you back."
+      }
+    },
+    "supplysix_ingredients": {
+      "type": "supplysix-ingredients",
+      "settings": {
+        "eyebrow": "— Nutrition Facts —",
+        "heading": "What's inside?",
+        "subheading": "Sun-dried to perfection, Swarna Raisins are a powerhouse of natural nutrients — no additives, no preservatives, just pure goodness in every pack."
+      }
+    },
+    "supplysix_how_to_use": {
+      "type": "supplysix-how-to-use",
+      "settings": {
+        "eyebrow": "— Daily Ritual —",
+        "heading": "How to use",
+        "subheading": "Simple, delicious ways to make Swarna Raisins a part of your daily wellness routine.",
+        "tip": "Soaking raisins overnight in copper vessel water and consuming them on an empty stomach is an ancient Ayurvedic practice known to improve digestion, boost haemoglobin and enhance skin glow."
+      }
     },
     "products_bought_together_Bg4gfU": {
       "type": "products-bought-together",
@@ -111,7 +144,7 @@
           "type": "tab_custom_text",
           "settings": {
             "title": "Return Policies",
-            "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:<\/p><p>– Received the wrong item.<br\/>– Item arrived not as expected (ie. damaged packaging).<br\/>– Item had defects.<br\/>– Over delivery time.<br\/>– The shipper does not allow the goods to be inspected before payment.<\/p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.<\/p>"
+            "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:</p><p>– Received the wrong item.<br/>– Item arrived not as expected (ie. damaged packaging).<br/>– Item had defects.<br/>– Over delivery time.<br/>– The shipper does not allow the goods to be inspected before payment.</p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.</p>"
           }
         },
         "0e2c2c01-948c-43f1-ae77-e8dbabaf8f55": {
@@ -146,24 +179,6 @@
       "disabled": true,
       "settings": {
         "include_margins": true
-      }
-    },
-    "supplysix_benefits": {
-      "type": "supplysix-benefits",
-      "settings": {
-        "heading": "Why Supply6 360?"
-      }
-    },
-    "supplysix_ingredients": {
-      "type": "supplysix-ingredients",
-      "settings": {
-        "heading": "What's inside?"
-      }
-    },
-    "supplysix_how_to_use": {
-      "type": "supplysix-how-to-use",
-      "settings": {
-        "heading": "How to use"
       }
     }
   },
