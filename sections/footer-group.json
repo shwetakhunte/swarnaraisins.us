@@ -111,19 +111,11 @@
             "heading": "Support",
             "menu": "support"
           }
-        },
-        "menu_3": {
-          "type": "link_list",
-          "settings": {
-            "heading": "SHOP",
-            "menu": ""
-          }
         }
       },
       "block_order": [
         "menu_1",
-        "menu_2",
-        "menu_3"
+        "menu_2"
       ],
       "settings": {
         "logo": "shopify://shop_images/Swarna_Logo_1.avif",
