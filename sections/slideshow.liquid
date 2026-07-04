@@ -43,7 +43,7 @@
                     {% else %}
                     {% assign ratio = image.aspect_ratio |default:1.0 %}
                     {% if image != blank %}
-                   <a class="image-slideshow " href="{{url}}" target="{{open_link}}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;" aria-label="link" {{ block.shopify_attributes }}>
+                   <a class="image-slideshow " href="{{url}}" target="{{open_link}}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;{% if image != blank %} --bg-image: url('{{ image | image_url: width: 2000 }}');{% endif %}{% if image_mobile != blank %} --bg-image-mobile: url('{{ image_mobile | image_url: width: 1000 }}');{% endif %}" aria-label="link" {{ block.shopify_attributes }}>
                       <div class="w-full h-full sm:d-none">
                           {% render 'image', image: image, width: 1920  %}
                        </div>

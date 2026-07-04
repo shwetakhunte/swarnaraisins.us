@@ -649,32 +649,38 @@ section.slideshow .swiper-slide {
 
 #laber_bock_slide_1 .image-slideshow,
 #laber_bock_slide_1 .image-card__img {
-  background-image: url("clean_raisins_hero_banner.png") !important;
+  background-image: var(--bg-image, url("clean_raisins_hero_banner.png")) !important;
 }
 
 #laber_bock_slide_2 .image-slideshow,
 #laber_bock_slide_2 .image-card__img {
-  background-image: url("gold_raisins_banner.png") !important;
+  background-image: var(--bg-image, url("gold_raisins_banner.png")) !important;
 }
 
 #laber_bock_slide_3 .image-slideshow,
 #laber_bock_slide_3 .image-card__img {
-  background-image: url("black_raisins_banner.png") !important;
+  background-image: var(--bg-image, url("black_raisins_banner.png")) !important;
 }
 
 #laber_bock_slide_4 .image-slideshow,
 #laber_bock_slide_4 .image-card__img {
-  background-image: url("vineyard_heritage_banner.png") !important;
+  background-image: var(--bg-image, url("vineyard_heritage_banner.png")) !important;
 }
 
 #laber_bock_slide_5 .image-slideshow,
 #laber_bock_slide_5 .image-card__img {
-  background-image: url("family_raisins_banner.png") !important;
+  background-image: var(--bg-image, url("family_raisins_banner.png")) !important;
 }
 
 #laber_bock_slide_6 .image-slideshow,
 #laber_bock_slide_6 .image-card__img {
-  background-image: url("commercial_raisins_banner.png") !important;
+  background-image: var(--bg-image, url("commercial_raisins_banner.png")) !important;
+}
+
+/* Fallback for any newly added slides */
+.swiper-slide[id^="laber_bock_"] .image-slideshow,
+.swiper-slide[id^="laber_bock_"] .image-card__img {
+  background-image: var(--bg-image) !important;
 }
 
 @media (max-width: 767px) {
@@ -687,32 +693,38 @@ section.slideshow .swiper-slide {
 
   #laber_bock_slide_1 .image-slideshow,
   #laber_bock_slide_1 .image-card__img {
-    background-image: url("clean_raisins_hero_banner.png") !important;
+    background-image: var(--bg-image-mobile, var(--bg-image, url("clean_raisins_hero_banner.png"))) !important;
   }
 
   #laber_bock_slide_2 .image-slideshow,
   #laber_bock_slide_2 .image-card__img {
-    background-image: url("gold_raisins_banner.png") !important;
+    background-image: var(--bg-image-mobile, var(--bg-image, url("gold_raisins_banner.png"))) !important;
   }
 
   #laber_bock_slide_3 .image-slideshow,
   #laber_bock_slide_3 .image-card__img {
-    background-image: url("black_raisins_banner.png") !important;
+    background-image: var(--bg-image-mobile, var(--bg-image, url("black_raisins_banner.png"))) !important;
   }
 
   #laber_bock_slide_4 .image-slideshow,
   #laber_bock_slide_4 .image-card__img {
-    background-image: url("vineyard_heritage_banner.png") !important;
+    background-image: var(--bg-image-mobile, var(--bg-image, url("vineyard_heritage_banner.png"))) !important;
   }
 
   #laber_bock_slide_5 .image-slideshow,
   #laber_bock_slide_5 .image-card__img {
-    background-image: url("family_raisins_banner.png") !important;
+    background-image: var(--bg-image-mobile, var(--bg-image, url("family_raisins_banner.png"))) !important;
   }
 
   #laber_bock_slide_6 .image-slideshow,
   #laber_bock_slide_6 .image-card__img {
-    background-image: url("commercial_raisins_banner.png") !important;
+    background-image: var(--bg-image-mobile, var(--bg-image, url("commercial_raisins_banner.png"))) !important;
+  }
+
+  /* Mobile fallback for any newly added slides */
+  .swiper-slide[id^="laber_bock_"] .image-slideshow,
+  .swiper-slide[id^="laber_bock_"] .image-card__img {
+    background-image: var(--bg-image-mobile, var(--bg-image)) !important;
   }
 }
 
