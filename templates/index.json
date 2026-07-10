@@ -15,7 +15,7 @@
         "slide_1": {
           "type": "img",
           "settings": {
-            "image_sl": "shopify://shop_images/Website_1_Homepage_Slider_2_a7f40197-9b9f-47c3-84b7-361eff5b2617.jpg",
+            "image_sl": "shopify://shop_images/Website_1_Homepage_Slider_2_4410fab2-2111-4bb8-a933-0954ea79e9a0.jpg",
             "link_img": "/collections/all",
             "open_link": "_self",
             "class_animate": "fadeinleft",
@@ -29,7 +29,7 @@
           "type": "hd",
           "settings": {
             "title": "Naturally Sweet.<br>Genuinely Better.",
-            "color": "#2e7d32",
+            "color": "#000000",
             "linear_gradient": "",
             "fs_text": 48,
             "fw_text": 700,
