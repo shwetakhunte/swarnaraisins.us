@@ -44,6 +44,9 @@
         "badge_3",
         "badge_4"
       ],
+      "custom_css": [
+        ".s6-clinically-bar-v2{display: none;}"
+      ],
       "settings": {
         "subtitle": "Wholesome Nutrition for Every Day",
         "description_text": "Naturally nourish your day with premium sun-dried raisins, rich in fiber, antioxidants, and essential minerals.",
