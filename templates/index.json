@@ -293,7 +293,9 @@
         "card_swarna_black"
       ],
       "custom_css": [
-        ".top-sellers-title {color: #000 !important;}"
+        ".top-sellers-title {color: #000 !important;}",
+        ".top-seller-card .teal-ribbon {display: none;}",
+        ".top-seller-card .product-image-wrap{padding: 0px 0px !important;}"
       ],
       "settings": {
         "title": "Meet our Top Sellers",
