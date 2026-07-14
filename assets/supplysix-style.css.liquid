@@ -1415,13 +1415,50 @@ section.slideshow .swiper-slide {
   font-size: 14px;
 }
 .ss-product-reviews {
-  margin-bottom: 16px;
+  margin-top: auto;
+  margin-bottom: 10px;
   color: var(--brand-yellow);
   font-size: 14px;
-  margin-top: auto;
+}
+.ss-product-swatches {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.ss-swatch-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #777777;
+  display: block;
+  margin-bottom: 6px;
+}
+.ss-swatch-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ss-swatch-item {
+  border: 1.5px solid #e0e0e0;
+  background: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #555555;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.ss-swatch-item:hover {
+  border-color: var(--brand-green, #0a4441);
+  color: var(--brand-green, #0a4441);
+}
+.ss-swatch-item.selected {
+  background-color: var(--brand-green, #0a4441);
+  color: #ffffff;
+  border-color: var(--brand-green, #0a4441);
 }
 .ss-product-action {
-  margin-top: auto;
+  margin-top: 5px;
 }
 .ss-add-to-cart-btn {
   width: 100%;

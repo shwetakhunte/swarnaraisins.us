@@ -68,6 +68,21 @@
                <span class="ss-stars">★★★★★</span>
             </div>
 
+            {% if product.variants.size > 1 and product.has_only_default_variant == false %}
+              <div class="ss-product-swatches">
+                <span class="ss-swatch-label">Days:</span>
+                <div class="ss-swatch-list">
+                  {% for variant in product.variants %}
+                    {% assign variant_days = variant.title | split: ' ' | first %}
+                    <div class="ss-swatch-item {% if forloop.first %}selected{% endif %}"
+                         onclick="ssSelectCardVariant(this, '{{ product.id }}', '{{ variant.id }}', '{{ variant.price | money | escape }}', '{{ variant.compare_at_price | money | escape }}', {{ variant.available }})">
+                      {{ variant_days }}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
             <div class="ss-product-action">
               <form method="post" action="/cart/add">
                 <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
@@ -86,3 +101,48 @@
     </div>
   </div>
 </div>
+
+<script>
+if (typeof ssSelectCardVariant !== 'function') {
+  window.ssSelectCardVariant = function(el, productId, variantId, price, comparePrice, available) {
+    const card = el.closest('.supplysix-product-card');
+    if (!card) return;
+
+    // 1. Toggle selected class
+    card.querySelectorAll('.ss-swatch-item').forEach(item => item.classList.remove('selected'));
+    el.classList.add('selected');
+
+    // 2. Update variant ID input
+    const input = card.querySelector('form[action="/cart/add"] input[name="id"]');
+    if (input) {
+      input.value = variantId;
+    }
+
+    // 3. Update Price
+    const priceWrapper = card.querySelector('.ss-product-price-wrapper');
+    if (priceWrapper) {
+      let priceHtml = '';
+      if (comparePrice && comparePrice !== '' && comparePrice !== price) {
+        priceHtml = `<span class="ss-sale-price">${price}</span> <span class="ss-regular-price struck">${comparePrice}</span>`;
+      } else {
+        priceHtml = `<span class="ss-regular-price">${price}</span>`;
+      }
+      priceWrapper.innerHTML = priceHtml;
+    }
+
+    // 4. Update Button State
+    const btn = card.querySelector('.ss-add-to-cart-btn');
+    if (btn) {
+      if (available) {
+        btn.innerText = 'Add to cart';
+        btn.disabled = false;
+        btn.classList.remove('disabled');
+      } else {
+        btn.innerText = 'Sold out';
+        btn.disabled = true;
+        btn.classList.add('disabled');
+      }
+    }
+  };
+}
+</script>
