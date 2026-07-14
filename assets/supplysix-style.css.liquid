@@ -2805,37 +2805,64 @@ section.slideshow .swiper-slide {
 }
 
 /* Variant Boxes */
+.s6-variant-selection-container {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .s6-variant-boxes-v2 {
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
   gap: 15px;
-  margin-bottom: 25px;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.s6-vbox-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .s6-vbox {
-  flex: 1;
-  background: #fff;
-  border: 2px solid #2e7d32;
-  border-radius: 8px;
+  width: 100%;
+  background: #e9f2f0; /* Default background */
+  border: 1.5px solid #0a4441;
+  border-radius: 20px; /* More rounded borders like screenshot */
   text-align: center;
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+/* 15 Days is white background by default in screenshot, or let's style them precisely */
+.s6-vbox-wrapper:nth-child(1) .s6-vbox {
+  background: #ffffff;
 }
 
 .s6-vbox.selected {
-  transform: scale(1.02);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 68, 65, 0.15);
+  border-width: 2px;
 }
 
 .s6-vbox-ribbon {
   background-color: #ffd000;
-  color: #000;
-  font-size: 12px;
+  color: #000000;
+  font-size: 13px;
   font-weight: 700;
-  padding: 4px 0;
-  border-bottom: 2px solid #2e7d32;
+  padding: 6px 0;
+  border-bottom: 1.5px solid #0a4441;
+  text-transform: none;
 }
 
 .s6-vbox.highlighted {
@@ -2844,47 +2871,75 @@ section.slideshow .swiper-slide {
 
 .s6-vbox-top {
   padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .s6-vbox-title {
-  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.s6-vbox-num {
+  font-size: 32px;
   font-weight: 800;
-  color: #2e7d32;
-  margin-bottom: 5px;
-  line-height: 1.2;
+  color: #0a4441;
+  line-height: 1;
+}
+
+.s6-vbox-lbl {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a4441;
+  line-height: 1.1;
 }
 
 .s6-vbox-compare {
-  font-size: 12px;
-  color: #999;
+  font-size: 14px;
+  color: #0a4441;
+  opacity: 0.7;
   text-decoration: line-through;
+  margin-bottom: 2px;
 }
 
 .s6-vbox-price {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
-  color: #2e7d32;
+  color: #0a4441;
 }
 
 .s6-vbox-bottom {
-  background-color: #2e7d32;
-  color: #fff;
-  padding: 10px 5px;
-  font-size: 12px;
+  background-color: #0a4441;
+  color: #ffffff;
+  padding: 8px 5px;
+  border-top: 1.5px solid #0a4441;
+  width: 100%;
 }
 
 .s6-vbox-serving {
+  font-size: 14px;
   font-weight: 700;
 }
 
 .s6-vbox-save {
-  font-size: 11px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a4441;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .s6-vbox-mrp {
-  font-size: 10px;
-  color: #ccc;
-  margin-top: 3px;
+  font-size: 14px;
+  color: #777777;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 500;
 }
 
 /* ATC Button */

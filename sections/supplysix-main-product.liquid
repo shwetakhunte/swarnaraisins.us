@@ -115,49 +115,62 @@
       {% endif %}
 
       <form action="/cart/add" method="post" id="s6-form-v2">
-        <div class="s6-variant-boxes-v2">
-          {% if product.has_only_default_variant == false %}
-            {% for variant in product.variants %}
-              
-              <!-- Map Index to Display Styles -->
-              {% assign is_highlighted = false %}
-              {% if forloop.index == 2 %}
-                {% assign is_highlighted = true %}
-              {% endif %}
-
-              <label class="s6-vbox {% if is_highlighted %}highlighted{% endif %} {% if forloop.first and is_highlighted == false %}selected{% elsif is_highlighted %}selected{% endif %}" onclick="s6SelectVarBox(this, '{{ variant.id }}')">
-                <input type="radio" name="id" value="{{ variant.id }}" class="hidden-radio" {% if is_highlighted %}checked{% endif %}>
+        <div class="s6-variant-selection-container">
+          <div class="s6-variant-boxes-v2">
+            {% if product.has_only_default_variant == false %}
+              {% for variant in product.variants %}
                 
-                {% if is_highlighted %}
-                  <div class="s6-vbox-ribbon">Best Results</div>
+                <!-- Map Index to Display Styles -->
+                {% assign is_highlighted = false %}
+                {% if forloop.index == 2 %}
+                  {% assign is_highlighted = true %}
                 {% endif %}
 
-                <div class="s6-vbox-top">
-                  <div class="s6-vbox-title">
-                    {% if forloop.index == 1 %}15 Days{% elsif forloop.index == 2 %}30 Days{% else %}60 Days{% endif %}
-                  </div>
-                  {% if variant.compare_at_price > variant.price %}
-                    <div class="s6-vbox-compare">{{ variant.compare_at_price | money }}</div>
-                  {% endif %}
-                  <div class="s6-vbox-price">{{ variant.price | money }}</div>
-                </div>
+                <div class="s6-vbox-wrapper">
+                  <label class="s6-vbox {% if is_highlighted %}highlighted{% endif %} {% if forloop.first and is_highlighted == false %}selected{% elsif is_highlighted %}selected{% endif %}" onclick="s6SelectVarBox(this, '{{ variant.id }}')">
+                    <input type="radio" name="id" value="{{ variant.id }}" class="hidden-radio" {% if is_highlighted %}checked{% endif %}>
+                    
+                    {% if is_highlighted %}
+                      <div class="s6-vbox-ribbon">Best Results</div>
+                    {% endif %}
 
-                <div class="s6-vbox-bottom">
-                  <div class="s6-vbox-serving">
-                    {% if forloop.index == 1 %}₹ 72/serving{% elsif forloop.index == 2 %}₹ 68/serving{% else %}₹ 65/serving{% endif %}
-                  </div>
+                    <div class="s6-vbox-top">
+                      <div class="s6-vbox-title">
+                        {% assign title_parts = variant.title | split: ' ' %}
+                        <span class="s6-vbox-num">{{ title_parts[0] }}</span>
+                        <span class="s6-vbox-lbl">{% if title_parts[1] != blank %}{{ title_parts[1] }}{% else %}Days{% endif %}</span>
+                      </div>
+                      {% if variant.compare_at_price > variant.price %}
+                        <div class="s6-vbox-compare">{{ variant.compare_at_price | money }}</div>
+                      {% endif %}
+                      <div class="s6-vbox-price">{{ variant.price | money }}</div>
+                    </div>
+
+                    <div class="s6-vbox-bottom">
+                      <div class="s6-vbox-serving">
+                        {% assign days_num = title_parts[0] | plus: 0 %}
+                        {% if days_num > 0 %}
+                          {% assign price_divided = variant.price | divided_by: days_num %}
+                          {{ price_divided | money_without_trailing_zeros }}/Serving
+                        {% else %}
+                          {{ variant.price | money_without_trailing_zeros }}/Serving
+                        {% endif %}
+                      </div>
+                    </div>
+                  </label>
+                  
                   {% if variant.compare_at_price > variant.price %}
                     {% assign savings = variant.compare_at_price | minus: variant.price %}
                     <div class="s6-vbox-save">Save {{ savings | money }}</div>
                   {% endif %}
-                  {% if is_highlighted %}
-                    <div class="s6-vbox-mrp">MRP (Incl. of all taxes)</div>
-                  {% endif %}
                 </div>
-              </label>
-            {% endfor %}
-          {% else %}
-            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              {% endfor %}
+            {% else %}
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            {% endif %}
+          </div>
+          {% if product.has_only_default_variant == false %}
+            <div class="s6-vbox-mrp">MRP (Incl. of all taxes)</div>
           {% endif %}
         </div>
 
