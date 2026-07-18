@@ -138,7 +138,8 @@
                       <div class="s6-vbox-title">
                         {% assign title_parts = variant.title | split: ' ' %}
                         <span class="s6-vbox-num">{{ title_parts[0] }}</span>
-                        <span class="s6-vbox-lbl">{% if title_parts[1] != blank %}{{ title_parts[1] }}{% else %}Days{% endif %}</span>
+                        {% assign remaining_title = variant.title | remove_first: title_parts[0] | strip %}
+                        <span class="s6-vbox-lbl">{% if remaining_title != blank %}{{ remaining_title }}{% else %}Days{% endif %}</span>
                       </div>
                       {% if variant.compare_at_price > variant.price %}
                         <div class="s6-vbox-compare">{{ variant.compare_at_price | money }}</div>
