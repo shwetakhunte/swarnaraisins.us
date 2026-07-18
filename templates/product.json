@@ -45,7 +45,7 @@
         "badge_4"
       ],
       "custom_css": [
-        ".s6-clinically-bar-v2{display: none;}"
+        ".s6-clinically-bar-v2 {display: none;}"
       ],
       "settings": {
         "subtitle": "Wholesome Nutrition for Every Day",
@@ -72,6 +72,7 @@
         },
         "d07132a9-cf30-4c47-a9f5-6b3bd410c124": {
           "type": "tab_custom_html",
+          "disabled": true,
           "settings": {
             "title": "Shipping & Return",
             "page_content": "shipping-policy-for-raisins-1"
@@ -79,6 +80,7 @@
         },
         "tab_custom_text_zKYf3p": {
           "type": "tab_custom_text",
+          "disabled": true,
           "settings": {
             "title": "Return Policies",
             "content": "<p>Returns will be accepted for up to 10 days of Customer’s receipt or tracking number on unworn items. You, as a Customer, are obliged to inform us via email before you return the item, only in the case of:</p><p>– Received the wrong item.<br/>– Item arrived not as expected (ie. damaged packaging).<br/>– Item had defects.<br/>– Over delivery time.<br/>– The shipper does not allow the goods to be inspected before payment.</p><p>The returned product(s) must be in the original packaging, safety wrapped, undamaged and unworn. This means that the item(s) must be safely packed in a carton box for protection during transport, possibly the same carton used to ship to you as a customer.</p>"
