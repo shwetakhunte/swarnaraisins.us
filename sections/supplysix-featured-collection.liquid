@@ -51,9 +51,14 @@
             {% assign default_variant = product.variants.first %}
           {% endif %}
 
+          {% if default_variant.image != blank %}
+            {% assign initial_image = default_variant.image %}
+          {% else %}
+            {% assign initial_image = product.featured_image %}
+          {% endif %}
           <div class="ss-product-image">
             <a href="{{ product.url }}">
-              <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
+              <img src="{{ initial_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
             </a>
           </div>
           
