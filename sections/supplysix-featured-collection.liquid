@@ -45,8 +45,14 @@
       
       {% for product in collection.products limit: section.settings.products_to_show %}
         <div class="supplysix-product-card">
-          {% if product.variants.first.image != blank %}
-            {% assign initial_image = product.variants.first.image %}
+          {% if product.variants.size > 1 %}
+            {% assign default_variant = product.variants[1] %}
+          {% else %}
+            {% assign default_variant = product.variants.first %}
+          {% endif %}
+
+          {% if default_variant.image != blank %}
+            {% assign initial_image = default_variant.image %}
           {% else %}
             {% assign initial_image = product.featured_image %}
           {% endif %}
@@ -60,11 +66,11 @@
             <a href="{{ product.url }}" class="ss-product-title">{{ product.title }}</a>
             
             <div class="ss-product-price-wrapper">
-              {% if product.compare_at_price > product.price %}
-                <span class="ss-sale-price">{{ product.price | money }}</span>
-                <span class="ss-regular-price struck">{{ product.compare_at_price | money }}</span>
+              {% if default_variant.compare_at_price > default_variant.price %}
+                <span class="ss-sale-price">{{ default_variant.price | money }}</span>
+                <span class="ss-regular-price struck">{{ default_variant.compare_at_price | money }}</span>
               {% else %}
-                <span class="ss-regular-price">{{ product.price | money }}</span>
+                <span class="ss-regular-price">{{ default_variant.price | money }}</span>
               {% endif %}
             </div>
 
@@ -84,7 +90,7 @@
                     {% else %}
                       {% assign variant_image = product.featured_image %}
                     {% endif %}
-                    <div class="ss-swatch-item {% if forloop.first %}selected{% endif %}"
+                    <div class="ss-swatch-item {% if variant.id == default_variant.id %}selected{% endif %}"
                          onclick="ssSelectCardVariant(this, '{{ product.id }}', '{{ variant.id }}', '{{ variant.price | money | escape }}', '{{ variant.compare_at_price | money | escape }}', {{ variant.available }}, '{{ variant_image | img_url: '600x600', crop: 'center' }}')">
                       {{ variant_days }}
                     </div>
@@ -95,8 +101,8 @@
 
             <div class="ss-product-action">
               <form method="post" action="/cart/add">
-                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-                {% if product.available %}
+                <input type="hidden" name="id" value="{{ default_variant.id }}" />
+                {% if default_variant.available %}
                   <button type="submit" class="ss-add-to-cart-btn">Add to cart</button>
                 {% else %}
                   <button type="button" class="ss-add-to-cart-btn disabled" disabled>Sold out</button>
