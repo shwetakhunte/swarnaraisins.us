@@ -41,9 +41,10 @@
         <div class="supplysix-product-grid">
           {%- for product in collection.products -%}
             <div class="supplysix-product-card">
+              {% assign initial_image = product.variants.first.image | default: product.featured_image %}
               <div class="ss-product-image">
                 <a href="{{ product.url }}">
-                  <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
+                  <img src="{{ initial_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
                 </a>
               </div>
               
@@ -66,12 +67,13 @@
 
                 {% if product.variants.size > 1 and product.has_only_default_variant == false %}
                   <div class="ss-product-swatches">
-                    <span class="ss-swatch-label">Days:</span>
+                    <span class="ss-swatch-label">{{ product.options.first }}:</span>
                     <div class="ss-swatch-list">
                       {% for variant in product.variants %}
                         {% assign variant_days = variant.title | split: ' ' | first %}
+                        {% assign variant_image = variant.image | default: product.featured_image %}
                         <div class="ss-swatch-item {% if forloop.first %}selected{% endif %}"
-                             onclick="ssSelectCardVariant(this, '{{ product.id }}', '{{ variant.id }}', '{{ variant.price | money | escape }}', '{{ variant.compare_at_price | money | escape }}', {{ variant.available }})">
+                             onclick="ssSelectCardVariant(this, '{{ product.id }}', '{{ variant.id }}', '{{ variant.price | money | escape }}', '{{ variant.compare_at_price | money | escape }}', {{ variant.available }}, '{{ variant_image | img_url: '600x600', crop: 'center' }}')">
                           {{ variant_days }}
                         </div>
                       {% endfor %}
@@ -135,7 +137,7 @@
 </style>
 
 <script>
-function ssSelectCardVariant(el, productId, variantId, price, comparePrice, available) {
+function ssSelectCardVariant(el, productId, variantId, price, comparePrice, available, imageUrl) {
   const card = el.closest('.supplysix-product-card');
   if (!card) return;
 
@@ -173,6 +175,14 @@ function ssSelectCardVariant(el, productId, variantId, price, comparePrice, avai
       btn.innerText = 'Sold out';
       btn.disabled = true;
       btn.classList.add('disabled');
+    }
+  }
+
+  // 5. Update Image
+  if (imageUrl) {
+    const img = card.querySelector('.ss-product-image img');
+    if (img) {
+      img.src = imageUrl;
     }
   }
 }
