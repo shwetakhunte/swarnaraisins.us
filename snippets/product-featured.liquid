@@ -13,7 +13,7 @@
             style="{{ style }}"
             data-js-product-image
           >
-            {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+            {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
           </a>
         {% else %}
           <a class="db" href="{{ routes.root_url }}admin/products" aria-label="Product Image">
@@ -31,7 +31,7 @@
   <div class="product_info">
     {%- if product.collections.size > 0 -%}
       <div class="product-collection mb-5">
-        {% render 'product-get-collections' with product: product %}
+        {% render 'product-get-collections' with product, product: product %}
       </div>
     {%- endif -%}
     <div class="product-collection__title mb-10">
@@ -55,7 +55,7 @@
           ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
         >
       {%- else -%}
-        {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+        {% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price %}
       {%- endif -%}
     </div>
 
@@ -128,3 +128,23 @@
     </action-condition>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 870..983
+- from: "{% render 'product-get-collections' with product: product %}"
+  to: "{% render 'product-get-collections' with product, product: product %}"
+  position: 1640..1709
+- from: "{% render 'product-get-price' with price: price compare_at_price: product.compare_at_price
+    %}"
+  to: "{% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price
+    %}"
+  position: 2530..2631
+{% endcomment %}

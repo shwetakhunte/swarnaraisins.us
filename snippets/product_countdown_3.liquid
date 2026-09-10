@@ -67,7 +67,7 @@
       <div class="col-lg-6 col-md-6 col-12 {% if section.settings.img_right %}order_1{% endif %}" >
       <div class="product-collection__image product-image js-product-images-navigation">
         {% if img_product %}
-          {% render 'responsive-image' image: img_product, url: product.url | within: collection  %}
+          {% render 'responsive-image', image: img_product, url: product.url, within: collection %}
         {% else %}
         <div class="card__media">
           <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
@@ -77,7 +77,7 @@
               style="{{ style }}"
               data-js-product-image
             >
-              {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+              {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
             </a>
           </div>
         </div>
@@ -104,7 +104,7 @@
                   ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
                 >
               {%- else -%}
-                {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+                {% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price %}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -225,4 +225,25 @@
       </div>
     {% endform %}
   </div>
-</product-item>
+</product-item>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' image: img_product, url: product.url | within:
+    collection  %}"
+  to: "{% render 'responsive-image', image: img_product, url: product.url, within:
+    collection %}"
+  position: 3429..3518
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 3946..4059
+- from: "{% render 'product-get-price' with price: price compare_at_price: product.compare_at_price
+    %}"
+  to: "{% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price
+    %}"
+  position: 5104..5205
+{%- endcomment -%}

@@ -60,7 +60,7 @@
               style="{{ style }}"
               data-js-product-image
             >
-              {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+              {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
             </a>
           </div>
         </div>
@@ -90,7 +90,7 @@
                   ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
                 >
               {%- else -%}
-                {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+                {% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price %}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -99,3 +99,20 @@
     {% endform %}
   </div>
 </product-item>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 2804..2917
+- from: "{% render 'product-get-price' with price: price compare_at_price: product.compare_at_price
+    %}"
+  to: "{% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price
+    %}"
+  position: 4046..4147
+{% endcomment %}

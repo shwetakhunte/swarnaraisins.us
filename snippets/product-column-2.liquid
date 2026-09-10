@@ -52,7 +52,7 @@
             style="{{ style }}"
             data-js-product-image
           >
-            {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+            {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
           </a>
         </div>
       </div>
@@ -90,3 +90,15 @@
       {% endform %}
   </div>
 </product-item>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 2260..2373
+{% endcomment %}

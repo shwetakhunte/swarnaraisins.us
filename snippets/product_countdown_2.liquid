@@ -67,7 +67,7 @@
       <div class="col-lg-5 col-md-5 col-12">
       <div class="product-collection__image product-image js-product-images-navigation">
         {% if img_product %}
-          {% render 'responsive-image' image: img_product, url: product.url | within: collection  %}
+          {% render 'responsive-image', image: img_product, url: product.url, within: collection %}
         {% else %}
         <div class="card__media">
           <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
@@ -77,7 +77,7 @@
               style="{{ style }}"
               data-js-product-image
             >
-              {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+              {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
             </a>
           </div>
         </div>
@@ -89,7 +89,7 @@
         <div class="product-collection__info mb-10 sm:mb-5">
             <div class="product-collection__more-info">
               {%- if product.collections.size > 0 -%}
-                {% render 'product-get-collections' with product: product %}
+                {% render 'product-get-collections' with product, product: product %}
               {%- endif -%}
             </div>
           </div>
@@ -110,7 +110,7 @@
                   ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
                 >
               {%- else -%}
-                {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+                {% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price %}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -230,4 +230,28 @@
       </div>
     {% endform %}
   </div>
-</product-item>
+</product-item>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' image: img_product, url: product.url | within:
+    collection  %}"
+  to: "{% render 'responsive-image', image: img_product, url: product.url, within:
+    collection %}"
+  position: 3374..3463
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 3891..4004
+- from: "{% render 'product-get-collections' with product: product %}"
+  to: "{% render 'product-get-collections' with product, product: product %}"
+  position: 4380..4449
+- from: "{% render 'product-get-price' with price: price compare_at_price: product.compare_at_price
+    %}"
+  to: "{% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price
+    %}"
+  position: 5225..5326
+{%- endcomment -%}

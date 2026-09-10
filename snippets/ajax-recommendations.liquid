@@ -70,7 +70,7 @@
                 style="{{ style }}"
                 data-js-product-image
               >
-                {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+                {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
               </a>
             </div>
           </div>
@@ -95,7 +95,7 @@
             <div class="product-collection__info">
               <div class="product-collection__more-info">
                 {%- if product.collections.size > 0 -%}
-                  {% render 'product-get-collections' with product: product %}
+                  {% render 'product-get-collections' with product, product: product %}
                 {%- endif -%}
               </div>
             </div>
@@ -121,7 +121,7 @@
           <div class="frm-price-color">
             {%- if show_price -%}
               <div class="product-collection__price ">
-                {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+                {% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price %}
               </div>
             {%- endif -%}
           </div>
@@ -186,3 +186,23 @@
     {% endform %}
   </div>
 </product-item>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 3353..3466
+- from: "{% render 'product-get-collections' with product: product %}"
+  to: "{% render 'product-get-collections' with product, product: product %}"
+  position: 4485..4554
+- from: "{% render 'product-get-price' with price: price compare_at_price: product.compare_at_price
+    %}"
+  to: "{% render 'product-get-price' with price, price: price, compare_at_price: product.compare_at_price
+    %}"
+  position: 5529..5630
+{% endcomment %}

@@ -48,7 +48,7 @@
                       {% endif %}
                     >
                       {%- for value in option.values -%}
-                        {% render 'product-get-options-res-status' with option_index0: option_index0 %}
+                        {% render 'product-get-options-res-status' with option_index0, option_index0: option_index0 %}
                         <div
                           data-index="{{ forloop.index }}"
                           class="label index_{{ forloop.index }} {% if active_value %} active{% endif %} {% if disabled_value %} d-none{% endif %}"
@@ -78,7 +78,7 @@
                       {% endif %}
                     >
                       {%- for value in option.values -%}
-                        {% render 'product-get-options-res-status' with option_index0: option_index0 %}
+                        {% render 'product-get-options-res-status' with option_index0, option_index0: option_index0 %}
                         {%- assign option_image = null -%}
                         {%- for variant in product.variants -%}
                           {%- if value == variant.option1 or value == variant.option2 or value == variant.option3 -%}
@@ -122,7 +122,7 @@
                       {% endif %}
                     >
                       {%- for value in option.values -%}
-                        {% render 'product-get-options-res-status' with option_index0: option_index0 %}
+                        {% render 'product-get-options-res-status' with option_index0, option_index0: option_index0 %}
                         {% # theme-check-disable %}
                         <div
                           data-index="{{ forloop.index }}"
@@ -167,7 +167,7 @@
                         {%- if option_image == null -%}
                           {%- assign option_image = image -%}
                         {%- endif -%}
-                        {% render 'product-get-options-res-status' with option_index0: option_index0 %}
+                        {% render 'product-get-options-res-status' with option_index0, option_index0: option_index0 %}
                         {% # theme-check-disable %}
                         <div
                           data-index="{{ forloop.index }}"
@@ -210,3 +210,30 @@
     </dialog>
   </template>
 </dialog-modal>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-get-options-res-status' with option_index0: option_index0
+    %}"
+  to: "{% render 'product-get-options-res-status' with option_index0, option_index0:
+    option_index0 %}"
+  position: 3655..3749
+- from: "{% render 'product-get-options-res-status' with option_index0: option_index0
+    %}"
+  to: "{% render 'product-get-options-res-status' with option_index0, option_index0:
+    option_index0 %}"
+  position: 5543..5637
+- from: "{% render 'product-get-options-res-status' with option_index0: option_index0
+    %}"
+  to: "{% render 'product-get-options-res-status' with option_index0, option_index0:
+    option_index0 %}"
+  position: 8318..8412
+- from: "{% render 'product-get-options-res-status' with option_index0: option_index0
+    %}"
+  to: "{% render 'product-get-options-res-status' with option_index0, option_index0:
+    option_index0 %}"
+  position: 10944..11038
+{% endcomment %}

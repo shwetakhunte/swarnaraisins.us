@@ -6,7 +6,7 @@
   <div class="collection-hero__inner">
       {%- if section.settings.show_collection_image and collection.image -%}
       <div class="collection-hero__image-container media {%if sett_equal%}{{image_ratio}} {%endif%}">
-        {% render 'image', image:collection.image, width: 450, class:'main-img lazyload', alt:collection.title | escape  %}
+        {% render 'image', image: collection.image, width: 450, class: 'main-img lazyload', alt: collection.title %}
       </div>
       {%- endif -%}
     {%if section.settings.show_name_collection or section.settings.show_collection_description%}
@@ -124,4 +124,15 @@
   ]
 }
 {% endschema %}
- 
+ {%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image', image:collection.image, width: 450, class:'main-img lazyload',
+    alt:collection.title | escape  %}"
+  to: "{% render 'image', image: collection.image, width: 450, class: 'main-img lazyload',
+    alt: collection.title %}"
+  position: 426..534
+{%- endcomment -%}

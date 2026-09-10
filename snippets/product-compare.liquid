@@ -53,7 +53,7 @@
           style="{{ style }}"
           data-js-product-image
         >
-          {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+          {% render 'product-image' with card_product, card_product: product, show_secondary_image: show_secondary_image %}
         </a>
       </div>
     </div>
@@ -68,13 +68,13 @@
     {%- endif -%}
     {%- if show_price -%}
       <div class="product-compare__price">
-        {% render 'product-get-price' with price: price compare_at_price: compare_at_price %}
+        {% render 'product-get-price' with price, price: price, compare_at_price: compare_at_price %}
       </div>
     {%- endif -%}
     {% form 'product', product, id: null, class: 'frm_product', data-js-product-form: '' %}
       {%- if show_button_add_to_cart -%}
         <div class="product-compare__variants d-none">
-          {% render 'product-get-variants' with product: product current_variant: current_variant show_options: show_options show_custom_options: show_custom_options %}
+          {% render 'product-get-variants' with product, product: product, current_variant: current_variant, show_options: show_options, show_custom_options: show_custom_options %}
         </div>
       {%- endif -%}
       {% if show_button_add_to_cart %}
@@ -118,3 +118,26 @@
     {% endform %}
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-image' with card_product: product show_secondary_image:
+    show_secondary_image %}"
+  to: "{% render 'product-image' with card_product, card_product: product, show_secondary_image:
+    show_secondary_image %}"
+  position: 2102..2215
+- from: "{% render 'product-get-price' with price: price compare_at_price: compare_at_price
+    %}"
+  to: "{% render 'product-get-price' with price, price: price, compare_at_price: compare_at_price
+    %}"
+  position: 2553..2646
+- from: "{% render 'product-get-variants' with product: product current_variant: current_variant
+    show_options: show_options show_custom_options: show_custom_options %}"
+  to: "{% render 'product-get-variants' with product, product: product, current_variant:
+    current_variant, show_options: show_options, show_custom_options: show_custom_options
+    %}"
+  position: 2876..3046
+{% endcomment %}

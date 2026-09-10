@@ -138,7 +138,7 @@
                         style="{{ style }}"
                         data-js-product-image
                       >
-                        {% render 'product-image' with card_product: product %}
+                        {% render 'product-image' with card_product, card_product: product %}
                       </a>
                     </div>
                   </div>
@@ -209,3 +209,13 @@
     %}
   </span>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-image' with card_product: product %}"
+  to: "{% render 'product-image' with card_product, card_product: product %}"
+  position: 6151..6220
+{% endcomment %}
